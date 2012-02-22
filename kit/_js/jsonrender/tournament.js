@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 function getTournamentList() {
     ajax({
-        url   : '/jsonapi/list_tournaments',
+        url   : '../jsonapi/list_tournaments',
         success: function(response){
             var tournamentID = getTournamentID();
             var html = '';
@@ -68,7 +68,7 @@ function getTournamentList() {
 }
 function checkTournamentRegistrationStatus() {
     ajax({
-        url   : '/jsonapi/tournament_registration_status/' + getTournamentID(),
+        url   : '../jsonapi/tournament_registration_status/' + getTournamentID(),
         success: function(response){
             if (response) {
                 var img = response['largePicture'];

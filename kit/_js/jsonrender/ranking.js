@@ -34,16 +34,17 @@ function loadWorldwideRanking(maxRank, path_id, countryCode, tag, minBirthYear, 
     }
     // worldwide ranking
     ajax({
-        url: '/jsonapi/worldwide_ranking',
+        url: '../jsonapi/worldwide_ranking',
         data: data,
         success: function(rankings) {
             var s = '<table class="worldwideRankings">';
             for(var i in rankings.rankings) {
                 var p = rankings.rankings[i];
                 var burl = (p.badge && p.badge.url) ? p.badge.url : '';
+                burl = burl.replace(/^\/static/, "../static");
                 var flagUrl = '../static/flags/singPath_on.png';
                 if (p.playerCountry && p.playerCountry.flagUrl) {
-                    flagUrl = p.playerCountry.flagUrl;
+                    flagUrl = p.playerCountry.flagUrl.replace(/^\/static/, "../static");
                 }
                 var rankImage = p.rank;
                 if (parseInt(p.rank) < 100) {
@@ -127,7 +128,7 @@ function setLanguage(pathid) {
 }
 function loadLanguageSelector() {
     ajax({
-        url: '/jsonapi/get_game_paths',
+        url: '../jsonapi/get_game_paths',
         success: function(result) {
             var on = '';
             if (parseInt(path_id) == 0) {
@@ -177,7 +178,7 @@ $(document).ready(function() {
     initRolls();
     // country ranking
     ajax({
-        url: '/jsonapi/country_ranking',
+        url: '../jsonapi/country_ranking',
         data: {maxRank: 300},
         success: function(rankings) {
             var s = '<table class="countryRankings">';
@@ -192,7 +193,7 @@ $(document).ready(function() {
                 }
                 s += '<tr class="countryRankings">'+
                      '<td class="countryRankingsRank">'+rankImage+'</td>'+
-                     '<td class="countryRankingsFlag"><img src="' + flagUrl + '" class="countryRankingsFlag" '+onclick+'/></td>'+
+                     '<td class="countryRankingsFlag"><img src="' + flagUrl.replace(/^\/static/, "../static") + '" class="countryRankingsFlag" '+onclick+'/></td>'+
                      '<td class="countryRankingsName"><font '+onclick+'>' + countryName + '</font></td>'+
                      '<td class="countryRankingsPlayer">' + p.player_num + '</td>'+
 //                     '<td class="countryRankingsSolved">' + p.solved_num + '</td>'+

@@ -59,7 +59,7 @@ function _loadChallenges(is_all_challenges) {
         nextCode = 'page_my_challenges++;loadMyChallenges()';
     }
     ajax({
-        url: '/jsonapi/'+url,
+        url: '../jsonapi/'+url,
         data: data,
         success: function(result){
             renderChallenges(
@@ -125,7 +125,7 @@ function renderChallenges(result, is_all_challenges, limit, offset,
 
             var location = ch['allowedCountries'];
             if (location.length > 0 && countriesById[location[0]]) {
-                location = '<img src="'+countriesById[location[0]].flagUrl+'"/>';
+                location = '<img src="'+countriesById[location[0]].flagUrl.replace(/^\/static/, "../static")+'"/>';
             } else {
                 location = '';
             }
@@ -226,7 +226,7 @@ function renderChallenges(result, is_all_challenges, limit, offset,
 }
 function loadCountries() {
     ajax({
-        url: '/jsonapi/all_countries',
+        url: '../jsonapi/all_countries',
         success: function(result) {
             for (var i in result['countries']) {
                 var b = result['countries'][i];
@@ -242,7 +242,7 @@ function loadCountries() {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         success: function(result) {
             for (var i in result['badges']) {
                 var b = result['badges'][i];
@@ -287,7 +287,7 @@ function setLanguage(pathid) {
 }
 function loadLanguageSelector() {
     ajax({
-        url: '/jsonapi/get_current_paths',
+        url: '../jsonapi/get_current_paths',
         success: function(result) {
             var on = '';
             if (parseInt(path_id) == 0) {

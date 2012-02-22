@@ -34,7 +34,7 @@ function loadWorldwideRanking(maxRank, path_id, countryCode, tag, minBirthYear, 
     }
     // worldwide ranking
     ajax({
-        url: '/jsonapi/worldwide_ranking',
+        url: '../jsonapi/worldwide_ranking',
         data: data,
         success: function(rankings) {
             var s = '<table class="worldwideRankings">';
@@ -127,7 +127,7 @@ function setLanguage(pathid) {
 }
 function loadLanguageSelector() {
     ajax({
-        url: '/jsonapi/get_game_paths',
+        url: '../jsonapi/get_game_paths',
         success: function(result) {
             var on = '';
             if (parseInt(path_id) == 0) {
@@ -177,7 +177,7 @@ $(document).ready(function() {
     initRolls();
     // country ranking
     ajax({
-        url: '/jsonapi/country_ranking',
+        url: '../jsonapi/country_ranking',
         data: {maxRank: 300},
         success: function(rankings) {
             var s = '<table class="countryRankings">';

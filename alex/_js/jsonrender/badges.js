@@ -4,7 +4,7 @@ function str(s) {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         data: {with_awards: 1},
         success: function(result) {
             allBadges = {};

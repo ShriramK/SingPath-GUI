@@ -215,7 +215,7 @@ function loadCountries() {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         skip_check_login_error: true,
         skip_display_error: true,
         success: function(result) {

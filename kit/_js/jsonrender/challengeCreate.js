@@ -114,7 +114,7 @@ function loadCountries() {
 }
 function loadGamePathsAndBadges() {
     ajax({
-        url: '/jsonapi/get_game_paths',
+        url: '../jsonapi/get_game_paths',
         success: function(result) {
             paths = result['paths'];
             var path_options = '<option value="-1">--</option>';
