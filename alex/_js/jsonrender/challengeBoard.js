@@ -59,7 +59,7 @@ function _loadChallenges(is_all_challenges) {
         nextCode = 'page_my_challenges++;loadMyChallenges()';
     }
     ajax({
-        url: '/jsonapi/'+url,
+        url: '../jsonapi/'+url,
         data: data,
         success: function(result){
             renderChallenges(
@@ -226,7 +226,7 @@ function renderChallenges(result, is_all_challenges, limit, offset,
 }
 function loadCountries() {
     ajax({
-        url: '/jsonapi/all_countries',
+        url: '../jsonapi/all_countries',
         success: function(result) {
             for (var i in result['countries']) {
                 var b = result['countries'][i];
@@ -287,7 +287,7 @@ function setLanguage(pathid) {
 }
 function loadLanguageSelector() {
     ajax({
-        url: '/jsonapi/get_current_paths',
+        url: '../jsonapi/get_current_paths',
         success: function(result) {
             var on = '';
             if (parseInt(path_id) == 0) {

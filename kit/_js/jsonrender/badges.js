@@ -4,7 +4,7 @@ function str(s) {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         data: {with_awards: 1},
         success: function(result) {
             allBadges = {};
@@ -15,7 +15,7 @@ function loadBadges() {
             for (var i in result['badges']) {
                 var b = result['badges'][i];
                 allBadges[b['id']] = b;
-                var url = b['imageURL'];
+                var url = b['imageURL'].replace(/^\/static/, "../static");
                 var clazz = 'earnedBadge';
                 if (url && !b['awarded']) {
                     url = url.replace('_on', '_off');
@@ -60,7 +60,7 @@ function selBadge(element, badge_id, type) {
     }
     $(s+' img').removeClass('selectedBadge');
     if (div1) {
-        $(div1).html('<img src="'+badge['imageURL']+'" title="'+badge['description']+'"/>')
+        $(div1).html('<img src="'+badge['imageURL'].replace(/^\/static/, "../static")+'" title="'+badge['description']+'"/>')
     }
     if (div2) {
         $(div2).html('<b>'+badge['description']+'</b><br>'+badge['badgeInformation'])
@@ -68,13 +68,13 @@ function selBadge(element, badge_id, type) {
     $(element).addClass('selectedBadge');
 }
 function showLevelBadgeChain(badge) {
-    $('#badge2').html('<img src="'+badge['imageURL']+'" title="'+badge['description']+'"/>');
+    $('#badge2').html('<img src="'+badge['imageURL'].replace(/^\/static/, "../static")+'" title="'+badge['description']+'"/>');
 
     var img = '';
     for (var i in badge.requiredBadges) {
         var badge_id = badge.requiredBadges[i];
         var b = allBadges[badge_id];
-        img += '<img src="'+b['imageURL']+'" title="'+b['description']+'"/>';
+        img += '<img src="'+b['imageURL'].replace(/^\/static/, "../static")+'" title="'+b['description']+'"/>';
     }
     $('#badge1').html(img);
 
@@ -85,7 +85,7 @@ function showLevelBadgeChain(badge) {
         for (var j in b.requiredBadges) {
             var rb = b.requiredBadges[j];
             if (rb == badge.id) {
-                img = '<img src="'+b['imageURL']+'" title="'+b['description']+'"/>';
+                img = '<img src="'+b['imageURL'].replace(/^\/static/, "../static")+'" title="'+b['description']+'"/>';
                 break;
             }
         }

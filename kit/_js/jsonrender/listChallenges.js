@@ -24,7 +24,7 @@ function getMessage(msg) {
 }
 function loadChallenges() {
     ajax({
-        url: '/jsonapi/list_challenges',
+        url: '../jsonapi/list_challenges',
         success: function(result) {
             $('table#challenge').remove();
             var html =

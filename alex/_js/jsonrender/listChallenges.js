@@ -125,7 +125,7 @@ function loadCountries() {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         success: function(result) {
             for (var i in result['badges']) {
                 var b = result['badges'][i];

@@ -157,7 +157,7 @@ function loadProblemsetDetails(problemset_id) {
 // path progress data
 function loadPathProgressData(path_id) {
     ajax({
-        url: '/jsonapi/get_path_progress/'+path_id,
+        url: '../jsonapi/get_path_progress/'+path_id,
         data: {details: 1},
         success: function(progress) {
             path = progress.path;

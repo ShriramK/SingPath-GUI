@@ -52,7 +52,7 @@ function loadCountries() {
 }
 function loadBadges() {
     ajax({
-        url: '/jsonapi/all_badges',
+        url: '../jsonapi/all_badges',
         success: function(result) {
             var s = '';
             for (var i in result['badges']) {
