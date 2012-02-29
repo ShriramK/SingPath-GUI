@@ -176,32 +176,5 @@ $(document).ready(function() {
     loadLanguageSelector();
     autoPreloadRollsImages();
     initRolls();
-    // country ranking
-    ajax({
-        url: '../jsonapi/country_ranking',
-        data: {maxRank: 300},
-        success: function(rankings) {
-            var s = '<table class="countryRankings">';
-            for(var i in rankings.rankings) {
-                var p = rankings.rankings[i];
-                var countryName = (p.countryName ? p.countryName : 'Unknown');
-                var onclick = 'onclick="loadCountryRanking(\''+(p.country_code ? p.country_code : 'None')+'\', \''+countryName+'\');"';
-                var flagUrl = (p.flagUrl ? p.flagUrl : '../static/flags/singPath_on.png');
-                var rankImage = p.rank;
-                if (parseInt(p.rank) < 100) {
-                    rankImage = '<img alt="'+p.rank+'" src="_images/commonButtons/numbers/number'+lpad2(p.rank)+'.png"/>';
-                }
-                s += '<tr class="countryRankings">'+
-                     '<td class="countryRankingsRank">'+rankImage+'</td>'+
-                     '<td class="countryRankingsFlag"><img src="' + flagUrl.replace(/^\/static/, "../static") + '" class="countryRankingsFlag" '+onclick+'/></td>'+
-                     '<td class="countryRankingsName"><font '+onclick+'>' + countryName + '</font></td>'+
-                     '<td class="countryRankingsPlayer">' + p.player_num + '</td>'+
-//                     '<td class="countryRankingsSolved">' + p.solved_num + '</td>'+
-                     '</tr>';
-            }
-            s += '</table>';
-            $('#countryRankingsOut').html(s);
-        }
-    });
     showAdv();
 });
