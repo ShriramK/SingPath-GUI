@@ -12,8 +12,11 @@
 	<script src="_js/feedback-v2.js" type="text/javascript"></script>
 	<script src="http://jquery-jsonp.googlecode.com/files/jquery.jsonp-2.1.4.min.js" type="text/javascript"></script>
     <script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
+	<script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
+	<script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng:controller="RankingCtrl">
+<pre>{{this.country_ranking.rankings[0]}}</pre>
 <center><div id="loading">Loading...</div></center>
   <div id="beardy">
     <table class="__page wrapper">
@@ -100,7 +103,18 @@
                         </tr>
                         <tr class="countryRankingsOut">
                           <td class="countryRankingsOut">
-                            <div class="countryRankingsOut" id="countryRankingsOut"></div>
+                            <div class="countryRankingsOut" id="countryRankingsOut">
+                                <table class="countryRankings">
+                                    <tbody>
+                                        <tr ng:repeat="country in this.country_ranking.rankings" class="countryRankings">
+                                            <td class="countryRankingsRank"><img alt="1" ng:src="_images/commonButtons/numbers/number{{country.rank}}.png"></td>
+                                            <td class="countryRankingsFlag"><img ng:src="{{country.flagUrl}}" class="countryRankingsFlag" onclick="loadCountryRanking('{{country.country_code}}', '{{country.countryName}}');"></td>
+                                            <td class="countryRankingsName"><font onclick="loadCountryRanking('{{country.country_code}}', '{{country.countryName}}');">{{country.countryName}}</font></td>
+                                            <td class="countryRankingsPlayer">{{country.player_num}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                           </td>
                         </tr>
                       </table>
