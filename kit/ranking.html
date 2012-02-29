@@ -108,7 +108,7 @@
                                     <tbody>
                                         <tr ng:repeat="country in this.country_ranking.rankings" class="countryRankings">
                                             <td class="countryRankingsRank"><img alt="1" ng:src="_images/commonButtons/numbers/number{{country.rank}}.png"></td>
-                                            <td class="countryRankingsFlag"><img ng:src='{{country.flagUrlreplace("/static/", "../static/")}}' class="countryRankingsFlag" onclick="loadCountryRanking('{{country.country_code}}', '{{country.countryName}}');"></td>
+                                            <td class="countryRankingsFlag"><img ng:src='{{country.flagUrl.replace("/static/", "../static/")}}' class="countryRankingsFlag" onclick="loadCountryRanking('{{country.country_code}}', '{{country.countryName}}');"></td>
                                             <td class="countryRankingsName"><font onclick="loadCountryRanking('{{country.country_code}}', '{{country.countryName}}');">{{country.countryName}}</font></td>
                                             <td class="countryRankingsPlayer">{{country.player_num}}</td>
                                         </tr>
