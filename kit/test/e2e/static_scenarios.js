@@ -3,30 +3,11 @@
 describe('Alex', function() {
   pauseAll = false;
   
-  
-  
-  it('TestinGg alex/index.html', function() {
+  it('Testing alex/index.html', function() {
 
       browser().navigateTo('../../index.html');
-      //expect(browser().location().path()).toBe("/view1");
-      expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/index.html');
-      //expect(element('.footer a').count()).toBe(6);
-      //expect(element('#footer a').count()).toBe(6);
-      //expect(element('#footer a:nth-child(1)').text()).toBe('home');
-      //expect(element('#footer a:nth-child(2)').text()).toBe('about us');
-      //expect(element('#footer a:nth-child(3)').text()).toBe('contributions');
-      //expect(element('#footer a:nth-child(4)').text()).toBe('contact us');
-
-      //expect(element('#Footer a:first').html()).toBe('home');
-      //expect(element('#Footer a:last').text()).toBe('contact us');
-      //expect(element('#Footer a:first').val()).toBe('home');
-
-      //You can't click until after pages are angularized and stay on the main page.
-      //element('#Footer a:first').click();
-
-      //if (pauseAll) pause();
-      //pause();
+       expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
+      if (pauseAll) pause();
   });
 
   it('Testing alex/home.html', function() {
@@ -133,15 +114,11 @@ describe('Alex', function() {
     });  
     describe('Extraa Index-specific tests', function() {
         beforeEach(function() {
-            //browser().navigateTo('/alex/index.html');
+            browser().navigateTo('../../index.html');
         });
         
         it('Testing alex/index.html', function() {
-              //browser().navigateTo('../../index.html');
-              //expect(browser().location().hash()).toBe('');
-              //expect(browser().location().path()).toBe('/alex/index.html');
-              
-              //expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
+              expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
         });
     });
 });
