@@ -160,13 +160,10 @@ describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
-      //spyOn(GSFN,'feedback_widget');
-    
-      waits(2000);
-      expect(feedback_widget).toBeDefined();
       
-      
-      //expect(function()).toEqual("result");
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
+      expect(element('#contributorsInfoBoxText >p').text()).toBe('Contributions of new problems are welcome.');
+      expect(element("#contributorsAboutBoxText img").count()).toBe(5);
      
   });
 });
