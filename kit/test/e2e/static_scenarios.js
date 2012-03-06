@@ -159,8 +159,10 @@ describe('Additinal test from Ivan', function() {
 describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
-      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');     
-      expect(feedback_widget).toBeDefined();
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
+      //spyOn(GSFN,'feedback_widget');
+      waitsFor(function() { return expect(feedback_widget).toBeDefined(); }, "feedback_widget was not defined within 2 sec", 2000);
+      
       //expect(function()).toEqual("result");
      
   });
