@@ -130,6 +130,7 @@ describe('Alex', function() {
             //<input type="editbox" class="editProfile" id="editProfileName" name="name">
             //pause();
         });
+        
     });  
     describe('Extraa Index-specific tests', function() {
         beforeEach(function() {
@@ -152,5 +153,12 @@ describe('Additinal test from Ivan', function() {
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
       expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
       expect(element('#contributorsAboutBoxText > a > img:first').attr('alt')).toBe('Contributor Danny');
+  });
+});
+
+describe('Test From FaceIT', function() {
+  it('Testing alex/contributions.html', function() {
+      browser().navigateTo('../../contributions.html');
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');     
   });
 });
