@@ -160,7 +160,7 @@ describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');     
-      expect(GSFN).toBeDefined();
+      expect(feedback_widget).toBeDefined();
       //expect(function()).toEqual("result");
      
   });
