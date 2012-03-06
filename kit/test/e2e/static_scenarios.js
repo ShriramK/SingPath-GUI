@@ -161,7 +161,7 @@ describe('Test From SergeyGalenko', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
       //spyOn(GSFN,'feedback_widget');
-      spyOn(GSFN, 'feedback_widget');
+    
       waits(2000);
       expect(feedback_widget).toBeDefined();
       
