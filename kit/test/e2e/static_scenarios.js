@@ -161,7 +161,10 @@ describe('Test From SergeyGalenko', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
       //spyOn(GSFN,'feedback_widget');
-      waitsFor(function() { return expect(feedback_widget).toBeDefined(); }, "feedback_widget was not defined within 2 sec", 2000);
+      spyOn(GSFN, 'feedback_widget');
+      waits(2000);
+      expect(feedback_widget).toBeDefined();
+      
       
       //expect(function()).toEqual("result");
      
