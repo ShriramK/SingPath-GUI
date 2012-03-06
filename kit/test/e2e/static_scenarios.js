@@ -156,7 +156,7 @@ describe('Additinal test from Ivan', function() {
   });
 });
 
-describe('Test From FaceIT', function() {
+describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');     
