@@ -159,10 +159,8 @@ describe('Additinal test from Ivan', function() {
 describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
-      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
-      
-      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution'); 
-      expect(element('#contributorsInfoBoxText >p').text()).toBe('Contributions of new problems are welcome.');
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
+      expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
       expect(element("#contributorsAboutBoxText img").count()).toBe(5);
      
   });
