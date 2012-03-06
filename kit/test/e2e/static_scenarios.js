@@ -160,5 +160,8 @@ describe('Test From FaceIT', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');     
+      expect(GSFN).toBeDefined();
+      //expect(function()).toEqual("result");
+     
   });
 });
