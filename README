@@ -1,0 +1,15 @@
+This is the public Github repository for the SingPath.com GUI. The GUI is developed in this project and then pulled in to the SingPath project as a remote Github repo. 
+
+Here is a brief description of each of the folders and files in the root SingPath directory. 
+
+	alex	- This is the current GUI. It is a static directory containing the alex user interface mapped to /alex.
+	api 	- This is a copy of the Angularjs documentation that is being converted into a specification for the SingPath jsonapi. 
+	jsonapi	- a static folder used to mimic the responses from SingPath.com. These static json files are used to develop the GUI and when running the End-to-End (E2E) tests.
+	kit     - This is the next GUI being developed. It is a static directory containing the kit user interface mapped to /kit. It will be more angularjs-based than alex and have more test coverage. 
+	shane   - This is a static directory containing more conceptual designs for future GUI's. It is mostly static HTML and CSS. 
+	static	- A static directory containing common files across all user interfaces
+	README	- This file
+	log_access	- A legacy file used to handle posts to /log_access when developing and testing in localhost mode
+	robots.txt	
+	_____
+
