@@ -11,10 +11,10 @@
      <script src="_js/jquery-1.4.2.js" type="text/javascript"></script> 
      <script src="http://jquery-jsonp.googlecode.com/files/jquery.jsonp-2.1.4.min.js" type="text/javascript"></script>
      <script src="_js/jsonrender/common.js" type="text/javascript"></script> 
-     <script src="_js/jsonrender/badges.js" type="text/javascript"></script> 
      <script src="_js/feedback-v2.js" type="text/javascript"></script> 
-     <script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
-   </head> 
+     <script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
+	 <script src="js/controllers.js"></script>   
+	 </head> 
    <body> 
      <center> 
        <center> 
@@ -88,7 +88,8 @@ someone from that country must solve your problem.
                                  <table>
                                    <tr class="top">
                                      <td>
-                                       <div id="yourBadgesBoxTop">
+                                       <div id="yourBadgesBoxTop" ng:controller="YourLevelBadgesCtrl" ng:cloak>
+                                       	<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL.replace("/static/", "../static/")}}'/>
                                        </div>
                                      </td>
                                    </tr>
@@ -126,7 +127,8 @@ someone from that country must solve your problem.
                                  <table>
                                    <tr class="top">
                                      <td>
-                                       <div id="yourCountryBadgesBoxTop">
+                                       <div id="yourCountryBadgesBoxTop" ng:controller="CountryLevelBadgesCtrl" ng:cloak>
+                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL.replace("/static/", "../static/")}}'/>
                                        </div>
                                      </td>
                                    </tr>
@@ -185,7 +187,8 @@ player from each country in a zone, they will receive the region badge!
                            </tr> 
                            <tr class="content"> 
                              <td class="content"> 
-                               <div class="content" id="yourPathBadgesBox">
+                               <div class="content" id="yourPathBadgesBox" ng:controller="YourBadgesBoxTop" ng:cloak>
+                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL.replace("/static/", "../static/")}}'/>
                                </div> 
                              </td> 
                            </tr> 
