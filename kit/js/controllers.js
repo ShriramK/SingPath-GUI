@@ -19,11 +19,24 @@ RankingCtrl.$inject = ["$resource"];
 function YourLevelBadgesCtrl($resource) {	
     yourLevelBadgesModel = $resource("../jsonapi/all_badges");
     this.badges = yourLevelBadgesModel.get();
-    this.doFilter = function(elem) { 
-        return (elem.class.indexOf('CountryBadge')<0) && (elem.class.indexOf('Level_Badge')<0);
+    this.doFilter = function(elem) {
+    	elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");
+        if (elem.imageURL && !elem.awarded) {
+        	elem.imageURL = elem.imageURL.replace('_on', '_off');
+        }
+    	var eval_class = (elem.class.indexOf('CountryBadge')<0 && elem.class.indexOf('Level_Badge')<0);
+        return (eval_class);
     }
-    //this.badges_level = this.badges.badges.filter({'description':'Argentina Unlock Badge'});
-}
+    this.returnClass = function(elem){
+    	var url = elem.imageURL.replace(/^\/static/, "../static");
+        var clazz = 'earnedBadge';
+        if (url && !elem.awarded) {
+            clazz = 'notEarnedBadge';
+        }
+        return clazz;
+
+    }
+ }
 
 YourLevelBadgesCtrl.$inject = ["$resource"];
 
@@ -31,7 +44,21 @@ function CountryLevelBadgesCtrl($resource) {
     countryLevelBadgesModel = $resource("../jsonapi/all_badges");
     this.badges = countryLevelBadgesModel.get();
     this.doFilter = function(elem) { 
-        return elem.class.indexOf('CountryBadge')>0;
+    	elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");
+        if (elem.imageURL && !elem.awarded) {
+        	elem.imageURL = elem.imageURL.replace('_on', '_off');
+        }
+        var eval_class = elem.class.indexOf('CountryBadge')>0
+        return eval_class ;
+    }
+    this.returnClass = function(elem){
+    	var url = elem.imageURL.replace(/^\/static/, "../static");;
+        var clazz = 'earnedBadge';
+        if (url && !elem.awarded) {
+            clazz = 'notEarnedBadge';
+        }
+        return clazz;
+
     }
  }
 
@@ -40,10 +67,22 @@ CountryLevelBadgesCtrl.$inject = ["$resource"];
 function YourBadgesBoxTop($resource) {	
 	yourBadgesBoxTop = $resource("../jsonapi/all_badges");
     this.badges = yourBadgesBoxTop.get();
-    this.doFilter = function(elem) { 
-        return elem.class.indexOf('Level_Badge')>0;
+    this.doFilter = function(elem) {
+    	elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
+        if (elem.imageURL && !elem.awarded) {
+        	elem.imageURL = elem.imageURL.replace('_on', '_off');
+        }
+        var eval_class = elem.class.indexOf('Level_Badge')>0;
+        return eval_class;
     }
-    
+    this.returnClass = function(elem){
+    	var url = elem.imageURL.replace(/^\/static/, "../static");;
+        var clazz = 'earnedBadge';
+        if (url && !elem.awarded) {
+            clazz = 'notEarnedBadge';
+        }
+        return clazz;
+    }
  }
 
 YourBadgesBoxTop.$inject = ["$resource"];
