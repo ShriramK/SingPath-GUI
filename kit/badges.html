@@ -89,7 +89,7 @@ someone from that country must solve your problem.
                                    <tr class="top">
                                      <td>
                                        <div id="yourBadgesBoxTop" ng:controller="YourLevelBadgesCtrl" ng:cloak>
-                                       	<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL}}' ng:class='returnClass(yourbadge)'/>
+                                       	<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" alt="Badge" ng:src='{{yourbadge.imageURL}}' ng:class='returnClass(yourbadge)' title='{{yourbadge.description}}' ng:click="clickEvent(this,yourbadge);"/>
                                        </div>
                                      </td>
                                    </tr>
@@ -128,7 +128,7 @@ someone from that country must solve your problem.
                                    <tr class="top">
                                      <td>
                                        <div id="yourCountryBadgesBoxTop" ng:controller="CountryLevelBadgesCtrl" ng:cloak>
-                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL}}' ng:class='returnClass(yourbadge)'/>
+                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL}}' alt="Badge" title='{{yourbadge.description}}' ng:class='returnClass(yourbadge)' ng:click="clickEvent(this,yourbadge);"/>
                                        </div>
                                      </td>
                                    </tr>
@@ -188,7 +188,7 @@ player from each country in a zone, they will receive the region badge!
                            <tr class="content"> 
                              <td class="content"> 
                                <div class="content" id="yourPathBadgesBox" ng:controller="YourBadgesBoxTop" ng:cloak>
-                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL}}' ng:class='returnClass(yourbadge)'/>
+                                       		<img ng:repeat="yourbadge in this.badges.badges.filter(doFilter)" ng:src='{{yourbadge.imageURL}}' alt="Badge" title='{{yourbadge.description}}' ng:class='returnClass(yourbadge)' ng:click="clickEvent(this,yourbadge);"/>
                                </div> 
                              </td> 
                            </tr> 

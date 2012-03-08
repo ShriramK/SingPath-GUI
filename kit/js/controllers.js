@@ -27,6 +27,11 @@ function YourLevelBadgesCtrl($resource) {
     	var eval_class = (elem.class.indexOf('CountryBadge')<0 && elem.class.indexOf('Level_Badge')<0);
         return (eval_class);
     }
+    
+    this.clickEvent = function(elem,badge){
+    	window.alert("elem:"+elem.src);
+    }
+    
     this.returnClass = function(elem){
     	var url = elem.imageURL.replace(/^\/static/, "../static");
         var clazz = 'earnedBadge';
@@ -51,6 +56,9 @@ function CountryLevelBadgesCtrl($resource) {
         var eval_class = elem.class.indexOf('CountryBadge')>0
         return eval_class ;
     }
+    this.clickEvent = function(elem,badge){
+    	window.alert("elem:"+elem.src);
+    }
     this.returnClass = function(elem){
     	var url = elem.imageURL.replace(/^\/static/, "../static");;
         var clazz = 'earnedBadge';
@@ -67,6 +75,10 @@ CountryLevelBadgesCtrl.$inject = ["$resource"];
 function YourBadgesBoxTop($resource) {	
 	yourBadgesBoxTop = $resource("../jsonapi/all_badges");
     this.badges = yourBadgesBoxTop.get();
+    
+    this.clickEvent = function(elem,badge){
+    	window.alert("elem:"+elem.src);
+    }
     this.doFilter = function(elem) {
     	elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
         if (elem.imageURL && !elem.awarded) {
