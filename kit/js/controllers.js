@@ -75,17 +75,36 @@ CountryLevelBadgesCtrl.$inject = ["$resource"];
 function YourBadgesBoxTop($resource) {	
 	yourBadgesBoxTop = $resource("../jsonapi/all_badges");
     this.badges = yourBadgesBoxTop.get();
+    this.badges_elements = [];
+    this.prevBadge = undefined;
     
     this.clickEvent = function(elem,badge){
     	window.alert("elem:"+elem.src);
     }
+    
     this.doFilter = function(elem) {
     	elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
         if (elem.imageURL && !elem.awarded) {
         	elem.imageURL = elem.imageURL.replace('_on', '_off');
         }
+        this.badges_elements.push(elem);
         var eval_class = elem.class.indexOf('Level_Badge')>0;
         return eval_class;
+    }
+    this.returnStyle = function(elem){
+    	var index = this.badges_elements.indexOf(elem);
+    	var prevBadge = undefined;
+    	if (index>0) {
+    		prevBadge =  this.badges_elements[index-1];
+    		
+    	}else{
+    		window.alert(elem.description);
+    	}
+    	if (prevBadge && prevBadge.path_id != elem.path_id){
+    		
+    		return '{display:block;clear:both;}';
+    	}
+    	return '';
     }
     this.returnClass = function(elem){
     	var url = elem.imageURL.replace(/^\/static/, "../static");;
@@ -93,6 +112,8 @@ function YourBadgesBoxTop($resource) {
         if (url && !elem.awarded) {
             clazz = 'notEarnedBadge';
         }
+        
+        
         return clazz;
     }
  }
