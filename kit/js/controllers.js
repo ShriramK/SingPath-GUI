@@ -29,7 +29,7 @@ function ContributorCtrl($resource) {
   this.contributors = $resource('../jsonapi/contributors').query();
   
   // Cache the base sorce path so we could keep the database thin
-  this.baseSrc = '../kit/_images/landingPages/landingPageButtons/staffProfile';
+  this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 }
 
 ContributorCtrl.$inject = ['$resource'];
