@@ -15,8 +15,8 @@ function MM_swapImgRestore() { //v3.0
 }
 function MM_preloadImages() { //v3.0
   var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments,l=a.length,d_MM_p=d.MM_p; for(i=0; i<l; i++)
+    if (a[i].indexOf("#")!=0){ d_MM_p[j]=new Image; d_MM_p[j++].src=a[i];}}
 }
 
 function MM_findObj(n, d) { //v4.01
@@ -54,7 +54,7 @@ a:active {
 -->
   </style>
 </head>
-<body onload="MM_preloadImages('../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png','../kit/_images/landingPages/landingPageButtons/staffProfileDanny_on.png','../kit/_images/landingPages/landingPageButtons/staffProfileChrisMeyers_on.png','../kit/_images/landingPages/landingPageButtons/staffProfileAllenDowney_on.png','../kit/_images/landingPages/landingPageButtons/staffProfileChris_on.png','../kit/_images/landingPages/landingPageButtons/staffProfileJeffery_on.png','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../kit/_images/landingPages/landingPageButtons/signIn_on.png')">
+<body onload="MM_preloadImages('../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../kit/_images/landingPages/landingPageButtons/signIn_on.png','../kit/_images/landingPages/contributionPage/profiles/AllenDowney.png','../kit/_images/landingPages/contributionPage/profiles/ChrisMeyers.png','../kit/_images/landingPages/contributionPage/profiles/Jeffery.png','../kit/_images/landingPages/contributionPage/profiles/Chris.png','../kit/_images/landingPages/contributionPage/profiles/Danny.png')">
   <div id="wrapper">
     <div id="mainHeader">
       <div id="logo"><a class="rpxnow" onclick="return false;" href=""><img src="../kit/_images/landingPages/landingPageButtons/singpathLogo_off.png" alt="Singpath Logo" name="Singpath Logo" width="169" height="46" border="0" class="rolls" id="Singpath Logo" onmouseover="MM_swapImage('Singpath Logo','','../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png',1)" onmouseout="MM_swapImgRestore()" /></a></div>
