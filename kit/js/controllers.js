@@ -12,7 +12,6 @@ function IndexCtrl($resource) {
   currentPlayersModel = $resource('../jsonapi/current_players');
   this.current_players = currentPlayersModel.query();
 }
-
 IndexCtrl.$inject = ['$resource'];
 
 
@@ -20,7 +19,6 @@ function RankingCtrl($resource) {
   countryModel = $resource("../jsonapi/country_ranking");
   this.country_ranking = countryModel.get();
 }
-
 RankingCtrl.$inject = ["$resource"];
 
 
@@ -29,7 +27,6 @@ function ContributorCtrl($resource) {
   this.contributors = $resource('../jsonapi/contributors').query();
   
   // Cache the base sorce path so we could keep the database thin
-  this.baseSrc = '../kit/_images/landingPages/landingPageButtons/';
+  this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 }
-
 ContributorCtrl.$inject = ['$resource'];

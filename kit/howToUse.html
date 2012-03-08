@@ -4,6 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Singpath - The most fun way to practice software - Contributions</title>
   <link href="../kit/_css/SingpathMain.css" rel="stylesheet" type="text/css" />
+  <link href="../kit/_css/contributors.css" rel="stylesheet" type="text/css" />
   <script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
   <script src="js/controllers.js"></script>
   <script src="../kit/_js/feedback-v2.js" type="text/javascript"></script>
@@ -78,9 +79,15 @@ a:active {
         </a>
       </div>
       <div id="contributorsAboutBoxText" ng:controller="ContributorCtrl" ng:cloak>
-        <a ng:repeat="contributor in this.contributors" href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('{{contributor.name}}','','{{this.baseSrc + contributor.src}}_on.png',1)">
-          <img src="{{this.baseSrc + contributor.src}}_off.png" name="{{contributor.name}}" alt="{{contributor.alt}}" border="0" />
-        </a>
+        <div ng:repeat="contributor in this.contributors" class="contributor">
+          <img src="{{this.baseSrc + contributor.src}}.png" alt="{{contributor.name}}, {{contributor.title}}" />
+          <div class="name">
+            {{contributor.name}},
+          </div>
+          <div class="title">
+            {{contributor.title}}
+          </div>
+        </div>
       </div>
     </div>
     <div id="mainFooter">

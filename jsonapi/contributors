@@ -1,7 +1,7 @@
 [
-{"name": "ConDanny"      , "src": "staffProfileDanny"      , "alt": "Contributor Danny"},
-{"name": "conChrisMeyers", "src": "staffProfileChrisMeyers", "alt": "Contributor Chris Meyers"},
-{"name": "conAllenDowney", "src": "staffProfileAllenDowney", "alt": "Contributor Allen Downey"},
-{"name": "conChris"      , "src": "staffProfileChris"      , "alt": "Contributor Chris Boesch"},
-{"name": "conJeffery"    , "src": "staffProfileJeffery"    , "alt": "Contributor Jeffery"}
+{"name": "Danny"          , "title": "Professor, Singapore", "src": "Danny"},
+{"name": "Chris Meyers"   , "title": "Specialist"          , "src": "ChrisMeyers"},
+{"name": "Allen B. Downey", "title": "Writer"              , "src": "AllenDowney"},
+{"name": "Chris Boesch"   , "title": "Editor in Chief"     , "src": "Chris"},
+{"name": "Jeffery Elkner" , "title": "Writer"              , "src": "Jeffery"}
 ]
