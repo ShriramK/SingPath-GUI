@@ -1,0 +1,88 @@
+
+// Sets a gradient on element regarding the type and RGBA and ARGB
+// An important think to remember is that IE6-9 can accept "#AARRGGBB" string only while other controllers can handle both #RRGGBBAA and rgba()
+// Stylus is converting all hex codes to rgba(). That's why "#AARRGGBB" string is used here.
+//
+// There are 2 functions stopping us from using $degree income parameter
+//   -webkit-gradient() need $typeStart and $typeStop
+//   IE6-9 filter() can be set only to 'horizontal' or 'vertical'
+gradient($type, $startRGBA, $startIE_ARGB_String, $stopRGBA, $stopIE_ARGB_String)
+  if $type is 'horizontal'
+    $mainType    = left
+    $typeStart   = left top
+    $typeStop    = right top
+    $decimalType = 1
+  
+  else if $type is 'vertical'
+    $mainType    = top
+    $typeStart   = left top
+    $typeStop    = left bottom
+    $decimalType = 0
+  
+  else if $type is 'diagonal-main'
+    $mainType    = 45deg
+    $typeStart   = left bottom
+    $typeStop    = right top
+    $decimalType = 1
+  
+  else if $type is 'diagonal-minor'
+    $mainType    = -45deg
+    $typeStart   = left top
+    $typeStop    = right bottom
+    $decimalType = 0
+  
+  // The below line should not be used coz Stylus integrated function linear-gradient() cannot use degrees values
+  // background linear-gradient($mainType, $startRGBA 0%, $stopRGBA 100%)
+
+  // Chrome, Safari4+
+  background -webkit-gradient(linear, $typeStart, $typeStop, color-stop(0%, $startRGBA), color-stop(100%, $stopRGBA))
+  
+  background -webkit-linear-gradient($mainType, $startRGBA 0%, $stopRGBA 100%) // Chrome10+, Safari5.1+
+  background    -moz-linear-gradient($mainType, $startRGBA 0%, $stopRGBA 100%) // FF3.6+
+  background     -ms-linear-gradient($mainType, $startRGBA 0%, $stopRGBA 100%) // IE10+
+  background      -o-linear-gradient($mainType, $startRGBA 0%, $stopRGBA 100%) // Opera 11.10+
+  
+  // IE6-9
+  // This can calc only 'horizontal' and 'vertical' gradients
+  s('filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=%s, endColorstr=%s, GradientType=%s);', $startIE_ARGB_String, $stopIE_ARGB_String, $decimalType)
+
+
+
+border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bottom-left = $top-left)
+  border-top-left-radius     $top-left
+  border-top-right-radius 	 $top-right
+  border-bottom-right-radius $bottom-right
+  border-bottom-left-radius  $bottom-left
+
+  -moz-border-radius-topleft     $top-left
+  -moz-border-radius-topright    $top-right
+  -moz-border-radius-bottomright $bottom-right
+  -moz-border-radius-bottomleft  $bottom-left
+
+
+
+#contributorsAboutBoxText
+  background-repeat no-repeat
+  font-size         15px
+  text-align        center
+  overflow          auto
+  float             left
+  position          relative
+  top               14px
+  left              18px
+  width             250px
+  height            352px
+  margin            0px
+  padding           0px
+  
+  .contributor
+    gradient('vertical', #EEEFF0FF, '#FFEEEFF0', #D4D5D6FF, '#FFD4D5D6')
+    border-radius(5px)
+    color   #497279
+    cursor  pointer
+    margin  4px 10px 6px 3px
+    padding 8px  4px 3px 4px
+    
+    &:hover
+      gradient('vertical', #7FA0B2FF, '#FF7FA0B2', #557682FF, '#FF557682')
+      color #FFF

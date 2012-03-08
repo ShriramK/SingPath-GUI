@@ -2170,22 +2170,6 @@ table.pager {
   position: relative;
 }
 
-#wrapper #contributorsAboutBox #contributorsAboutBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 250px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 352px;
-  top: 14px;
-  text-align: left;
-  left: 18px;
-  overflow: auto;
-}
-
 /* contactUs */
 
 #wrapper #contactUsInfoBox {
