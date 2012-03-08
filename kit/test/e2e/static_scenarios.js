@@ -1,34 +1,34 @@
 /* jasmine-like end2end tests go here */
 
-describe('Alex', function() {
+describe('kit', function() {
   pauseAll = false;
   
-  it('Testing alex/index.html', function() {
+  it('Testing kit/index.html', function() {
 
       browser().navigateTo('../../index.html');
        expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
       if (pauseAll) pause();
   });
 
-  it('Testing alex/home.html', function() {
+  it('Testing kit/home.html', function() {
       browser().navigateTo('../../home.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/home.html');
+      //expect(browser().location().path()).toBe('/kit/home.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
 
-  it('Testing alex/aboutUs.html', function() {
+  it('Testing kit/aboutUs.html', function() {
       browser().navigateTo('../../aboutUs.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/aboutUs.html');
+      //expect(browser().location().path()).toBe('/kit/aboutUs.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
   
-  it('Testing alex/ranking.html', function() {
+  it('Testing kit/ranking.html', function() {
       browser().navigateTo('../../ranking.html');
       expect(browser().location().hash()).toBe('');
       expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
@@ -55,36 +55,36 @@ describe('Alex', function() {
       //pause();
   });
   
-  it('Testing alex/contactUs.html', function() {
+  it('Testing kit/contactUs.html', function() {
       browser().navigateTo('../../contactUs.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/contactUs.html');
+      //expect(browser().location().path()).toBe('/kit/contactUs.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
   });
 
-  it('Testing alex/tournament.html', function() {
+  it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/tournament.html');
+      //expect(browser().location().path()).toBe('/kit/tournament.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
 
-  it('Testing alex/challengeBoard.html', function() {
+  it('Testing kit/challengeBoard.html', function() {
       browser().navigateTo('../../challengeBoard.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/challengeBoard.html');
+      //expect(browser().location().path()).toBe('/kit/challengeBoard.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
   
-  it('Testing alex/badges.html', function() {
+  it('Testing kit/badges.html', function() {
       browser().navigateTo('../../badges.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/badges.html');
+      //expect(browser().location().path()).toBe('/kit/badges.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
@@ -96,10 +96,10 @@ describe('Alex', function() {
             browser().navigateTo('../../home.html');
         });
 
-        it('Testing alex/home.html', function() {
+        it('Testing kit/home.html', function() {
             browser().navigateTo('../../home.html');
             expect(browser().location().hash()).toBe('');
-            //expect(browser().location().path()).toBe('/alex/home.html');
+            //expect(browser().location().path()).toBe('/kit/home.html');
             //expect(element('#footer a:nth-child(1)').text()).toBe('home');
             //expect(element('div:eq(0)').text()).toEqual('something');
             expect(element('#profileNameText').text()).toBe('Mark Zuckerberg');
@@ -117,33 +117,8 @@ describe('Alex', function() {
             browser().navigateTo('../../index.html');
         });
         
-        it('Testing alex/index.html', function() {
+        it('Testing kit/index.html', function() {
               expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
         });
     });
-});
-
-
-function log(message) {
-  console.log(message);
-}
-
-
-describe('Additinal test from Ivan', function() {
-  it('Testing alex/howToUse.html', function() {
-    browser().navigateTo('../../howToUse.html');
-    expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
-    expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
-    
-    // Test the content of the contributors right menu
-    expect(element('#contributorsAboutBoxText > a > img').count()).toBe(5);
-    expect(repeater('#contributorsAboutBoxText > a > img'))
-    
-    // To be organized as repeater when same been used
-    expect(element('#contributorsAboutBoxText > a > img:eq(0)').attr('alt')).toBe('Contributor Danny');
-    expect(element('#contributorsAboutBoxText > a > img:eq(1)').attr('alt')).toBe('Contributor Chris Meyers');
-    expect(element('#contributorsAboutBoxText > a > img:eq(2)').attr('alt')).toBe('Contributor Allen Downey');
-    expect(element('#contributorsAboutBoxText > a > img:eq(3)').attr('alt')).toBe('Contributor Chris Boesch');
-    expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
-  });
 });

@@ -1,0 +1,7 @@
+[
+{"name": "ConDanny"      , "src": "staffProfileDanny"      , "alt": "Contributor Danny"},
+{"name": "conChrisMeyers", "src": "staffProfileChrisMeyers", "alt": "Contributor Chris Meyers"},
+{"name": "conAllenDowney", "src": "staffProfileAllenDowney", "alt": "Contributor Allen Downey"},
+{"name": "conChris"      , "src": "staffProfileChris"      , "alt": "Contributor Chris Boesch"},
+{"name": "conJeffery"    , "src": "staffProfileJeffery"    , "alt": "Contributor Jeffery"}
+]
