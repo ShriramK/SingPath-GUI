@@ -16,6 +16,14 @@ function IndexCtrl($resource) {
 IndexCtrl.$inject = ['$resource'];
 
 
+function RankingCtrl($resource) {
+  countryModel = $resource("../jsonapi/country_ranking");
+  this.country_ranking = countryModel.get();
+}
+
+RankingCtrl.$inject = ["$resource"];
+
+
 function ContributorCtrl($resource) {
   // Getting all contributors from the jsonapi
   this.contributors = $resource('../jsonapi/contributors').query();
