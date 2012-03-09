@@ -56,38 +56,8 @@ function MM_swapImage() { //v3.0
       </div>
     </div>
     
-    
-    <div id="contributorsAboutBox">
-      <div class="commonBtn">
-        <div class="left"></div>
-        <div class="middle">
-          View All Contributes
-        </div>
-        <div class="right"></div>
-      </div>
-      
-      <div class="labelContainer">
-        <div class="label">
-          Contributors
-        </div>
-        <div class="curve"></div>
-      </div>
-      
-      <div class="textContainer">
-        <div class="text" ng:controller="ContributorCtrl" ng:cloak>
-          <div ng:repeat="contributor in this.contributors" class="contributor">
-            <img ng:src="{{this.baseSrc + contributor.src}}.png" ng:alt="{{contributor.name}}, {{contributor.title}}" />
-            <div class="name">
-              {{contributor.name}},
-            </div>
-            <div class="title">
-              {{contributor.title}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+    <!-- Include the Contribution menu-->
+    <ng:include src="'includes/contributionMenu.html'"></ng:include>
     
     <div id="mainFooter">
       <div id="menuFooterTop"><a href="../kit/index.html" title="home page Link" target="_parent">home</a><a href="aboutUs.html">about us</a> <a href="howToUse.html">how to use</a><a href="termsOfUse.html">terms of use</a><a href="contributions.html">contributions</a><a href="http://getsatisfaction.com/singpath" target="_blank">feedback</a><a href="aboutUs.html">contact us</a><a href="shop.html">shop</a><a href="/logout">sign out</a></div>

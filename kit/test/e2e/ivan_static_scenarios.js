@@ -88,7 +88,8 @@ describe('Additinal tests from Ivan', function() {
     // Test Page content
     expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
     
-    contributorsMenuSelector = '#contributorsAboutBoxText';
+    
+    contributorsMenuSelector = '#contributorsAboutBox > .textContainer > .text';
     
     // Test the removing of the cloak over the contributors menu
     expect(element(contributorsMenuSelector).attr('ng:cloak')).not().toBeDefined();
