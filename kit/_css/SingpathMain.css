@@ -2106,7 +2106,7 @@ table.pager {
 }
 #wrapper #aboutUsInfoBox a:link , #wrapper #aboutUsInfoBox a:visited{ font-weight: bold; color: #497279; border: 0px none #FFF100; padding: 1px 3px; }
 #wrapper #aboutUsInfoBox a:hover , #wrapper #aboutUsInfoBox a:active{ font-weight: bold; color: #fff100; background: #497279; padding: 1px 3px; }
-.menuSelected { font-size: 15px; font-weight: bold; color: #fff100; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
+.menuSelected { font-size: 15px; font-weight: bold; color: #fff100 !important; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
 #wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 15px; font-size: 16px; }
 
 #wrapper #aboutUsInfoBox #aboutUsInfoBoxTextTop { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 200px; top: 14px; text-align: left; left: 25px; overflow: auto; 

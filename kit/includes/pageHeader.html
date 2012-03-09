@@ -1,0 +1,28 @@
+<!-- main header: Logo and Login menu-->
+<div id="mainHeader">
+  <div id="logo">
+    <a class="rpxnow" onclick="return false" href="">
+      <img src="../kit/_images/landingPages/landingPageButtons/singpathLogo_off.png" alt="Singpath Logo" name="Singpath Logo" width="169" height="46" border="0" class="rolls" id="Singpath Logo" onmouseover="MM_swapImage('Singpath Logo','','../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png',1)" onmouseout="MM_swapImgRestore()" />
+    </a>
+  </div>
+  
+  <div id="logInBox">
+    <div id="messageBox">
+      Welcome, please sign in to your account
+    </div>
+    <div id="signInButton">
+      <a class="rpxnow" onclick="return false;" href="">
+        <img src="../kit/_images/landingPages/landingPageButtons/signIn_off.png" alt="Sign in to Singpath" name="signIn" width="104" height="24" border="0" class="rolls" id="signIn" onmouseover="MM_swapImage('signIn','','../kit/_images/landingPages/landingPageButtons/signIn_on.png',1)" onmouseout="MM_swapImgRestore()" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- menu options: head page links -->
+<div id="menuOptions">
+  <div id="menuOptionsText" ng:controller="HeadMenuOptionsCtrl">
+    <a ng:repeat="option in this.options" ng:href="{{option.href}}" class="{{option.class}}" title="{{option.title}}">
+      {{option.text}}
+    </a>
+  </div>
+</div>

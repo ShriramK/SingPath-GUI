@@ -1,11 +1,14 @@
-function log(message) {
-  console.log(message);
-}
+/*
+// Good to know it
+expect(browser().window().href()  ).toBe('http://localhost/kit/index.html');
+expect(browser().window().path()  ).toBe('/kit/index.html');
+*/
 
 
 describe('Additinal tests from Ivan', function() {
   it('Testing kit/index.html', function() {
     browser().navigateTo('../../index.html');
+    
     
     // Test initial input user name
     expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
@@ -83,7 +86,7 @@ describe('Additinal tests from Ivan', function() {
     browser().navigateTo('../../howToUse.html');
     
     // Test selected menu option
-    expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
+    expect(element('#menuOptionsText > .menuSelected').text()).toMatch(/how to use/);
     
     // Test Page content
     expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
