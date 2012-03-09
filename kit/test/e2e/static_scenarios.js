@@ -124,15 +124,6 @@ describe('kit', function() {
     });
 });
 
-describe('Additinal test from Ivan', function() {
-  it('Testing alex/howToUse.html', function() {
-      browser().navigateTo('../../howToUse.html');
-      expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
-      expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
-      expect(element('#contributorsAboutBoxText > a > img:first').attr('alt')).toBe('Contributor Danny');
-  });
-});
-
 describe('Test From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');

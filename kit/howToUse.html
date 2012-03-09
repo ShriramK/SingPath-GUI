@@ -4,13 +4,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Singpath - The most fun way to practice software - Contributions</title>
 
-  <link href="../kit/_css/SingpathMain.css" rel="stylesheet" type="text/css" />
-  <link href="../kit/_css/common.css"       rel="stylesheet" type="text/css" />
-  <link href="../kit/_css/contributors.css" rel="stylesheet" type="text/css" />
+  <link href="_css/SingpathMain.css" rel="stylesheet" type="text/css" />
+  <link href="_css/common.css"       rel="stylesheet" type="text/css" />
+  <link href="_css/contributors.css" rel="stylesheet" type="text/css" />
 
-  <script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
+  <script src="lib/angular/angular-0.10.6.min.js" ng:autobind   ></script>
+  <script src="js/commonTools.js"         type="text/javascript"></script>
   <script src="js/controllers.js"         type="text/javascript"></script>
-  <script src="../kit/_js/feedback-v2.js" type="text/javascript"></script>
+  <script src="._js/feedback-v2.js" type="text/javascript"></script>
   <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -34,49 +35,37 @@ function MM_swapImage() { //v3.0
   var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
    if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
 }
+
+window.onload = function () {
+  MM_preloadImages('../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../kit/_images/landingPages/landingPageButtons/signIn_on.png','../kit/_images/landingPages/contributionPage/profiles/AllenDowney.png','../kit/_images/landingPages/contributionPage/profiles/ChrisMeyers.png','../kit/_images/landingPages/contributionPage/profiles/Jeffery.png','../kit/_images/landingPages/contributionPage/profiles/Chris.png','../kit/_images/landingPages/contributionPage/profiles/Danny.png');
+}
 //-->
   </script>
 </head>
-<body onload="MM_preloadImages('../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../kit/_images/landingPages/landingPageButtons/signIn_on.png','../kit/_images/landingPages/contributionPage/profiles/AllenDowney.png','../kit/_images/landingPages/contributionPage/profiles/ChrisMeyers.png','../kit/_images/landingPages/contributionPage/profiles/Jeffery.png','../kit/_images/landingPages/contributionPage/profiles/Chris.png','../kit/_images/landingPages/contributionPage/profiles/Danny.png')">
+<body>
   <div id="wrapper">
-    <div id="mainHeader">
-      <div id="logo"><a class="rpxnow" onclick="return false;" href=""><img src="../kit/_images/landingPages/landingPageButtons/singpathLogo_off.png" alt="Singpath Logo" name="Singpath Logo" width="169" height="46" border="0" class="rolls" id="Singpath Logo" onmouseover="MM_swapImage('Singpath Logo','','../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png',1)" onmouseout="MM_swapImgRestore()" /></a></div>
-      
-      <div id="logInBox">
-      <div id="messageBox">Welcome, please sign in to your account</div>
-        <div id="signInButton"><a class="rpxnow" onclick="return false;" href=""><img src="../kit/_images/landingPages/landingPageButtons/signIn_off.png" alt="Sign in to Singpath" name="signIn" width="104" height="24" border="0" class="rolls" id="signIn" onmouseover="MM_swapImage('signIn','','../kit/_images/landingPages/landingPageButtons/signIn_on.png',1)" onmouseout="MM_swapImgRestore()" /></a></div>
-      </div>
-    </div>
-    <div id="menuOptions">
-      <div id="menuOptionsText"><a href="../kit/index.html" title="Singpath - The Most Fun Way to Practice Software" target="_self">home</a><a href="aboutUs.html"> about us</a><span class="menuSelected">how to use</span><a href="contributions.html">contribution</a><a href="tournament.html">tournament</a><a href="news.html">news</a><a href="shop.html">shop</a></div>
-    </div>
+    <!-- Include Page Header: Logo, Login menu, head menu option -->
+    <ng:include src="'includes/pageHeader.html'"></ng:include>
+    
+    
+    <!-- Custom page content -->
     <div id="contributorsInfoBox">
       <div id="contributorsInfoBoxText">
         <p>How to Use</p>
       </div>
     </div>
     
+    
     <!-- Include the Contribution menu-->
     <ng:include src="'includes/contributionMenu.html'"></ng:include>
     
-    <div id="mainFooter">
-      <div id="menuFooterTop"><a href="../kit/index.html" title="home page Link" target="_parent">home</a><a href="aboutUs.html">about us</a> <a href="howToUse.html">how to use</a><a href="termsOfUse.html">terms of use</a><a href="contributions.html">contributions</a><a href="http://getsatisfaction.com/singpath" target="_blank">feedback</a><a href="aboutUs.html">contact us</a><a href="shop.html">shop</a><a href="/logout">sign out</a></div>
-      <div id="menuFooterBottom">© singpath 2010<br />
-        
-        <div id="gr8ph1csLogo"><a href="http://www.Gr8ph1cs.com" target="_blank" onMouseOver="MM_swapImage('gr8ph1csCreative','','../kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png',1)" onMouseOut="MM_swapImgRestore()"><img src="../kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png" alt="designed by gr8ph1cs Creative" name="gr8ph1csCreative" width="140" height="34" border="0" id="gr8ph1csCreative" /></a></div>
-      </div>
-    </div>
+    
+    <!-- Include Page Footer -->
+    <ng:include src="'includes/pageFooter.html'"></ng:include>
   </div>
   
-   <script type="text/javascript">
-     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-   </script>
-   <script type="text/javascript">
-     try {
-     var pageTracker = _gat._getTracker("UA-12331844-1");
-     pageTracker._trackPageview();
-     } catch(err) {}
-   </script>
+  
+  <!-- Google Analytics -->
+  <ng:include src="'includes/googleAnalytics.html'"></ng:include>
 </body>
 </html>

@@ -1,3 +1,6 @@
+tshadow()
+  text-shadow #000 1px 1px 1px
+
 box-shadow($left, $top, $blur, $radiur, $color)
   box-shadow          $left $top $blur $radiur $color
   -moz-box-shadow     $left $top $blur $radiur $color
@@ -22,7 +25,7 @@ a
 
 .commonBtn
   cursor pointer
-
+  
   $width  = 8px
   $height = 23px
   
@@ -36,7 +39,8 @@ a
   .middle
     background-image  url(../_images/commonButtons/parts/middle.png)
     background-repeat repeat-x
-    color             #4F7984
+    font-family       Arial
+    color             #5A808B
     line-height       21px
     float             left
     height            $height
