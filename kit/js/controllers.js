@@ -57,3 +57,13 @@ function FooterMenuOptionsCtrl($resource) {
 }
 
 FooterMenuOptionsCtrl.$inject = ['$resource'];
+
+
+
+function GoogleAnalyticsCtrl($location) {
+  // Location Google Analytics JS file
+  this.gaJsHost  = $location.absUrl().indexOf('https:') ? 'http://www.' : 'https://ssl.';
+  this.gaJsHost += 'google-analytics.com/ga.js';
+}
+
+GoogleAnalyticsCtrl.$inject = ['$location'];

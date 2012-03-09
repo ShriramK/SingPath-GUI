@@ -2079,8 +2079,9 @@ table.pager {
   top: 9px;
 }
 #wrapper #mainHeader  #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
+#wrapper #mainHeader  #logInBox .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
+#wrapper #mainHeader  #logInBox .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
 #wrapper #mainHeader   #messageBox{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
-#wrapper #mainHeader  #signInButton{ margin: 0px; padding: 0px; height: 25px; width: 110px; position: relative; float: right; right: 20px; top: 3px; }
 #wrapper #mainHeader #homeButton{ margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
 #wrapper #mainHeader #mHGravatarImage { margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -8px; left: 7px; }
 
