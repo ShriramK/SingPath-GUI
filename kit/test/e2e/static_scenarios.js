@@ -111,6 +111,7 @@ describe('kit', function() {
             //<input type="editbox" class="editProfile" id="editProfileName" name="name">
             //pause();
         });
+        
     });  
     describe('Extraa Index-specific tests', function() {
         beforeEach(function() {
@@ -121,4 +122,23 @@ describe('kit', function() {
               expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
         });
     });
+});
+
+describe('Additinal test from Ivan', function() {
+  it('Testing alex/howToUse.html', function() {
+      browser().navigateTo('../../howToUse.html');
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
+      expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
+      expect(element('#contributorsAboutBoxText > a > img:first').attr('alt')).toBe('Contributor Danny');
+  });
+});
+
+describe('Test From SergeyGalenko', function() {
+  it('Testing alex/contributions.html', function() {
+      browser().navigateTo('../../contributions.html');
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
+      expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
+      expect(element("#contributorsAboutBoxText img").count()).toBe(5);
+     
+  });
 });
