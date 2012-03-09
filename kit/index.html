@@ -6,8 +6,8 @@
 <title>Singpath - The Most Fun Way to Practice Software</title>
 <link href="_css/SingpathMain.css" rel="stylesheet" type="text/css" />
 
-<script src="lib/angular/angular-0.10.6.min.js" ng:autobind/>
-<script src="js/controllers.js"/>
+<script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
+<script src="js/controllers.js"></script>
 <!--
 <script src="js/services.js"></script>
 <script src="js/filters.js"></script>
@@ -99,12 +99,12 @@ a:active {
     <div id="statsTextBox" >
       <div id="statsTextBoxTitleTop">Statistics</div>
       <div id="statsTextBoxtext" ng:controller="IndexCtrl" ng:cloak>
-        <p><b>{{this.stats.num_players}}</b> players have played SingPath</p>
+        <p><span class="bold">{{this.stats.num_players}}</span> players have played SingPath</p>
         <!--<p>The average is <b>{{this.stats.ave_per_problem}}</b> minutes per problem</p>-->
-        <p>We have awarded <b>{{this.stats.num_badges}}</b> badges </p>
-        <p><b>{{this.stats.most_popular_lang}}</b> is currently the most popular path</p>
-        <p>Our newest player {{this.stats.last_player}} from <b>{{this.stats.last_country}}</b></p>
-        <p><b>{{this.stats.last_badge_earner}}</b> just earned a <b>{{this.stats.last_badge}}</b></p>
+        <p>We have awarded <span class="bold">{{this.stats.num_badges}}</span> badges </p>
+        <p><span class="bold">{{this.stats.most_popular_lang}}</span> is currently the most popular path</p>
+        <p>Our newest player <span>{{this.stats.last_player}}</span> from <span class="bold">{{this.stats.last_country}}</span></p>
+        <p><span class="bold">{{this.stats.last_badge_earner}}</span> just earned a <span class="bold">{{this.stats.last_badge}}</span></p>
       </div>
     </div>
 
@@ -118,8 +118,13 @@ a:active {
   </div>
   <div id="friendsTextBox" ng:controller="IndexCtrl">
     <div id="friendsTextBoxTitleTop">Players</div>
-      <div id="friendsTextBoxtext"> Right now there are there are <span class="boldText" ng:cloak> {{this.stats.num_playing}} </span> people playing<br/>
-        <span ng:repeat="player in this.current_players" ng:cloak><img ng:src="{{player.gravatar}}" width="45" height="45" alt="gravatar" title="{{player.nickname}}"></span>
+      <div id="friendsTextBoxtext">
+        Right now there are there are
+        <span class="boldText" ng:cloak> {{this.stats.num_playing}} </span>
+        people playing<br/>
+        <span ng:repeat="player in this.current_players" ng:cloak class="player">
+          <img ng:src="{{player.gravatar}}" width="45" height="45" alt="gravatar" title="{{player.nickname}}">
+        </span>
       </div>
     <div id="friendsTextBoxtextSocial">follow us on <a href="http://www.facebook.com/apps/application.php?id=100409776687538" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('facebookSocial','','_images/landingPages/landingPageButtons/socialButtonsFacebook_off.png',1)"><img src="_images/landingPages/landingPageButtons/socialButtonsFacebook_on.png" alt="follow us on Facebook" name="facebookSocial" width="36" height="29" border="0" id="facebookSocial" /></a><a href="http://twitter.com/#!/singpath" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('socialTwitter','','_images/landingPages/landingPageButtons/socialButtonsTwitter_off.png',1)"><img src="_images/landingPages/landingPageButtons/socialButtonsTwitter_on.png" alt="follow us on Twitter" name="socialTwitter" width="36" height="29" border="0" id="socialTwitter" /></a></div>
   </div>

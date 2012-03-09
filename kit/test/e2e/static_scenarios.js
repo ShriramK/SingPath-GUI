@@ -1,53 +1,34 @@
 /* jasmine-like end2end tests go here */
 
-describe('Alex', function() {
+describe('kit', function() {
   pauseAll = false;
   
-  
-  
-  it('TestinGg alex/index.html', function() {
+  it('Testing kit/index.html', function() {
 
       browser().navigateTo('../../index.html');
-      //expect(browser().location().path()).toBe("/view1");
-      expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/index.html');
-      //expect(element('.footer a').count()).toBe(6);
-      //expect(element('#footer a').count()).toBe(6);
-      //expect(element('#footer a:nth-child(1)').text()).toBe('home');
-      //expect(element('#footer a:nth-child(2)').text()).toBe('about us');
-      //expect(element('#footer a:nth-child(3)').text()).toBe('contributions');
-      //expect(element('#footer a:nth-child(4)').text()).toBe('contact us');
-
-      //expect(element('#Footer a:first').html()).toBe('home');
-      //expect(element('#Footer a:last').text()).toBe('contact us');
-      //expect(element('#Footer a:first').val()).toBe('home');
-
-      //You can't click until after pages are angularized and stay on the main page.
-      //element('#Footer a:first').click();
-
-      //if (pauseAll) pause();
-      //pause();
+       expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
+      if (pauseAll) pause();
   });
 
-  it('Testing alex/home.html', function() {
+  it('Testing kit/home.html', function() {
       browser().navigateTo('../../home.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/home.html');
+      //expect(browser().location().path()).toBe('/kit/home.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
 
-  it('Testing alex/aboutUs.html', function() {
+  it('Testing kit/aboutUs.html', function() {
       browser().navigateTo('../../aboutUs.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/aboutUs.html');
+      //expect(browser().location().path()).toBe('/kit/aboutUs.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
   
-  it('Testing alex/ranking.html', function() {
+  it('Testing kit/ranking.html', function() {
       browser().navigateTo('../../ranking.html');
       expect(browser().location().hash()).toBe('');
       expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
@@ -74,36 +55,36 @@ describe('Alex', function() {
       //pause();
   });
   
-  it('Testing alex/contactUs.html', function() {
+  it('Testing kit/contactUs.html', function() {
       browser().navigateTo('../../contactUs.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/contactUs.html');
+      //expect(browser().location().path()).toBe('/kit/contactUs.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
   });
 
-  it('Testing alex/tournament.html', function() {
+  it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/tournament.html');
+      //expect(browser().location().path()).toBe('/kit/tournament.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
 
-  it('Testing alex/challengeBoard.html', function() {
+  it('Testing kit/challengeBoard.html', function() {
       browser().navigateTo('../../challengeBoard.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/challengeBoard.html');
+      //expect(browser().location().path()).toBe('/kit/challengeBoard.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
   });
   
-  it('Testing alex/badges.html', function() {
+  it('Testing kit/badges.html', function() {
       browser().navigateTo('../../badges.html');
       expect(browser().location().hash()).toBe('');
-      //expect(browser().location().path()).toBe('/alex/badges.html');
+      //expect(browser().location().path()).toBe('/kit/badges.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       if (pauseAll) pause();
       //pause();
@@ -115,10 +96,10 @@ describe('Alex', function() {
             browser().navigateTo('../../home.html');
         });
 
-        it('Testing alex/home.html', function() {
+        it('Testing kit/home.html', function() {
             browser().navigateTo('../../home.html');
             expect(browser().location().hash()).toBe('');
-            //expect(browser().location().path()).toBe('/alex/home.html');
+            //expect(browser().location().path()).toBe('/kit/home.html');
             //expect(element('#footer a:nth-child(1)').text()).toBe('home');
             //expect(element('div:eq(0)').text()).toEqual('something');
             expect(element('#profileNameText').text()).toBe('Mark Zuckerberg');
@@ -134,15 +115,11 @@ describe('Alex', function() {
     });  
     describe('Extraa Index-specific tests', function() {
         beforeEach(function() {
-            //browser().navigateTo('/alex/index.html');
+            browser().navigateTo('../../index.html');
         });
         
-        it('Testing alex/index.html', function() {
-              //browser().navigateTo('../../index.html');
-              //expect(browser().location().hash()).toBe('');
-              //expect(browser().location().path()).toBe('/alex/index.html');
-              
-              //expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
+        it('Testing kit/index.html', function() {
+              expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
         });
     });
 });
