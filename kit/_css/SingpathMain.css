@@ -2131,61 +2131,6 @@ table.pager {
 #wrapper #aboutUsStaffBox #aboutUsStaffBoxText { color: #497279; padding: 0px; float: left; width: 253px; position: relative; font-size: 16px; background-repeat: no-repeat; margin: 0px; height: 438px; top: 15px; text-align: left; left: 18px; overflow: auto; 
 }
 
-/* contributions */
-
-#wrapper #contributorsInfoBox { background-image: url(../_images/landingPages/contributionPage/01landingPageContribution05.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: left; height: 505px; width: 620px; 
-}
-#wrapper #contributorsInfoBox #contributorsInfoBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 590px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 340px;
-  top: 25px;
-  text-align: left;
-  left: 20px;
-}
-#wrapper #contributorsAboutBox {
-  background-image: url(../_images/landingPages/contributionPage/01landingPageContribution04.png);
-  background-repeat: no-repeat;
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 410px;
-  width: 286px;
-  position: relative;
-}
-#wrapper #contributorsAboutBox #contributorsAboutBoxviewButton {
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 24px;
-  width: 104px;
-  top: 5px;
-  right: 20px;
-  position: relative;
-}
-
-#wrapper #contributorsAboutBox #contributorsAboutBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 250px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 352px;
-  top: 14px;
-  text-align: left;
-  left: 18px;
-  overflow: auto;
-}
-
 /* contactUs */
 
 #wrapper #contactUsInfoBox {
@@ -2437,6 +2382,7 @@ table.pager {
 #wrapper #mainFooter #menuFooterTop a:link , #wrapper #mainFooter #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: 0px 5px; padding: 3px 8px; text-align: center; }
 #wrapper #mainFooter #menuFooterTop a:hover , #wrapper #mainFooter #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: 0px 5px; padding: 2px 6px; }
 .smallerLeftText { font-size: 10px; }
+.bold { font-weight: bold; }
 .boldText { font-size: 1.1em; font-weight: bold; }
 .smallTextBold { font-size: 12px; font-weight: bold; }
 
