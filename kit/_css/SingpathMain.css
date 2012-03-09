@@ -2131,45 +2131,6 @@ table.pager {
 #wrapper #aboutUsStaffBox #aboutUsStaffBoxText { color: #497279; padding: 0px; float: left; width: 253px; position: relative; font-size: 16px; background-repeat: no-repeat; margin: 0px; height: 438px; top: 15px; text-align: left; left: 18px; overflow: auto; 
 }
 
-/* contributions */
-
-#wrapper #contributorsInfoBox { background-image: url(../_images/landingPages/contributionPage/01landingPageContribution05.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: left; height: 505px; width: 620px; 
-}
-#wrapper #contributorsInfoBox #contributorsInfoBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 590px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 340px;
-  top: 25px;
-  text-align: left;
-  left: 20px;
-}
-#wrapper #contributorsAboutBox {
-  background-image: url(../_images/landingPages/contributionPage/01landingPageContribution04.png);
-  background-repeat: no-repeat;
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 410px;
-  width: 286px;
-  position: relative;
-}
-#wrapper #contributorsAboutBox #contributorsAboutBoxviewButton {
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 24px;
-  width: 104px;
-  top: 5px;
-  right: 20px;
-  position: relative;
-}
-
 /* contactUs */
 
 #wrapper #contactUsInfoBox {

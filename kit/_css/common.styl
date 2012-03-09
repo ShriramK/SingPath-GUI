@@ -1,0 +1,60 @@
+box-shadow($left, $top, $blur, $radiur, $color)
+  box-shadow          $left $top $blur $radiur $color
+  -moz-box-shadow     $left $top $blur $radiur $color
+  -webkit-box-shadow  $left $top $blur $radiur $color
+
+
+a
+  text-decoration none
+  
+  &:link
+    color #CCC
+  
+  &:visited
+    color #999
+
+  &:hover
+    color #F7D3A4
+  
+  &:active
+    color #333
+
+
+.commonBtn
+  cursor pointer
+
+  $width  = 8px
+  $height = 23px
+  
+  .left
+    background-image  url(../_images/commonButtons/parts/left.png)
+    background-repeat no-repeat
+    float             left
+    width             $width
+    height            $height
+  
+  .middle
+    background-image  url(../_images/commonButtons/parts/middle.png)
+    background-repeat repeat-x
+    color             #4F7984
+    line-height       21px
+    float             left
+    height            $height
+  
+  .right
+    background-image  url(../_images/commonButtons/parts/right.png)
+    background-repeat no-repeat
+    float             left
+    width             $width
+    height            $height
+  
+  &:hover
+    .left
+      background-image url(../_images/commonButtons/parts/left-hover.png)
+    
+    .middle
+      background-image url(../_images/commonButtons/parts/middle-hover.png)
+      color            #FFF
+    
+    .right
+      background-image url(../_images/commonButtons/parts/right-hover.png)

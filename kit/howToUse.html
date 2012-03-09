@@ -3,10 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Singpath - The most fun way to practice software - Contributions</title>
+
   <link href="../kit/_css/SingpathMain.css" rel="stylesheet" type="text/css" />
+  <link href="../kit/_css/common.css"       rel="stylesheet" type="text/css" />
   <link href="../kit/_css/contributors.css" rel="stylesheet" type="text/css" />
+
   <script src="lib/angular/angular-0.10.6.min.js" ng:autobind ></script>
-  <script src="js/controllers.js"></script>
+  <script src="js/controllers.js"         type="text/javascript"></script>
   <script src="../kit/_js/feedback-v2.js" type="text/javascript"></script>
   <script type="text/javascript">
 <!--
@@ -33,26 +36,6 @@ function MM_swapImage() { //v3.0
 }
 //-->
   </script>
-  <style type="text/css">
-<!--
-a:link {
-	color: #CCC;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #999;
-}
-a:hover {
-	text-decoration: none;
-	color: #F7D3A4;
-}
-a:active {
-	text-decoration: none;
-	color: #333;
-}
--->
-  </style>
 </head>
 <body onload="MM_preloadImages('../kit/_images/landingPages/landingPageButtons/singpathLogo_on.png','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../kit/_images/landingPages/landingPageButtons/signIn_on.png','../kit/_images/landingPages/contributionPage/profiles/AllenDowney.png','../kit/_images/landingPages/contributionPage/profiles/ChrisMeyers.png','../kit/_images/landingPages/contributionPage/profiles/Jeffery.png','../kit/_images/landingPages/contributionPage/profiles/Chris.png','../kit/_images/landingPages/contributionPage/profiles/Danny.png')">
   <div id="wrapper">
@@ -72,24 +55,40 @@ a:active {
         <p>How to Use</p>
       </div>
     </div>
+    
+    
     <div id="contributorsAboutBox">
-      <div id="contributorsAboutBoxviewButton">
-        <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('viewConButton','','../kit/_images/landingPages/landingPageButtons/viewAllContributors_on.png',1)">
-          <img src="../kit/_images/landingPages/landingPageButtons/viewAllContributors_off.png" name="viewConButton" alt="View Contributors Page" width="104" height="24" border="0" />
-        </a>
+      <div class="commonBtn">
+        <div class="left"></div>
+        <div class="middle">
+          View All Contributes
+        </div>
+        <div class="right"></div>
       </div>
-      <div id="contributorsAboutBoxText" ng:controller="ContributorCtrl" ng:cloak>
-        <div ng:repeat="contributor in this.contributors" class="contributor">
-          <img ng:src="{{this.baseSrc + contributor.src}}.png" alt="{{contributor.name}}, {{contributor.title}}" />
-          <div class="name">
-            {{contributor.name}},
-          </div>
-          <div class="title">
-            {{contributor.title}}
+      
+      <div class="labelContainer">
+        <div class="label">
+          Contributors
+        </div>
+        <div class="curve"></div>
+      </div>
+      
+      <div class="textContainer">
+        <div class="text" ng:controller="ContributorCtrl" ng:cloak>
+          <div ng:repeat="contributor in this.contributors" class="contributor">
+            <img ng:src="{{this.baseSrc + contributor.src}}.png" ng:alt="{{contributor.name}}, {{contributor.title}}" />
+            <div class="name">
+              {{contributor.name}},
+            </div>
+            <div class="title">
+              {{contributor.title}}
+            </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
     <div id="mainFooter">
       <div id="menuFooterTop"><a href="../kit/index.html" title="home page Link" target="_parent">home</a><a href="aboutUs.html">about us</a> <a href="howToUse.html">how to use</a><a href="termsOfUse.html">terms of use</a><a href="contributions.html">contributions</a><a href="http://getsatisfaction.com/singpath" target="_blank">feedback</a><a href="aboutUs.html">contact us</a><a href="shop.html">shop</a><a href="/logout">sign out</a></div>
       <div id="menuFooterBottom">© singpath 2010<br />
