@@ -127,7 +127,7 @@ describe('kit', function() {
         });
     });
 });
-describe('Additinal test from Ivan', function() {
+/*describe('Additinal test from Ivan', function() {
   it('Testing alex/howToUse.html', function() {
     browser().navigateTo('../../howToUse.html');
     expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
@@ -144,4 +144,4 @@ describe('Additinal test from Ivan', function() {
     expect(element('#contributorsAboutBoxText > a > img:eq(3)').attr('alt')).toBe('Contributor Chris Boesch');
     expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
   });
-});
+});*/
