@@ -2065,19 +2065,10 @@ table.pager {
 
 /* aboutUs */
 
-#wrapper { white-space: normal; padding: 0px; height: 100%; width: 906px; left: auto; top: 0px; right: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #4F7984; display: block; background: url(../_images/greyBackground.jpg) repeat-y fixed center top; margin: 0px auto; clear: both; overflow: hidden; 
-}
-#wrapper  #mainHeader{ font-family: Verdana, Geneva, sans-serif; margin: 0px; padding: 0px; height: 67px; width: 906px; position: relative; background: #FFF url(../_images/landingPages/indexPage/01landingPageheader.jpg) no-repeat; left: 0px; top: 0px; 
-}
-#wrapper #mainHeader  #logo{
-  margin: 0px;
-  padding: 0px;
-  height: 46px;
-  width: 169px;
-  position: relative;
-  left: 9px;
-  top: 9px;
-}
+#wrapper { white-space: normal; padding: 0px; height: 100%; width: 906px; left: auto; top: 0px; right: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #4F7984; display: block; background: url(../_images/greyBackground.jpg) repeat-y fixed center top; margin: 0px auto; clear: both; overflow: hidden; }
+#wrapper  #mainHeader{ font-family: Verdana, Geneva, sans-serif; margin: 0px; padding: 0px; height: 67px; width: 906px; position: relative; background: #FFF url(../_images/landingPages/indexPage/01landingPageheader.jpg) no-repeat; left: 0px; top: 0px; }
+#logo{ background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_off.png); cursor: pointer; position: relative; left: 9px; top: 9px; width: 169px; height: 46px; margin: 0px; padding: 0px; }
+#logo:hover { background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_on.png); }
 #wrapper #mainHeader  #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
 #wrapper #mainHeader  #logInBox .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
 #wrapper #mainHeader  #logInBox .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
@@ -2391,8 +2382,8 @@ table.pager {
 
 
 #wrapper #mainFooter #menuFooterBottom{ margin: 0px; padding: 12px 0px 0px 15px; height: 30px; width: 891px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage18.jpg) no-repeat; left: 0px; color: #FFF; font-size: 14px; text-align: left; clear: both; float: left; }
-#wrapper #mainFooter  #gr8ph1csLogo{ margin: 0px; padding: 0px; height: 40px; width: 150px; position: relative; top: -24px; clear: none; float: right; right: 0px; 
-}
+#gr8ph1csLogo { background-image: url(../_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png); float: right; position: relative; top: -24px; right: 10px; width: 140px; height: 34px; margin: 0px; padding: 0px; }
+#gr8ph1csLogo:hover { background-image: url(../_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png); }
 
 #wrapper #Footer {
   background-image: url(../_images/landingPage/01landingPage05.jpg);
