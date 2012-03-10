@@ -1,10 +1,3 @@
-/*
-// Good to know it
-expect(browser().window().href()  ).toBe('http://localhost/kit/index.html');
-expect(browser().window().path()  ).toBe('/kit/index.html');
-*/
-
-
 // Common tests
 
 // Testing element cloak removal from the element selector
@@ -12,8 +5,28 @@ function testCloak(selector) {
   expect(element(selector).attr('ng:cloak')).not().toBeDefined();
 }
 
+
+// Test all Page Head Elements
+function testPageHead() {
+  testSiteLog();
+  testUserLoginMenu();
+  testHeadMenuOptions();
+}
+
+
+// 
+function testSiteLog() {
+  // TODO
+}
+
+
+// 
+function testUserLoginMenu() {
+  // TODO
+}
+
 // Testing all head menu options
-function testHeadMenuOptions(selectedOptionHref) {
+function testHeadMenuOptions() {
   options = [
     {"text": "home"        , "href": "index.html"        , "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
     {"text": "about us"    , "href": "aboutUs.html"      , "class": "", "title": ""},
@@ -24,23 +37,54 @@ function testHeadMenuOptions(selectedOptionHref) {
     {"text": "shop"        , "href": "shop.html"         , "class": "", "title": ""}
   ];
   
-  selectedOptionClass = 'menuSelected';
   
-  for(i in options) {
-    option = options[i];
+  // Getting page path
+  browser().window().path().execute(function(data, windowPath) {
+    selectedOptionClass = 'menuSelected';
+    windowHref          = windowPath.substr(windowPath.lastIndexOf('/')+1);
     
-    // Test selected menu option
-    if(selectedOptionHref == option["href"]) {
-      expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
+    // Test all options
+    for(i in options) {
+      option = options[i];
+      
+      // Test selected menu option
+      if(windowHref == option["href"]) {
+        // expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
+      }
+      
+      // Test all the rest option properties
+      expect(element('#menuOptionsText > a > .ng-binding:eq('+ i +')').text()).toBe(option["text"]);
+      expect(element('#menuOptionsText > a:eq('+ i +')').attr("href")        ).toBe(option["href"]);
+      expect(element('#menuOptionsText > a:eq('+ i +')').attr("title")       ).toBe(option["title"]);
     }
-    
-    // Test all the rest option properties
-    expect(element('#menuOptionsText > a > .ng-binding:eq('+ i +')').text()).toBe(option["text"]);
-    expect(element('#menuOptionsText > a:eq('+ i +')').attr("href")        ).toBe(option["href"]);
-    expect(element('#menuOptionsText > a:eq('+ i +')').attr("title")       ).toBe(option["title"]);
-  }
+  });
 }
 
+
+// Test all Page Footer Elements
+function testPageFooter() {
+  testFooterMenuOptions();
+  testCompanyLogo();
+}
+
+
+// Test Footer Menu Options
+function testFooterMenuOptions() {
+ // TODO
+}
+
+
+// Test The visibility of the company logo
+function testCompanyLogo() {
+  // Test link properties
+  linkSelector = '#menuFooterBottom > a';
+  expect(element(linkSelector).attr('href'  )).toBe('http://www.Gr8ph1cs.com');
+  expect(element(linkSelector).attr('target')).toBe('_blank');
+  expect(element(linkSelector).attr('title' )).toBe('designed by gr8ph1cs Creative');
+  
+  // Test image
+  expect(element('#gr8ph1csLogo').css('background-image')).toBe('url(\"http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png\")');
+}
 
 
 describe('Additinal tests from Ivan', function() {
@@ -72,9 +116,9 @@ describe('Additinal tests from Ivan', function() {
     }
     
     
-    playersSelector        = '#friendsTextBoxtext'
-    playersFullSelector    = playersSelector     + ' > span:eq';
-    numPlayresSelector     = playersFullSelector + '(0)';
+    playersSelector     = '#friendsTextBoxtext'
+    playersFullSelector = playersSelector     + ' > span:eq';
+    numPlayresSelector  = playersFullSelector + '(0)';
     
     // Test the removing of the cloak over the total number of current players
     testCloak(numPlayresSelector);
@@ -121,43 +165,50 @@ describe('Additinal tests from Ivan', function() {
   it('Testing kit/howToUse.html', function() {
     browser().navigateTo('../../howToUse.html');
     
-    // Test head menu options from the common function
-    testHeadMenuOptions('howToUse.html');
-    
-    // Test Page content
-    expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
-    
-    
-    contributorsMenuSelector = '#contributorsAboutBox > .textContainer > .text';
-    
-    // Test the removing of the cloak over the contributors menu
-    testCloak(contributorsMenuSelector);
-    
-    
-    // Test the content of the contributors right menu
-    contributorsResource = [
-      {"name": "Danny"          , "title": "Professor, Singapore", "src": "Danny"},
-      {"name": "Chris Meyers"   , "title": "Specialist"          , "src": "ChrisMeyers"},
-      {"name": "Allen B. Downey", "title": "Writer"              , "src": "AllenDowney"},
-      {"name": "Chris Boesch"   , "title": "Editor in Chief"     , "src": "Chris"},
-      {"name": "Jeffery Elkner" , "title": "Writer"              , "src": "Jeffery"}
-    ];
-    
-    contributorsExpectedCount = contributorsResource.length;
-    
-    contributors = using(contributorsMenuSelector).repeater('.contributor');
-    expect(contributors.count()).toBe(contributorsExpectedCount);
-    
-    contributorImgSrcPart = '../kit/_images/landingPages/contributionPage/profiles/';
-    
-    for(i=0; i<contributorsExpectedCount; i++) {
-      contributor = contributorsResource[i];
+    // Loading window path
+    get(browser().window().path()).value(function(path) {
+
+      // Test all Page Head Elements from the common function
+      testPageHead();
       
-      // Testing contributor name and title
-      expect(contributors.row(i)).toEqual([contributor["name"], contributor["title"]]);
+      // Test Page content
+      expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
       
-      // Testing contributor image source
-      expect(element(contributorsMenuSelector + ' > .contributor > img:eq('+ i +')').attr('src')).toBe(contributorImgSrcPart+ contributor["src"] +'.png');
-    }
+      
+      contributorsMenuSelector = '#contributorsAboutBox > .textContainer > .text';
+      
+      // Test the removing of the cloak over the contributors menu
+      testCloak(contributorsMenuSelector);
+      
+      
+      // Test the content of the contributors right menu
+      contributorsResource = [
+        {"name": "Danny"          , "title": "Professor, Singapore", "src": "Danny"},
+        {"name": "Chris Meyers"   , "title": "Specialist"          , "src": "ChrisMeyers"},
+        {"name": "Allen B. Downey", "title": "Writer"              , "src": "AllenDowney"},
+        {"name": "Chris Boesch"   , "title": "Editor in Chief"     , "src": "Chris"},
+        {"name": "Jeffery Elkner" , "title": "Writer"              , "src": "Jeffery"}
+      ];
+      
+      contributorsExpectedCount = contributorsResource.length;
+      
+      contributors = using(contributorsMenuSelector).repeater('.contributor');
+      expect(contributors.count()).toBe(contributorsExpectedCount);
+      
+      contributorImgSrcPart = '../kit/_images/landingPages/contributionPage/profiles/';
+      
+      for(i=0; i<contributorsExpectedCount; i++) {
+        contributor = contributorsResource[i];
+        
+        // Testing contributor name and title
+        expect(contributors.row(i)).toEqual([contributor["name"], contributor["title"]]);
+        
+        // Testing contributor image source
+        expect(element(contributorsMenuSelector + ' > .contributor > img:eq('+ i +')').attr('src')).toBe(contributorImgSrcPart+ contributor["src"] +'.png');
+      }
+      
+      // Test all page footer elements
+      testPageFooter();
+    });
   });
 });
