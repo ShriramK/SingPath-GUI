@@ -1,6 +1,46 @@
-function log(message) {
-  console.log(message);
+/*
+// Good to know it
+expect(browser().window().href()  ).toBe('http://localhost/kit/index.html');
+expect(browser().window().path()  ).toBe('/kit/index.html');
+*/
+
+
+// Common tests
+
+// Testing element cloak removal from the element selector
+function testCloak(selector) {
+  expect(element(selector).attr('ng:cloak')).not().toBeDefined();
 }
+
+// Testing all head menu options
+function testHeadMenuOptions(selectedOptionHref) {
+  options = [
+    {"text": "home"        , "href": "index.html"        , "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
+    {"text": "about us"    , "href": "aboutUs.html"      , "class": "", "title": ""},
+    {"text": "how to use"  , "href": "howToUse.html"     , "class": "", "title": ""},
+    {"text": "contribution", "href": "contributions.html", "class": "", "title": ""},
+    {"text": "tournament"  , "href": "tournament.html"   , "class": "", "title": ""},
+    {"text": "news"        , "href": "news.html"         , "class": "", "title": ""},
+    {"text": "shop"        , "href": "shop.html"         , "class": "", "title": ""}
+  ];
+  
+  selectedOptionClass = 'menuSelected';
+  
+  for(i in options) {
+    option = options[i];
+    
+    // Test selected menu option
+    if(selectedOptionHref == option["href"]) {
+      expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
+    }
+    
+    // Test all the rest option properties
+    expect(element('#menuOptionsText > a > .ng-binding:eq('+ i +')').text()).toBe(option["text"]);
+    expect(element('#menuOptionsText > a:eq('+ i +')').attr("href")        ).toBe(option["href"]);
+    expect(element('#menuOptionsText > a:eq('+ i +')').attr("title")       ).toBe(option["title"]);
+  }
+}
+
 
 
 describe('Additinal tests from Ivan', function() {
@@ -11,7 +51,7 @@ describe('Additinal tests from Ivan', function() {
     expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
     
     // Test the removing of the cloak over the stats menu
-    expect(element('#statsTextBoxtext').attr('ng:cloak')).not().toBeDefined();
+    testCloak('#statsTextBoxtext');
     
     
     // Testing all stats in the #statsTextBoxtext
@@ -37,7 +77,7 @@ describe('Additinal tests from Ivan', function() {
     numPlayresSelector     = playersFullSelector + '(0)';
     
     // Test the removing of the cloak over the total number of current players
-    expect(element(numPlayresSelector).attr('ng:cloak')).not().toBeDefined();
+    testCloak(numPlayresSelector);
     
     // Test the total number of current players
     expect(element(numPlayresSelector + ' > span').text()).toBe("12");
@@ -64,13 +104,12 @@ describe('Additinal tests from Ivan', function() {
     expect(players.count()).toBe(expectedPlayersCount);
     
     // Test each player cloak removal and avatar properties
-    i=1;
     for(key in playersResources) {
       playerResource = playersResources[key];
-      playerSelector = playersFullSelector +'('+ i++ +')'
+      playerSelector = playersFullSelector +'('+ (key*1+1) +')';
       
       // Test cloak
-      expect(element(playerSelector).attr('ng:cloak')).not().toBeDefined();
+      testCloak(playerSelector);
       
       // Test avatar properties
       expect(element(playerSelector + ' > img').attr('src'  )).toBe(playerResource["gravatar"]);
@@ -82,8 +121,8 @@ describe('Additinal tests from Ivan', function() {
   it('Testing kit/howToUse.html', function() {
     browser().navigateTo('../../howToUse.html');
     
-    // Test selected menu option
-    expect(element('#menuOptionsText > .menuSelected').text()).toBe('how to use');
+    // Test head menu options from the common function
+    testHeadMenuOptions('howToUse.html');
     
     // Test Page content
     expect(element('#contributorsInfoBoxText > p').text()).toBe('How to Use');
@@ -92,7 +131,7 @@ describe('Additinal tests from Ivan', function() {
     contributorsMenuSelector = '#contributorsAboutBox > .textContainer > .text';
     
     // Test the removing of the cloak over the contributors menu
-    expect(element(contributorsMenuSelector).attr('ng:cloak')).not().toBeDefined();
+    testCloak(contributorsMenuSelector);
     
     
     // Test the content of the contributors right menu
@@ -109,9 +148,16 @@ describe('Additinal tests from Ivan', function() {
     contributors = using(contributorsMenuSelector).repeater('.contributor');
     expect(contributors.count()).toBe(contributorsExpectedCount);
     
+    contributorImgSrcPart = '../kit/_images/landingPages/contributionPage/profiles/';
+    
     for(i=0; i<contributorsExpectedCount; i++) {
       contributor = contributorsResource[i];
+      
+      // Testing contributor name and title
       expect(contributors.row(i)).toEqual([contributor["name"], contributor["title"]]);
+      
+      // Testing contributor image source
+      expect(element(contributorsMenuSelector + ' > .contributor > img:eq('+ i +')').attr('src')).toBe(contributorImgSrcPart+ contributor["src"] +'.png');
     }
   });
 });

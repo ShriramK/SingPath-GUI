@@ -2079,8 +2079,9 @@ table.pager {
   top: 9px;
 }
 #wrapper #mainHeader  #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
+#wrapper #mainHeader  #logInBox .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
+#wrapper #mainHeader  #logInBox .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
 #wrapper #mainHeader   #messageBox{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
-#wrapper #mainHeader  #signInButton{ margin: 0px; padding: 0px; height: 25px; width: 110px; position: relative; float: right; right: 20px; top: 3px; }
 #wrapper #mainHeader #homeButton{ margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
 #wrapper #mainHeader #mHGravatarImage { margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -8px; left: 7px; }
 
@@ -2106,7 +2107,7 @@ table.pager {
 }
 #wrapper #aboutUsInfoBox a:link , #wrapper #aboutUsInfoBox a:visited{ font-weight: bold; color: #497279; border: 0px none #FFF100; padding: 1px 3px; }
 #wrapper #aboutUsInfoBox a:hover , #wrapper #aboutUsInfoBox a:active{ font-weight: bold; color: #fff100; background: #497279; padding: 1px 3px; }
-.menuSelected { font-size: 15px; font-weight: bold; color: #fff100; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
+.menuSelected { font-size: 15px; font-weight: bold; color: #fff100 !important; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
 #wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 15px; font-size: 16px; }
 
 #wrapper #aboutUsInfoBox #aboutUsInfoBoxTextTop { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 200px; top: 14px; text-align: left; left: 25px; overflow: auto; 
