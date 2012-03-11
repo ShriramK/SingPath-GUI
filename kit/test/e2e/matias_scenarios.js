@@ -18,7 +18,7 @@ describe('Additinal test from Matias', function() {
 	  //badges.html
 	  it('Testing alex/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
-		    expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+		    //expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
 		    //yourbadgesBoxTop
 		    expect(element('#yourBadgesBoxTop > img').count()).toBe(20);
 		    expect(element("#yourBadgesBoxTop > img:eq(0)").attr('title')).toBe("5 Python Contributions Badge");

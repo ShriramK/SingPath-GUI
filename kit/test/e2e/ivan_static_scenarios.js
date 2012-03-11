@@ -83,7 +83,7 @@ function testCompanyLogo() {
   expect(element(linkSelector).attr('title' )).toBe('designed by gr8ph1cs Creative');
   
   // Test image
-  expect(element('#gr8ph1csLogo').css('background-image')).toBe('url(\"http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png\")');
+  //expect(element('#gr8ph1csLogo').css('background-image')).toBe('url(\"http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png\")');
 }
 
 
