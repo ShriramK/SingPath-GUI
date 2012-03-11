@@ -134,7 +134,7 @@ function hasNonFinishedHeat(heats) {
 }
 function checkTournamentRoundStatus() {
     ajax({
-        url   : '/jsonapi/tournament/' + getTournamentID(),
+        url   : '../jsonapi/tournament/' + getTournamentID(),
         success: function(response){
             //there are rounds in the tournament
             if (response && response['rounds'] && response['rounds'].length && (response['rounds'].length > 0)) {
@@ -231,7 +231,7 @@ function checkTournamentRoundStatus() {
 }
 function play_round(round_id) {
     ajax({
-        url   : '/jsonapi/launch_game_for_round',
+        url   : '../jsonapi/launch_game_for_round',
         data  : {'round_id': round_id}, // data to be submitted
         success: function(response){
             window.location = 'play.html?gameID=' + response['gameID'];
