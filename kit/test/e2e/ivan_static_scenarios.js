@@ -49,7 +49,7 @@ function testHeadMenuOptions() {
       
       // Test selected menu option
       if(windowHref == option["href"]) {
-        // expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
+        expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
       }
       
       // Test all the rest option properties
@@ -166,8 +166,8 @@ describe('Additinal tests from Ivan', function() {
     browser().navigateTo('../../howToUse.html');
     
     // Loading window path
-    get(browser().window().path()).value(function(path) {
-
+    expect(browser().window().path()).value(function(path) {
+      
       // Test all Page Head Elements from the common function
       testPageHead();
       

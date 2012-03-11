@@ -24302,20 +24302,6 @@ angular.scenario.dsl('expect', function() {
   };
 });
 
-angular.scenario.dsl('get', function() {
-  var chain = angular.extend({}, angular.scenario.matcher);
-  
-  chain.not = function() {
-    this.inverse = true;
-    return chain;
-  };
-  
-  return function(future) {
-    this.future = future;
-    return chain;
-  };
-});
-
 /**
  * Usage:
  *    using(selector, label) scopes the next DSL element selection
