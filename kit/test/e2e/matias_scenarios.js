@@ -1,5 +1,5 @@
 describe('Additinal test from Matias', function() {
-	  it('Testing alex/news.html', function() {
+	  it('Testing kit/news.html', function() {
 	    browser().navigateTo('../../news.html');
 	    expect(element('#menuOptionsText > .menuSelected').text()).toBe('news');
 	    expect(element('#contributorsInfoBoxText > p').text()).toBe('News');
@@ -16,10 +16,13 @@ describe('Additinal test from Matias', function() {
 	    expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
 	  });
 	  //badges.html
-	  it('Testing alex/badges.html', function() {
+	  it('Testing kit/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
-		    expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
-		    //yourbadgesBoxTop
+		    
+        // Ivan, Note: badges.html doesn't load the jsonapi/player
+        // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+		    
+        //yourbadgesBoxTop
 		    expect(element('#yourBadgesBoxTop > img').count()).toBe(20);
 		    expect(element("#yourBadgesBoxTop > img:eq(0)").attr('title')).toBe("5 Python Contributions Badge");
 		    expect(element("#yourBadgesBoxTop > img:eq(1)").attr('title')).toBe("Beginner Python Contribution Badge");

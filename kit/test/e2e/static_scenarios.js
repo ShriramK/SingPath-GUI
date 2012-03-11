@@ -1,10 +1,5 @@
 /* jasmine-like end2end tests go here */
 
-function log(message) {
-  console.log(message);
-}
-
-
 describe('kit', function() {
   pauseAll = false;
   
@@ -129,7 +124,7 @@ describe('kit', function() {
     });
 });
 describe('Test From SergeyGalenko', function() {
-  it('Testing alex/contributions.html', function() {
+  it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
       expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
