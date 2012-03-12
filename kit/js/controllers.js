@@ -1,5 +1,35 @@
 /* App Controllers */
 
+function LoadPageCtrl($resource) {
+  LogAccessCtrl($resource);
+  MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png','_images/landingPages/landingPageButtons/television_on.png','_images/landingPages/landingPageButtons/socialButtonsTwitter_on.png','_images/landingPages/landingPageButtons/socialButtonsFacebook_on.png');
+}
+
+LoadPageCtrl.$inject = ['$resource'];
+
+
+function LogAccessCtrl($resource) {
+  logAccess = $resource('../jsonapi/log_access').get(function() {
+    logAccess.page = getHref();
+    logAccess.date = new Date().getTime();
+    
+    // Saving will be available once we create the back-end server to response the POST requests
+    // logAccess.$save();
+  });
+}
+
+
+function UserLoginMenuCtrl($resource) {
+  self = this;
+  this.player = $resource('../jsonapi/player').get(function() {
+    // Secure a maximum nickname chars so the string won't over flow outside the box
+    self.player.nickname = clampString('Welcome, ' + self.player.nickname, 35);
+  });
+}
+
+UserLoginMenuCtrl.$inject = ['$resource'];
+
+
 function IndexCtrl($resource) {
   statsModel = $resource('../jsonapi/statistics');
   this.stats = statsModel.get();
@@ -141,13 +171,10 @@ function CountriesCtrl($resource) {
 CountriesCtrl.$inject = ["$resource"];
 
 function HeadMenuOptionsCtrl($resource, $location) {
-  // Setting the selected option regarding the page href
-  ulr   = $location.absUrl();
-  href  = ulr.substr(ulr.lastIndexOf('/')+1);
-  
   // Taking all menu options
   this.options = $resource('../jsonapi/headMenuOptions').query(function(options) {
     // Setting the selected menu option as 'menuSelected' regarding the page href
+    href = getHref();
     for(i in options) {
       option = options[i];
       if(option.href == href) {
@@ -169,11 +196,19 @@ function FooterMenuOptionsCtrl($resource) {
 FooterMenuOptionsCtrl.$inject = ['$resource'];
 
 
-
-function GoogleAnalyticsCtrl($location) {
+function GoogleAnalyticsCtrl() {
   // Location Google Analytics JS file
-  this.gaJsHost  = $location.absUrl().indexOf('https:') ? 'http://www.' : 'https://ssl.';
-  this.gaJsHost += 'google-analytics.com/ga.js';
+  this.gaJsSrc = getFirstURLChars() + 'google-analytics.com/ga.js';
 }
 
-GoogleAnalyticsCtrl.$inject = ['$location'];
+
+function JanrainCtrl() {
+  // Location Janrain JS file
+  this.rpxJsSrc = getFirstURLChars() + 'rpxnow.com/js/lib/rpx.js';
+}
+
+
+function CopyrightCtrl() {
+  // Setting the Copyright year
+  this.year = new Date().getFullYear();
+}

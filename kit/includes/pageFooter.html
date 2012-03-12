@@ -1,15 +1,13 @@
 <!-- Footer links and info -->
 <div id="mainFooter">
   <div id="menuFooterTop" ng:controller="FooterMenuOptionsCtrl">
-    <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" title="{{option.title}}">
+    <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
       {{option.text}}
     </a>
   </div>
   
   <!-- Copyright and Company link -->
-  <div id="menuFooterBottom">&copy; singpath 2011<br />
-    <a href="http://www.Gr8ph1cs.com" target="_blank" title="designed by gr8ph1cs Creative">
-      <div id="gr8ph1csLogo"></div>
-    </a>
+  <div id="menuFooterBottom" ng:controller="CopyrightCtrl">&copy; singpath {{this.year}}<br />
+    <a href="http://www.Gr8ph1cs.com" target="_blank" id="gr8ph1csLogo" title="designed by gr8ph1cs Creative"></a>
   </div>
 </div>

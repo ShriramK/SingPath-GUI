@@ -1,11 +1,11 @@
 [
-{"text": "home"        , "href": "index.html"        , "target": "", "title": "home page Link"},
-{"text": "about us"    , "href": "aboutUs.html"      , "target": "", "title": ""},
-{"text": "how to use"  , "href": "howToUse.html"     , "target": "", "title": ""},
-{"text": "terms of use", "href": "termsOfUse.html"   , "target": "", "title": ""},
-{"text": "contribution", "href": "contributions.html", "target": "", "title": ""},
-{"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "title": ""},
-{"text": "contact us"  , "href": "aboutUs.html"      , "target": "", "title": ""},
-{"text": "shop"        , "href": "shop.html"         , "target": "", "title": ""},
-{"text": "sign out"    , "href": "logout"            , "target": "", "title": ""}
+{"text": "home"        , "href": "index.html"                         , "target": "",       "class": "", "title": "home page Link"},
+{"text": "about us"    , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
+{"text": "how to use"  , "href": "howToUse.html"                      , "target": "",       "class": "", "title": ""},
+{"text": "terms of use", "href": "termsOfUse.html"                    , "target": "",       "class": "", "title": ""},
+{"text": "contribution", "href": "contributions.html"                 , "target": "",       "class": "", "title": ""},
+{"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "class": "", "title": ""},
+{"text": "contact us"  , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
+{"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": ""},
+{"text": "sign out"    , "href": "logout"                             , "target": "",       "class": "", "title": ""}
 ]

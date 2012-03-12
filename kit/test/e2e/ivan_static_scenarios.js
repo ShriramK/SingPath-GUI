@@ -6,17 +6,69 @@ function testCloak(selector) {
 }
 
 
+// Test the image base and hover URLs
+function testImageBaseAndHover($image, imagesUrl) {
+  // Test image base URL
+  expect($image.css('background-image')).toBe('url(\"'+ imagesUrl +'_off.png\")');
+  
+  // Test image hover URL
+  $image.attr('class', 'hover');
+  expect($image.css('background-image')).toBe('url(\"'+ imagesUrl +'_on.png\")');  
+}
+
+
+// Test all options from a given resource in a respected element from a given container selector
+function testMenuOptions(options, containerSelector, selectedOptionClass) {
+  // General test options function
+  function test(windowPath) {
+    windowHref = selectedOptionClass ? windowPath.substr(windowPath.lastIndexOf('/')+1) : '';
+    
+    // Test all options
+    for(i in options) {
+      option = options[i];
+      
+      // Test selected menu option if needed
+      if(windowHref == option["href"] && selectedOptionClass) {
+        expect(element(containerSelector + ' > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
+      }
+      
+      // Test all the rest option properties
+      linkSelecter = containerSelector + ' > a:eq('+ i +')';
+      
+      expect(element(linkSelecter + ' > span').text()).toBe(option["text"]);
+      expect(element(linkSelecter).attr("href")      ).toBe(option["href"]);
+      expect(element(linkSelecter).attr("target")    ).toBe(option["target"]);
+      expect(element(linkSelecter).attr("title")     ).toBe(option["title"]);
+    }
+  }
+  
+  // Getting window path if needed
+  if (selectedOptionClass) {
+    browser().window().path().execute(function(data, windowPath) { test(windowPath) });
+  } else {
+    test();
+  }
+}
+
+
 // Test all Page Head Elements
 function testPageHead() {
-  testSiteLog();
+  testSiteLogo();
   testUserLoginMenu();
   testHeadMenuOptions();
 }
 
 
-// 
-function testSiteLog() {
-  // TODO
+// Test the site top left logo
+function testSiteLogo() {
+  $logo = element('#logo');
+  
+  // Test link properties
+  expect($logo.attr('href')).toBe('home.html');
+  expect($logo.attr('alt' )).toBe('Singpath Logo');
+  
+  // Test the logo base and hover URLs
+  testImageBaseAndHover($logo, 'http://localhost/kit/_images/landingPages/landingPageButtons/singpathLogo');
 }
 
 
@@ -25,65 +77,67 @@ function testUserLoginMenu() {
   // TODO
 }
 
-// Testing all head menu options
+// Testing all Head Menu options
 function testHeadMenuOptions() {
   options = [
-    {"text": "home"        , "href": "index.html"        , "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
-    {"text": "about us"    , "href": "aboutUs.html"      , "class": "", "title": ""},
-    {"text": "how to use"  , "href": "howToUse.html"     , "class": "", "title": ""},
-    {"text": "contribution", "href": "contributions.html", "class": "", "title": ""},
-    {"text": "tournament"  , "href": "tournament.html"   , "class": "", "title": ""},
-    {"text": "news"        , "href": "news.html"         , "class": "", "title": ""},
-    {"text": "shop"        , "href": "shop.html"         , "class": "", "title": ""}
+    {"text": "home"        , "href": "index.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
+    {"text": "about us"    , "href": "aboutUs.html"      , "target": "", "class": "", "title": ""},
+    {"text": "how to use"  , "href": "howToUse.html"     , "target": "", "class": "", "title": ""},
+    {"text": "contribution", "href": "contributions.html", "target": "", "class": "", "title": ""},
+    {"text": "tournament"  , "href": "tournament.html"   , "target": "", "class": "", "title": ""},
+    {"text": "news"        , "href": "news.html"         , "target": "", "class": "", "title": ""},
+    {"text": "shop"        , "href": "shop.html"         , "target": "", "class": "", "title": ""}
   ];
   
-  
-  // Getting page path
-  browser().window().path().execute(function(data, windowPath) {
-    selectedOptionClass = 'menuSelected';
-    windowHref          = windowPath.substr(windowPath.lastIndexOf('/')+1);
-    
-    // Test all options
-    for(i in options) {
-      option = options[i];
-      
-      // Test selected menu option
-      if(windowHref == option["href"]) {
-        expect(element('#menuOptionsText > a:eq('+ i +')').attr("class")).toMatch(selectedOptionClass);
-      }
-      
-      // Test all the rest option properties
-      expect(element('#menuOptionsText > a > .ng-binding:eq('+ i +')').text()).toBe(option["text"]);
-      expect(element('#menuOptionsText > a:eq('+ i +')').attr("href")        ).toBe(option["href"]);
-      expect(element('#menuOptionsText > a:eq('+ i +')').attr("title")       ).toBe(option["title"]);
-    }
-  });
+  // Test all Head Menu options from the given resouce
+  testMenuOptions(options, '#menuOptionsText', 'menuSelected');
 }
 
 
 // Test all Page Footer Elements
 function testPageFooter() {
   testFooterMenuOptions();
+  testCopyright();
   testCompanyLogo();
 }
 
 
 // Test Footer Menu Options
 function testFooterMenuOptions() {
- // TODO
+  options = [
+    {"text": "home"        , "href": "index.html"                         , "target": "",       "class": "", "title": "home page Link"},
+    {"text": "about us"    , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
+    {"text": "how to use"  , "href": "howToUse.html"                      , "target": "",       "class": "", "title": ""},
+    {"text": "terms of use", "href": "termsOfUse.html"                    , "target": "",       "class": "", "title": ""},
+    {"text": "contribution", "href": "contributions.html"                 , "target": "",       "class": "", "title": ""},
+    {"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "class": "", "title": ""},
+    {"text": "contact us"  , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
+    {"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": ""},
+    {"text": "sign out"    , "href": "logout"                             , "target": "",       "class": "", "title": ""}
+  ];
+  
+  // Test all Footer Menu options from the given resouce
+  testMenuOptions(options, '#menuFooterTop');
+}
+
+
+// Test Copyright elements
+function testCopyright() {
+  // Test the Copyright year
+  expect(element('#menuFooterBottom > span:first').text()).toBe(new Date().getFullYear()+'');
 }
 
 
 // Test The visibility of the company logo
 function testCompanyLogo() {
   // Test link properties
-  linkSelector = '#menuFooterBottom > a';
-  expect(element(linkSelector).attr('href'  )).toBe('http://www.Gr8ph1cs.com');
-  expect(element(linkSelector).attr('target')).toBe('_blank');
-  expect(element(linkSelector).attr('title' )).toBe('designed by gr8ph1cs Creative');
+  $logo = element('#gr8ph1csLogo');
+  expect($logo.attr('href'  )).toBe('http://www.Gr8ph1cs.com');
+  expect($logo.attr('target')).toBe('_blank');
+  expect($logo.attr('title' )).toBe('designed by gr8ph1cs Creative');
   
-  // Test image
-  expect(element('#gr8ph1csLogo').css('background-image')).toBe('url(\"http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo_off.png\")');
+  // Test logo base and hover URLs
+  testImageBaseAndHover($logo, 'http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo');
 }
 
 
