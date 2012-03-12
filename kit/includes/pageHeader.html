@@ -1,14 +1,28 @@
 <div id="mainHeader">
   <!-- Site Top Logo -->
-  <a href="home.html" id="logo" alt="Singpath Logo"></a>
+  <a href="index.html" id="logo" title="Singpath Logo"></a>
   
   <!-- User Login Menu-->
   <div ng:controller="UserLoginMenuCtrl">
     
-    <!-- Check if the user is curretly logged in -->
-    <ng:switch on="this.player.player_id">
-      <!-- if the this.player.player_id is "NA" reflects as a not logged in user -->
-      <div id="logInBox" ng:switch-when="NA">
+    <!-- Display a respected menu regarding user login status -->
+    <ng:switch on="this.USER.isLogged">
+      
+      <!-- Display main user info -->
+      <div id="userMenu" ng:switch-when="true">
+        <a href="home.html" class="homeBtn" title="Return to Your Home page"></a>
+        
+        <img ng:src="{{this.player.gravatar}}" class="gravatar" alt="gravatar" />
+        
+        <div class="nickname">
+          {{this.player.nickname}}
+        </div>
+        
+        <a href="shop.html" class="shopBtn" title="Go to the Singpath Shop"></a>
+      </div>
+      
+      <!-- Display Login message and btn -->
+      <div id="logInBox" ng:switch-when="false">
         <div id="messageBox">
           Welcome, please sign in to your account
         </div>
@@ -20,19 +34,6 @@
           </div>
           <div class="right"></div>
         </div>
-      </div>
-      
-      <!-- Any this.player.player_id different from "NA" will reflect as a logged in user -->
-      <div id="userMenu" ng:switch-default>
-        <a href="home.html" class="homeBtn" title="Return to Your Home page"></a>
-        
-        <img ng:src="{{this.player.gravatar}}" class="gravatar" alt="gravatar" />
-        
-        <div class="nickname">
-          {{this.player.nickname}}
-        </div>
-        
-        <a href="shop.html" class="shopBtn" title="Go to the Singpath Shop"></a>
       </div>
     </ng:switch>
     

@@ -1,9 +1,11 @@
 describe('Additinal test from Matias', function() {
 	  it('Testing kit/news.html', function() {
 	    browser().navigateTo('../../news.html');
-	    expect(element('#menuOptionsText > .menuSelected').text()).toBe('news');
-	    expect(element('#contributorsInfoBoxText > p').text()).toBe('News');
+	    expect(element('#menuOptionsText > .menuSelected').text()).toMatch('news');
+	    expect(element('#contributorsInfoBoxText > p').text()).toMatch('News');
 	    
+      // Ivan, Note: Full contributors test coverage is available in ivan_static_scenarios.js
+      /*
 	    // Test the content of the contributors right menu
 	    expect(element('#contributorsAboutBoxText > a > img').count()).toBe(5);
 	    expect(repeater('#contributorsAboutBoxText > a > img'))
@@ -14,12 +16,13 @@ describe('Additinal test from Matias', function() {
 	    expect(element('#contributorsAboutBoxText > a > img:eq(2)').attr('alt')).toBe('Contributor Allen Downey');
 	    expect(element('#contributorsAboutBoxText > a > img:eq(3)').attr('alt')).toBe('Contributor Chris Boesch');
 	    expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
+      */
 	  });
 	  //badges.html
 	  it('Testing kit/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
 		    
-        // Ivan, Note: badges.html doesn't load the jsonapi/player
+        // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
         // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
 		    
         //yourbadgesBoxTop

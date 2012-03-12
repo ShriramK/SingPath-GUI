@@ -157,7 +157,10 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('ranking');
+    
+    // Ivan, Note: Function was updated in LogAccessCtrl():controllers.js
+    // log_access('ranking');
+    
     path_id = getPathId();
     loadPlayerData(function(player) {
       var countryCode = 'SG';

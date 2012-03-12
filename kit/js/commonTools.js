@@ -3,15 +3,18 @@ function log(message) {
   console.log(message);
 }
 
+
 // Remove empty spaces from the begining or endding of a string
 String.prototype.trim = function() {
   return this.replace(/^\s+/, '').replace(/\s+$/, '');
 }
 
+
 // Remove new lines from a string
 String.prototype.removeNewLines = function() {
   return this.replace(/\r/g, '').replace(/\n/g, '');
 }
+
 
 // Return the page from the window URL
 function getHref() {
@@ -19,10 +22,12 @@ function getHref() {
   return href.substr(href.lastIndexOf('/')+1);
 }
 
+
 // Return the first chars needed regarding the window protocol
 function getFirstURLChars() {
   return window.location.href.indexOf('https:') ? 'http://www.' : 'https://ssl.';
 }
+
 
 // Clamp number in range
 function clamp(number, _lowLimit, _highLimit) {
@@ -34,10 +39,12 @@ function clamp(number, _lowLimit, _highLimit) {
   return number;
 }
 
+
 // Clamp the number to be always positive
 function clampPositive(number) {
   return clamp(number, 0, Math.abs(number));
 }
+
 
 // Clamp the number to be always negative
 function clampNegative(number) {
@@ -65,4 +72,10 @@ function clampString(string, maxLength) {
       return endString.slice(0, slice + endString.length);
     }
   }
+}
+
+
+// Check if the user is currently logged in
+function getUserLoggedInStatus(player) {
+  return player.player_id != "NA";
 }

@@ -2074,12 +2074,12 @@ table.pager {
 #logInBox .commonBtn .middle, #userMenu .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
 #messageBox , #userMenu .nickname{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
 #homeButton, #mainHeader  .homeBtn{ background-image: url(../_images/landingPages/landingPageButtons/houseProfile_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
-#homeButton:hover, #mainHeader  .homeBtn:hover, #homeButton.hover,  #mainHeader  .homeBtn.hover { background-image: url(../_images/landingPages/landingPageButtons/houseProfile_on.png); }
+#homeButton:hover, #userMenu .homeBtn:hover, #homeButton.hover,  #userMenu .homeBtn.hover { background-image: url(../_images/landingPages/landingPageButtons/houseProfile_on.png); }
 .gravatar { margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -6px; left: 7px; }
 
 #wrapper #mainHeader #nameBox{ margin: 0px; padding: 8px 0px 0px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 14px; left: 15px; top: -3px; text-align: center; }
-.shopBtn{ background-image: url(../_images/landingPages/landingPageButtons/shoppingTrolley_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: right; right: 5px; top: -5px; }
-.shopBtn:hover, .shopBtn.hover{ background-image: url(../_images/landingPages/landingPageButtons/shoppingTrolley_on.png); }
+#userMenu .shopBtn{ background-image: url(../_images/landingPages/landingPageButtons/shoppingTrolley_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: right; right: 5px; top: -5px; }
+#userMenu .shopBtn:hover, #userMenu .shopBtn.hover{ background-image: url(../_images/landingPages/landingPageButtons/shoppingTrolley_on.png); }
 #wrapper #shadowUnderBar { color: #FFF; padding: 0px; width: 906px; position: relative; top: -10px; right: 0px; font-size: 10px; margin: 0px; height: 5px; clear: none; float: left; background: url(../_images/homePage/barShadow.png) no-repeat; }
 
 #menuOptions{ color: #FFF; padding: 0px; width: 906px; position: relative; top: -9px; right: 0px; font-size: 16px; margin: 0px; height: 40px; clear: none; float: left; background: url(../_images/landingPages/indexPage/menu_BarBlue.png) no-repeat; z-index: 2; }

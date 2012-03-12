@@ -4,6 +4,13 @@
     <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
       {{option.text}}
     </a>
+    
+    <!-- Display the 'sing out' option only if the user is currently logged in -->
+    <ng:switch on="this.USER.isLogged">
+      <a ng:switch-when="true" href="/sign_out" title="Sign out from Your Profile">
+        sign out
+      </a>
+    </ng:switch>
   </div>
   
   <!-- Copyright and Company link -->

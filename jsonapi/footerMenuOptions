@@ -6,6 +6,5 @@
 {"text": "contribution", "href": "contributions.html"                 , "target": "",       "class": "", "title": ""},
 {"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "class": "", "title": ""},
 {"text": "contact us"  , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
-{"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": ""},
-{"text": "sign out"    , "href": "logout"                             , "target": "",       "class": "", "title": ""}
+{"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": ""}
 ]

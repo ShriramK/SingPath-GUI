@@ -1,7 +1,18 @@
 /* App Controllers */
 
+
+// Create a Global var to keep track of the player session
+window.USER = {
+ "isLogged": false
+}
+
+
 // Start number of actions when the page is loaded
 function LoadPageCtrl($resource) {
+  // Mapping the Global var to the current controller var
+  // Note: Object copping in JavaScript is made by reference
+  this.USER = window.USER;
+  
   // Send a request back to the server which page was loaded and when
   LogAccessCtrl($resource);
   
@@ -33,15 +44,18 @@ function MM_preloadImages() { //v3.0
 }
 
 
-function UserLoginMenuCtrl($resource) {
+function UserLoginMenuCtrl($resource, $window) {
   self = this;
   this.player = $resource('../jsonapi/player').get(function() {
+    // Setting the Global var
+    window.USER.isLogged = getUserLoggedInStatus(self.player);
+    
     // Secure a maximum nickname chars so the string won't over flow outside the box
     self.player.nickname = clampString('Welcome, ' + self.player.nickname, 35);
   });
 }
 
-UserLoginMenuCtrl.$inject = ['$resource'];
+UserLoginMenuCtrl.$inject = ['$resource', '$window'];
 
 
 function IndexCtrl($resource) {
