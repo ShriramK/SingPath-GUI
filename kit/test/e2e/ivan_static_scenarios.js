@@ -86,6 +86,7 @@ function testSiteLogo() {
 function testUserLoginMenu() {
   player = {
     "player_id": 57733,
+    // "player_id": "NA",
     "gravatar" : "http://www.gravatar.com/avatar/ff255e745f42e8617e7d19e69cccd2f5/?default=&amp;s=80",
     "nickname" : "Mark Zuckerberg"
   }
@@ -119,8 +120,27 @@ function testUserLoginMenu() {
     
     testImageBaseAndHover(shopBtnSelector, 'http://localhost/kit/_images/landingPages/landingPageButtons/shoppingTrolley');
     
+    // Test sign out btn visibility
+    $signOutBtn = element('#menuFooterTop > ng\\:switch > a');
+    expect($signOutBtn.attr('href' )).toBe('sign_out');
+    expect($signOutBtn.attr('title')).toBe('Sign out from Your Profile');
+    expect($signOutBtn.text()       ).toMatch('sign out');
+    
   } else {
-    // TODO Test if the user isn't logged in
+    // if the user isn't logged in we'll perform test over the log in elements
+    
+    logInBoxSelector = '#logInBox';
+    
+    // Test message box greetings text
+    expect(element(logInBoxSelector + ' > .messageBox').text()).toMatch('Welcome, please sign in to your account');
+    
+    // Test commonBtn properties
+    commonBtnSelector = logInBoxSelector + ' > .commonBtn';
+    expect(element(commonBtnSelector).attr('title')).toBe('Sign in to Singpath');
+    expect(element(commonBtnSelector + ' > .middle').text()).toMatch('Sign In');
+    
+    // Test sign out btn visibility
+    expect(element('#menuFooterTop > ng\\:switch > a')).not().toBeDefined();
   }
 }
 

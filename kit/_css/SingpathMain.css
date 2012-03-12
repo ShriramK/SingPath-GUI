@@ -2072,7 +2072,7 @@ table.pager {
 #userMenu, #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
 #logInBox .commonBtn, #userMenu .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
 #logInBox .commonBtn .middle, #userMenu .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
-#messageBox , #userMenu .nickname{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
+.messageBox , #userMenu .nickname{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
 #homeButton, #mainHeader  .homeBtn{ background-image: url(../_images/landingPages/landingPageButtons/houseProfile_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
 #homeButton:hover, #userMenu .homeBtn:hover, #homeButton.hover,  #userMenu .homeBtn.hover { background-image: url(../_images/landingPages/landingPageButtons/houseProfile_on.png); }
 .gravatar { margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -6px; left: 7px; }
