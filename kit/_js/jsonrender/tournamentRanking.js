@@ -12,7 +12,7 @@ function loadHeatRanking(heatID, time) {
         data['time'] = time;
     }
     ajax({
-        url: '/jsonapi/get_heat_ranking',
+        url: '../jsonapi/get_heat_ranking',
         data: data,
         success: function(rankings) {
             var is_anytime = (rankings.tournamentType == 'AnyTime');
@@ -65,7 +65,7 @@ function loadHeatRanking(heatID, time) {
                          '" class="heatRankingsGravatar" ' + onclick + '/></td>'+
                      '<td class="heatRankingsNickname"><font ' + onclick + '>' +
                          p.nickname + '</font></td>'+
-                     '<td class="heatRankingsFlag"><img src="' + flagUrl +
+                     '<td class="heatRankingsFlag"><img src="' + flagUrl.replace(/^\/static/, "../static") +
                          '" class="heatRankingsFlag" /></td>'+
                      (!is_anytime ? '<td class="heatRankingsPreviousRank">'+previous_rank+'</td>' : '')+
                      '<td class="heatRankingsProfessional">' + prof + '</td>';
@@ -130,7 +130,7 @@ $(document).ready(function() {
     }
     $('a#tournamentContinueButton').attr('href', 'tournament.html?tournamentID='+tournamentID);
     ajax({
-        url: '/jsonapi/tournament/'+tournamentID,
+        url: '../jsonapi/tournament/'+tournamentID,
         success: function(result) {
             $('#levMBText').html(result['description']+' Results');
             var s = '';

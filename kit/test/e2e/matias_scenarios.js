@@ -21,7 +21,7 @@ describe('Additinal test from Matias', function() {
 	  //badges.html
 	  it('Testing kit/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
-		    
+        
         // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
         // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
 		    
