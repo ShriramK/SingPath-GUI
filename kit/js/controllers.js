@@ -1,13 +1,18 @@
 /* App Controllers */
 
+// Start number of actions when the page is loaded
 function LoadPageCtrl($resource) {
+  // Send a request back to the server which page was loaded and when
   LogAccessCtrl($resource);
-  MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png','_images/landingPages/landingPageButtons/television_on.png','_images/landingPages/landingPageButtons/socialButtonsTwitter_on.png','_images/landingPages/landingPageButtons/socialButtonsFacebook_on.png');
+  
+  // Preload some basic images
+  MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png');
 }
 
 LoadPageCtrl.$inject = ['$resource'];
 
 
+// Send a request back to the server which page was loaded and when
 function LogAccessCtrl($resource) {
   logAccess = $resource('../jsonapi/log_access').get(function() {
     logAccess.page = getHref();
@@ -16,6 +21,15 @@ function LogAccessCtrl($resource) {
     // Saving will be available once we create the back-end server to response the POST requests
     // logAccess.$save();
   });
+}
+
+
+// Preload images
+// TODO: To be updated
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
 }
 
 

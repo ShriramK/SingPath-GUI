@@ -9,7 +9,10 @@ $(document).ready(function() {
 
     var tournamentID = getTournamentID();
     $("#tournamentID").attr("value", tournamentID);
-    log_access('tournament');
+    
+    // Ivan, Note: Function was updated in LogAccessCtrl():controllers.js
+    // log_access('tournament');
+    
     // player data
     loadPlayerData();
     autoPreloadRollsImages();
