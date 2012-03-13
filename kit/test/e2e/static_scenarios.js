@@ -141,14 +141,14 @@ describe('Tests From SergeyGalenko', function() {
   it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
       element('#viewRanking .viewRankingButton').click();
-     // pause();
+      pause();
       expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); // on tournamentRanking.html?tournamentID=11288841 page?
   });
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
     browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
     element('#tournamentTabs td:eq(1)').click();
-    pase();
+    pause();
   });
   
 });
