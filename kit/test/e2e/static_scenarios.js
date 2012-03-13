@@ -130,6 +130,11 @@ describe('kit', function() {
 });
 
 describe('Tests From SergeyGalenko', function() {
+  angular.scenario.matcher('toExist', function() {
+    log(this.actual);
+    return true;
+  })
+
   it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
@@ -147,7 +152,7 @@ describe('Tests From SergeyGalenko', function() {
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
     browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
-    element('#tournamentTabs td:eq(1)').click();
+    element('#tournamentTabs td').toExist();
     pause();
   });
   
