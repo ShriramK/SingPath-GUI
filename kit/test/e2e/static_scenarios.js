@@ -146,7 +146,7 @@ describe('Tests From SergeyGalenko', function() {
 
       
       expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
-      expect(window.location.path).toBe('/kit/tournamentRanking.html?tournamentID=11288841')
+      expect(window.location.path).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       
       expect(browser().location().hash()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
        if (pauseAll) pause();
