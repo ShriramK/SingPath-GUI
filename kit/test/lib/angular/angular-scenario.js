@@ -24581,11 +24581,6 @@ angular.scenario.matcher('toMatch', function(expected) {
   return new RegExp(expected).test(this.actual);
 });
 
-angular.scenario.matcher('value', function(callback) {
-  callback.call(this, this.actual);
-  return true;
-});
-
 angular.scenario.matcher('toBeNull', function() {
   return this.actual === null;
 });

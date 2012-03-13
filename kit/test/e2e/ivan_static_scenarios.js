@@ -21,7 +21,6 @@ function testImageBaseAndHover(imageSelector, imagesUrl) {
     imageSelector = currentClass ? imageSelector.replace(currentClass, hoverClass.replace(' ', '.')) : imageSelector+'.hover';
     
     // Test image hover URL
-    // expect(element(imageSelector).css('background-image')).toBe('url(\"'+ imagesUrl +'_on.png\")');
     expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_on.png"\\)$');
   });
 }
