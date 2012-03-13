@@ -140,6 +140,13 @@ function CountriesCtrl($resource) {
 
 CountriesCtrl.$inject = ["$resource"];
 
+function TournamentRanking($resource){
+	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
+	this.tournamentRanking = tournamentRanking.get();
+}
+
+TournamentRanking.$inject = ["$resource"];
+
 function HeadMenuOptionsCtrl($resource, $location) {
   // Setting the selected option regarding the page href
   ulr   = $location.absUrl();
