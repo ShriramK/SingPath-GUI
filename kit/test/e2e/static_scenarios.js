@@ -142,11 +142,11 @@ describe('Tests From SergeyGalenko', function() {
      
       //expect(browser().location().path()).toBe('/kit/tournament.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
-      pause();
+    //  pause();
       element('#viewRanking .viewRankingButton').click();
 
-      pause();
-      expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
+     // pause();
+      expect(browser().location().href()).toBe('../../tournamentRanking.html?tournamentID=11288841');
       
        if (pauseAll) pause();
       
