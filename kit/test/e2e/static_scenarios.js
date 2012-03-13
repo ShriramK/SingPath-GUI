@@ -143,12 +143,12 @@ describe('Tests From SergeyGalenko', function() {
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
       element('#viewRanking .viewRankingButton').click();
       expect(browser().location().path()).toEqual('/kit/tournamentRanking.html?tournamentID=11288841');
-      expect(browser().location().href()).toEqual('/kit/tournamentRanking.html?tournamentID=11288841');
+      expect(browser().location().href).toEqual('/kit/tournamentRanking.html?tournamentID=11288841');
       expect(browser().location().hashPath()).toEqual('/kit/tournamentRanking.html?tournamentID=11288841');
       expect(browser().location().hash()).toEqual('/kit/tournamentRanking.html?tournamentID=11288841');
       
       expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
-      expect(browser().location().href()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
+      expect(browser().location().href).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       expect(browser().location().hashPath()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       expect(browser().location().hash()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       
