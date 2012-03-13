@@ -11,7 +11,10 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('home');
+    
+    // Ivan, Note: Function was updated in LogAccessCtrl():controllers.js
+    // log_access('home');
+    
     loadPlayerData(function(result) {
         current_player_id = result['player_id'];
     });

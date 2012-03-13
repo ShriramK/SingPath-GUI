@@ -1,5 +1,63 @@
 /* App Controllers */
 
+
+// Create a Global var to keep track of the player session
+window.USER = {
+ "isLogged": false
+}
+
+
+// Start number of actions when the page is loaded
+function LoadPageCtrl($resource) {
+  // Mapping the Global var to the current controller var
+  // Note: Object copping in JavaScript is made by reference
+  this.USER = window.USER;
+  
+  // Send a request back to the server which page was loaded and when
+  LogAccessCtrl($resource);
+  
+  // Preload some basic images
+  MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png');
+}
+
+LoadPageCtrl.$inject = ['$resource'];
+
+
+// Send a request back to the server which page was loaded and when
+function LogAccessCtrl($resource) {
+  logAccess = $resource('../jsonapi/log_access').get(function() {
+    logAccess.page = getHref();
+    logAccess.date = new Date().getTime();
+    
+    // Saving will be available once we create the back-end server to response the POST requests
+    // logAccess.$save();
+  });
+}
+
+
+// Preload images
+// TODO: To be updated
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+
+function UserLoginMenuCtrl($resource, $window) {
+  self = this;
+  this.player = $resource('../jsonapi/player').get(function() {
+    // Setting the Global var
+    window.USER.isLogged = getUserLoggedInStatus(self.player);
+    
+    // Secure a maximum nickname chars so the string won't over flow outside the box
+    self.player.nickname = clampString(self.player.nickname, 35);
+  });
+}
+
+UserLoginMenuCtrl.$inject = ['$resource', '$window'];
+
+
 function IndexCtrl($resource) {
   statsModel = $resource('../jsonapi/statistics');
   this.stats = statsModel.get();
@@ -27,6 +85,17 @@ function ContributorCtrl($resource) {
   this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 };
 ContributorCtrl.$inject = ['$resource'];
+
+
+function StaffCtrl($resource) {
+  // Getting all contributors from the jsonapi
+  this.staff = $resource('../jsonapi/staff').query();
+  
+  // Cache the base sorce path so we could keep the database thin
+  this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
+};
+StaffCtrl.$inject = ['$resource'];
+
 
 function YourLevelBadgesCtrl($resource) {	
     yourLevelBadgesModel = $resource("../jsonapi/all_badges");
@@ -148,13 +217,10 @@ function TournamentRanking($resource){
 TournamentRanking.$inject = ["$resource"];
 
 function HeadMenuOptionsCtrl($resource, $location) {
-  // Setting the selected option regarding the page href
-  ulr   = $location.absUrl();
-  href  = ulr.substr(ulr.lastIndexOf('/')+1);
-  
   // Taking all menu options
   this.options = $resource('../jsonapi/headMenuOptions').query(function(options) {
     // Setting the selected menu option as 'menuSelected' regarding the page href
+    href = getHref();
     for(i in options) {
       option = options[i];
       if(option.href == href) {
@@ -176,11 +242,19 @@ function FooterMenuOptionsCtrl($resource) {
 FooterMenuOptionsCtrl.$inject = ['$resource'];
 
 
-
-function GoogleAnalyticsCtrl($location) {
+function GoogleAnalyticsCtrl() {
   // Location Google Analytics JS file
-  this.gaJsHost  = $location.absUrl().indexOf('https:') ? 'http://www.' : 'https://ssl.';
-  this.gaJsHost += 'google-analytics.com/ga.js';
+  this.gaJsSrc = getFirstURLChars() + 'google-analytics.com/ga.js';
 }
 
-GoogleAnalyticsCtrl.$inject = ['$location'];
+
+function JanrainCtrl() {
+  // Location Janrain JS file
+  this.rpxJsSrc = getFirstURLChars() + 'rpxnow.com/js/lib/rpx.js';
+}
+
+
+function CopyrightCtrl() {
+  // Setting the Copyright year
+  this.year = new Date().getFullYear();
+}

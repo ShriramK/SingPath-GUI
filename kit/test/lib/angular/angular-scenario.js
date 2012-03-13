@@ -24302,20 +24302,6 @@ angular.scenario.dsl('expect', function() {
   };
 });
 
-angular.scenario.dsl('get', function() {
-  var chain = angular.extend({}, angular.scenario.matcher);
-  
-  chain.not = function() {
-    this.inverse = true;
-    return chain;
-  };
-  
-  return function(future) {
-    this.future = future;
-    return chain;
-  };
-});
-
 /**
  * Usage:
  *    using(selector, label) scopes the next DSL element selection
@@ -24593,11 +24579,6 @@ angular.scenario.matcher('toBeFalsy', function() {
 
 angular.scenario.matcher('toMatch', function(expected) {
   return new RegExp(expected).test(this.actual);
-});
-
-angular.scenario.matcher('value', function(callback) {
-  callback.call(this, this.actual);
-  return true;
 });
 
 angular.scenario.matcher('toBeNull', function() {

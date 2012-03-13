@@ -1,25 +1,49 @@
-<!-- main header: Logo and Login menu-->
 <div id="mainHeader">
-  <div id="logo" title="Singpath Logo"></div>
+  <!-- Site Top Logo -->
+  <a href="index.html" id="logo" title="SingPath Logo"></a>
   
-  <div id="logInBox">
-    <div id="messageBox">
-      Welcome, please sign in to your account
-    </div>
-    <div class="commonBtn" title="Sign in to Singpath">
-      <div class="left"></div>
-      <div class="middle">
-        Sign In
+  <!-- User Login Menu-->
+  <div ng:controller="UserLoginMenuCtrl">
+    
+    <!-- Display a respected menu regarding user login status -->
+    <ng:switch on="this.USER.isLogged">
+      
+      <!-- Display main user info -->
+      <div id="userMenu" ng:switch-when="true">
+        <a href="home.html" class="homeBtn" title="Return to Your Home page"></a>
+        
+        <img ng:src="{{this.player.gravatar}}" class="gravatar" alt="gravatar" />
+        
+        <div class="nickname">
+          {{this.player.nickname}}
+        </div>
+        
+        <a href="shop.html" class="shopBtn" title="Go to the SingPath Shop"></a>
       </div>
-      <div class="right"></div>
-    </div>
+      
+      <!-- Display Login message and btn -->
+      <div id="logInBox" ng:switch-when="false">
+        <div class="messageBox">
+          Welcome, please sign in to your account
+        </div>
+        
+        <div class="commonBtn" title="Sign in to SingPath">
+          <div class="left"></div>
+          <div class="middle">
+            Sign In
+          </div>
+          <div class="right"></div>
+        </div>
+      </div>
+    </ng:switch>
+    
   </div>
 </div>
 
-<!-- menu options: head page links -->
+<!-- Head Page links -->
 <div id="menuOptions">
   <div id="menuOptionsText" ng:controller="HeadMenuOptionsCtrl">
-    <a ng:repeat="option in this.options" ng:href="{{option.href}}" class="{{option.class}}" title="{{option.title}}">
+    <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
       {{option.text}}
     </a>
   </div>

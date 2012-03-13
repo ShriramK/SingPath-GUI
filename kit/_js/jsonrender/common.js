@@ -1,15 +1,3 @@
-function log_access(page) {
-    ajax({
-        url: '../log_access',
-        data: {page: page},
-        skip_check_login_error: true,
-        skip_display_error: true,
-        dataType: 'json',
-        success: function(result) {
-            //nothing to do
-        }
-    });
-}
 /**
  * Checks the given json object, and if it has an 'error' key, and the error message
  * is 'No player currently logged in' or 'No player logged in', it shows
