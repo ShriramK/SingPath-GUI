@@ -75,7 +75,7 @@ function testSiteLogo() {
   
   // Test link properties
   expect($logo.attr('href' )).toBe('index.html');
-  expect($logo.attr('title')).toBe('Singpath Logo');
+  expect($logo.attr('title')).toBe('SingPath Logo');
   
   // Test the logo base and hover URLs
   testImageBaseAndHover(logoSelector, '/kit/_images/landingPages/landingPageButtons/singpathLogo');
@@ -116,7 +116,7 @@ function testUserLoginMenu() {
     $shopBtn        = element(shopBtnSelector);
     
     expect($shopBtn.attr('href' )).toBe('shop.html');
-    expect($shopBtn.attr('title')).toBe('Go to the Singpath Shop');
+    expect($shopBtn.attr('title')).toBe('Go to the SingPath Shop');
     
     testImageBaseAndHover(shopBtnSelector, '/kit/_images/landingPages/landingPageButtons/shoppingTrolley');
     
@@ -136,7 +136,7 @@ function testUserLoginMenu() {
     
     // Test commonBtn properties
     commonBtnSelector = logInBoxSelector + ' > .commonBtn';
-    expect(element(commonBtnSelector).attr('title')).toBe('Sign in to Singpath');
+    expect(element(commonBtnSelector).attr('title')).toBe('Sign in to SingPath');
     expect(element(commonBtnSelector + ' > .middle').text()).toMatch('Sign In');
     
     // Test sign out btn visibility
@@ -167,36 +167,58 @@ function testHeadMenuOptions() {
 }
 
 
+// Common function to test all elements loaded in the left profile menu with the sent resource
+function testCommonLeftMenu(resource) {
+  menuSelector  = '.profilesColumn > .textContainer > .text';
+  expectedCount = resource.length;
+  
+  // Test the removing of the cloak over the left menu
+  testCloak(menuSelector);
+  
+  profiles = using(menuSelector).repeater('.profile');
+  expect(profiles.count()).toBe(expectedCount);
+  
+  profileImgSrcPart = '../kit/_images/landingPages/contributionPage/profiles/';
+  
+  for(i=0; i<expectedCount; i++) {
+    profile = resource[i];
+    
+    // Testing profile name and title
+    expect(profiles.row(i)).toEqual([profile["name"], profile["title"]]);
+    
+    // Testing profile image source
+    expect(element(menuSelector + ' > .profile > img:eq('+ i +')').attr('src')).toBe(profileImgSrcPart+ profile["src"] +'.png');
+  }
+}
+
+
+// Test the content of the staff left menu
+function testStaffMenu() {
+  // Test the content of the contributors right menu
+  staff = [
+    {"name": "Sandra Boesch, PhD(ABD)", "title": "Editor in Chief"            , "src": "Sandra"},
+    {"name": "Chris Boesch"           , "title": "Editor in Chief"            , "src": "Chris"},
+    {"name": "Shane Williams"         , "title": "Designer, Gr8ph1cs Creative", "src": "Shane"}
+  ];
+  
+  // Use a common function to test all loaded elements with the staff resource
+  testCommonLeftMenu(staff);
+}
+
+
 // Test the contribution menu form the common function
 function testContributionMenu() {
   // Test the content of the contributors right menu
-  contributorsResource = [
+  contributors = [
     {"name": "Danny"          , "title": "Professor, Singapore", "src": "Danny"},
     {"name": "Chris Meyers"   , "title": "Specialist"          , "src": "ChrisMeyers"},
     {"name": "Allen B. Downey", "title": "Writer"              , "src": "AllenDowney"},
     {"name": "Chris Boesch"   , "title": "Editor in Chief"     , "src": "Chris"},
     {"name": "Jeffery Elkner" , "title": "Writer"              , "src": "Jeffery"}
   ];
-  contributorsMenuSelector  = '.profilesColumn > .textContainer > .text';
-  contributorsExpectedCount = contributorsResource.length;
   
-  // Test the removing of the cloak over the contributors menu
-  testCloak(contributorsMenuSelector);
-  
-  contributors = using(contributorsMenuSelector).repeater('.contributor');
-  expect(contributors.count()).toBe(contributorsExpectedCount);
-  
-  contributorImgSrcPart = '../kit/_images/landingPages/contributionPage/profiles/';
-  
-  for(i=0; i<contributorsExpectedCount; i++) {
-    contributor = contributorsResource[i];
-    
-    // Testing contributor name and title
-    expect(contributors.row(i)).toEqual([contributor["name"], contributor["title"]]);
-    
-    // Testing contributor image source
-    expect(element(contributorsMenuSelector + ' > .contributor > img:eq('+ i +')').attr('src')).toBe(contributorImgSrcPart+ contributor["src"] +'.png');
-  }
+  // Use a common function to test all loaded elements with the contributors resource
+  testCommonLeftMenu(contributors);
 }
 
 
@@ -351,6 +373,9 @@ describe('Additinal tests from Ivan', function() {
     
     // TODO: Test Page content
     
+    
+    // Test the contribution menu form the common function
+    testStaffMenu();
     
     // Test all page footer elements
     testPageFooter();

@@ -16,7 +16,7 @@
   
   <div class="textContainer">
     <div class="text" ng:controller="ContributorCtrl" ng:cloak>
-      <div ng:repeat="contributor in this.contributors" class="contributor">
+      <div ng:repeat="contributor in this.contributors" class="profile">
         <img ng:src="{{this.baseSrc + contributor.src}}.png" ng:alt="{{contributor.name}}, {{contributor.title}}" />
         <div class="name">
           {{contributor.name}},

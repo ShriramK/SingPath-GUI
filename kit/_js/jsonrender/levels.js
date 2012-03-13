@@ -90,7 +90,7 @@ function loadProblemsetDetails(problemset_id) {
                         }
                         if (contributionEnabled) {
                             s += '<div class="contribute contributehidden"><img class="rolls contribute" '+
-                                 'src="_images/commonButtons/addContributionCircle_off.png" title="Contribute this problem to Singpath" '+
+                                 'src="_images/commonButtons/addContributionCircle_off.png" title="Contribute this problem to SingPath" '+
                                  'onclick="contributeProblem('+p.id+')"/></div>';
                         }
                         s += '<div class="editproblem editproblemhidden">'+

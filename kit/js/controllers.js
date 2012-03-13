@@ -51,7 +51,7 @@ function UserLoginMenuCtrl($resource, $window) {
     window.USER.isLogged = getUserLoggedInStatus(self.player);
     
     // Secure a maximum nickname chars so the string won't over flow outside the box
-    self.player.nickname = clampString('Welcome, ' + self.player.nickname, 35);
+    self.player.nickname = clampString(self.player.nickname, 35);
   });
 }
 
@@ -85,6 +85,17 @@ function ContributorCtrl($resource) {
   this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 };
 ContributorCtrl.$inject = ['$resource'];
+
+
+function StaffCtrl($resource) {
+  // Getting all contributors from the jsonapi
+  this.staff = $resource('../jsonapi/staff').query();
+  
+  // Cache the base sorce path so we could keep the database thin
+  this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
+};
+StaffCtrl.$inject = ['$resource'];
+
 
 function YourLevelBadgesCtrl($resource) {	
     yourLevelBadgesModel = $resource("../jsonapi/all_badges");

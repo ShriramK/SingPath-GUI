@@ -15,14 +15,14 @@
   </div>
   
   <div class="textContainer">
-    <div class="text" ng:controller="ContributorCtrl" ng:cloak>
-      <div ng:repeat="contributor in this.contributors" class="profile">
-        <img ng:src="{{this.baseSrc + contributor.src}}.png" ng:alt="{{contributor.name}}, {{contributor.title}}" />
+    <div class="text" ng:controller="StaffCtrl" ng:cloak>
+      <div ng:repeat="person in this.staff" class="profile">
+        <img ng:src="{{this.baseSrc + person.src}}.png" ng:alt="{{person.name}}, {{person.title}}" />
         <div class="name">
-          {{contributor.name}},
+          {{person.name}},
         </div>
         <div class="title">
-          {{contributor.title}}
+          {{person.title}}
         </div>
       </div>
     </div>
