@@ -6,7 +6,7 @@ function log(message) {
 
 
 describe('kit', function() {
-  pauseAll = false;
+  pauseAll = true;
   
   it('Testing kit/index.html', function() {
 
@@ -134,6 +134,7 @@ describe('Tests From SergeyGalenko', function() {
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
       expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
       expect(element("#contributorsAboutBoxText img").count()).toBe(5);
+       if (pauseAll) pause();
   });
   
    it('Testing kit/tournament.html', function() {
@@ -148,7 +149,7 @@ describe('Tests From SergeyGalenko', function() {
     
       expect(browser().location().hashPath()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       expect(browser().location().hash()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
-      
+       if (pauseAll) pause();
       
       
       
