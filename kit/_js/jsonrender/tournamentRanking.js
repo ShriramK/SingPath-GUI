@@ -120,7 +120,7 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('tournamentRanking');
+    //log_access('tournamentRanking');
     loadPlayerData();
     autoPreloadRollsImages();
     var tournamentID = getParameterFromURL('tournamentID');
