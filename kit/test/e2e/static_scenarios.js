@@ -4,6 +4,10 @@ function log(message) {
   console.log(message);
 }
 
+angular.scenario.matcher('toExist', function() {
+  log(this.actual);
+  return true;
+});
 
 describe('kit', function() {
   pauseAll = false;
@@ -130,10 +134,7 @@ describe('kit', function() {
 });
 
 describe('Tests From SergeyGalenko', function() {
-  angular.scenario.matcher('toExist', function() {
-    log(this.actual);
-    return true;
-  })
+
 
   it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
