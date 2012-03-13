@@ -129,7 +129,7 @@ describe('kit', function() {
     });
 });
 describe('Tests From SergeyGalenko', function() {
-  it('Testing alex/contributions.html', function() {
+  it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
       expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
@@ -141,7 +141,8 @@ describe('Tests From SergeyGalenko', function() {
       expect(browser().location().hash()).toBe('');
       //expect(browser().location().path()).toBe('/kit/tournament.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
-      if (pauseAll) pause();
+      element('#viewRanking .viewRankingButton').click();
+      expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
       //pause();
   });
 });
