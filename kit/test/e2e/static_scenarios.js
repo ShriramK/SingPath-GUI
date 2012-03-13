@@ -128,20 +128,20 @@ describe('kit', function() {
         });
     });
 });
-describe('Test From SergeyGalenko', function() {
+describe('Tests From SergeyGalenko', function() {
   it('Testing alex/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
       expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
       expect(element("#contributorsAboutBoxText img").count()).toBe(5);
   });
-});
-
-describe('Test kit/tournament.html From SergeyGalenko', function() {
-  it('Testing kit/tournament.html ', function() {
-    //--
+  
+   it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
-      element('#viewRanking').click();
-    //  expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
+      expect(browser().location().hash()).toBe('');
+      //expect(browser().location().path()).toBe('/kit/tournament.html');
+      //expect(element('#footer a:nth-child(1)').text()).toBe('home');
+      if (pauseAll) pause();
+      //pause();
   });
 });
