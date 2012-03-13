@@ -6,7 +6,7 @@ function log(message) {
 
 
 describe('kit', function() {
-  pauseAll = true;
+  pauseAll = false;
   
   it('Testing kit/index.html', function() {
 
@@ -142,11 +142,12 @@ describe('Tests From SergeyGalenko', function() {
      
       //expect(browser().location().path()).toBe('/kit/tournament.html');
       //expect(element('#footer a:nth-child(1)').text()).toBe('home');
+      pause();
       element('#viewRanking .viewRankingButton').click();
 
-      
+      pause();
       expect(browser().location().path()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
-      expect(window.location.path).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
+      
       
       expect(browser().location().hash()).toBe('/kit/tournamentRanking.html?tournamentID=11288841');
        if (pauseAll) pause();
