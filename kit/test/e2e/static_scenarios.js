@@ -4,11 +4,6 @@ function log(message) {
   console.log(message);
 }
 
-angular.scenario.matcher('toExist', function() {
-  log(this.actual);
-  return true;
-});
-
 describe('kit', function() {
   pauseAll = false;
   
@@ -133,9 +128,9 @@ describe('kit', function() {
     });
 });
 
+
 describe('Tests From SergeyGalenko', function() {
-
-
+  
   it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
       expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');       
@@ -153,8 +148,12 @@ describe('Tests From SergeyGalenko', function() {
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
     browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
-    element('#tournamentTabs td').toExist();
+/*
+    expect(element('#tournamentTabs > td:eq(1)').text()).toBe('Fun Round');
+    element('#tournamentTabs > td:eq(1)').click();
+    element('#tournamentTabs .tabHeaderCenter').click();
     pause();
+    */
   });
   
 });
