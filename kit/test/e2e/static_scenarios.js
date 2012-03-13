@@ -148,7 +148,7 @@ describe('Tests From SergeyGalenko', function() {
      // pause();
       expect(browser().location().href()).toBe('../../tournamentRanking.html?tournamentID=11288841');
       
-       if (pauseAll) pause();
+      // if (pauseAll) pause();
       
       
       
