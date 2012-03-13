@@ -137,23 +137,16 @@ describe('Tests From SergeyGalenko', function() {
        if (pauseAll) pause();
   });
   
-   it('Testing kit/tournament.html', function() {
+  it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
-     
-      //expect(browser().location().path()).toBe('/kit/tournament.html');
-      //expect(element('#footer a:nth-child(1)').text()).toBe('home');
-    //  pause();
       element('#viewRanking .viewRankingButton').click();
-
-      pause();
-      expect(element('#levMBText').text()).toBe('PyCon 2012 Results');
-      expect(element('#levMBText').html()).toBe('PyCon 2012 Results');
-      //expect(browser().location()).hash()).toBe('../../tournamentRanking.html?tournamentID=11288841');
-      
-      // if (pauseAll) pause();
-      
-      
-      
-      //pause();
+     // pause();
+      expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); // on tournamentRanking.html?tournamentID=11288841 page?
   });
+  it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
+    browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
+    element('#tournamentTabs td:eq(1)').click();
+    pase();
+  });
+  }
 });
