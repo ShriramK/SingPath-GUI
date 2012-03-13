@@ -130,7 +130,7 @@ function loadChallenge() {
                     html += '<font class="register">Would you like to register for this challenge?</font>';
                     if (player_result['error']) {
                         html += '<font class="register">You have to sign in first to register!</font>';
-                        html += '<a href="javascript:" onclick="showJanrainLoginBox();return false"><img src="/alex/_images/landingPage/landingPageButtons/signIn_off.png" alt="Sign in to Singpath" name="signIn" width="166" height="39" border="0" id="signIn" /></a>';
+                        html += '<a href="javascript:" onclick="showJanrainLoginBox();return false"><img src="/alex/_images/landingPage/landingPageButtons/signIn_off.png" alt="Sign in to SingPath" name="signIn" width="166" height="39" border="0" id="signIn" /></a>';
                     } else {
                         html += '<img class="rolls" onclick="registerMe('+challenge['challenge_id']+');" src="/alex/_images/commonButtons/registerYes_off.png"/>';
                     }
