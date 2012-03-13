@@ -1,4 +1,3 @@
-
 // Sets a gradient on element regarding the type and RGBA and ARGB
 // An important think to remember is that IE6-9 can accept "#AARRGGBB" string only while other controllers can handle both #RRGGBBAA and rgba()
 // Stylus is converting all hex codes to rgba(). That's why "#AARRGGBB" string is used here.
@@ -83,7 +82,7 @@ border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bo
     margin            0px
     padding           0px
 
-#contributorsAboutBox
+.profilesColumn
   float    right
   position relative
   width    286px
@@ -92,13 +91,18 @@ border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bo
   padding  0px
 
   .commonBtn
-    font-size 10px
     float     right
     position  absolute
     top       0px
     right     20px
     margin    0px
     padding   0px
+    
+    &.big
+      font-size 15px
+    
+    &.small
+      font-size 10px
   
   .labelContainer
     float    left
@@ -112,7 +116,7 @@ border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bo
       font-size        18px
       line-height      20px
       float            left
-      padding          0px 5px 0px 14px
+      padding          1px 5px 0px 14px
     
     .curve
       background-image url(../_images/backgrounds/curve.png)
@@ -144,7 +148,7 @@ border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bo
       margin            0px
       padding           0px
       
-      .contributor
+      .profile
         gradient('vertical', #EEEFF0FF, '#FFEEEFF0', #D4D5D6FF, '#FFD4D5D6')
         border-radius(5px)
         color   #497279
