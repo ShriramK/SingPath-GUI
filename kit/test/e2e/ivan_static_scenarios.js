@@ -9,7 +9,7 @@ function testCloak(selector) {
 // Test the image base and hover URLs
 function testImageBaseAndHover(imageSelector, imagesUrl) {
   // Test image base URL
-  expect(element(imageSelector).css('background-image')).toBe('url(\"'+ imagesUrl +'_off.png\")');
+  expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_off.png"\\)$');
   
   // Get image current class
   expect(element(imageSelector).attr('class')).value(function(currentClass) {
@@ -21,7 +21,8 @@ function testImageBaseAndHover(imageSelector, imagesUrl) {
     imageSelector = currentClass ? imageSelector.replace(currentClass, hoverClass.replace(' ', '.')) : imageSelector+'.hover';
     
     // Test image hover URL
-    expect(element(imageSelector).css('background-image')).toBe('url(\"'+ imagesUrl +'_on.png\")');
+    // expect(element(imageSelector).css('background-image')).toBe('url(\"'+ imagesUrl +'_on.png\")');
+    expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_on.png"\\)$');
   });
 }
 
@@ -78,7 +79,7 @@ function testSiteLogo() {
   expect($logo.attr('title')).toBe('Singpath Logo');
   
   // Test the logo base and hover URLs
-  testImageBaseAndHover(logoSelector, 'http://localhost/kit/_images/landingPages/landingPageButtons/singpathLogo');
+  testImageBaseAndHover(logoSelector, '/kit/_images/landingPages/landingPageButtons/singpathLogo');
 }
 
 
@@ -104,7 +105,7 @@ function testUserLoginMenu() {
     expect($homeBtn.attr('href' )).toBe('home.html');
     expect($homeBtn.attr('title')).toBe('Return to Your Home page');
     
-    testImageBaseAndHover(homeBtnSelector, 'http://localhost/kit/_images/landingPages/landingPageButtons/houseProfile');
+    testImageBaseAndHover(homeBtnSelector, '/kit/_images/landingPages/landingPageButtons/houseProfile');
     
     
     // Testing user main info
@@ -118,7 +119,7 @@ function testUserLoginMenu() {
     expect($shopBtn.attr('href' )).toBe('shop.html');
     expect($shopBtn.attr('title')).toBe('Go to the Singpath Shop');
     
-    testImageBaseAndHover(shopBtnSelector, 'http://localhost/kit/_images/landingPages/landingPageButtons/shoppingTrolley');
+    testImageBaseAndHover(shopBtnSelector, '/kit/_images/landingPages/landingPageButtons/shoppingTrolley');
     
     // Test sign out btn visibility
     $signOutBtn = element('#menuFooterTop > ng\\:switch > a');
@@ -177,7 +178,7 @@ function testContributionMenu() {
     {"name": "Chris Boesch"   , "title": "Editor in Chief"     , "src": "Chris"},
     {"name": "Jeffery Elkner" , "title": "Writer"              , "src": "Jeffery"}
   ];
-  contributorsMenuSelector  = '#contributorsAboutBox > .textContainer > .text';
+  contributorsMenuSelector  = '.profilesColumn > .textContainer > .text';
   contributorsExpectedCount = contributorsResource.length;
   
   // Test the removing of the cloak over the contributors menu
@@ -243,7 +244,7 @@ function testCompanyLogo() {
   expect($logo.attr('title' )).toBe('designed by gr8ph1cs Creative');
   
   // Test logo base and hover URLs
-  testImageBaseAndHover(logoSelector, 'http://localhost/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo');
+  testImageBaseAndHover(logoSelector, '/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo');
 }
 
 
