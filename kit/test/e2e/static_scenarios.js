@@ -149,8 +149,8 @@ describe('Tests From SergeyGalenko', function() {
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
     browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
-/*
-expect(element('#tournamentTabs > td:eq(1)').text()).toBe('Fun Round');
+
+/*expect(element('#tournamentTabs > td:eq(1)').text()).toBe('Fun Round');
 element('#tournamentTabs > td:eq(1)').click();
 element('#tournamentTabs .tabHeaderCenter').click();
 pause();
