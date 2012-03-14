@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     // game data
     ajax({
-        url: '/jsonapi/game/'+getParameterByName('gameID'),
+        url: '../jsonapi/game/'+getParameterByName('gameID'),
         skip_display_error: true,
         success: setGameData
     });
@@ -123,7 +123,7 @@ function startTimer(result) {
 
 function setGameData(path) {
   result = path;
-  log_access('play');
+  //log_access('play');
   var vsolvedproblemIDs = {};
   for (var idx in path.solvedProblemIDs) {
     var problemId = path.solvedProblemIDs[idx];
@@ -251,7 +251,7 @@ function chkResult() {
     showTab(1);
     var form = $("#frmverify");
     ajax({
-        url   : '/jsonapi/verify_solution.php?callback=?',
+        url   : '../jsonapi/verify_solution.php?callback=?',
         type: 'POST',
         data: form.serialize(), // data to be submitted
         dataType: 'json', //dataType is json when using POST method!
@@ -290,7 +290,7 @@ function chkResult() {
 }
 function nextQuestion() {
     ajax({
-        url: '/jsonapi/game/'+getParameterByName('gameID'),
+        url: '../jsonapi/game/'+getParameterByName('gameID'),
         skip_display_error: true,
         success: setGameData
     });
