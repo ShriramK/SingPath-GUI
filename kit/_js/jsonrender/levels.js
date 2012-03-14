@@ -191,7 +191,7 @@ function loadPathProgressData(path_id) {
                 s += '<div>';
                 for(var j in p.badges) {
                     var badge = p.badges[j];
-                    s += '<img class="badge" src="'+badge['url']+'" title="'+badge['description']+'"/>';
+                    s += '<img class="badge" src="'+badge['url'].replace(/^\/static/, "../static")+'" title="'+badge['description']+'"/>';
                 }
                 s += '</div>';
                 if (can_edit) {
@@ -402,7 +402,7 @@ $(document).ready(function() {
     if (/path_id=([0-9]+)/.exec(document.URL) != null) {
         path_id = parseInt(RegExp.$1);
     }
-    log_access('levels');
+    //log_access('levels');
     loadPlayerData(function(result){
         current_player_id = result['player_id'];
         is_admin = result['isAdmin'];

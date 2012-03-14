@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     // game data
     ajax({
-        url: '/jsonapi/game/'+getIdFromURL('gameID'),
+        url: '../jsonapi/game/'+getIdFromURL('gameID'),
         skip_display_error: true,
         success: setGameData
     })
@@ -64,7 +64,7 @@ function startTimer(result) {
 }
 function setGameData(json_result) {
     result = json_result
-    log_access('mobilePlay')
+    //log_access('mobilePlay')
     startTimer(result)
     problem_data = getCurrentProblem(result)
     if (problem_data) {
@@ -205,7 +205,7 @@ function goToNextProblem() {
         }
         (function(gameid, problem_data){
             ajax({
-                url   : '/jsonapi/verify_solution.php?callback=?',
+                url   : '../jsonapi/verify_solution.php?callback=?',
                 type: 'POST',
                 data: {user_code: code, game_id: gameid, problem_id: problem_data.id},
                 dataType: 'json', //dataType is json when using POST method!
@@ -214,7 +214,7 @@ function goToNextProblem() {
                     //try again, if there was an error
                     if (response && response.error) {
                         ajax({
-                            url   : '/jsonapi/verify_solution.php?callback=?',
+                            url   : '../jsonapi/verify_solution.php?callback=?',
                             type: 'POST',
                             data: {user_code: code, game_id: gameid, problem_id: problem_data.id},
                             dataType: 'json', //dataType is json when using POST method!
