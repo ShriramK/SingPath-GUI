@@ -205,10 +205,14 @@ YourBadgesBoxTop.$inject = ["$resource"];
 function CountriesCtrl($resource) {	
     allCountriesModel = $resource("../jsonapi/all_countries");
     this.allCountries = allCountriesModel.get();
+    this.countries = [];
     this.countriesCount= function(){
-    	return 10;
-    	//return this.allCountries.countries.length();
-    }
+        var index = 0;
+    	angular.forEach(this.allCountries.countries, function(elem) {
+          ++index;
+        });
+    	return index;
+      };
 }
 
 CountriesCtrl.$inject = ["$resource"];
@@ -251,6 +255,13 @@ function WorldWideRankingCtrl($resource){
         this.ranking.push(elem);
         return true;
     }
+	this.playersCount= function(){
+        var index = 0;
+    	angular.forEach(this.worldWideRanking.rankings, function(elem) {
+          ++index;
+        });
+    	return index;
+      };
 }
 
 WorldWideRankingCtrl.$inject = ["$resource"];

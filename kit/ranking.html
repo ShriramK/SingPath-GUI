@@ -90,8 +90,8 @@ function zeroFill( number, width )
 	      <div id="raBox{{checkLast(player)}}Solved"><span class="boldText">{{player.solved_num}}</span></div>
       </div>
     
-  </div>
-    <div id="tourInfoBoxStats">There are<span class="boldText"> 546 </span>players in Singapore </div>
+  	</div>
+    <div id="tourInfoBoxStats">There are <span class="boldText" ng:controller="WorldWideRankingCtrl">{{this.playersCount()}}</span>players in Singapore </div>
     </div>
       
   </div>
@@ -113,7 +113,8 @@ function zeroFill( number, width )
     </div>
     </div>
     
-   <div id="countryRankingBoxStats" ng:controller="CountriesCtrl">There are<span class="boldText"> 23456</span> total players in<span class="boldText"> {{countriesCount()}}</span> countries</div>
+   <div id="countryRankingBoxStats">
+   There are <span class="boldText" ng:controller="WorldWideRankingCtrl">{{this.playersCount()}}</span> total players in<span ng:controller="CountriesCtrl"> {{this.countriesCount()}}</span> countries</div>
   </div>
   <div id="rankShareBox">
     <div id="rankShareBoxTitleTop">Sharing</div>
