@@ -248,7 +248,6 @@ function WorldWideRankingCtrl($resource){
 		return number;
 	}
 	this.doFilter = function(elem) {
-    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
         this.ranking.push(elem);
         return true;
     }
