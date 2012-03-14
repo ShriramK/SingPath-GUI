@@ -14,7 +14,7 @@ function loadProblemsetDetails(problemset_id) {
     showTab(1, problemset_id);
     $('table.tabHeader > tbody > tr > td').each(function() {$(this).show();});
     ajax({
-        url: '/jsonapi/list_my_contributed_problems',
+        url: '../jsonapi/list_my_contributed_problems',
         data: {details: 1},
         success: function(problems) {
             var contributions = {};
@@ -29,7 +29,7 @@ function loadProblemsetDetails(problemset_id) {
             } catch (e) {
             }
             ajax({
-                url: '/jsonapi/problems/'+problemset_id,
+                url: '../jsonapi/problems/'+problemset_id,
                 data: {details: 1},
                 success: function(problems) {
                     var s = '<table class="levelGames">';
@@ -275,7 +275,7 @@ function hideContributionButtons() {
 }
 function contributeProblem(problem_id) {
     ajax({
-        url: '/jsonapi/problem_contribute',
+        url: '../jsonapi/problem_contribute',
         data: {problem_id: problem_id, details: 1},
         success: function(result) {
             alert('Contribution is successfully registered. Please wait until your contribution is accepted by the Path Editor');
@@ -306,7 +306,7 @@ function editProblem(problem_id) {
 }
 function moveProblemUp(problem_id) {
     ajax({
-        url: '/jsonapi/move_problem_up',
+        url: '../jsonapi/move_problem_up',
         data: {problem_id: problem_id},
         success: function(result) {
             if (result['success']) {
@@ -317,7 +317,7 @@ function moveProblemUp(problem_id) {
 }
 function moveProblemDown(problem_id) {
     ajax({
-        url: '/jsonapi/move_problem_down',
+        url: '../jsonapi/move_problem_down',
         data: {problem_id: problem_id},
         success: function(result) {
             if (result['success']) {
@@ -335,7 +335,7 @@ function deleteProblem(problem_id) {
 function deleteProblemConfirmed(problem_id) {
     $('#popup').hide();
     ajax({
-        url: '/jsonapi/delete_problem',
+        url: '../jsonapi/delete_problem',
         data: {problem_id: problem_id},
         success: function(result) {
             alert('The problem successfully deleted!');
@@ -374,7 +374,7 @@ function saveEditProblemset(problemset_id) {
         'description': $('#popup_problemset_desc').val()
     };
     ajax({
-        url: '/jsonapi/edit_problemset',
+        url: '../jsonapi/edit_problemset',
         data: data,
         success: function(result) {
             if (result.error) {
