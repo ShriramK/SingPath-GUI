@@ -294,7 +294,7 @@ function SingaporeRankingCtrl($resource){
     }
 }
 
-WorldWideRankingCtrl.$inject = ["$resource"];
+SingaporeRankingCtrl.$inject = ["$resource"];
 
 
 function HeadMenuOptionsCtrl($resource, $location) {
