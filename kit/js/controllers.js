@@ -205,6 +205,10 @@ YourBadgesBoxTop.$inject = ["$resource"];
 function CountriesCtrl($resource) {	
     allCountriesModel = $resource("../jsonapi/all_countries");
     this.allCountries = allCountriesModel.get();
+    this.countriesCount= function(){
+    	return 10;
+    	//return this.allCountries.countries.length();
+    }
 }
 
 CountriesCtrl.$inject = ["$resource"];
@@ -215,6 +219,43 @@ function TournamentRanking($resource){
 }
 
 TournamentRanking.$inject = ["$resource"];
+
+function WorldWideRankingCtrl($resource){
+	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
+	this.worldWideRanking = worldWideRanking.get();
+	this.ranking = [];
+	this.checkLast = function(elem){
+		var index = this.ranking.indexOf(elem);
+		if (index == 24)
+			return "UR";
+		width = 2;
+		number = elem.rank;
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
+	this.addZeros = function(elem){
+		width = 2;
+		number = elem.rank;
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
+	this.doFilter = function(elem) {
+    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
+        this.ranking.push(elem);
+        return true;
+    }
+}
+
+WorldWideRankingCtrl.$inject = ["$resource"];
+
 
 function HeadMenuOptionsCtrl($resource, $location) {
   // Taking all menu options
