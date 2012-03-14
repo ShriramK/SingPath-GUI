@@ -86,7 +86,7 @@ function zeroFill( number, width )
 	      <div id="raBox{{checkLast(player)}}Details"><span class="boldText">{{player.nickname}}</span><br /></div>
 	      <div id="raBox{{checkLast(player)}}CountryZone"><img ng:src="{{player.playerCountry.flagUrl}}" alt="{{player.playerCountry.countryName}}" name="{{player.playerCountry.countryName}}" width="38" height="34" border="0" id="{{player.playerCountry.countryName}}" /></div>
 	      <div id="raBox{{checkLast(player)}}BadgesZone01"><img ng:src="{{player.playerCountry.badge.url}}" alt="{{player.playerCountry.badge.description}}" /></div>
-	      <div id="raBox{{checkLast(player)}}Solved"><p>{{player.playerCountry.solved_num}}</p></div>
+	      <div id="raBox{{checkLast(player)}}Solved"><span class="boldText">{{player.playerCountry.solved_num}}</span></div>
       </div>
     
   </div>
