@@ -144,6 +144,7 @@ describe('Tests From SergeyGalenko', function() {
       element('#viewRanking .viewRankingButton').click();
       pause();
       expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); // on tournamentRanking.html?tournamentID=11288841 page?
+      pause();
   });
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
