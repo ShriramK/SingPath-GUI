@@ -150,6 +150,13 @@ function loadLanguageSelector() {
         }
     });
 }
+
+function SelectTag(){
+	var tag=getParameterFromURL('tag',false);
+	if(tag)
+		$('#tourInfoBoxTagDropDown').html(tag);
+}
+
 $(document).ready(function() {
     $("div#loading").ajaxStart(function() {
         $("div#loading").show();
@@ -180,4 +187,5 @@ $(document).ready(function() {
     autoPreloadRollsImages();
     initRolls();
     showAdv();
+    SelectTag();
 });
