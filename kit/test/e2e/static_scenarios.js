@@ -1,15 +1,16 @@
 /* jasmine-like end2end tests go here */
 
+function log(message) {
+  console.log(message);
+}
+
 describe('kit', function() {
   pauseAll = false;
   
   it('Testing kit/index.html', function() {
 
       browser().navigateTo('../../index.html');
-      
-      // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
-      // expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
-      
+       expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
       if (pauseAll) pause();
   });
 
@@ -34,9 +35,11 @@ describe('kit', function() {
   it('Testing kit/ranking.html', function() {
       browser().navigateTo('../../ranking.html');
       expect(browser().location().hash()).toBe('');
-      
-      // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
-      // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+      expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+
+      expect(element(".smallToggleButton:first").text()).toBe("All");
+      expect(element(".smallToggleButton:last").text()).toBe("Ruby");
+      expect(element(".smallToggleButton").count()).toBe(7);
 
       expect(element(".worldwideRankingsNickname").count()).toBe(25);
       expect(element(".worldwideRankingsSolved").count()).toBe(25);
@@ -113,25 +116,45 @@ describe('kit', function() {
             //pause();
         });
         
-    });  
+    });
     describe('Extraa Index-specific tests', function() {
         beforeEach(function() {
             browser().navigateTo('../../index.html');
         });
         
         it('Testing kit/index.html', function() {
-          // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
-          // expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
+              expect(element('#messageBox').text()).toBe('Mark Zuckerberg');
         });
     });
 });
-describe('Test From SergeyGalenko', function() {
+
+
+describe('Tests From SergeyGalenko', function() {
+  
   it('Testing kit/contributions.html', function() {
       browser().navigateTo('../../contributions.html');
-      expect(element('#menuOptionsText > .menuSelected').text()).toMatch('contribution');       
+      expect(element('#menuOptionsText > .menuSelected').text()).toBe('contribution');
       expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
-      
-      // Ivan, Note: Full contributors test coverage is available in ivan_static_scenarios.js
-      // expect(element("#contributorsAboutBoxText img").count()).toBe(5);
+      expect(element("#contributorsAboutBoxText img").count()).toBe(5);
+       if (pauseAll) pause();
   });
+  
+  it('Testing kit/tournament.html', function() {
+      browser().navigateTo('../../tournament.html');
+      element('#viewRanking .viewRankingButton').click();
+      pause();
+      expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); // on tournamentRanking.html?tournamentID=11288841 page?
+      pause();
+  });
+  
+  it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
+    browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
+
+/*expect(element('#tournamentTabs > td:eq(1)').text()).toBe('Fun Round');
+element('#tournamentTabs > td:eq(1)').click();
+element('#tournamentTabs .tabHeaderCenter').click();
+pause();
+*/
+  });
+  
 });
