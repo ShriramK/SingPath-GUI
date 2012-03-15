@@ -74,9 +74,11 @@ describe('Additinal test from Matias', function() {
 	  it('Testing kit/ranking.html', function() {
 	      browser().navigateTo('../../ranking.html');
 	      expect(browser().location().hash()).toBe('');
-	      
-	      // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
-	      // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+	      expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+
+	      expect(element(".smallToggleButton:first").text()).toBe("All");
+	      expect(element(".smallToggleButton:last").text()).toBe("Ruby");
+	      expect(element(".smallToggleButton").count()).toBe(7);
 
 	      expect(element(".worldwideRankingsNickname").count()).toBe(25);
 	      expect(element(".worldwideRankingsSolved").count()).toBe(25);
