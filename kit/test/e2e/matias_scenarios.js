@@ -71,6 +71,31 @@ describe('Additinal test from Matias', function() {
 		    expect(element("#yourPathBadgesBox > img:last").attr('src')).toBe("../static/badges/ruby/r009_off.png");
 	  });
 	  
+	  it('Testing kit/ranking.html', function() {
+	      browser().navigateTo('../../ranking.html');
+	      expect(browser().location().hash()).toBe('');
+	      
+	      // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
+	      // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+
+	      expect(element(".worldwideRankingsNickname").count()).toBe(25);
+	      expect(element(".worldwideRankingsSolved").count()).toBe(25);
+	      expect(element(".countryRankingsName").count()).toBe(79);
+	      expect(element(".countryRankingsPlayer").count()).toBe(79);
+
+	      expect(element(".worldwideRankingsNickname:first").text()).toBe('Danny');
+	      expect(element(".worldwideRankingsSolved:first").text()).toBe('243');
+	      expect(element(".countryRankingsName:first").text()).toBe('Singapore');
+	      expect(element(".countryRankingsPlayer:first").text()).toBe('1828');
+
+	      expect(element(".worldwideRankingsNickname:last").text()).toBe('Mark Zuckerberg');
+	      expect(element(".worldwideRankingsSolved:last").text()).toBe('44');
+	      expect(element(".countryRankingsName:last").text()).toBe('Uruguay');
+	      expect(element(".countryRankingsPlayer:last").text()).toBe('1');
+	      if (pauseAll) pause();
+	      //pause();
+	  });
+	  
 	  
 	  
 	});
