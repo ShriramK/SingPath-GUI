@@ -1,11 +1,11 @@
 describe('Additinal test from Matias', function() {
-	  it('Testing kit/news.html', function() {
+	  /*it('Testing kit/news.html', function() {
 	    browser().navigateTo('../../news.html');
 	    expect(element('#menuOptionsText > .menuSelected').text()).toMatch('news');
 	    expect(element('#contributorsInfoBoxText > p').text()).toMatch('News');
 	    
       // Ivan, Note: Full contributors test coverage is available in ivan_static_scenarios.js
-      /*
+      
 	    // Test the content of the contributors right menu
 	    expect(element('#contributorsAboutBoxText > a > img').count()).toBe(5);
 	    expect(repeater('#contributorsAboutBoxText > a > img'))
@@ -16,8 +16,8 @@ describe('Additinal test from Matias', function() {
 	    expect(element('#contributorsAboutBoxText > a > img:eq(2)').attr('alt')).toBe('Contributor Allen Downey');
 	    expect(element('#contributorsAboutBoxText > a > img:eq(3)').attr('alt')).toBe('Contributor Chris Boesch');
 	    expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
-      */
-	  });
+      
+	  });*/
 	  //badges.html
 	  it('Testing kit/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
@@ -74,28 +74,19 @@ describe('Additinal test from Matias', function() {
 	  it('Testing kit/ranking.html', function() {
 	      browser().navigateTo('../../ranking.html');
 	      expect(browser().location().hash()).toBe('');
-	      expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+	      //expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
 
-	      expect(element(".smallToggleButton:first").text()).toBe("All");
-	      expect(element(".smallToggleButton:last").text()).toBe("Ruby");
-	      expect(element(".smallToggleButton").count()).toBe(7);
-
-	      expect(element(".worldwideRankingsNickname").count()).toBe(25);
-	      expect(element(".worldwideRankingsSolved").count()).toBe(25);
-	      expect(element(".countryRankingsName").count()).toBe(79);
-	      expect(element(".countryRankingsPlayer").count()).toBe(79);
-
-	      expect(element(".worldwideRankingsNickname:first").text()).toBe('Danny');
-	      expect(element(".worldwideRankingsSolved:first").text()).toBe('243');
-	      expect(element(".countryRankingsName:first").text()).toBe('Singapore');
-	      expect(element(".countryRankingsPlayer:first").text()).toBe('1828');
-
-	      expect(element(".worldwideRankingsNickname:last").text()).toBe('Mark Zuckerberg');
-	      expect(element(".worldwideRankingsSolved:last").text()).toBe('44');
-	      expect(element(".countryRankingsName:last").text()).toBe('Uruguay');
-	      expect(element(".countryRankingsPlayer:last").text()).toBe('1');
-	      if (pauseAll) pause();
-	      //pause();
+	      expect(element('#rankCtryList > div').count()).toBe(79);
+	      expect(element('#rankCtryList01Flag01> img').attr('alt')).toBe('Singapore');
+	      expect(element('#rankCtryList11Flag01> img').attr('alt')).toBe('Vietnam');
+	      expect(element('#rankCtryList79Flag01> img').attr('alt')).toBe('Uruguay');
+	      
+	      element('#tourInfoBoxTitleTopAll #firstMiddleSlice').click(); //Singapore
+	      expect(element('#rankingList > div:last').attr('id')).toBe('raBox20');
+	      
+	      element('#tourInfoBoxTitleTopAll #secondMiddleSlice').click(); //WorldWide
+	      expect(element('#rankingList > div:last').attr('id')).toBe('raBoxUR');
+	      
 	  });
 	  
 	  

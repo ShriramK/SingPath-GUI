@@ -64,12 +64,12 @@ function zeroFill( number, width )
   </div>
   <div id="shadowUnderBar"></div>
   <div id="infoBarRanking"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('leftArrow','','../alex/_images/commonButtons/leftButtonSmaller_on.png',1)"><img src="../alex/_images/commonButtons/leftButtonSmaller_off.png" alt="move to previous paths" name="leftArrow" width="20" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('allPaths','','../alex/_images/homePage/homePageButtons/allSmall_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/allSmall_off.png" alt="select all paths" name="allPaths" width="104" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('htmlJSPButton','','../alex/_images/homePage/homePageButtons/html_JSPSmall_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/html_JSPSmall_off.png" alt="HTML and JSP ranking" name="htmlJSPButton" width="104" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('javaButton','','../alex/_images/homePage/homePageButtons/javaPathSmaller_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/javaPathSmaller_off.png" alt="java ranking" name="javaButton" width="104" height="24" border="0"></a><img src="../alex/_images/homePage/homePageButtons/javaScriptPathSmaller_on.png" width="104" height="24" alt="JavaScript Ranking"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('objectiveCPath','','../alex/_images/homePage/homePageButtons/objectiveCPathSmaller_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/objectiveCPathSmaller_off.png" alt="Objective-C Path Ranking" name="objectiveCPath" width="104" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('pythonPathRanking','','../alex/_images/homePage/homePageButtons/pythonPathSmaller_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/pythonPathSmaller_off.png" alt="Python Path Ranking" name="pythonPathRanking" width="104" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('pythonBeginnerButton','','../alex/_images/homePage/homePageButtons/beginnerPythonPathSmall_on.png',1)"><img src="../alex/_images/homePage/homePageButtons/beginnerPythonPathSmall_off.png" alt="Python Beginner Ranking" name="pythonBeginnerButton" width="104" height="24" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('rightArrow','','../alex/_images/commonButtons/rightButtonSmaller_on.png',1)"><img src="../alex/_images/commonButtons/rightButtonSmaller_off.png" alt="move to next paths" name="rightArrow" width="20" height="24" border="0"></a></div>
-  <div id="tourInfoBox">
+  <div id="tourInfoBox" ng:controller="WorldWideRankingCtrl">
     <div id="tourInfoBoxTitleTopAll">
       <div id="firstStartSlice"></div>
-      <div id="firstMiddleSlice">Singapore</div>
+      <div id="firstMiddleSlice" ng:click="ranking = this.worldWideRanking.rankings.filter(doFilter2);">Singapore</div>
       <div id="firstJoinSlice"></div>
-      <div id="secondMiddleSlice">Worldwide</div>
+      <div id="secondMiddleSlice" ng:click="ranking = this.worldWideRanking.rankings.filter(doFilter);">Worldwide</div>
       <div id="secondEndSlice"></div>
     </div>
     <div id="tourInfoBoxBodyInfo">
@@ -78,8 +78,8 @@ function zeroFill( number, width )
       </div>
       <div id="tourInfoBoxTitleSolved">Solved</div>
       <p>&nbsp;</p>
-      <div id="rankingList" ng:controller="WorldWideRankingCtrl">
-      <div ng:repeat="player in this.worldWideRanking.rankings.filter(doFilter)" id="raBox{{checkLast(player)}}">
+      <div id="rankingList">
+      <div ng:repeat="player in ranking" id="raBox{{checkLast(player)}}">
 	      <div id="raBox{{checkLast(player)}}NumDetails"><img src="../alex/_images/commonButtons/numbers/number{{addZeros(player)}}.png" alt="n{{player.rank}}"></div>
 	      <div id="raBox{{checkLast(player)}}Gravatar"><img ng:src="{{player.gravatar}}" width="46" height="46" alt="gravatar" /></div>
 	      <div id="raBox{{checkLast(player)}}Details"><span class="boldText">{{player.nickname}}</span><br /></div>
@@ -87,8 +87,7 @@ function zeroFill( number, width )
 	      <div id="raBox{{checkLast(player)}}BadgesZone01"><img ng:src="{{player.badge.url}}" alt="{{player.badge.description}}" /></div>
 	      <div id="raBox{{checkLast(player)}}BadgesZone02"></div>
 	      <div id="raBox{{checkLast(player)}}Solved"><span class="boldText">{{player.solved_num}}</span></div>
-      </div>
-    
+      </div>    
   	</div>
     <div id="tourInfoBoxStats">There are <span class="boldText" ng:controller="WorldWideRankingCtrl">{{this.playersCount()}}</span>players in Singapore </div>
     </div>
@@ -100,30 +99,20 @@ function zeroFill( number, width )
     <div id="countryRankingTitleUsers"> users</div>
     <div id="countryRankingBoxViewButton"><img src="../alex/_images/commonButtons/viewCountries_off.png" alt="view all the countries" name="viewAllStaff" width="119" height="24" border="0" id="viewAllStaff" onMouseOver="MM_swapImage('viewAllStaff','','../alex/_images/commonButtons/viewCountries_on.png',1)" onMouseOut="MM_swapImgRestore()" /></div>
     <div id="rankCtryList" ng:controller="RankingCtrl">
-    <div ng:repeat="country in this.country_ranking.rankings" id="rankCtryList01">
-      <div id="rankCtryList01NumDetails01">
+    <div ng:repeat="country in this.country_ranking.rankings" id="rankCtryList{{addZeros(country)}}">
+      <div id="rankCtryList{{addZeros(country)}}NumDetails01">
 	      <img ng:src="_images/commonButtons/numbers/number{{country.rank}}.png" alt="{{country.rank}}"/>
 	  </div>
-	  <div id="rankCtryList01Flag01">
+	  <div id="rankCtryList{{addZeros(country)}}Flag01">
 	    <img ng:src='{{country.flagUrl.replace("/static/", "../static/").replace("_on","_off")}}' alt="{{country.countryName}}" name="{{country.countryName}}Flag" width="38" height="34" border="0">
 	  </div>
-	  <div id="rankCtryList01Details01">{{country.countryName}}</div>
-	  <div id="rankCtryList01NumPeople01">{{country.player_num}}</div>
+	  <div id="rankCtryList{{addZeros(country)}}Details01">{{country.countryName}}</div>
+	  <div id="rankCtryList{{addZeros(country)}}NumPeople01">{{country.player_num}}</div>
     </div>
     </div>
     
    <div id="countryRankingBoxStats">
    There are <span class="boldText" ng:controller="WorldWideRankingCtrl">{{this.playersCount()}}</span> total players in<span ng:controller="CountriesCtrl"> {{this.countriesCount()}}</span> countries</div>
-  </div>
-  <div id="rankShareBox">
-    <div id="rankShareBoxTitleTop">Sharing</div>
-    <div id="rankShareBoxInfoText">Share This </div>
-    <div id="rankShareBoxInfoAddThis">
-      <!-- AddThis Button BEGIN -->
-      <div class="addthis_toolbox addthis_default_style addthis_32x32_style"> <a class="addthis_button_preferred_1"></a> <a class="addthis_button_preferred_2"></a> <a class="addthis_button_preferred_3"></a> <a class="addthis_button_preferred_4"></a> <a class="addthis_button_compact"></a> <a class="addthis_counter addthis_bubble_style"></a> </div>
-      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=shanewi11iams"></script>
-      <!-- AddThis Button END -->
-    </div>
   </div>
   <div id="rankStatsBox">
     <div id="rankStatsBoxTitleTop">Statistics</div>

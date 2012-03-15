@@ -72,6 +72,17 @@ IndexCtrl.$inject = ['$resource'];
 function RankingCtrl($resource) {
   countryModel = $resource("../jsonapi/country_ranking");
   this.country_ranking = countryModel.get();
+  
+  this.addZeros = function(elem){
+		width = 2;
+		number = elem.rank;
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
 }
 
 RankingCtrl.$inject = ["$resource"];
@@ -255,6 +266,15 @@ function WorldWideRankingCtrl($resource){
         this.ranking.push(elem);
         return true;
     }
+	this.doFilter2 = function(elem) {
+    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
+        var isSingapore = elem.playerCountry.countryName=="Singapore";
+        if (isSingapore){
+        	this.ranking.push(elem);
+        	return true;
+        }
+        return false;
+    }
 	this.playersCount= function(){
         var index = 0;
     	angular.forEach(this.worldWideRanking.rankings, function(elem) {
@@ -265,47 +285,6 @@ function WorldWideRankingCtrl($resource){
 }
 
 WorldWideRankingCtrl.$inject = ["$resource"];
-
-function SingaporeRankingCtrl($resource){
-	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
-	this.worldWideRanking = worldWideRanking.get();
-	this.ranking = [];
-	this.checkLast = function(elem){
-		var index = this.ranking.indexOf(elem);
-		if (index == 24)
-			return "UR";
-		width = 2;
-		number = elem.rank;
-		width -= number.toString().length;
-		if ( width > 0 )
-		  {
-		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
-		  }
-		return number;
-	}
-	this.addZeros = function(elem){
-		width = 2;
-		number = elem.rank;
-		width -= number.toString().length;
-		if ( width > 0 )
-		  {
-		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
-		  }
-		return number;
-	}
-	this.doFilter = function(elem) {
-    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
-        var isSingapore = elem.playerCountry.countryName=="Singapore";
-        if (isSingapore){
-        	this.ranking.push(elem);
-        	return true;
-        }
-        return false;
-    }
-}
-
-SingaporeRankingCtrl.$inject = ["$resource"];
-
 
 function HeadMenuOptionsCtrl($resource, $location) {
   // Taking all menu options
