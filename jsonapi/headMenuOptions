@@ -1,9 +1,9 @@
 [
-{"text": "home"        , "href": "index.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
-{"text": "about us"    , "href": "aboutUs.html"      , "target": "", "class": "", "title": ""},
-{"text": "how to use"  , "href": "howToUse.html"     , "target": "", "class": "", "title": ""},
-{"text": "contribution", "href": "contributions.html", "target": "", "class": "", "title": ""},
-{"text": "tournament"  , "href": "tournament.html"   , "target": "", "class": "", "title": ""},
-{"text": "news"        , "href": "news.html"         , "target": "", "class": "", "title": ""},
-{"text": "shop"        , "href": "shop.html"         , "target": "", "class": "", "title": ""}
+{"text": "Play"        , "href": "home.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
+{"text": "Splash"      , "href": "index.html"        , "target": "", "class": "", "title": ""},
+{"text": "About Us"    , "href": "aboutUs.html"      , "target": "", "class": "", "title": ""},
+{"text": "How to Use"  , "href": "howToUse.html"     , "target": "", "class": "", "title": ""},
+{"text": "Contribution", "href": "contributions.html", "target": "", "class": "", "title": ""},
+{"text": "Tournament"  , "href": "tournament.html"   , "target": "", "class": "", "title": ""},
+{"text": "News"        , "href": "news.html"         , "target": "", "class": "", "title": ""}
 ]

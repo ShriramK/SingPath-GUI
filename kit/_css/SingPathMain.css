@@ -1549,6 +1549,41 @@ td.worldwideRankingsOut {
   padding-left: 15px;
   padding-right: 12px;
 }
+td.worldwideRankingsTop {
+  padding:10px 12px 8px 15px;
+}
+
+#tourInfoBoxTagDropDown{
+font-weight: bold;
+color: #517A83;
+border: 0px none #FFF100;
+margin: 0px;
+padding: 5px 0px 0px 15px;
+text-align: left;
+float: right;
+height: 27px;
+width: 280px;
+position: relative;
+top: -6px;
+font-size: 16px;
+background: url(../_images/rankingPage/tagBox.png) no-repeat;
+right: 10px;
+}
+#tourInfoBoxTagBox{
+font-weight: bold;
+color: white;
+border: 0px none #FFF100;
+margin: 0px;
+padding: 5px 0px 0px;
+text-align: left;
+float: left;
+height: 30px;
+
+position: relative;
+left: 30px;
+
+font-size: 16px;
+}
 div#worldwideRankingsOut {
   height: 1027px;
   overflow: auto;
