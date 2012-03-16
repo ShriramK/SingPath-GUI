@@ -7,13 +7,6 @@ function log(message) {
 describe('kit', function() {
   pauseAll = false;
   
-  it('Testing kit/index.html', function() {
-
-      browser().navigateTo('../../index.html');
-      expect(element('.nickname').text()).toBe('\n          Mark Zuckerberg\n        ');
-      if (pauseAll) pause();
-  });
-
   it('Testing kit/home.html', function() {
       browser().navigateTo('../../home.html');
       expect(browser().location().hash()).toBe('');
@@ -90,44 +83,22 @@ describe('kit', function() {
         });
         
     });
-    describe('Extraa Index-specific tests', function() {
-        beforeEach(function() {
-            browser().navigateTo('../../index.html');
-        });
-        
-        it('Testing kit/index.html', function() {
-              expect(element('.nickname').text()).toBe('\n          Mark Zuckerberg\n        ');
-        });
-    });
 });
 
 
 describe('Tests From SergeyGalenko', function() {
-  
-  it('Testing kit/contributions.html', function() {
-      browser().navigateTo('../../contributions.html');
-      expect(element('#menuOptionsText > .menuSelected').text()).toBe('\n      Contribution\n    ');
-      expect(element('#contributorsInfoBoxText > ul li').count()).toBe(4);
-      //expect(element("#contributorsAboutBoxText img").count()).toBe(5);
-       if (pauseAll) pause();
-  });
-  
+
   it('Testing kit/tournament.html', function() {
       browser().navigateTo('../../tournament.html');
-      //element('#viewRanking .viewRankingButton').click();
-      //pause();
-      //expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); // on tournamentRanking.html?tournamentID=11288841 page?
-      //pause();
+      element('#viewRanking .viewRankingButton').click();
+      //This click is not working
+      expect(element('#tourHeadingTextTitle').text()).toBe('PyCon 2012'); // on tournamentRanking.html?tournamentID=11288841 page?
   });
   
   it('Testing kit/tournamentRanking.html?tournamentID=11288841', function(){
     browser().navigateTo('../../tournamentRanking.html?tournamentID=11288841');
+    expect(element('#levMBText').text()).toBe('PyCon 2012 Results'); 
 
-/*expect(element('#tournamentTabs > td:eq(1)').text()).toBe('Fun Round');
-element('#tournamentTabs > td:eq(1)').click();
-element('#tournamentTabs .tabHeaderCenter').click();
-pause();
-*/
   });
   
 });
