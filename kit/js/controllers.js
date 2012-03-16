@@ -228,17 +228,39 @@ function CountriesCtrl($resource) {
 
 CountriesCtrl.$inject = ["$resource"];
 
-function TournamentRanking($resource){
+function TagsCtrl($resource){
+	tagsCtrl = $resource('../jsonapi/tags');
+	this.tagsCtrl = tagsCtrl.get();
+	this.index = 0;
+	this.tagCount= function(){
+        var index = 0;
+    	angular.forEach(this.tagsCtrl.tags, function(elem) {
+          ++index;
+        });
+    	return index;
+    };
+	this.selectNextTag = function(){
+		if (this.index<this.tagCount()-1)
+			++this.index;
+		else
+			this.index = 0;
+	}
+}
+
+TagsCtrl.$inject = ["$resource"];
+
+function TournamentRankingCtrl($resource){
 	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
 	this.tournamentRanking = tournamentRanking.get();
 }
 
-TournamentRanking.$inject = ["$resource"];
+TournamentRankingCtrl.$inject = ["$resource"];
 
 function WorldWideRankingCtrl($resource){
 	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
 	this.worldWideRanking = worldWideRanking.get();
 	this.ranking = [];
+	this.tagCtrl = undefined;
 	this.checkLast = function(elem){
 		var index = this.ranking.indexOf(elem);
 		if (index == 24)
@@ -270,6 +292,16 @@ function WorldWideRankingCtrl($resource){
     	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
         var isSingapore = elem.playerCountry.countryName=="Singapore";
         if (isSingapore){
+        	this.ranking.push(elem);
+        	return true;
+        }
+        return false;
+    }
+	this.doFilterTag = function(elem) {
+    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
+		window.alert(this.tagsCtrl.tags[this.tagsCtrl.index]);
+        var isThisCountry = elem.playerCountry.countryName==this.tagCtrl.tagsCtrl.tags[this.tagsCtrl.index];
+        if (isThisCountry){
         	this.ranking.push(elem);
         	return true;
         }
