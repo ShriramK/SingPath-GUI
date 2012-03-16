@@ -251,3 +251,22 @@ function CopyrightCtrl() {
   // Setting the Copyright year
   this.year = new Date().getFullYear();
 }
+
+
+// Controller for the home.html
+// TODO: To be updated
+function HomeController($resource, $route, $xhr){
+  this.$xhr = $xhr;
+  this.player = undefined;
+  this.Jsonapi = $resource('../jsonapi/:id', {id: '@id'});
+  this.loadPlayer();
+  
+  HomeController.prototype = {
+    loadPlayer: function() {
+      this.player = this.Jsonapi.get({id: 'player_test'}, function(p){
+        console.log(p)
+      });
+    }
+  }
+}
+HomeController.$inject = ['$resource', '$route', '$xhr'];
