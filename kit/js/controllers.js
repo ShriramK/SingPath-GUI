@@ -286,6 +286,23 @@ function WorldWideRankingCtrl($resource){
 
 WorldWideRankingCtrl.$inject = ["$resource"];
 
+function HeatRankingCtrl($resource){
+	heatRanking = $resource('../jsonapi/get_heat_ranking');
+	this.heatRanking = heatRanking.get();
+	this.heatRankingArray = [];
+	
+	this.doFilter = function(elem) {
+        this.heatRankingArray.push(elem);
+        return true;
+    }
+	this.doFilter2 = function(elem) {
+        this.heatRankingArray.push(elem);
+        return true;
+    }
+}
+HeatRankingCtrl.$inject = ["$resource"];
+
+
 function HeadMenuOptionsCtrl($resource, $location) {
   // Taking all menu options
   this.options = $resource('../jsonapi/headMenuOptions').query(function(options) {
