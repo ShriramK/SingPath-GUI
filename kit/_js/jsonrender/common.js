@@ -199,7 +199,7 @@ function createBadge(imageURL, tooltip, clazz) {
 function loadOtherPlayerProfile(player_id, $popup, afterFunc) {
     // player data
     ajax({
-        url: '../jsonapi/player'+(player_id ? '/'+player_id : ''),
+        url: '../jsonapi/player?player_id='+(player_id ? player_id : ''),
         data: {load_badges: 1},
         success: function(player) {
             /*var k = "";

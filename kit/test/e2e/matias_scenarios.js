@@ -1,7 +1,7 @@
 describe('Additinal test from Matias', function() {
 	  it('Testing kit/news.html', function() {
 	    browser().navigateTo('../../news.html');
-	    expect(element('#menuOptionsText > .menuSelected').text()).toMatch('news');
+	    expect(element('#menuOptionsText > .menuSelected').text()).toMatch('News');
 	    expect(element('#contributorsInfoBoxText > p').text()).toMatch('News');
 	    
       // Ivan, Note: Full contributors test coverage is available in ivan_static_scenarios.js
