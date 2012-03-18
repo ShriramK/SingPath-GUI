@@ -69,6 +69,15 @@ function IndexCtrl($resource) {
 IndexCtrl.$inject = ['$resource'];
 
 
+function FooterLogosCtrl($resource) {
+  this.baseSrcBegin = "_images/landingPages/indexPage/logos/";
+  this.baseSrcEnd   = "Logo.png";
+  this.footerLogos  = $resource('../jsonapi/footerLogos').query();
+}
+
+FooterLogosCtrl.$inject = ['$resource'];
+
+
 function RankingCtrl($resource) {
   countryModel = $resource("../jsonapi/country_ranking");
   this.country_ranking = countryModel.get();
