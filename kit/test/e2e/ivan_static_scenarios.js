@@ -9,7 +9,7 @@ function testCloak(selector) {
 // Test the image base and hover URLs
 function testImageBaseAndHover(imageSelector, imagesUrl) {
   // Test image base URL
-  expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_off.png"\\)$');
+  expect(element(imageSelector).css('background-image')).toMatch('^url\\("?http(.)+'+ imagesUrl +'_off.png"?\\)$');
   
   // Get image current class
   expect(element(imageSelector).attr('class')).value(function(currentClass) {
@@ -21,7 +21,7 @@ function testImageBaseAndHover(imageSelector, imagesUrl) {
     imageSelector = currentClass ? imageSelector.replace(currentClass, hoverClass.replace(' ', '.')) : imageSelector+'.hover';
     
     // Test image hover URL
-    expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_on.png"\\)$');
+    expect(element(imageSelector).css('background-image')).toMatch('^url\\("?http(.)+'+ imagesUrl +'_on.png"?\\)$');
   });
 }
 
