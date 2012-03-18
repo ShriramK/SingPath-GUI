@@ -2192,9 +2192,11 @@ table.pager {
 #wrapper #landingImage #menuOptions a:hover , #landingImage #menuOptions a:active{ font-weight: bold; color: #fff100; text-align: center; border: 2px solid #fff100; margin: 0px 5px; padding: 2px 14px; }
 #wrapper #landingImage  #menuOptions #menuOptionsText{ color: #FFF; padding: 0px; float: right; width: 750px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 25px; top: 7px; right: 0px; 
 }
-#wrapper #landingImage #landingImageTVIcon  { margin: 0px; padding: 0px; height: 160px; width: 135px; position: relative; top: 160px; left: 20px; 
-}
-#wrapper #landingImage #statsTextBox{ margin: 0px; padding: 0px; height: 253px; width: 365px; background: url(../_images/landingPages/indexPage/statisticBox.png) no-repeat; float: right; right: 0px; position: relative; clear: none; bottom: 95px; }
+#landingImageTVIcon  { display: block; position: relative; top: 140px; left: 20px; width: 150px; margin: 0px; padding: 0px; }
+#landingImageTVIcon  .tvIcon  { background-image: url(../_images/landingPages/landingPageButtons/television_off.png); background-repeat: no-repeat; width: 150px; height: 160px; }
+#landingImageTVIcon .tvIcon:hover, #landingImageTVIcon .tvIcon.hover, #landingImageTVIcon:hover .tvIcon, #landingImageTVIcon.hover .tvIcon { background-image: url(../_images/landingPages/landingPageButtons/television_on.png); }
+
+#wrapper #landingImage #statsTextBox{ margin: 0px; padding: 0px; height: 253px; width: 365px; background: url(../_images/landingPages/indexPage/statisticBox.png) no-repeat; float: right; right: 0px; position: relative; clear: none; bottom: 112px; }
 #wrapper #landingImage #statsTextBox #statsTextBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 20px; top: 10px; font-size: 16px; }
 #wrapper #landingImage #statsTextBox #statsTextBoxtext{ margin: 0px; padding: 5px 0px; height: 190px; width: 327px; position: relative; left: 20px; top: 8px; float: left; background-repeat: no-repeat; font-weight: normal; text-align: left; overflow: auto; color: #FFF; border-top: none; border-right: none; border-bottom: none; border-left: none; 
 }
@@ -2212,8 +2214,13 @@ table.pager {
 
 #wrapper #friendsTextBox #friendsTextBoxtext img { margin: 0px; padding: 4px 3px 0px; position: relative; background-repeat: no-repeat; font-weight: bold; color: #FFF; border-top: none; border-right: none; border-bottom: none; border-left: none; }
 
-#wrapper #friendsTextBox #friendsTextBoxtextSocial { margin: 0px; padding: 7px 15px 7px 5px; height: 35px; width: 322px; position: relative; left: 10px; top: 2px; float: left; background-repeat: no-repeat; font-weight: normal; text-align: right; color: #517A83; border-top: none; border-right: none; border-bottom: none; border-left: none; }
-#wrapper #friendsTextBox #friendsTextBoxtextSocial img { margin: 0px; padding: 4px 5px 0px; position: relative; background-repeat: no-repeat; font-weight: bold; color: #FFF; border-top: none; border-right: none; border-bottom: none; border-left: none; }
+#friendsTextBoxtextSocial { margin: 0px; padding: 17px 15px 7px 5px; height: 35px; width: 322px; position: relative; left: 10px; top: 2px; float: left; background-repeat: no-repeat; font-weight: normal; text-align: right; color: #517A83; border-top: none; border-right: none; border-bottom: none; border-left: none; }
+
+#friendsTextBoxtextSocial .text { line-height: 30px; }
+#friendsTextBoxtextSocial .facebook { background-image: url(../_images/landingPages/landingPageButtons/socialButtonsFacebook_off.png); background-repeat: no-repeat; display: block; float: right; width: 36px; height: 29px; margin-left: 10px; }
+#friendsTextBoxtextSocial .facebook:hover, #friendsTextBoxtextSocial .facebook.hover { background-image: url(../_images/landingPages/landingPageButtons/socialButtonsFacebook_on.png); }
+#friendsTextBoxtextSocial .twitter { background-image: url(../_images/landingPages/landingPageButtons/socialButtonsTwitter_off.png); background-repeat: no-repeat; display: block; float: right; width: 36px; height: 29px; margin-left: 5px; }
+#friendsTextBoxtextSocial .twitter:hover, #friendsTextBoxtextSocial .twitter.hover { background-image: url(../_images/landingPages/landingPageButtons/socialButtonsTwitter_on.png); }
 
 #wrapper #landingLogos { margin: 0px; padding: 0px; height: 75px; width: 906px; clear: both; float: left; left: 0px; top: 0px; }
 #wrapper #aboutUsMenuOptions  { color: #FFF; padding: 0px; float: left; width: 906px; position: relative; top: 0px; right: 0px; font-size: 16px; background-image: url(../_images/landingPages/indexPage/menu_BarBlue.png); background-repeat: no-repeat; margin: 0px; height: 40px; clear: left; 

@@ -19,25 +19,8 @@
 <script type="text/javascript">
 function MM_preloadImages() { //v3.0
   var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
-}
-
-function MM_swapImgRestore() { //v3.0
-  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
-}
-
-function MM_findObj(n, d) { //v4.01
-  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
-    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
-  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
-  if(!x && d.getElementById) x=d.getElementById(n); return x;
-}
-
-function MM_swapImage() { //v3.0
-  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
-   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+  var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+  if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
 }
 
 window.onload = function() {
@@ -54,7 +37,10 @@ window.onload = function() {
     
     <!-- Custom page content -->
     <div id="landingImage">
-      <div id="landingImageTVIcon"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('tvIcon','','_images/landingPages/landingPageButtons/television_on.png',1)"><img src="_images/landingPages/landingPageButtons/television_off.png" alt="Watch the SingPath videos" name="tvIcon" width="134" height="140" border="0" id="tvIcon" />Coming Soon!!</a></div>
+      <a href="#" id="landingImageTVIcon">
+        <div class="tvIcon" title="Watch the SingPath videos"></div>
+        <span class="text">Coming Soon!!</span>
+      </a>
       
       <div id="statsTextBox" >
         <div id="statsTextBoxTitleTop">Statistics</div>
@@ -67,29 +53,39 @@ window.onload = function() {
           <p><span class="bold">{{this.stats.last_badge_earner}}</span> just earned a <span class="bold">{{this.stats.last_badge}}</span></p>
         </div>
       </div>
-
     </div>
+    
     <div id="landingTextBox">
       <div id="landingTextBoxTitleTop">Home</div>
       <div id="landingTextBoxtext">
         <span class="bold">SingPath</span> is the most <b>FUN</b> way to practice software languages!<br/><br/>
         <span class="bold">SingPath</span> is a game that lets people practice their programming skills in a fun environment. Play in a variety of programming languages such as: <span class="bold">Python, JavaScript, Ruby, Objective C, Java</span> and many other languages to come. <br/><br/>
         Specialize in one language or show your flexibility and skill by playing in multiple languages.<br/><br/>
-        What are you waiting for? Sign in today and follow your chosen <b>Path</b>.</div>
+        What are you waiting for? Sign in today and follow your chosen <b>Path</b>.
+      </div>
     </div>
+    
     <div id="friendsTextBox" ng:controller="IndexCtrl">
       <div id="friendsTextBoxTitleTop">Players</div>
-        <div id="friendsTextBoxtext">
-          Right now there are there are
-          <span class="boldText" ng:cloak> {{this.stats.num_playing}} </span>
-          people playing<br/>
-          <span ng:repeat="player in this.current_players" ng:cloak class="player">
-            <img ng:src="{{player.gravatar}}" width="45" height="45" alt="gravatar" title="{{player.nickname}}">
-          </span>
-        </div>
-      <div id="friendsTextBoxtextSocial">follow us on <a href="http://www.facebook.com/apps/application.php?id=100409776687538" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('facebookSocial','','_images/landingPages/landingPageButtons/socialButtonsFacebook_off.png',1)"><img src="_images/landingPages/landingPageButtons/socialButtonsFacebook_on.png" alt="follow us on Facebook" name="facebookSocial" width="36" height="29" border="0" id="facebookSocial" /></a><a href="http://twitter.com/#!/singpath" target="_blank" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('socialTwitter','','_images/landingPages/landingPageButtons/socialButtonsTwitter_off.png',1)"><img src="_images/landingPages/landingPageButtons/socialButtonsTwitter_on.png" alt="follow us on Twitter" name="socialTwitter" width="36" height="29" border="0" id="socialTwitter" /></a></div>
+      <div id="friendsTextBoxtext">
+        Right now there are there are
+        <span class="boldText" ng:cloak> {{this.stats.num_playing}} </span>
+        people playing<br/>
+        <span ng:repeat="player in this.current_players" ng:cloak class="player">
+          <img ng:src="{{player.gravatar}}" width="45" height="45" alt="gravatar" title="{{player.nickname}}">
+        </span>
+      </div>
+      
+      <div id="friendsTextBoxtextSocial">
+        <span class="text">follow us on</span>
+        <a href="http://twitter.com/#!/singpath"                                  target="_blank" class="twitter"  title="follow us on Twitter" ></a>
+        <a href="http://www.facebook.com/apps/application.php?id=100409776687538" target="_blank" class="facebook" title="follow us on Facebook"></a>
+      </div>
     </div>
-    <div id="landingLogos"><img src="_images/landingPages/indexPage/logos/pythonLogo.png" width="97" height="65" alt="Python Language" /><img src="_images/landingPages/indexPage/logos/javaLogo.png" width="42" height="65" alt="Java Language" /><img src="_images/landingPages/indexPage/logos/objectiveCLogo.png" width="123" height="65" alt="Objective-C Language" /><img src="_images/landingPages/indexPage/logos/rubyLogo.png" width="55" height="65" alt="ruby Language" /><img src="_images/landingPages/indexPage/logos/javaScriptLogo.png" width="139" height="65" alt="JavaScript" /><img src="_images/landingPages/indexPage/logos/umlLogo.png" width="83" height="65" alt="UML language" /><img src="_images/landingPages/indexPage/logos/htmlLogo.png" alt="html Language" width="106" height="65" /><img src="_images/landingPages/indexPage/logos/googleApiLogo.png" alt="Google App Engine Language" width="76" height="65" /></div>
+    
+    <div id="landingLogos" ng:controller="FooterLogosCtrl">
+      <img ng:repeat="logo in this.footerLogos" ng:src="{{this.baseSrcBegin + logo.src + this.baseSrcEnd}}" alt="{{logo.alt}}" />
+    </div>
     
     
     <!-- Include Page Footer -->
