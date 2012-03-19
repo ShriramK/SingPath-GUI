@@ -69,6 +69,15 @@ function IndexCtrl($resource) {
 IndexCtrl.$inject = ['$resource'];
 
 
+function FooterLogosCtrl($resource) {
+  this.baseSrcBegin = "_images/landingPages/indexPage/logos/";
+  this.baseSrcEnd   = "Logo.png";
+  this.footerLogos  = $resource('../jsonapi/footerLogos').query();
+}
+
+FooterLogosCtrl.$inject = ['$resource'];
+
+
 function RankingCtrl($resource) {
   countryModel = $resource("../jsonapi/country_ranking");
   this.country_ranking = countryModel.get();
@@ -377,3 +386,22 @@ function CopyrightCtrl() {
   // Setting the Copyright year
   this.year = new Date().getFullYear();
 }
+
+
+// Controller for the home.html
+// TODO: To be updated
+function HomeController($resource, $route, $xhr){
+  this.$xhr = $xhr;
+  this.player = undefined;
+  this.Jsonapi = $resource('../jsonapi/:id', {id: '@id'});
+  this.loadPlayer();
+  
+  HomeController.prototype = {
+    loadPlayer: function() {
+      this.player = this.Jsonapi.get({id: 'player_test'}, function(p){
+        console.log(p)
+      });
+    }
+  }
+}
+HomeController.$inject = ['$resource', '$route', '$xhr'];

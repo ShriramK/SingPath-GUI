@@ -9,7 +9,7 @@ function testCloak(selector) {
 // Test the image base and hover URLs
 function testImageBaseAndHover(imageSelector, imagesUrl) {
   // Test image base URL
-  //expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_off.png"\\)$');
+  expect(element(imageSelector).css('background-image')).toMatch('^url\\("?http(.)+'+ imagesUrl +'_off.png"?\\)$');
   
   // Get image current class
   expect(element(imageSelector).attr('class')).value(function(currentClass) {
@@ -21,7 +21,7 @@ function testImageBaseAndHover(imageSelector, imagesUrl) {
     imageSelector = currentClass ? imageSelector.replace(currentClass, hoverClass.replace(' ', '.')) : imageSelector+'.hover';
     
     // Test image hover URL
-    //expect(element(imageSelector).css('background-image')).toMatch('^url\\("http(.)+'+ imagesUrl +'_on.png"\\)$');
+    expect(element(imageSelector).css('background-image')).toMatch('^url\\("?http(.)+'+ imagesUrl +'_on.png"?\\)$');
   });
 }
 
@@ -277,6 +277,19 @@ describe('Additinal tests from Ivan', function() {
     // Test all Page Head Elements from the common function
     testPageHead();
     
+    
+    // Test TV field
+    fieldSelector = '#landingImageTVIcon';
+    
+    // Test TV icon
+    TVIconSelector = fieldSelector + ' > .tvIcon';
+    expect(element(TVIconSelector).attr('title')).toBe('Watch the SingPath videos');
+    testImageBaseAndHover(TVIconSelector, '/kit/_images/landingPages/landingPageButtons/television');
+    
+    // Test TV text
+    expect(element(fieldSelector + ' > .text').text()).toBe('Coming Soon!!');
+    
+    
     // Test the removing of the cloak over the stats menu
     testCloak('#statsTextBoxtext');
     
@@ -342,6 +355,34 @@ describe('Additinal tests from Ivan', function() {
       expect(element(playerSelector + ' > img').attr('src'  )).toBe(playerResource["gravatar"]);
       expect(element(playerSelector + ' > img').attr('title')).toBe(playerResource["nickname"]);
     }
+    
+    
+    // Test social network field
+    fieldselector = '#friendsTextBoxtextSocial';
+    
+    // Test text
+    expect(element(fieldselector + ' > .text').text()).toBe('follow us on');
+    
+    // Test Facebook logo
+    facebookLogoSelector = fieldselector + ' > .facebook';
+    $facebookLogo        = element(facebookLogoSelector);
+    expect($facebookLogo.attr('href'  )).toBe('http://www.facebook.com/apps/application.php?id=100409776687538');
+    expect($facebookLogo.attr('target')).toBe('_blank');
+    expect($facebookLogo.attr('title' )).toBe('follow us on Facebook');
+    
+    // Test Facebook hover images
+    testImageBaseAndHover(facebookLogoSelector, '/kit/_images/landingPages/landingPageButtons/socialButtonsFacebook');
+    
+    
+    // Test Twitter logo
+    twitterLogoSelector = fieldselector + ' > .twitter';
+    $twitterLogo        = element(twitterLogoSelector);
+    expect($twitterLogo.attr('href'  )).toBe('http://twitter.com/#!/singpath');
+    expect($twitterLogo.attr('target')).toBe('_blank');
+    expect($twitterLogo.attr('title' )).toBe('follow us on Twitter');
+    
+    // Test Twitter hover images
+    testImageBaseAndHover(twitterLogoSelector, '/kit/_images/landingPages/landingPageButtons/socialButtonsTwitter');
   });
   
   
