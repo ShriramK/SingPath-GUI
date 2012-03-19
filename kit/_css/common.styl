@@ -1,11 +1,4 @@
-tshadow()
-  text-shadow #000 1px 1px 1px
-
-box-shadow($left, $top, $blur, $radiur, $color)
-  box-shadow          $left $top $blur $radiur $color
-  -moz-box-shadow     $left $top $blur $radiur $color
-  -webkit-box-shadow  $left $top $blur $radiur $color
-
+@import stylus_functions
 
 a
   text-decoration none
@@ -44,6 +37,7 @@ a
     line-height       21px
     float             left
     height            $height
+    padding           0px 5px
   
   .right
     background-image  url(../_images/commonButtons/parts/right.png)
