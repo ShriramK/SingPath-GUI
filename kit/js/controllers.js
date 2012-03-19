@@ -266,10 +266,14 @@ function TournamentRankingCtrl($resource){
 TournamentRankingCtrl.$inject = ["$resource"];
 
 function WorldWideRankingCtrl($resource){
-	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
-	this.worldWideRanking = worldWideRanking.get();
 	this.ranking = [];
-	this.tagCtrl = undefined;
+	var scope = this;
+	
+	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
+	this.worldWideRanking = worldWideRanking.get(function(){
+		scope.initRanking(scope.doFilter2);
+	});
+	
 	this.checkLast = function(elem){
 		var index = this.ranking.indexOf(elem);
 		if (index == 24)
@@ -294,28 +298,33 @@ function WorldWideRankingCtrl($resource){
 		return number;
 	}
 	this.doFilter = function(elem) {
-        this.ranking.push(elem);
         return true;
     }
 	this.doFilter2 = function(elem) {
     	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
         var isSingapore = elem.playerCountry.countryName=="Singapore";
         if (isSingapore){
-        	this.ranking.push(elem);
         	return true;
         }
         return false;
     }
-	this.doFilterTag = function(elem) {
-    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
-		window.alert(this.tagsCtrl.tags[this.tagsCtrl.index]);
-        var isThisCountry = elem.playerCountry.countryName==this.tagCtrl.tagsCtrl.tags[this.tagsCtrl.index];
-        if (isThisCountry){
-        	this.ranking.push(elem);
-        	return true;
-        }
-        return false;
-    }
+	this.getRanking = function(){
+			return scope.ranking;
+	}
+	this.initRanking = function(whichFilter){
+		scope.currentFilter = whichFilter;
+		scope.ranking = [];
+		angular.forEach(scope.worldWideRanking.rankings.filter(this.currentFilter), function(elem) {
+	          scope.ranking.push(elem);
+	    });
+	}
+	this.reloadRanking = function(){
+		scope.ranking = [];
+		angular.forEach(scope.worldWideRanking.rankings.filter(this.currentFilter), function(elem) {
+	          scope.ranking.push(elem);
+	    });
+	}
+	
 	this.playersCount= function(){
         var index = 0;
     	angular.forEach(this.worldWideRanking.rankings, function(elem) {
@@ -323,6 +332,7 @@ function WorldWideRankingCtrl($resource){
         });
     	return index;
       };
+      //this.initRanking(scope.doFilter);
 }
 
 WorldWideRankingCtrl.$inject = ["$resource"];
