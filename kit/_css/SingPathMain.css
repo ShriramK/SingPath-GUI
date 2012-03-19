@@ -18,10 +18,11 @@ td {
   width: 100%;
 }
 table.__body {
-  border: 0px solid blue;
-  display: table;
   background-image: url("../_images/greyBackground.jpg");
   background-repeat: repeat-y;
+  border: 0px solid blue;
+  display: table;
+  margin-top: 35px;
 }
 tr.element > td {
   padding-left: 10px;

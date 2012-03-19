@@ -22,11 +22,6 @@
 	<script src="_js/jsonrender/home.js" type="text/javascript"></script>
 </head>
 <body ng:controller="LoadPageCtrl">
-  <!--
-  Ivan, Note: Waiting for usage approval
-  <center><div id="loading">Loading...</div></center>
-  -->
-  
   <div id="wrapper" ng:controller="HomeController">
     <!-- Include Page Header: Logo, Login menu, head menu option -->
     <ng:include src="'includes/pageHeader.html'"></ng:include>
@@ -99,31 +94,6 @@
     <div id="beardy">
       <table class="__page" id="awrapper">
         <tr>
-          <td>
-        <table width="100%" class="header">
-          <tr>
-            <td class="logo">
-              <a href="home.html" class="rolls logo"><img class="logo" src="_images/commonButtons/singpathLogo_off.png" alt="SingPath Logo"/></a>
-            </td>
-            <td class="logIndetailsTop">
-              <table>
-                <tr>
-                  <td class="logInProfile">
-                    <a href="home.html" class="rolls logInProfile"><img class="logInProfile" src="_images/commonButtons/houseProfile_off.png" alt="Profile Home Button" width="44" height="37" border="0"/></a>
-                  </td>
-                  <td id="logInGravatarPhoto" class="logInGravatarPhoto">
-                  </td>
-                  <td class="logIndetailsNameText">
-                    <div id="logIndetailsNameText"></div>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-          </td>
-        </tr>
-        <tr>
           <td style="position: relative">
             <table class="__body">
               <tr class="__body" id="__body">
@@ -131,6 +101,8 @@
                   <table class="__col1">
                     <tr class="element1">
                       <td>
+                      
+                      
                         <table class="profileDetailsSmall" id="profileDetails">
                           <tr class="boxHeaderWithButton">
                             <td class="boxHeader">Profile</td>
@@ -164,6 +136,8 @@
                             </td>
                           </tr>
                         </table>
+                        
+                        
                       </td>
                     </tr>
                     <tr class="element1 bottomBox">
@@ -216,6 +190,8 @@
                     </tr>
                   </table>
                 </td>
+                
+                
                 <td class="__col2" id="__col2">
                   <table class="__col2">
                     <tr class="element2">
@@ -277,16 +253,13 @@
                     </tr>
                   </table>
                 </td>
+                
               </tr>
             </table>
           </td>
         </tr>
       </table>
     </div>
-    
-    
-    <!-- Include the Contribution menu-->
-    <ng:include src="'includes/contributionMenu.html'"></ng:include>
     
     
     <!-- Include Page Footer -->

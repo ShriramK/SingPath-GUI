@@ -263,19 +263,18 @@ function CopyrightCtrl() {
 
 
 // Controller for the home.html
-// TODO: To be updated
-function HomeController($resource, $route, $xhr){
-  this.$xhr = $xhr;
-  this.player = undefined;
-  this.Jsonapi = $resource('../jsonapi/:id', {id: '@id'});
+function HomeController($resource, $route){
+  this.jsonapi = $resource('../jsonapi/:id', {id: '@id'});
   this.loadPlayer();
-  
-  HomeController.prototype = {
-    loadPlayer: function() {
-      this.player = this.Jsonapi.get({id: 'player_test'}, function(p){
-        console.log(p)
-      });
-    }
-  }
 }
-HomeController.$inject = ['$resource', '$route', '$xhr'];
+
+HomeController.prototype.loadPlayer = function() {
+  that = this;
+  
+  // Loading a test player
+  this.jsonapi.get({id: 'player_test'}, function(player){
+    that.player = player;
+  });
+}
+
+HomeController.$inject = ['$resource', '$route'];
