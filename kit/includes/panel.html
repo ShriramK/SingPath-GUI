@@ -1,0 +1,62 @@
+<!-- Prints HTML Panel regarding passed scope data -->
+<div class="{{this.containerClass}}">
+  <div class="commonBtn big">
+    <div class="left"></div>
+    <div class="middle">
+      {{this.btnTitle}}
+    </div>
+    <div class="right"></div>
+  </div>
+  
+  <div class="labelContainer">
+    <div class="label">
+      {{this.label}}
+    </div>
+    <div class="curve"></div>
+  </div>
+  
+  <div class="textContainer">
+    <ng:switch on="this.containerClass">
+      <div ng:switch-when="profileContainer">
+        <div class="profileName">
+          {{this.profile.nickname}}
+        </div>
+        
+        <div class="text">
+          <img ng:src="{{this.profile.gravatar}}" class="gravatar" />
+          <div class="details center">
+            <span class="label">
+              {{this.profile.professional}}
+            </span>
+          </div>
+          
+          <div class="details">
+            <span class="label">
+              Location:
+            </span>
+              {{this.profile.location}}
+          </div>
+          
+          <div class="details">
+            <span class="label">
+              Tags:
+            </span>
+              <a ng:repeat="tag in this.profile.tags" ng:src="/kit/ranking.html?tag={{tag}}" title="Ranking tag: {{tag}}">
+                {{tag}}
+              </a>
+          </div>
+          
+          <div class="details">
+            <span class="label">
+              About Me:
+            </span>
+            {{this.profile.about}}
+          </div>
+          
+          <img ng:src="{{this.profile.countrySrc}}" class="country" />
+          <img ng:src="{{this.profile.genderSrc}}"  class="gender"  />
+        </div>
+      </div>
+    </ng:switch>
+  </div>
+</div>
