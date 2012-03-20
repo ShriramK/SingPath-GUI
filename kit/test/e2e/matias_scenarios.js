@@ -1,29 +1,15 @@
 describe('Additinal test from Matias', function() {
-	  /*it('Testing kit/news.html', function() {
-	    browser().navigateTo('../../news.html');
-	    expect(element('#menuOptionsText > .menuSelected').text()).toMatch('News');
-	    expect(element('#contributorsInfoBoxText > p').text()).toMatch('News');
-	    
-      // Ivan, Note: Full contributors test coverage is available in ivan_static_scenarios.js
-      
-	    // Test the content of the contributors right menu
-	    expect(element('#contributorsAboutBoxText > a > img').count()).toBe(5);
-	    expect(repeater('#contributorsAboutBoxText > a > img'))
-	    
-	    // To be organized as repeater when same been used
-	    expect(element('#contributorsAboutBoxText > a > img:eq(0)').attr('alt')).toBe('Contributor Danny');
-	    expect(element('#contributorsAboutBoxText > a > img:eq(1)').attr('alt')).toBe('Contributor Chris Meyers');
-	    expect(element('#contributorsAboutBoxText > a > img:eq(2)').attr('alt')).toBe('Contributor Allen Downey');
-	    expect(element('#contributorsAboutBoxText > a > img:eq(3)').attr('alt')).toBe('Contributor Chris Boesch');
-	    expect(element('#contributorsAboutBoxText > a > img:eq(4)').attr('alt')).toBe('Contributor Jeffery');
-      
-	  });*/
+	  //index.html
+	  it('Testing kit/index.html', function() {
+	    browser().navigateTo('../../index.html');
+	    //stats box
+	    expect(element('#rankStatsBoxText>p:first>span').text()).toBe('4306');
+	    expect(element('#rankStatsBoxText>p:eq(1)>span').text()).toBe('21,014');
+	    expect(element('#rankStatsBoxText>p:eq(2)>span').text()).toBe('Python');
+	  });
 	  //badges.html
 	  it('Testing kit/badges.html', function() {
 		    browser().navigateTo('../../badges.html');
-        
-        // Ivan, Note: Full user coverage is available in ivan_static_scenarios.js
-        // expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
 		    
         //yourbadgesBoxTop
 		    expect(element('#yourBadgesBoxTop > img').count()).toBe(20);
