@@ -6,6 +6,17 @@ window.USER = {
  "isLogged": false
 }
 
+function RankingStatsPageCtr($resource){
+	self = this;
+	self.index_style = '';
+}
+RankingStatsPageCtr.$inject = ['$resource'];
+
+function IndexStatsPageCtr($resource){
+	self = this;
+	self.index_style = 'top:-150px';
+}
+IndexStatsPageCtr.$inject = ['$resource'];
 
 // Start number of actions when the page is loaded
 function LoadPageCtrl($resource) {

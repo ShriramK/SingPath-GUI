@@ -36,12 +36,12 @@ window.onload = function() {
     
     
     <!-- Custom page content -->
-    <div id="landingImage">
+    <div id="landingImage" ng:controller="IndexStatsPageCtr" ng:cloak>
       <a href="#" id="landingImageTVIcon">
         <div class="tvIcon" title="Watch the SingPath videos"></div>
         <span class="text">Coming Soon!!</span>
       </a>
-      <ng:include src="'includes/statistics.html'"></ng:include>
+      <ng:include src="'includes/statistics.html'" scope="this"></ng:include>
     </div>
     
     <div id="landingTextBox">

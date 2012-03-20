@@ -127,7 +127,9 @@ function MM_swapImage() { //v3.0
       <!-- AddThis Button END -->
     </div>
  </div>
-  <ng:include src="'includes/statistics.html'"></ng:include>
+  <div id="stats" ng:controller="RankingStatsPageCtr" ng:cloak>
+  	<ng:include src="'includes/statistics.html'" scope="this"></ng:include>
+  </div>
   <ng:include src="'includes/bytes.html'"></ng:include>
   <div id="mainFooter">
     <div id="menuFooterTop"><a href="index.html" title="home page Link" target="_parent">home</a><a href="aboutUs.html">about us</a> <a href="howToUse.html">how to use</a><a href="termsOfUse.html">terms of use</a><a href="contribution.html">contributions</a><a href="http://getsatisfaction.com/singpath" target="_blank">feedback</a><a href="aboutUs.html">contact us</a><a href="shop.html">shop</a><a href="/logout">sign out</a></div>
