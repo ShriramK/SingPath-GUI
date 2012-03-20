@@ -87,11 +87,8 @@ describe('Additinal test from Matias', function() {
 	      
 	      //
 	      expect(element('#rankingList>div>div[id$="Solved"]:first>span').text()).toBe("243"); //#solved of first in ranking
-	      //expect(element('#rankingList>div>div[id$="Details"]:first>span').text()).toBe("Danny"); //#nickname of first in ranking
-	      
-	      //
+
 	      expect(element('#rankingList>div>div[id$="Solved"]:last>span').text()).toBe("182"); //#solved of last in ranking
-	      //expect(element('#rankingList>div>div[id$="Details"]:last>span').text()).toBe("Zach"); //#nickname of first in ranking
 	      
 	      expect(element("#rankingList>div").count()).toBe(12);
 	      element('#tourInfoBoxTitleTopAll #secondMiddleSlice').click(); //WorldWide
@@ -113,6 +110,14 @@ describe('Additinal test from Matias', function() {
 	      
 	      element('#tourInfoBoxTitleTopAll #secondMiddleSlice').click(); //WorldWide
 	      expect(element('#rankingList > div:last').attr('id')).toBe('raBoxUR');
+	      
+	      
+	      //stats box
+	      expect(element('#rankStatsBoxText>p:first>span').text()).toBe('4306');
+	      expect(element('#rankStatsBoxText>p:eq(1)>span').text()).toBe('21,014');
+	      expect(element('#rankStatsBoxText>p:eq(2)>span').text()).toBe('Python');
+	      
+	      
 	      
 	  });
 	  
