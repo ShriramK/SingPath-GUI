@@ -74,12 +74,39 @@ describe('Additinal test from Matias', function() {
 	  it('Testing kit/ranking.html', function() {
 	      browser().navigateTo('../../ranking.html');
 	      expect(browser().location().hash()).toBe('');
-	      //expect(element('#logIndetailsNameText').text()).toBe('Mark Zuckerberg');
+	      
+	      expect(element('#nameBox').text()).toBe('Mark Zuckerberg');
+	      expect(element("#infoBarRanking>a:first>img").attr('alt')).toBe("move to previous paths");
+	      expect(element("#infoBarRanking>a:eq(1)>img").attr('alt')).toBe("select all paths");
+	      expect(element("#infoBarRanking>a:eq(6)>img").attr('alt')).toBe("Python Beginner Ranking");
+	      expect(element("#infoBarRanking>a:last>img").attr('alt')).toBe("move to next paths");
+	      expect(element("#infoBarRanking>a").count()).toBe(8);
+	      
+	      element('#tourInfoBoxTitleTopAll #firstMiddleSlice').click(); //Singapore
+	      expect(element('#rankingList>div>div[id$="Solved"]').count()).toBe(12);
+	      
+	      //
+	      expect(element('#rankingList>div>div[id$="Solved"]:first>span').text()).toBe("243"); //#solved of first in ranking
+	      //expect(element('#rankingList>div>div[id$="Details"]:first>span').text()).toBe("Danny"); //#nickname of first in ranking
+	      
+	      //
+	      expect(element('#rankingList>div>div[id$="Solved"]:last>span').text()).toBe("182"); //#solved of last in ranking
+	      //expect(element('#rankingList>div>div[id$="Details"]:last>span').text()).toBe("Zach"); //#nickname of first in ranking
+	      
+	      expect(element("#rankingList>div").count()).toBe(12);
+	      element('#tourInfoBoxTitleTopAll #secondMiddleSlice').click(); //WorldWide
+	      expect(element("#rankingList>div").count()).toBe(25);
+	      expect(element('#rankingList>div>div[id$="Solved"]:first>span').text()).toBe("243"); //#solved of first in ranking
+	      expect(element('#rankingList>div>div[id$="Solved"]:last>span').text()).toBe("44"); //#solved of last in ranking
 
+	      
 	      expect(element('#rankCtryList > div').count()).toBe(79);
-	      expect(element('#rankCtryList01Flag01> img').attr('alt')).toBe('Singapore');
-	      expect(element('#rankCtryList11Flag01> img').attr('alt')).toBe('Vietnam');
-	      expect(element('#rankCtryList79Flag01> img').attr('alt')).toBe('Uruguay');
+	      
+	      expect(element('#rankCtryList>div>div[id$="Flag01"]:first>img').attr('alt')).toBe('Singapore');
+	      expect(element('#rankCtryList>div>div[id$="NumPeople01"]:first').text()).toBe('1828');
+	      expect(element('#rankCtryList>div>div[id$="Flag01"]:last>img').attr('alt')).toBe('Uruguay');
+	      expect(element('#rankCtryList>div>div[id$="NumPeople01"]:last').text()).toBe('1');
+	      
 	      
 	      element('#tourInfoBoxTitleTopAll #firstMiddleSlice').click(); //Singapore
 	      expect(element('#rankingList > div:last').attr('id')).toBe('raBox20');
