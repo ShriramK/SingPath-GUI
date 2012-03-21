@@ -284,6 +284,7 @@ TagsCtrl.$inject = ['$resource','$location'];
 
 function LanguageSelectorCtrl($resource){
 	var self = this;
+	this.allClass = 'on';
 	this.languages = []
 	languageSelector = $resource('../jsonapi/get_game_paths');
 	this.languageSelector = languageSelector.get(function(){
@@ -303,8 +304,14 @@ function LanguageSelectorCtrl($resource){
 			return "on";
 		return "off";
 	}
+	this.pathAllSelected = function(){
+		return this.allClass;
+	}
+	this.setPathAllSelected = function(value){
+		this.allClass=value;
+	}
 	
-	this.setPathSelected=function(path){
+	this.setPathSelected=function(path,all){
 		var index = 0;
 		var selected = -1;
 		angular.forEach(self.languageSelector.paths, function(elem) {
@@ -315,7 +322,13 @@ function LanguageSelectorCtrl($resource){
 		angular.forEach(self.languages,function(elem){
 			elem.selected = false;
 		});
-		self.languages[selected].selected = true;
+		if (all){
+			self.setPathAllSelected('on');
+		}
+		else{
+			self.setPathAllSelected('off');
+			self.languages[selected].selected = true;
+		}
 	}
 }
 LanguageSelectorCtrl.$inject = ["$resource"];
