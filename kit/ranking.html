@@ -55,8 +55,8 @@ function MM_swapImage() { //v3.0
   </div>
   <div id="shadowUnderBar"></div>
   <div id="infoBarRanking" ng:controller="LanguageSelectorCtrl" ng:cloak>
-  	<span class="smallToggleButton on" id="0">All</span>
-  	<span class="smallToggleButton off" ng:repeat="path in this.languageSelector.paths" ng:click="$(this).removeClass('off');$(this).addClass('on');loadLanguage(path.id)" id="{{path.id}}" ng:cloak>{{path.name}}</span>
+  	<span class="smallToggleButton on" ng:click="varClass='smallToggleButton off'" id="0">All</span>
+  	<span ng:class="'smallToggleButton '+pathSelected(path)" ng:repeat="path in this.languageSelector.paths" ng:click="setPathSelected(path);setActiveLanguage(path);loadLanguage(path.id)" id="{{path.id}}" ng:cloak>{{path.name}}</span>
   </div>
 
   <div id="tourInfoBox">

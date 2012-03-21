@@ -283,8 +283,40 @@ function TagsCtrl($resource,$location){
 TagsCtrl.$inject = ['$resource','$location'];
 
 function LanguageSelectorCtrl($resource){
+	var self = this;
+	this.languages = []
 	languageSelector = $resource('../jsonapi/get_game_paths');
-	this.languageSelector = languageSelector.get();
+	this.languageSelector = languageSelector.get(function(){
+			angular.forEach(self.languageSelector.paths, function(elem) {
+				self.languages.push({data:elem,selected:false});
+			});
+	});
+	this.pathSelected=function(path){
+		var index = 0;
+		var selected = -1
+		angular.forEach(self.languageSelector.paths, function(elem) {
+				if (elem==path)
+					selected = index;
+				++index;
+		});
+		if (selected!=-1 && self.languages[selected].selected)
+			return "on";
+		return "off";
+	}
+	
+	this.setPathSelected=function(path){
+		var index = 0;
+		var selected = -1;
+		angular.forEach(self.languageSelector.paths, function(elem) {
+				if (elem==path)
+					selected = index;
+				++index;
+		});
+		angular.forEach(self.languages,function(elem){
+			elem.selected = false;
+		});
+		self.languages[selected].selected = true;
+	}
 }
 LanguageSelectorCtrl.$inject = ["$resource"];
 
