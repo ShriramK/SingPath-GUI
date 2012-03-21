@@ -1,0 +1,27 @@
+<!-- Prints HTML Panel regarding passed scope data -->
+<div class="{{this.containerClass}}">
+  <div class="commonBtn big">
+    <div class="left"></div>
+    <div class="middle">
+      {{this.btnTitle}}
+    </div>
+    <div class="right"></div>
+  </div>
+  
+  <div class="labelContainer">
+    <div class="label">
+      {{this.label}}
+    </div>
+    <div class="curve"></div>
+  </div>
+  
+  <div class="textContainer">
+    <ng:switch on="this.containerClass">
+      <!-- Load the Profile Panel -->
+      <ng:include ng:switch-when="profileContainer" src="'includes/profile_panel.html'"></ng:include>
+      
+      <!-- Load the Badges Panel -->
+      <ng:include ng:switch-when="badgesContainer" src="'includes/badges_panel.html'"></ng:include>
+    </ng:switch>
+  </div>
+</div>
