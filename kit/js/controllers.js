@@ -248,9 +248,22 @@ function CountriesCtrl($resource) {
 
 CountriesCtrl.$inject = ["$resource"];
 
-function TagsCtrl($resource){
+function TagsCtrl($resource,$location){
 	tagsCtrl = $resource('../jsonapi/tags');
-	this.tagsCtrl = tagsCtrl.get();
+	var self = this;
+	this.tagsCtrl = tagsCtrl.get(function(){
+		if ($location.search().tag){
+			var selected = 0;
+			var pointer = 0;
+			angular.forEach(self.tagsCtrl.tags, function(elem) {
+		          if (elem==$location.search().tag){
+		        	  selected = pointer;
+		          }
+		           ++pointer;
+		    });
+			self.index = selected;
+		}
+	});
 	this.index = 0;
 	this.tagCount= function(){
         var index = 0;
@@ -267,7 +280,13 @@ function TagsCtrl($resource){
 	}
 }
 
-TagsCtrl.$inject = ["$resource"];
+TagsCtrl.$inject = ['$resource','$location'];
+
+function LanguageSelectorCtrl($resource){
+	languageSelector = $resource('../jsonapi/get_game_paths');
+	this.languageSelector = languageSelector.get();
+}
+LanguageSelectorCtrl.$inject = ["$resource"];
 
 function TournamentRankingCtrl($resource){
 	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
@@ -279,15 +298,25 @@ TournamentRankingCtrl.$inject = ["$resource"];
 function WorldWideRankingCtrl($resource){
 	this.ranking = [];
 	var scope = this;
+	this.resource = $resource;
 	
 	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
 	this.worldWideRanking = worldWideRanking.get(function(){
 		scope.initRanking(scope.doFilter2);
 	});
 	
+	this.loadLanguage = function(path_id){
+		scope.path_id = path_id;
+		/*worldWideRanking_ = $resource('../jsonapi/worldwide_ranking/:path_id');
+		this.worldWideRanking = worldWideRanking_.get(function({path_id:scope.path_id}){
+			scope.initRanking(scope.doFilter2);
+		});*/
+	}  
+	
 	this.checkLast = function(elem){
 		var index = this.ranking.indexOf(elem);
-		if (index == 24)
+		var count = this.playersCount();
+		if (elem.rank>25)
 			return "UR";
 		width = 2;
 		number = elem.rank;
@@ -308,6 +337,11 @@ function WorldWideRankingCtrl($resource){
 		  }
 		return number;
 	}
+	this.doLanguageSelection = function(elem){
+		window.alert(scope.current_path_id);
+		window.alert(elem.path_id);
+		return elem.path_id==scope.current_path_id;
+	}
 	this.doFilter = function(elem) {
         return true;
     }
@@ -319,13 +353,23 @@ function WorldWideRankingCtrl($resource){
         }
         return false;
     }
+	this.doFilterByCountry = function(elem) {
+        var isOK = elem.playerCountry.countryName==this.currentCountry;
+        if (isOK){
+        	return true;
+        }
+        return false;
+    }
+	this.setCountryName = function(countryName){
+		this.currentCountry = countryName;
+	}
 	this.getRanking = function(){
 			return scope.ranking;
 	}
 	this.initRanking = function(whichFilter){
 		scope.currentFilter = whichFilter;
 		scope.ranking = [];
-		angular.forEach(scope.worldWideRanking.rankings.filter(this.currentFilter), function(elem) {
+		angular.forEach(scope.worldWideRanking.rankings.filter(scope.currentFilter), function(elem) {
 	          scope.ranking.push(elem);
 	    });
 	}
