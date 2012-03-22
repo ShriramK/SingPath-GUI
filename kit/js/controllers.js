@@ -343,20 +343,23 @@ TournamentRankingCtrl.$inject = ["$resource"];
 function WorldWideRankingCtrl($resource){
 	this.ranking = [];
 	var scope = this;
-	this.resource = $resource;
-	
-	worldWideRanking = $resource('../jsonapi/worldwide_ranking');
-	this.worldWideRanking = worldWideRanking.get(function(){
-		scope.initRanking(scope.doFilter2);
+	this.currentCountry = "Singapore";
+	this.currentCountryCode = "SG";
+	worldWideRanking = $resource('../jsonapi/worldwide_ranking?maxRank=:maxRank&path_id=:path_id&countryCode=:countryCode',{maxRank:'25',path_id:'6569723',countryCode:'SG'});
+	this.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:'6569723',countryCode:'SG'},function(){
+		scope.initRanking(scope.doFilterByCountry);
 	});
 	
 	this.loadLanguage = function(path_id){
 		scope.path_id = path_id;
-		/*worldWideRanking_ = $resource('../jsonapi/worldwide_ranking/:path_id');
-		this.worldWideRanking = worldWideRanking_.get(function({path_id:scope.path_id}){
-			scope.initRanking(scope.doFilter2);
-		});*/
+		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
+			scope.initRanking(scope.doFilterByCountry);
+		});
 	}  
+	
+	this.getCurrentCountry=function(){
+		return scope.currentCountry;
+	}
 	
 	this.checkLast = function(elem){
 		var index = this.ranking.indexOf(elem);
@@ -375,6 +378,8 @@ function WorldWideRankingCtrl($resource){
 	this.addZeros = function(elem){
 		width = 2;
 		number = elem.rank;
+		if (elem.rank>25)
+			return "25";
 		width -= number.toString().length;
 		if ( width > 0 )
 		  {
@@ -383,30 +388,25 @@ function WorldWideRankingCtrl($resource){
 		return number;
 	}
 	this.doLanguageSelection = function(elem){
-		window.alert(scope.current_path_id);
-		window.alert(elem.path_id);
 		return elem.path_id==scope.current_path_id;
 	}
 	this.doFilter = function(elem) {
         return true;
     }
-	this.doFilter2 = function(elem) {
-    	//elem.imageURL = elem.imageURL.replace(/^\/static/, "../static");;
-        var isSingapore = elem.playerCountry.countryName=="Singapore";
-        if (isSingapore){
-        	return true;
-        }
-        return false;
-    }
+	
 	this.doFilterByCountry = function(elem) {
-        var isOK = elem.playerCountry.countryName==this.currentCountry;
+        var isOK = elem.playerCountry.countryName==scope.currentCountry;
         if (isOK){
         	return true;
         }
         return false;
     }
-	this.setCountryName = function(countryName){
-		this.currentCountry = countryName;
+	this.setCountry = function(country){
+		scope.currentCountry = country.countryName;
+		scope.currentCountryCode = country.country_code;
+		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
+			scope.initRanking(scope.doFilterByCountry);
+		});
 	}
 	this.getRanking = function(){
 			return scope.ranking;
