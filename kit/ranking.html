@@ -54,85 +54,19 @@ function MM_swapImage() { //v3.0
     </div>
   </div>
   <div id="shadowUnderBar"></div>
-  <div id="infoBarRanking" style="padding-bottom: 9px;padding-left: 4px;padding-right: 7px;padding-top: 2px;" ng:controller="LanguageSelectorCtrl" ng:cloak>
+  <div id="infoBarRanking" style="padding-bottom: 9px;padding-left: 4px;padding-right: 7px;padding-top: 4px;" ng:controller="LanguageSelectorCtrl" ng:cloak>
   	<span ng:class="'smallToggleButton '+pathAllSelected()" ng:click="setPathSelected(undefined,true)" id="0">All</span>
   	<span ng:class="'smallToggleButton '+pathSelected(path)" ng:repeat="path in this.languageSelector.paths" ng:click="setPathSelected(path,false);setActiveLanguage(path);loadLanguage(path.id)" id="{{path.id}}" ng:cloak>{{path.name}}</span>
   </div>
 
   <div id="tourInfoBox">
     <div id="tourInfoBoxTitleTopAll">
-      <div id="firstStartSlice" ng:style="style0"></div>
-      <div id="firstMiddleSlice" ng:style="style" ng:click="
-      style0={
-	  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  	  'background-position': '0px -52px',
-  	  'background-repeat': 'no-repeat',
-  	  'width': '8px'
-	  };
-      style3={
-	  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  	  'background-position': '-129px -52px',
-  	  'background-repeat': 'no-repeat',
-  	  'width': '8px'
-	  };
-      style4={
-	  	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  		'background-position': '-45px -52px',
-  		'background-repeat': 'no-repeat',
-  		'width': '23px',
-  		'cursor': 'pointer'
-	  };
-      style={
-	  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  	  'background-position': '0px -27px',
-  	  'background-repeat': 'no-repeat',
-  	  'color': 'white',
-  	  'font-size': '18px',
-  	  'font-weight': 'normal'
-	  };
-
-      style2= {'cursor':'pointer','color': '#517A83', 'border': '0px none #FFF100', 'background': 'url(_images/commonButtons/tab-headers-combined.png) no-repeat 0px 0px' };initRanking(doFilterByCountry);"><span ng:bind="getCurrentCountry()"></span></div>
-      <div id="firstJoinSlice" ng:style="style3"></div>
-      <div id="secondMiddleSlice" ng:style="style2" ng:click="
-      style0={
-      'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  	  'background-position': '-35px -52px',
-  	  'background-repeat': 'no-repeat',
-  	  'width': '8px',
-  	  'cursor': 'pointer'
-      }; 
-      style3={
-      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  		'background-position': '-170px -52px',
-  		'background-repeat': 'no-repeat',
-  		'width': '8px',
-  		'cursor': 'pointer'
-      };
-      style4={
-      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  		'background-position': '-13px -52px',
-  		'background-repeat': 'no-repeat',
-  		'width': '18px'
-      };
-      style2={
-	  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-  	  'background-position': '0px -27px',
-  	  'background-repeat': 'no-repeat',
-  	  'color': 'white',
-  	  'font-size': '18px',
-  	  'font-weight': 'normal'
-	  };
-      style= {
-        'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
-		'background-position': '0px -1px',
-		'background-repeat': 'no-repeat',
-		'color': '#49727A',
-		'font-size': '18px',
-		'font-weight': 'normal',
-		'cursor': 'pointer'
-		};
-        initRanking(doFilter);">Worldwide</div>
-      <div id="secondEndSlice" ng:style="style4"></div>
+      <div id="firstStartSlice" ng:style="getStyle0()"></div>
+      <div id="firstMiddleSlice" ng:style="getStyle()" ng:click="activateTabCountry();initRanking(doFilterByCountry);"><span ng:bind="getCurrentCountry()"></span></div>
+      <div id="firstJoinSlice" ng:style="getStyle3()"></div>
+      <div id="secondMiddleSlice" ng:style="getStyle2()" ng:click="
+        activateWorldRanking();initRanking(doFilter);">Worldwide</div>
+      <div id="secondEndSlice" ng:style="getStyle4()"></div>
     </div>
     <div id="tourInfoBoxBodyInfo">
       <div id="tourInfoBoxTagBox" ng:controller="TagsCtrl" ng:cloak>Select tag

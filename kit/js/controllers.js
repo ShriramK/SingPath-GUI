@@ -345,15 +345,112 @@ function WorldWideRankingCtrl($resource){
 	var scope = this;
 	this.currentCountry = "Singapore";
 	this.currentCountryCode = "SG";
+	this.activeWorldRanking = false;
 	worldWideRanking = $resource('../jsonapi/worldwide_ranking?maxRank=:maxRank&path_id=:path_id&countryCode=:countryCode',{maxRank:'25',path_id:'6569723',countryCode:'SG'});
 	this.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:'6569723',countryCode:'SG'},function(){
 		scope.initRanking(scope.doFilterByCountry);
 	});
 	
+	this.getStyle0 = function(){
+		return this.style0;
+	}
+	
+	this.getStyle = function(){
+		return this.style;
+	}
+	
+	this.getStyle2 = function(){
+		return this.style2;
+	}
+	
+	this.getStyle3 = function(){
+		return this.style3;
+	}
+	
+	this.getStyle4 = function(){
+		return this.style4;
+	}
+	
+	this.activateWorldRanking = function(){
+				 scope.activeWorldRanking = true;
+				 this.style0={
+			      'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  	  'background-position': '-35px -52px',
+			  	  'background-repeat': 'no-repeat',
+			  	  'width': '8px',
+			  	  'cursor': 'pointer'
+			      }; 
+			      this.style3={
+			      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  		'background-position': '-170px -52px',
+			  		'background-repeat': 'no-repeat',
+			  		'width': '8px',
+			  		'cursor': 'pointer'
+			      };
+			      this.style4={
+			      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  		'background-position': '-13px -52px',
+			  		'background-repeat': 'no-repeat',
+			  		'width': '18px'
+			      };
+			      this.style2={
+				  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  	  'background-position': '0px -27px',
+			  	  'background-repeat': 'no-repeat',
+			  	  'color': 'white',
+			  	  'font-size': '16px',
+			  	  'font-weight': 'normal'
+				  };
+			      this.style= {
+			        'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+					'background-position': '0px -1px',
+					'background-repeat': 'no-repeat',
+					'color': '#49727A',
+					'font-size': '16px',
+					'font-weight': 'normal',
+					'cursor': 'pointer'
+					};
+	}
+	
+	this.activateTabCountry = function(){
+			  scope.activeWorldRanking = false;
+			  this.style0={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '0px -52px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'width': '8px'
+			  };
+		      this.style3={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '-129px -52px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'width': '8px'
+			  };
+		      this.style4={
+			  	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  		'background-position': '-45px -52px',
+		  		'background-repeat': 'no-repeat',
+		  		'width': '23px',
+		  		'cursor': 'pointer'
+			  };
+		      this.style={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '0px -27px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'color': 'white',
+		  	  'font-size': '16px',
+		  	  'font-weight': 'normal'
+			  };
+		      this.style2= {'cursor':'pointer','color': '#517A83', 'border': '0px none #FFF100', 'background': 'url(_images/commonButtons/tab-headers-combined.png) no-repeat 0px 0px' };
+	}
+
 	this.loadLanguage = function(path_id){
 		scope.path_id = path_id;
 		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
-			scope.initRanking(scope.doFilterByCountry);
+			if (scope.activeWorldRanking)
+				scope.initRanking(scope.doFilter);
+			else
+				scope.initRanking(scope.doFilterByCountry);
 		});
 	}  
 	
@@ -407,6 +504,7 @@ function WorldWideRankingCtrl($resource){
 		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
 			scope.initRanking(scope.doFilterByCountry);
 		});
+		scope.activateTabCountry();
 	}
 	this.getRanking = function(){
 			return scope.ranking;

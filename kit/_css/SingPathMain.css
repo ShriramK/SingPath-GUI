@@ -2260,13 +2260,13 @@ table.pager {
 }
 #wrapper #tourInfoBox #tourInfoBoxTitleTopAll{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 350px; position: relative; font-size: 16px; top: 14px; left: 9px; }
 #wrapper #firstStartSlice { margin: 0px; padding: 0px; float: left; height: 25px; width: 9px; position: relative; top: 0px; left: 1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat -5px -51px; }
-#wrapper #firstMiddleSlice { font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 3px 10px 0px; text-align: left; float: left; height: 25px; width: 100px; position: relative; font-size: 16px; top: 1px; left: 1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat 0px -26px; }
+#wrapper #firstMiddleSlice { font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 3px 10px 0px; text-align: left; float: left; height: 25px; width: 140px; position: relative; font-size: 16px; top: 1px; left: 1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat 0px -26px; }
 
 #wrapper #firstJoinSlice { font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 3px 10px 0px; text-align: left; float: left; height: 27px; width: 12px; position: relative; font-size: 16px; top: 0px; left: 1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat -150px -50px; }
 
 #wrapper #firstEndSlice { margin: 0px; padding: 0px; float: left; height: 25px; width: 24px; position: relative; top: 0px; left: 1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat -14px -51px; }
 
-#wrapper #secondMiddleSlice { font-weight: bold; color: #517A83; border: 0px none #FFF100; margin: 0px; padding: 5px 10px 0px; text-align: left; float: left; height: 25px; width: 120px; position: relative; font-size: 16px; top: 0px; left: -1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat 0px 0px; }
+#wrapper #secondMiddleSlice { font-weight: bold; color: #517A83; border: 0px none #FFF100; margin: 0px; padding: 5px 10px 0px; text-align: left; float: left; height: 25px; width: 100px; position: relative; font-size: 16px; top: 0px; left: -1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat 0px 0px; }
 #wrapper #secondEndSlice { margin: 0px; padding: 0px; float: left; height: 25px; width: 28px; position: relative; top: 0px; left: -1px; background: url(../_images/commonButtons/blankButtons/tab-headers-combined.png) no-repeat -53px -51px; }
 
 
