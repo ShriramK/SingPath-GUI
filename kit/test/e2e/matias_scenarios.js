@@ -62,11 +62,9 @@ describe('Additinal test from Matias', function() {
 	      expect(browser().location().hash()).toBe('');
 	      
 	      expect(element('#nameBox').text()).toBe('Mark Zuckerberg');
-	      expect(element("#infoBarRanking>a:first>img").attr('alt')).toBe("move to previous paths");
-	      expect(element("#infoBarRanking>a:eq(1)>img").attr('alt')).toBe("select all paths");
-	      expect(element("#infoBarRanking>a:eq(6)>img").attr('alt')).toBe("Python Beginner Ranking");
-	      expect(element("#infoBarRanking>a:last>img").attr('alt')).toBe("move to next paths");
-	      expect(element("#infoBarRanking>a").count()).toBe(8);
+	      expect(element("#infoBarRanking>span:first").text()).toBe("All");
+	      expect(element("#infoBarRanking>span:last").text()).toBe("Ruby");
+	      expect(element("#infoBarRanking>span").count()).toBe(7);
 	      
 	      element('#tourInfoBoxTitleTopAll #firstMiddleSlice').click(); //Singapore
 	      expect(element('#rankingList>div>div[id$="Solved"]').count()).toBe(12);
