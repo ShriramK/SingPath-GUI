@@ -37,3 +37,67 @@
   <img ng:src="{{this.profile.countrySrc}}" class="country" />
   <img ng:src="{{this.profile.genderSrc}}"  class="gender"  />
 </div>
+
+
+<!-- Print the edit profile details menu -->
+<div id="showProfilePopup" class="popup {{this.popUp.class}}">
+  <table class="popup">
+      <tr class="popup">
+        <td class="popup">
+          <table class="showProfile" id="showProfile">
+            <tr class="boxHeader">
+              <td class="boxHeader">Edit Path</td>
+            </tr>
+            <tr class="boxContent">
+              <td>
+                <table class="showProfileName">
+                  <tr>
+                    <td class="showProfileName">
+                      <div class="profileNameText"></div>
+                    </td>
+                    <td class="showProfileClose">
+                      <a href="javascript:" class="rolls"><img src="_images/commonButtons/close_off.png"
+                        alt="Close" class="showProfileButtons showProfileCancelButton rolls"
+                        onclick="$('#showProfilePopup').hide()"></a>
+                    </td>
+                  </tr>
+                </table>
+                <table class="pathEdit">
+                  <tr class="">
+                    <td class="">
+                      Language:
+                    </td>
+                    <td class="inputLong">
+                      <div id="popup_path_language"></div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="">
+                      Name:
+                    </td>
+                    <td class="inputLong">
+                      <input id="popup_path_name" type="text"/>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="">
+                      Description:
+                    </td>
+                    <td class="inputLong">
+                      <input id="popup_path_desc" type="text"/>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="" colspan="2">
+                      <span class="emptyButton" id="popup_save_button">Save</span>
+                      <span class="emptyButton" onclick="$('#showProfilePopup').hide()">Cancel</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+  </table>
+</div>

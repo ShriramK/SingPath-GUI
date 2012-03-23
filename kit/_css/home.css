@@ -1,5 +1,5 @@
 .profileContainer,.badgesContainer{position:relative;padding:0;float:left;}
-.profileContainer .commonBtn,.badgesContainer .commonBtn{float:right;position:absolute;top:0;right:20px;margin:0;padding:0;}
+.profileContainer .commonBtn,.badgesContainer .commonBtn{float:right;display:block;position:absolute;top:0;right:20px;margin:0;padding:0;}
 .profileContainer .commonBtn.big,.badgesContainer .commonBtn.big{font-size:13px}
 .profileContainer .commonBtn.small,.badgesContainer .commonBtn.small{font-size:10px}
 .profileContainer .labelContainer,.badgesContainer .labelContainer{float:left;position:absolute;margin:7px 0 0 1px;}
@@ -21,3 +21,5 @@
 .badgesContainer .textContainer{background-image:url("../_images/homePage/backgrounds/badges_box.png");width:391px;height:190px;}
 .badgesContainer .textContainer .text{text-align:center;padding-top:10px;}
 .badgesContainer .textContainer .text img.first{margin:0 40%}
+.popup.show{display:block}
+.popup.hide{display:none}

@@ -153,12 +153,12 @@ function testHeadMenuOptions() {
     //       coz otherwise testMenuOptions() could mix vars with other testMenuOptions() calls
     options = [
       {"text": "Play"        , "href": "home.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
-      {"text": "Splash"      , "href": "index.html"        , "target": "", "class": "", "title": ""},
-      {"text": "About Us"    , "href": "aboutUs.html"      , "target": "", "class": "", "title": ""},
-      {"text": "How to Use"  , "href": "howToUse.html"     , "target": "", "class": "", "title": ""},
-      {"text": "Contribution", "href": "contributions.html", "target": "", "class": "", "title": ""},
-      {"text": "Tournament"  , "href": "tournament.html"   , "target": "", "class": "", "title": ""},
-      {"text": "News"        , "href": "news.html"         , "target": "", "class": "", "title": ""}
+      {"text": "Splash"      , "href": "index.html"       , "target": "", "class": "", "title": ""},
+      {"text": "About Us"    , "href": "aboutUs.html"     , "target": "", "class": "", "title": ""},
+      {"text": "How to Use"  , "href": "howToUse.html"    , "target": "", "class": "", "title": ""},
+      {"text": "Contribution", "href": "contribution.html", "target": "", "class": "", "title": ""},
+      {"text": "Tournament"  , "href": "tournament.html"  , "target": "", "class": "", "title": ""},
+      {"text": "News"        , "href": "news.html"        , "target": "", "class": "", "title": ""}
     ];
     
     // Test all Head Menu options from the given resouce
@@ -168,8 +168,8 @@ function testHeadMenuOptions() {
 
 
 // Common function to test all elements loaded in the left profile menu with the sent resource
-function testCommonLeftMenu(resource) {
-  menuSelector  = '.profilesColumn > .textContainer > .text';
+function testCommonLeftMenu(resource, containerSelector) {
+  menuSelector  = containerSelector + ' > .textContainer > .ng-switch > .ng-include > .text';
   expectedCount = resource.length;
   
   // Test the removing of the cloak over the left menu
@@ -202,7 +202,7 @@ function testStaffMenu() {
   ];
   
   // Use a common function to test all loaded elements with the staff resource
-  testCommonLeftMenu(staff);
+  testCommonLeftMenu(staff, '.staffContainer');
 }
 
 
@@ -218,7 +218,7 @@ function testContributionMenu() {
   ];
   
   // Use a common function to test all loaded elements with the contributors resource
-  testCommonLeftMenu(contributors);
+  testCommonLeftMenu(contributors, '.contributorsContainer');
 }
 
 
@@ -423,9 +423,9 @@ describe('Additinal tests from Ivan', function() {
   });
   
   
-  it('Testing kit/contributions.html', function() {
+  it('Testing kit/contribution.html', function() {
     // Load page
-    browser().navigateTo('../../contributions.html');
+    browser().navigateTo('../../contribution.html');
     
     // Test all Page Head Elements from the common function
     testPageHead();

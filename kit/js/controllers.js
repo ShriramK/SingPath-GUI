@@ -1,6 +1,23 @@
 /* App Controllers */
 
 
+// Global hash change callback register
+window.onHash = [];
+
+// Create an alternative to jQuery onhashchange event
+function checkHash() {
+  if(hash = window.location.hash) {
+    window.location.hash = '';
+    
+    // Call a callback function if there's any in the Global register
+    if(typeof(callback = window.onHash[hash]) == 'function') {
+      callback.call();
+    }
+  }
+}
+setInterval(checkHash, 100);
+
+
 // Create a Global var to keep track of the player session
 window.USER = {
  "isLogged": false
@@ -19,7 +36,6 @@ function LoadPageCtrl($resource) {
   // Preload some basic images
   MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png');
 }
-
 LoadPageCtrl.$inject = ['$resource'];
 
 
@@ -54,7 +70,6 @@ function UserLoginMenuCtrl($resource, $window) {
     self.player.nickname = clampString(self.player.nickname, 35);
   });
 }
-
 UserLoginMenuCtrl.$inject = ['$resource', '$window'];
 
 
@@ -65,7 +80,6 @@ function IndexCtrl($resource) {
   currentPlayersModel = $resource('../jsonapi/current_players');
   this.current_players = currentPlayersModel.query();
 }
-
 IndexCtrl.$inject = ['$resource'];
 
 
@@ -74,7 +88,6 @@ function FooterLogosCtrl($resource) {
   this.baseSrcEnd   = "Logo.png";
   this.footerLogos  = $resource('../jsonapi/footerLogos').query();
 }
-
 FooterLogosCtrl.$inject = ['$resource'];
 
 
@@ -86,17 +99,37 @@ function RankingCtrl($resource) {
 RankingCtrl.$inject = ["$resource"];
 
 
-function ContributorCtrl($resource) {
+function ContributionCtrl($resource) {
+  // Setting all panel properties
+  this.containerClass = "contributorsContainer";
+  this.label          = "Contributors";
+  this.btn            = {
+    "href" : "contribution.html",
+    "title": "View All Contributors",
+    "size" : "small",
+    "label": "View All Contributors"
+  };
+  
   // Getting all contributors from the jsonapi
   this.contributors = $resource('../jsonapi/contributors').query();
   
   // Cache the base sorce path so we could keep the database thin
   this.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 };
-ContributorCtrl.$inject = ['$resource'];
+ContributionCtrl.$inject = ['$resource'];
 
 
 function StaffCtrl($resource) {
+  // Setting all panel properties
+  this.containerClass = "staffContainer";
+  this.label          = "Staff";
+  this.btn            = {
+    "href" : "staff.html",
+    "title": "More Staff",
+    "size" : "big",
+    "label": "More Staff"
+  };
+  
   // Getting all contributors from the jsonapi
   this.staff = $resource('../jsonapi/staff').query();
   
@@ -218,6 +251,7 @@ function CountriesCtrl($resource) {
 
 CountriesCtrl.$inject = ["$resource"];
 
+
 function HeadMenuOptionsCtrl($resource, $location) {
   // Taking all menu options
   this.options = $resource('../jsonapi/headMenuOptions').query(function(options) {
@@ -232,7 +266,6 @@ function HeadMenuOptionsCtrl($resource, $location) {
     }
   });
 }
-
 HeadMenuOptionsCtrl.$inject = ['$resource', '$location'];
 
 

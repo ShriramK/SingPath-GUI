@@ -3,8 +3,13 @@
 function ProfilePanelCtrl($resource) {
   that                = this;
   this.containerClass = "profileContainer";
-  this.btnTitle       = "Edit Details";
   this.label          = "Profile";
+  this.btn            = {
+    "href" : "#/edit-profile",
+    "title": "Edit Profile",
+    "size" : "big",
+    "label": "Edit Profile"
+  };
   
   this.profile = $resource('../jsonapi/player_test').get(function(profile) {
     that.profile = profile;
@@ -17,6 +22,15 @@ function ProfilePanelCtrl($resource) {
     that.profile.countrySrc   = '../static/flags/'+ profile.countryCode.toLowerCase() +'_on.png';
     that.profile.genderSrc    = '../kit/_images/commonButtons/genderIcon'+ profile.gender.capitalFirstLetter() +'_off.png';
   });
+  
+  
+  window.onHash["#/edit-profile"] = function() {
+    log('Change catched');
+  }
+  
+  this.popUp = {
+    "class": "hide"
+  }
 }
 
 ProfilePanelCtrl.$inject = ['$resource'];
@@ -25,8 +39,13 @@ ProfilePanelCtrl.$inject = ['$resource'];
 function BadgesPanelCtrl($resource) {
   that                = this;
   this.containerClass = "badgesContainer";
-  this.btnTitle       = "View Badges";
   this.label          = "Badges";
+  this.btn            = {
+    "href" : "badges.html",
+    "title": "View Badges",
+    "size" : "big",
+    "label": "View Badges"
+  };
   
   // Check if some controller have alreasy load the user id
   if(window.USER.id) {
