@@ -152,17 +152,17 @@ function testHeadMenuOptions() {
     // Note: It's important to load the options after the execution of expect(...).value()
     //       coz otherwise testMenuOptions() could mix vars with other testMenuOptions() calls
     options = [
-      {"text": "Play"        , "href": "home.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
-      {"text": "Splash"      , "href": "index.html"        , "target": "", "class": "", "title": ""},
-      {"text": "About Us"    , "href": "aboutUs.html"      , "target": "", "class": "", "title": ""},
-      {"text": "How to Use"  , "href": "howToUse.html"     , "target": "", "class": "", "title": ""},
-      {"text": "Contribution", "href": "contributions.html", "target": "", "class": "", "title": ""},
-      {"text": "Tournament"  , "href": "tournament.html"   , "target": "", "class": "", "title": ""},
-      {"text": "News"        , "href": "news.html"         , "target": "", "class": "", "title": ""}
+      {"text": "Play"        , "href": "home.html"          , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
+      {"text": "Splash"      , "href": "index.html"         , "target": "", "class": "", "title": ""},
+      {"text": "About Us"    , "href": "aboutUs.html"       , "target": "", "class": "", "title": ""},
+      {"text": "How to Use"  , "href": "howToUse.html"      , "target": "", "class": "", "title": ""},
+      {"text": "Contribution", "href": "contributions.html" , "target": "", "class": "", "title": ""},
+      {"text": "Tournament"  , "href": "tournament.html"    , "target": "", "class": "", "title": ""},
+      {"text": "News"        , "href": "news.html"          , "target": "", "class": "", "title": ""}
     ];
     
     // Test all Head Menu options from the given resouce
-    testMenuOptions(options, '#menuOptionsText', 'menuSelected');
+    testMenuOptions(options, '#menuOptionsText', 'ng-attr-widget');
   });
 }
 
@@ -291,11 +291,11 @@ describe('Additinal tests from Ivan', function() {
     
     
     // Test the removing of the cloak over the stats menu
-    testCloak('#statsTextBoxtext');
+    testCloak('#rankStatsBoxText');
     
     
     // Testing all stats in the #statsTextBoxtext
-    statsSelector = '#statsTextBoxtext > p > span > .ng-binding:eq';
+    statsSelector = '#rankStatsBoxText > p > span > .ng-binding:eq';
     statsResource = {
       "num_players"      : "4306",
       "num_badges"       : "21,014",

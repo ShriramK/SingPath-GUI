@@ -6,6 +6,17 @@ window.USER = {
  "isLogged": false
 }
 
+function RankingStatsPageCtr($resource){
+	self = this;
+	self.index_style = '';
+}
+RankingStatsPageCtr.$inject = ['$resource'];
+
+function IndexStatsPageCtr($resource){
+	self = this;
+	self.index_style = 'top:-150px';
+}
+IndexStatsPageCtr.$inject = ['$resource'];
 
 // Start number of actions when the page is loaded
 function LoadPageCtrl($resource) {
@@ -81,6 +92,17 @@ FooterLogosCtrl.$inject = ['$resource'];
 function RankingCtrl($resource) {
   countryModel = $resource("../jsonapi/country_ranking");
   this.country_ranking = countryModel.get();
+  
+  this.addZeros = function(elem){
+		width = 2;
+		number = elem.rank;
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
 }
 
 RankingCtrl.$inject = ["$resource"];
@@ -214,9 +236,321 @@ YourBadgesBoxTop.$inject = ["$resource"];
 function CountriesCtrl($resource) {	
     allCountriesModel = $resource("../jsonapi/all_countries");
     this.allCountries = allCountriesModel.get();
+    this.countries = [];
+    this.countriesCount= function(){
+        var index = 0;
+    	angular.forEach(this.allCountries.countries, function(elem) {
+          ++index;
+        });
+    	return index;
+      };
 }
 
 CountriesCtrl.$inject = ["$resource"];
+
+function TagsCtrl($resource,$location){
+	tagsCtrl = $resource('../jsonapi/tags');
+	var self = this;
+	this.tagsCtrl = tagsCtrl.get(function(){
+		if ($location.search().tag){
+			var selected = 0;
+			var pointer = 0;
+			angular.forEach(self.tagsCtrl.tags, function(elem) {
+		          if (elem==$location.search().tag){
+		        	  selected = pointer;
+		          }
+		           ++pointer;
+		    });
+			self.index = selected;
+		}
+	});
+	this.index = 0;
+	this.tagCount= function(){
+        var index = 0;
+    	angular.forEach(this.tagsCtrl.tags, function(elem) {
+          ++index;
+        });
+    	return index;
+    };
+	this.selectNextTag = function(){
+		if (this.index<this.tagCount()-1)
+			++this.index;
+		else
+			this.index = 0;
+	}
+}
+
+TagsCtrl.$inject = ['$resource','$location'];
+
+function LanguageSelectorCtrl($resource){
+	var self = this;
+	this.allClass = 'on';
+	this.languages = []
+	languageSelector = $resource('../jsonapi/get_game_paths');
+	this.languageSelector = languageSelector.get(function(){
+			angular.forEach(self.languageSelector.paths, function(elem) {
+				self.languages.push({data:elem,selected:false});
+			});
+	});
+	this.pathSelected=function(path){
+		var index = 0;
+		var selected = -1
+		angular.forEach(self.languageSelector.paths, function(elem) {
+				if (elem==path)
+					selected = index;
+				++index;
+		});
+		if (selected!=-1 && self.languages[selected].selected)
+			return "on";
+		return "off";
+	}
+	this.pathAllSelected = function(){
+		return this.allClass;
+	}
+	this.setPathAllSelected = function(value){
+		this.allClass=value;
+	}
+	
+	this.setPathSelected=function(path,all){
+		var index = 0;
+		var selected = -1;
+		angular.forEach(self.languageSelector.paths, function(elem) {
+				if (elem==path)
+					selected = index;
+				++index;
+		});
+		angular.forEach(self.languages,function(elem){
+			elem.selected = false;
+		});
+		if (all){
+			self.setPathAllSelected('on');
+		}
+		else{
+			self.setPathAllSelected('off');
+			self.languages[selected].selected = true;
+		}
+	}
+}
+LanguageSelectorCtrl.$inject = ["$resource"];
+
+function TournamentRankingCtrl($resource){
+	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
+	this.tournamentRanking = tournamentRanking.get();
+}
+
+TournamentRankingCtrl.$inject = ["$resource"];
+
+function WorldWideRankingCtrl($resource){
+	this.ranking = [];
+	var scope = this;
+	this.currentCountry = "Singapore";
+	this.currentCountryCode = "SG";
+	this.activeWorldRanking = false;
+	worldWideRanking = $resource('../jsonapi/worldwide_ranking?maxRank=:maxRank&path_id=:path_id&countryCode=:countryCode',{maxRank:'25',path_id:'6569723',countryCode:'SG'});
+	this.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:'6569723',countryCode:'SG'},function(){
+		scope.initRanking(scope.doFilterByCountry);
+	});
+	
+	this.getStyle0 = function(){
+		return this.style0;
+	}
+	
+	this.getStyle = function(){
+		return this.style;
+	}
+	
+	this.getStyle2 = function(){
+		return this.style2;
+	}
+	
+	this.getStyle3 = function(){
+		return this.style3;
+	}
+	
+	this.getStyle4 = function(){
+		return this.style4;
+	}
+	
+	this.activateWorldRanking = function(){
+				 scope.activeWorldRanking = true;
+				 this.style0={
+			      'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  	  'background-position': '-35px -52px',
+			  	  'background-repeat': 'no-repeat',
+			  	  'width': '8px',
+			  	  'cursor': 'pointer'
+			      }; 
+			      this.style3={
+			      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  		'background-position': '-170px -52px',
+			  		'background-repeat': 'no-repeat',
+			  		'width': '8px',
+			  		'cursor': 'pointer'
+			      };
+			      this.style4={
+			      	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  		'background-position': '-13px -52px',
+			  		'background-repeat': 'no-repeat',
+			  		'width': '18px'
+			      };
+			      this.style2={
+				  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+			  	  'background-position': '0px -27px',
+			  	  'background-repeat': 'no-repeat',
+			  	  'color': 'white',
+			  	  'font-size': '16px',
+			  	  'font-weight': 'normal'
+				  };
+			      this.style= {
+			        'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+					'background-position': '0px -1px',
+					'background-repeat': 'no-repeat',
+					'color': '#49727A',
+					'font-size': '16px',
+					'font-weight': 'normal',
+					'cursor': 'pointer'
+					};
+	}
+	
+	this.activateTabCountry = function(){
+			  scope.activeWorldRanking = false;
+			  this.style0={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '0px -52px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'width': '8px'
+			  };
+		      this.style3={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '-129px -52px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'width': '8px'
+			  };
+		      this.style4={
+			  	'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  		'background-position': '-45px -52px',
+		  		'background-repeat': 'no-repeat',
+		  		'width': '23px',
+		  		'cursor': 'pointer'
+			  };
+		      this.style={
+			  'background-image': 'url(_images/commonButtons/tab-headers-combined.png)',
+		  	  'background-position': '0px -27px',
+		  	  'background-repeat': 'no-repeat',
+		  	  'color': 'white',
+		  	  'font-size': '16px',
+		  	  'font-weight': 'normal'
+			  };
+		      this.style2= {'cursor':'pointer','color': '#517A83', 'border': '0px none #FFF100', 'background': 'url(_images/commonButtons/tab-headers-combined.png) no-repeat 0px 0px' };
+	}
+
+	this.loadLanguage = function(path_id){
+		scope.path_id = path_id;
+		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
+			if (scope.activeWorldRanking)
+				scope.initRanking(scope.doFilter);
+			else
+				scope.initRanking(scope.doFilterByCountry);
+		});
+	}  
+	
+	this.getCurrentCountry=function(){
+		return scope.currentCountry;
+	}
+	
+	this.checkLast = function(elem){
+		var index = this.ranking.indexOf(elem);
+		var count = this.playersCount();
+		if (elem.rank>25)
+			return "UR";
+		width = 2;
+		number = elem.rank;
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
+	this.addZeros = function(elem){
+		width = 2;
+		number = elem.rank;
+		if (elem.rank>25)
+			return "25";
+		width -= number.toString().length;
+		if ( width > 0 )
+		  {
+		    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+		  }
+		return number;
+	}
+	this.doLanguageSelection = function(elem){
+		return elem.path_id==scope.current_path_id;
+	}
+	this.doFilter = function(elem) {
+        return true;
+    }
+	
+	this.doFilterByCountry = function(elem) {
+        var isOK = elem.playerCountry.countryName==scope.currentCountry;
+        if (isOK){
+        	return true;
+        }
+        return false;
+    }
+	this.setCountry = function(country){
+		scope.currentCountry = country.countryName;
+		scope.currentCountryCode = country.country_code;
+		scope.worldWideRanking = worldWideRanking.get({maxRank:'25',path_id:scope.path_id,countryCode:this.currentCountryCode},function(){
+			scope.initRanking(scope.doFilterByCountry);
+		});
+		scope.activateTabCountry();
+	}
+	this.getRanking = function(){
+			return scope.ranking;
+	}
+	this.initRanking = function(whichFilter){
+		scope.currentFilter = whichFilter;
+		scope.ranking = [];
+		angular.forEach(scope.worldWideRanking.rankings.filter(scope.currentFilter), function(elem) {
+	          scope.ranking.push(elem);
+	    });
+	}
+	this.reloadRanking = function(){
+		scope.ranking = [];
+		angular.forEach(scope.worldWideRanking.rankings.filter(this.currentFilter), function(elem) {
+	          scope.ranking.push(elem);
+	    });
+	}
+	
+	this.playersCount= function(){
+        var index = 0;
+    	angular.forEach(this.worldWideRanking.rankings, function(elem) {
+          ++index;
+        });
+    	return index;
+      };
+      //this.initRanking(scope.doFilter);
+}
+
+WorldWideRankingCtrl.$inject = ["$resource"];
+
+function HeatRankingCtrl($resource){
+	heatRanking = $resource('../jsonapi/get_heat_ranking');
+	this.heatRanking = heatRanking.get();
+	this.heatRankingArray = [];
+	
+	this.doFilter = function(elem) {
+        this.heatRankingArray.push(elem);
+        return true;
+    }
+	this.doFilter2 = function(elem) {
+        this.heatRankingArray.push(elem);
+        return true;
+    }
+}
+HeatRankingCtrl.$inject = ["$resource"];
+
 
 function HeadMenuOptionsCtrl($resource, $location) {
   // Taking all menu options
