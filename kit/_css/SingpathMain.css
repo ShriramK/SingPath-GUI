@@ -2528,3 +2528,7 @@ div#popup_problemset_path {
     padding-left: 9px;
     padding-right: 11px;
 }
+div#friendsTextBoxtext span.player {
+    display:block;
+    float:left;
+}
