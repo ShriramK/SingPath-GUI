@@ -251,9 +251,13 @@ CountriesCtrl.$inject = ["$resource"];
 function TagsCtrl($resource,$location){
 	tagsCtrl = $resource('../jsonapi/tags');
 	var self = this;
+	this.tags = [];
 	this.tagsCtrl = tagsCtrl.get(function(){
+		angular.forEach(self.tagsCtrl.tags, function(elem) {
+			self.tags.push(elem);
+	    });
 		if ($location.search().tag){
-			var selected = 0;
+			var selected = -1;
 			var pointer = 0;
 			angular.forEach(self.tagsCtrl.tags, function(elem) {
 		          if (elem==$location.search().tag){
@@ -261,13 +265,18 @@ function TagsCtrl($resource,$location){
 		          }
 		           ++pointer;
 		    });
+			if (selected==-1){
+				//insert the new tag into the array
+				self.tags.push($location.search().tag);
+				selected = self.tags.length-1;
+			}
 			self.index = selected;
 		}
 	});
 	this.index = 0;
 	this.tagCount= function(){
         var index = 0;
-    	angular.forEach(this.tagsCtrl.tags, function(elem) {
+    	angular.forEach(self.tags, function(elem) {
           ++index;
         });
     	return index;
