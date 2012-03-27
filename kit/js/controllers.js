@@ -342,8 +342,45 @@ function LanguageSelectorCtrl($resource){
 }
 LanguageSelectorCtrl.$inject = ["$resource"];
 
+function ChallengeAnswerCtrl($resource,$location){
+	challengeRes = $resource('../jsonapi/get_challenge_player_message?challenge_id=:challenge_id&player_id=:player_id');
+	
+	this.player_id = null;
+	this.challenge_id = null;
+	this.challenge = null;
+	this.name = null;
+	this.publicMessage = null;
+	this.registeredMessage = null;
+	this.unlockMessage = null;
+	this.privateMessage = null;
+	this.challenge_id = null;
+	this.playerFeedback = null;
+	this.playerAttachmentID = null;
+	
+	var self = this;
+	if ($location.search().challenge_id && $location.search().player_id ){
+		this.challenge_id = $location.search().challenge_id;
+	    this.player_id = $location.search().player_id;
+		this.challenge = challengeRes.get({challenge_id: this.challenge_id, player_id: this.player_id},
+		function(){
+			self.name=self.challenge.challenge.name;
+            self.publicMessage = self.challenge.challenge.publicMessage;
+            self.registeredMessage = self.challenge.challenge.registeredMessage;
+            self.unlockMessage=self.challenge.challenge.unlockMessage;
+            self.privateMessage=self.challenge.challenge.privateMessage;
+            self.challenge_id=self.challenge.challenge.challenge_id;
+            self.playerFeedback=self.challenge.challenge.playerFeedback;
+            self.playerAttachmentID =self.challenge.challenge.playerAttachmentID;
+		}
+		);
+	}
+}
+
+ChallengeAnswerCtrl.$inject = ['$resource','$location'];
+
 function TournamentRankingCtrl($resource){
 	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
+	
 	this.tournamentRanking = tournamentRanking.get();
 }
 

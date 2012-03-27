@@ -1,5 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" ng:app>
 <head>
 	<title>SingPath - The most fun way to practice software - Challenge Players</title>
 	<meta charset="utf-8" />
@@ -11,34 +11,17 @@
 	<script src="_js/jsonrender/common.js" type="text/javascript"></script>
 	<script src="_js/jsonrender/challengePlayers.js" type="text/javascript"></script>
 	<script src="_js/feedback-v2.js" type="text/javascript"></script>
+	<script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
+	<script src="js/controllers.js"      type="text/javascript"></script>	
 </head>
-<body>
+<body ng:controller="LoadPageCtrl">
+<div id="wrapper">
 <center><div id="loading">Loading...</div></center>
   <div id="beardy">
     <table class="__page wrapper">
       <tr>
         <td>
-          <table width="100%" class="header">
-            <tr>
-              <td class="logo">
-                <a href="home.html" class="rolls logo"><img class="logo" src="_images/commonButtons/singpathLogo_off.png" alt="SingPath Logo"/></a>
-              </td>
-              <td class="logIndetailsTop">
-                <table>
-                  <tr>
-                    <td class="logInProfile">
-                      <a href="home.html" class="rolls logInProfile"><img class="logInProfile" src="_images/commonButtons/houseProfile_off.png" alt="Profile Home Button" width="44" height="37" border="0"/></a>
-                    </td>
-                    <td id="logInGravatarPhoto" class="logInGravatarPhoto">
-                    </td>
-                    <td class="logIndetailsNameText">
-                      <div id="logIndetailsNameText"></div>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
+          <ng:include src="'includes/pageHeader.html'"></ng:include>
         </td>
       </tr>
       <tr class="element1">
@@ -107,38 +90,13 @@
                   </tr>
       <tr>
         <td>
-          <table class="__footer" id="__footer">
-            <tr>
-              <td class="footer">
-                <a href="home.html" title="home page Link" target="_parent">home</a> -
-                <a href="aboutUs.html">about us</a> -
-                terms of use -
-                <a href="contributions.html">contributions</a> -
-                feedback -
-                <a href="contactUs.html">contact us</a> -
-                <a href="/logout">sign out</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="gr8ph1csFooter">
-                <a href="http://www.Gr8ph1cs.com"><img src="_images/Gr8ph1csCreative.png" class="gr8ph1csFooter" alt="Gr8ph1cs Creative Link" longdesc="http://www.Gr8ph1cs.com" /></a>
-              </td>
-            </tr>
-          </table>
+          <ng:include src="'includes/pageFooter.html'"></ng:include>
         </td>
       </tr>
     </table>
   </div>
-   <script type="text/javascript">
-     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-   </script>
-   <script type="text/javascript">
-     try {
-     var pageTracker = _gat._getTracker("UA-12331844-1");
-     pageTracker._trackPageview();
-     } catch(err) {}
-   </script>
+   <ng:include src="'includes/googleAnalytics.html'"></ng:include>
+</div>
 </body>
 
 </html>
