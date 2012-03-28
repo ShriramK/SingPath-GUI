@@ -58,14 +58,17 @@ border-radius($top-left, $top-right = $top-left, $bottom-right = $top-right, $bo
   -moz-border-radius-bottomleft  $bottom-left
 
 
+$commonTextColor = #4F7984
+$commonBGColor   = #7FA0B2
+
 tshadow()
-  text-shadow #000 1px 1px 1px
+  text-shadow 1px 1px 5px #999
 
 
-box-shadow($left, $top, $blur, $radiur, $color)
-  box-shadow          $left $top $blur $radiur $color
-  -moz-box-shadow     $left $top $blur $radiur $color
-  -webkit-box-shadow  $left $top $blur $radiur $color
+box-shadow($left, $top, $blur, $radius, $color)
+  box-shadow          $left $top $blur $radius $color
+  -moz-box-shadow     $left $top $blur $radius $color
+  -webkit-box-shadow  $left $top $blur $radius $color
 
 
 commonBGContainer()
@@ -92,20 +95,22 @@ commonBGContainer()
     position absolute
     margin   7px 0px 0px 1px
     
+    $curveHeight = 20px
+    
     .label
       background-color #7FA0B2
       border-radius(10px, 0px, 0px, 0px)
       color            #FFF
       font-size        18px
-      line-height      20px
+      line-height      $curveHeight
       float            left
       padding          1px 5px 0px 14px
     
     .curve
-      background-image url(../_images/backgrounds/curve.png)
+      background-image url(../_images/backgrounds/curve_small_top.png)
       float            right
       width            29px
-      height           20px
+      height           $curveHeight
   
   .textContainer
     margin  25px 0px 0px 0px

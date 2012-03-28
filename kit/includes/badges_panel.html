@@ -1,9 +1,10 @@
 <!-- Prints HTML Badges Panel -->
 <div class="text">
   <img ng:repeat = "badge in this.badges"
-    ng:src  = "{{this.badge.imageURL}}"
+    ng:src  = "{{badge.imageURL}}"
     class   = "{{$position}}"
-    title   = "{{this.badge.description}}"
-    onclick = "alert('{{this.badge.description}}')"
+    title   = "{{badge.description}}"
+    alt     = "{{badge.description}}"
+    onclick = "alert('{{badge.description}}')"
   />
 </div>

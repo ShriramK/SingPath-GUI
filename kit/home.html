@@ -37,179 +37,59 @@
     <!-- Print common panel with custom loaded data from BadgesPanelCtrl() -->
     <ng:include ng:controller="BadgesPanelCtrl" src="'includes/common_panel.html'"></ng:include> 
     
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
     
-    
-    <div id="beardy">
-      <table class="__page" id="awrapper">
-        <tr>
-          <td style="position: relative">
-            <table class="__body">
-              <tr class="__body" id="__body">
-                <td class="__col1" id="__col1">
-                  <table class="__col1">
-                    <tr class="element1">
-                      <td>
-                      
-                      
-                        <table class="profileDetailsSmall" id="profileDetails">
-                          <tr class="boxHeaderWithButton">
-                            <td class="boxHeader">Profile</td>
-                            <td class="boxHeaderButton">
-                              <a href="javascript:" class="rolls" onclick="editDetails()">
-                                <span class="emptySmallButton">Edit Details</span>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr class="boxContent">
-                            <td colspan="2">
-                              <table>
-                                  <tr class="profileNameText">
-                                    <td class="profileNameText" colspan="2">
-                                      <div id="profileNameText" class="profileNameText"></div>
-                                    </td>
-                                  </tr>
-                                  <tr class="hpGravatarLarge">
-                                    <td class="hpGravatarLarge">
-                                      <div id="hpGravatarLarge" class="hpGravatarLarge"></div>
-                                      <div class="countryAndGender">
-                                          <div id="country"></div>
-                                          <div id="gender"></div>
-                                      </div>
-                                    </td>
-                                    <td class="hpProfileDetails">
-                                      <div id="hpProfileDetails" class="hpProfileDetails"></div>
-                                    </td>
-                                  </tr>
-                              </table>
-                            </td>
-                          </tr>
-                        </table>
-                        
-                        
-                      </td>
-                    </tr>
-                    <tr class="element1 bottomBox">
-                      <td>
-                        <table class="homeCurrentPath">
-                          <tr class="boxHeader">
-                            <td class="boxHeader" colspan="2">
-                              <table class="tabHeader">
-                                <tr class="tabHeader">
-                                  <td class="tabHeaderLeft" onclick="showTab(0)"></td>
-                                  <td class="tabHeaderCenter" onclick="showTab(0)">Current Paths</td>
-                                  <td class="tabHeaderRight" onclick="showTab(0)"></td>
-                                  <td class="tabHeaderLeftOff" onclick="showTab(1)"></td>
-                                  <td class="tabHeaderCenterOff" onclick="showTab(1)">My Paths</td>
-                                  <td class="tabHeaderRightOff" onclick="showTab(1)"></td>
-                                  <td class="tabHeaderLeftOff" onclick="showTab(2)"></td>
-                                  <td class="tabHeaderCenterOff" onclick="showTab(2)">Other Paths</td>
-                                  <td class="tabHeaderRightOff" onclick="showTab(2)"></td>
-                                  <td class="tabHeaderRightEnd"></td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr class="boxBody">
-                            <td class="levels" colspan="2">
-                              <div class="levels">
-                                <table class="levels" id="levels">
-                                <!-- filling with ajax -->
-                                </table>
-                              </div>
-                              <div class="myPaths" style="display: none">
-                                <table class="levels" id="myPaths">
-                                <!-- filling with ajax -->
-                                </table>
-                              </div>
-                              <div class="otherPaths" style="display: none">
-                                <table class="levels" id="otherPaths">
-                                <!-- filling with ajax -->
-                                </table>
-                              </div>
-                              <input type="hidden" id="interface_id" value=""/>
-                            </td>
-                          </tr>
-                          <tr class="boxFooter">
-                            <td class="cpCreateButton"><a href="createMain.html" class="rolls"><img src="_images/homePageButtons/create_off.png" alt="create button" class="cpCreateButton" /></a></td>
-                            <td class="cpTournamentButton"><a href="tournament.html" class="rolls"><img src="_images/homePageButtons/tournament_off.png" alt="tournament button" class="cpTournamentButton" /></a></td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                
-                
-                <td class="__col2" id="__col2">
-                  <table class="__col2">
-                    <tr class="element2">
-                      <td>
-              <table class="homeBadges">
-                <tr class="boxHeaderWithButton">
-                  <td class="boxHeader">Badges</td>
-                  <td class="boxHeaderButton">
-                    <a href="badges.html" class="rolls">
-                      <span class="emptySmallButton">View Badges</span>
-                    </a>
-                  </td>
-                </tr>
-                <tr class="boxContent">
-                  <td class="hbBadgesZone" colspan="2">
-                    <div id="hbBadgesZone" class="hbBadgesZone"></div>
-                  </td>
-                </tr>
-              </table>
-                      </td>
-                    </tr>
-                    <tr class="element2">
-                      <td>
-                        <table class="topRankings">
-                          <tr class="boxHeaderWithButton">
-                            <td class="boxHeader"></td>
-                            <td class="boxHeaderButton">
-                              <a href="ranking.html" class="rolls" id="rankingLink">
-                                <span class="emptySmallButton">View Rankings</span>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr class="boxContent">
-                            <td class="topRankings" colspan="2">
-                              <div class="topRankings" id="topRankings"></div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr class="element2 bottomBox">
-                      <td>
-                        <table class="homeChallenges">
-                          <tr class="boxHeaderWithButton">
-                            <td class="boxHeader">Challenges</td>
-                            <td class="boxHeaderButton">
-                              <a href="challengeBoard.html" class="viewChallengesButton">
-                                <span class="emptySmallButton">Challenge Board</span>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr class="boxContent">
-                            <td colspan="2">
-                              <div id="hpChallenges"></div>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                
-              </tr>
+    <table class="homeCurrentPath">
+      <tr class="boxHeader">
+        <td class="boxHeader" colspan="2">
+          <table class="tabHeader">
+            <tr class="tabHeader">
+              <td class="tabHeaderLeft" onclick="showTab(0)"></td>
+              <td class="tabHeaderCenter" onclick="showTab(0)">Current Paths</td>
+              <td class="tabHeaderRight" onclick="showTab(0)"></td>
+              <td class="tabHeaderLeftOff" onclick="showTab(1)"></td>
+              <td class="tabHeaderCenterOff" onclick="showTab(1)">My Paths</td>
+              <td class="tabHeaderRightOff" onclick="showTab(1)"></td>
+              <td class="tabHeaderLeftOff" onclick="showTab(2)"></td>
+              <td class="tabHeaderCenterOff" onclick="showTab(2)">Other Paths</td>
+              <td class="tabHeaderRightOff" onclick="showTab(2)"></td>
+              <td class="tabHeaderRightEnd"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="boxBody">
+        <td class="levels" colspan="2">
+          <div class="levels">
+            <table class="levels" id="levels">
+            <!-- filling with ajax -->
             </table>
-          </td>
-        </tr>
-      </table>
-    </div>
+          </div>
+          <div class="myPaths" style="display: none">
+            <table class="levels" id="myPaths">
+            <!-- filling with ajax -->
+            </table>
+          </div>
+          <div class="otherPaths" style="display: none">
+            <table class="levels" id="otherPaths">
+            <!-- filling with ajax -->
+            </table>
+          </div>
+          <input type="hidden" id="interface_id" value=""/>
+        </td>
+      </tr>
+      <tr class="boxFooter">
+        <td class="cpCreateButton"><a href="createMain.html" class="rolls"><img src="_images/homePageButtons/create_off.png" alt="create button" class="cpCreateButton" /></a></td>
+        <td class="cpTournamentButton"><a href="tournament.html" class="rolls"><img src="_images/homePageButtons/tournament_off.png" alt="tournament button" class="cpTournamentButton" /></a></td>
+      </tr>
+    </table>
+    
+    
+    <!-- Print common panel with custom loaded data from RankingPanelCtrl() -->
+    <ng:include ng:controller="RankingPanelCtrl" src="'includes/common_panel.html'"></ng:include> 
+    
+    
+    <!-- Print common panel with custom loaded data from ChallengesPanelCtrl() -->
+    <ng:include ng:controller="ChallengesPanelCtrl" src="'includes/common_panel.html'"></ng:include> 
     
     
     <!-- Include Page Footer -->

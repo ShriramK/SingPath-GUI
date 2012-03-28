@@ -100,7 +100,7 @@ describe('kit', function() {
             //expect(browser().location().path()).toBe('/kit/home.html');
             //expect(element('#footer a:nth-child(1)').text()).toBe('home');
             //expect(element('div:eq(0)').text()).toEqual('something');
-            expect(element('#profileNameText').text()).toBe('Mark Zuckerberg');
+            expect(element('.profileName span').text()).toBe('Mark Zuckerberg');
 
             expect(element('#levels_tr_10030 td:nth-child(2)').text()).toBe('123/257');
             element('.rolls').click();

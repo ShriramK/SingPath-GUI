@@ -39,8 +39,111 @@
 </div>
 
 
-<!-- Print the edit profile details menu -->
-<div id="showProfilePopup" class="popup {{this.popUp.class}}">
+<!-- Print the Edit Profile Details PopUp Menu -->
+<div class="popUp {{this.popUp.class}}">
+  <div class="container" ng:click="this.popUp.class = 'hide'">
+    
+    <!-- Top-Left Label -->
+    <!-- Note: ng:click="false" prevents the click event from bubbling up to the DOM tree -->
+    <div class="profile" ng:click="false">
+      <div class="labelContainer">
+        <div class="label">
+          Edit Profile
+        </div>
+        <div class="curve"></div>
+      </div>
+      
+      
+      <!-- Top-Right Close btn -->
+      <div class="closeBtn" ng:click="this.popUp.class = 'hide'"></div>
+      
+      
+      <!-- Main Content -->
+      <div class="textContainer">
+        <div class="text">
+          
+          <div class="gravatarContainer">
+            <img ng:src="{{this.profile.gravatar}}" class="gravatar" />
+            <a href="http://www.gravatar.com" target="_blank" class="commonBtn small" title="Change Your Gravatar from www.gravatar.com">
+              <div class="left"></div>
+              <div class="middle">
+                Change Gravatar
+              </div>
+              <div class="right"></div>
+            </a>
+          </div>
+          
+          <div class="infoContainer">
+            <div class="label">
+              Name:
+            </div>
+            <input type="text" value="{{this.profile.nickname}}" />
+            
+            <div class="label">
+              Location:
+            </div>
+            <input type="text" value="{{this.profile.location}}" />
+            
+            <div class="label">
+              Gender:
+            </div>
+            <input type="text" value="{{this.profile.gender}}" />
+            
+            <div class="label">
+              Year of Birth:
+            </div>
+            <input type="text" value="{{this.profile.yearOfBirth}}" class="year" />
+            <div class="note">
+              Your year of birth will always be kept private and will not be shown on your profile.
+            </div>
+            
+            <div class="label">
+              Tags:
+            </div>
+            <input type="text" value="{{this.profile.tags}}" />
+            
+            <div class="label">
+              Professional:
+            </div>
+            <div class="radioContainer">
+              <input type="radio" name="professional" value="1" />
+            </div>
+            
+            <div class="label">
+              Student:
+            </div>
+            <div class="radioContainer">
+              <input type="radio" name="professional" value="0" />
+            </div>
+            
+            <div class="label">
+              About Yourself:
+            </div>
+            <textarea name="profile.about"></textarea>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      <!-- Bottom container and Save btn -->
+      <div class="labelBottomContainer">
+        <div class="curve"></div>
+        <div class="label">
+          <div class="btn">
+            Save Details
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!--
+<div class="popup {{this.popUp.class}}">
   <table class="popup">
       <tr class="popup">
         <td class="popup">
@@ -101,3 +204,4 @@
       </tr>
   </table>
 </div>
+-->
