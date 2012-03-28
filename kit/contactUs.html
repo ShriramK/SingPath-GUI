@@ -5,6 +5,7 @@
 <title>SingPath - The most fun way to practice software - Contact Us</title>
 <link href="_css/SingPathMain.css" rel="stylesheet" type="text/css" />
 <script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
+<script src="js/controllers.js"      type="text/javascript"></script>
 <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -52,14 +53,9 @@ a:active {
 -->
 </style></head>
 
-<body onload="MM_preloadImages('_images/commonButtons/singpathLogo_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileSandra_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileChris_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileShane_on.png','_images/aboutUsPage/aboutUsPageButtons/viewAllStaff_on.png')">
+<body ng:controller="LoadPageCtrl" onload="MM_preloadImages('_images/commonButtons/singpathLogo_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileSandra_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileChris_on.png','_images/aboutUsPage/aboutUsPageButtons/staffProfileShane_on.png','_images/aboutUsPage/aboutUsPageButtons/viewAllStaff_on.png')">
 <div id="wrapper">
-  <div id="MainHeader">
-    <div id="Logo"><a href="home.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Singpath Logo','','_images/commonButtons/singpathLogo_on.png',1)"><img src="_images/commonButtons/singpathLogo_off.png" alt="Singpath Logo" name="Singpath Logo" width="169" height="46" border="0" id="Singpath Logo" /></a></div>
-  </div>
-  <div id="aboutUsMenuOptions">
-    <div id="aboutUsMenuOptionsText"><a href="home.html" title="SingPath - The Most Fun Way to Practice Software" target="_self">home</a> -<a href="aboutUs.html" title="About Us" target="_self"> about us</a> - terms of use - <a href="contributions.html">contributions</a> - tournament -  feedback - <a href="contactUs.html">contact us</a></div>
-  </div>
+  <ng:include src="'includes/pageHeader.html'"></ng:include>
   <div id="contactUsInfoBox">
     <div id="contactUsInfoBoxText">
       <p>Please use the feedback button found at the right margin of every page
@@ -80,18 +76,9 @@ a:active {
     </div>
   </div>
 
-  <ng:include src="'partials/footer.html'"></ng:include>
+  <ng:include src="'includes/pageFooter.html'"></ng:include>
 
 </div>
-   <script type="text/javascript">
-     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-   </script>
-   <script type="text/javascript">
-     try {
-     var pageTracker = _gat._getTracker("UA-12331844-1");
-     pageTracker._trackPageview();
-     } catch(err) {}
-   </script>
+<ng:include src="'includes/googleAnalytics.html'"></ng:include>
 </body>
 </html>

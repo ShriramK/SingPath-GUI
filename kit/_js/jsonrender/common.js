@@ -377,7 +377,7 @@ function runProblemset(problemset_id, num_problems) {
     }
     if (problemset_id != undefined) {
         ajax({
-            url: '../jsonapi/create_game/problemsetID/'+escape(problemset_id)+'/numProblems/'+escape(num_problems)+'/',
+            url: '../jsonapi/create_game/problemsetID/'+escape(problemset_id)+'/numProblems/'+escape(num_problems)+'',
             success: function(player) {
                 if (player.gameID) {
                     var url = "play.html?gameID=" + escape(player.gameID);

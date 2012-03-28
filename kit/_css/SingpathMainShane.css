@@ -190,18 +190,12 @@ body {
 	padding: 2px 14px;
 }
 #wrapper #infoBarRanking {
-	color: #FFF;
-	padding: 0px;
-	width: 906px;
-	position: relative;
-	top: -5px;
-	right: 0px;
-	font-size: 16px;
-	margin: 0px;
-	height: 40px;
-	clear: none;
-	float: left;
-	background: url(../_images/rankingPage/06worldWideRanking_02.png) no-repeat;
+  background-image: url(../_images/commonButtons/blueBar.png);
+  background-repeat: no-repeat;
+  background-position: -10px -1px;
+  height: 48px;
+  width: 890px;
+  text-align: center;
 }
 #wrapper #infoBarRanking img {
 	color: #FFF;

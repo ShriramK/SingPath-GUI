@@ -205,8 +205,8 @@ function goToNextProblem() {
         }
         (function(gameid, problem_data){
             ajax({
-                url   : '../jsonapi/verify_solution.php?callback=?',
-                type: 'POST',
+                url   : '../jsonapi/verify_solution.php',
+                type: 'GET',
                 data: {user_code: code, game_id: gameid, problem_id: problem_data.id},
                 dataType: 'json', //dataType is json when using POST method!
                 skip_display_error: true,
@@ -214,8 +214,8 @@ function goToNextProblem() {
                     //try again, if there was an error
                     if (response && response.error) {
                         ajax({
-                            url   : '../jsonapi/verify_solution.php?callback=?',
-                            type: 'POST',
+                            url   : '../jsonapi/verify_solution.php',
+                            type: 'GET',
                             data: {user_code: code, game_id: gameid, problem_id: problem_data.id},
                             dataType: 'json', //dataType is json when using POST method!
                             skip_display_error: true,
