@@ -162,7 +162,7 @@ function testHeadMenuOptions() {
     ];
     
     // Test all Head Menu options from the given resouce
-    testMenuOptions(options, '#menuOptionsText', 'menuSelected');
+    testMenuOptions(options, '#menuOptionsText', 'ng-attr-widget');
   });
 }
 
@@ -291,11 +291,11 @@ describe('Additinal tests from Ivan', function() {
     
     
     // Test the removing of the cloak over the stats menu
-    testCloak('#statsTextBoxtext');
+    testCloak('#rankStatsBoxText');
     
     
     // Testing all stats in the #statsTextBoxtext
-    statsSelector = '#statsTextBoxtext > p > span > .ng-binding:eq';
+    statsSelector = '#rankStatsBoxText > p > span > .ng-binding:eq';
     statsResource = {
       "num_players"      : "4306",
       "num_badges"       : "21,014",
