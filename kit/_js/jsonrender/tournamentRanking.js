@@ -113,6 +113,34 @@ function refreshHeatRanking() {
         timer_id = undefined;
     }
 }
+
+function renderTournamentRanking(result) {
+    $('#levMBText').html(result['description']+' Results');
+    var s = '';
+    var n = 0;
+    var lastHeatID = 0;
+    for (var i in result['rounds']) {
+        var r = result['rounds'][i];
+        if (r && r['currentHeatID'] && (r['currentHeatID'] > 0)) {
+            lastHeatID = r['currentHeatID'];
+            var ss = ' onclick="displayTab(this, '+n+'); loadHeatRanking('+lastHeatID+');"';
+            s += 
+                '<td class="tabHeaderLeftOff"'+ss+'></td>'+
+                '<td class="tabHeaderCenterOff"'+ss+'>'+r['description']+'</td>'+
+                '<td class="tabHeaderRightOff"'+ss+'></td>';
+        }
+        n++;
+    }
+    if (n > 0) {
+        s += 
+            '<td class="tabHeaderRightEnd"></td>';
+        $('#tournamentTabs').html(s);
+        displayTab($('#tournamentTabs td')[0], n - 1);
+        loadHeatRanking(lastHeatID);
+        timer_id = window.setInterval(refreshHeatRanking, 30000);
+    }
+}
+
 $(document).ready(function() {
     $("div#loading").ajaxStart(function() {
         $("div#loading").show();
@@ -129,33 +157,4 @@ $(document).ready(function() {
         return;
     }
     $('a#tournamentContinueButton').attr('href', 'tournament.html?tournamentID='+tournamentID);
-    ajax({
-        url: '../jsonapi/tournament/'+tournamentID,
-        success: function(result) {
-            $('#levMBText').html(result['description']+' Results');
-            var s = '';
-            var n = 0;
-            var lastHeatID = 0;
-            for (var i in result['rounds']) {
-                var r = result['rounds'][i];
-                if (r && r['currentHeatID'] && (r['currentHeatID'] > 0)) {
-                    lastHeatID = r['currentHeatID'];
-                    var ss = ' onclick="displayTab(this, '+n+'); loadHeatRanking('+lastHeatID+');"';
-                    s += 
-                        '<td class="tabHeaderLeftOff"'+ss+'></td>'+
-                        '<td class="tabHeaderCenterOff"'+ss+'>'+r['description']+'</td>'+
-                        '<td class="tabHeaderRightOff"'+ss+'></td>';
-                }
-                n++;
-            }
-            if (n > 0) {
-                s += 
-                    '<td class="tabHeaderRightEnd"></td>';
-                $('#tournamentTabs').html(s);
-                displayTab($('#tournamentTabs td')[0], n - 1);
-                loadHeatRanking(lastHeatID);
-                timer_id = window.setInterval(refreshHeatRanking, 30000);
-            }
-        }
-    });
 });

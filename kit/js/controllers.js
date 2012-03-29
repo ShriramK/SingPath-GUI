@@ -380,6 +380,38 @@ function ChallengeAnswerCtrl($resource,$location){
 
 ChallengeAnswerCtrl.$inject = ['$resource'];
 
+
+function TournamentsCtrl($resource){
+	var self = this;
+	tournament = $resource("../jsonapi/list_tournaments");
+	this.tournament = tournament.query(function(){
+			renderTournamentList(self.tournament);
+			if (getTournamentID()) {
+					tournament_registration_status = $resource('../jsonapi/tournament_registration_status/' + getTournamentID());
+					tournament_registration_status_get = tournament_registration_status.get(function(){
+						checkTournamentRegistrationStatus(tournament_registration_status_get);
+						reloadTournamentPage(getTournamentID());
+					});
+		      } else {
+		        disableSignIn();
+		      }
+	});
+}
+
+TournamentsCtrl.$inject = ['$resource'];
+
+function TournamentCtrl($resource){
+	var self = this;
+	var tournamentID = getParameterFromURL('tournamentID');
+	tournament = $resource('../jsonapi/tournament/'+tournamentID);
+	this.tournament = tournament.get(function(){
+		renderTournamentRanking(self.tournament)
+	});
+}
+
+TournamentCtrl.$inject = ['$resource'];
+
+
 function ChallengesCtrl($resource){
 			var self = this;
 		this.loadChallenges = function (is_all_challenges){
