@@ -547,6 +547,26 @@ function ListChallengePlayersCtrl($resource){
 
 ListChallengePlayersCtrl.$inject = ['$resource'];
 
+
+
+function LoadProblemCtrl($resource){
+    		var self = this;
+    		var problem_id = getIdFromURL('problem_id');
+    		if (problem_id){
+    				var url = '../jsonapi/get_problem';
+    				url = url + '?problem_id=:problem_id';
+    				problemRes = $resource(url);
+    				this.problemRes = problemRes.get({problem_id:problem_id},function(){
+    					loadProblem(self.problemRes);
+    				});
+    		}else {
+    	        loadLanguages();
+    	    }
+}
+LoadProblemCtrl.$inject = ['$resource'];
+    	
+    	
+
 function GetGamePathCtrl($resource){
 	var self = this;
 	var url = '../jsonapi/get_game_paths';
