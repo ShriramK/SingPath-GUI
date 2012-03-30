@@ -16,6 +16,12 @@ String.prototype.removeNewLines = function() {
 }
 
 
+// Set the first letter to upper case and all rest to lower
+String.prototype.capitalFirstLetter = function() {
+  return this[0].toUpperCase() + this.substr(1).toLowerCase();
+}
+
+
 // Return the page from the window URL
 function getHref() {
   href = window.location.href;
