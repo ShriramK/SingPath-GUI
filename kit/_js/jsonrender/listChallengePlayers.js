@@ -1,10 +1,4 @@
-function loadChallengePlayers() {
-    var challenge_id = getIdFromURL('challenge_id');
-    if (challenge_id) {
-        ajax({
-            url: '/jsonapi/list_challenge_players',
-            data: {challenge_id: challenge_id},
-            success: function(result) {
+function loadChallengePlayers(result) {
                 $('table#challenge').remove();
                 var html =
                     '<table class="challenge_players_list" id="challenge" border="1">'+
@@ -67,10 +61,8 @@ function loadChallengePlayers() {
                 html += '</table>';
 
                 $('#beardy').append(html);
-            }
-        });
-    }
-}
+                }
+
 $(document).ready(function() {
     $("div#loading").ajaxStart(function() {
         $("div#loading").show();
@@ -78,5 +70,5 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    loadChallengePlayers();
+    //loadChallengePlayers();
 });

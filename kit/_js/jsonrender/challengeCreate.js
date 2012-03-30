@@ -39,13 +39,7 @@ function getDateStr(s) {
     }
     return '';
 }
-function loadChallenge() {
-    var challenge_id = getChallengeId();
-    if (challenge_id) {
-        ajax({
-            url: '/jsonapi/get_challenge_for_edit',
-            data: {challenge_id: challenge_id},
-            success: function(result) {
+function loadChallenge(result) {
                 challenge = result['challenge'];
                 $('#name').val(challenge['name']);
                 $('#description').val(challenge['description']);
@@ -59,9 +53,6 @@ function loadChallenge() {
 
                 autoPreloadRollsImages();
                 initRolls();
-            }
-        });
-    }
 }
 function fillBadges($select_elements, badge_ids) {
     var i = 0;
@@ -95,10 +86,7 @@ function fillBadges($select_elements, badge_ids) {
         i++;
     });
 }
-function loadCountries() {
-    ajax({
-        url: '/jsonapi/all_countries',
-        success: function(result) {
+function loadCountries(result) {
             var s = '<option value="">[Worldwide]</option>';
             for (var i in result['countries']) {
                 var b = result['countries'][i];
@@ -108,14 +96,8 @@ function loadCountries() {
             $('#country').html(s);
 
             //after we have elements in the selects, we can download challenge data
-            loadChallenge();
-        }
-    });
 }
-function loadGamePathsAndBadges() {
-    ajax({
-        url: '../jsonapi/get_game_paths',
-        success: function(result) {
+function loadGamePathsAndBadges(result) {
             paths = result['paths'];
             var path_options = '<option value="-1">--</option>';
             for (var i in paths) {
@@ -151,10 +133,6 @@ function loadGamePathsAndBadges() {
             }
             s += '</table>';
             $('table.level_chooser div.content').html(s); //there are 2 divs!
-
-            loadCountries();
-        }
-    });
 }
 function showLevels(elem) {
     var path_id = (elem.selectedIndex >= 0 ? parseInt(elem.options[elem.selectedIndex].value) : -1);
@@ -301,7 +279,7 @@ $(document).ready(function() {
         this.blur();
         return false;
     });
-    log_access('challengeCreate');
+    //log_access('challengeCreate');
     loadPlayerData(function(player){player_result = player});
-    loadGamePathsAndBadges();
+    //loadGamePathsAndBadges();
 });
