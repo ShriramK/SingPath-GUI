@@ -22,10 +22,7 @@ function getMessage(msg) {
     }
     return ""+msg;
 }
-function loadChallenges() {
-    ajax({
-        url: '../jsonapi/list_challenges',
-        success: function(result) {
+function loadChallenges(result,badgesById,countriesById) {
             $('table#challenge').remove();
             var html =
                 '<table class="challenge_list" id="challenge" border="1">'+
@@ -105,8 +102,6 @@ function loadChallenges() {
             html += '</table>';
 
             $('#beardy').append(html);
-        }
-    });
 }
 function loadCountries() {
     ajax({
@@ -165,5 +160,5 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    loadBadges();
+    //loadBadges();
 });

@@ -9,11 +9,11 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('createProblem');
+    //log_access('createProblem');
     loadPlayerData();
     initRolls();
     autoPreloadRollsImages();
-    loadProblem();
+    //loadProblem();
     
     var highlight = 'python';
     showCodeTab(1);
@@ -58,35 +58,23 @@ $(document).ready(function() {
         }
     }
 });
-function loadProblem() {
-    var problem_id = getIdFromURL('problem_id');
-    if (problem_id) {
+function loadProblem(result) {
         $('#create_or_edit_problem').html('Edit Problem');
-        ajax({
-            url: '/jsonapi/get_problem',
-            data: {problem_id: problem_id},
-            success: function(result) {
-                problem_data = result['problem']; //save problem's data
-                //set problem's attributes to controls
-                $('#problemName').val(problem_data['name']);
-                $('#problemDetails').val(problem_data['description']);
-                $('#user_code').val(problem_data['solution']);
-                $('#skeleton_code').val(problem_data['skeleton']);
-                try {
-                    window.frames['frame_skeleton_code'].document.getElementById('textarea').value =
-                        problem_data['skeleton'];
-                } catch (e) {
-                }
-                $('textarea#example').val(problem_data['examples']);
-                $('textarea#publicTests').val(problem_data['tests']);
-                $('textarea#privateTests').val(problem_data['other_tests']);
-                
-                loadLanguages();
-            }
-        });
-    } else {
+        problem_data = result['problem']; //save problem's data
+        //set problem's attributes to controls
+        $('#problemName').val(problem_data['name']);
+        $('#problemDetails').val(problem_data['description']);
+        $('#user_code').val(problem_data['solution']);
+        $('#skeleton_code').val(problem_data['skeleton']);
+        try {
+                window.frames['frame_skeleton_code'].document.getElementById('textarea').value =
+                problem_data['skeleton'];
+        } catch (e) {
+        }
+        $('textarea#example').val(problem_data['examples']);
+        $('textarea#publicTests').val(problem_data['tests']);
+        $('textarea#privateTests').val(problem_data['other_tests']);
         loadLanguages();
-    }
 }
 function loadLanguages() {
     ajax({
