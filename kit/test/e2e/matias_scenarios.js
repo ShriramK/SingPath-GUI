@@ -57,6 +57,14 @@ describe('Additinal test from Matias', function() {
 		    expect(element("#yourPathBadgesBox > img:last").attr('src')).toBe("../static/badges/ruby/r009_off.png");
 	  });
 	  
+	  it('Testing kit/challengeboard.html', function() {
+	      browser().navigateTo('../../challengeboard.html');
+	      expect(browser().location().hash()).toBe('');
+	      expect(element('#challenge>tbody>tr:first>td[class$="name"]>a').text()).toBe("Find the sum of the first 100 prime numbers.");
+	      expect(element('#challenge>tbody>tr:last>td[class$="name"]>a').text()).toBe("test test");
+
+	  });
+	  
 	  it('Testing kit/ranking.html', function() {
 	      browser().navigateTo('../../ranking.html');
 	      expect(browser().location().hash()).toBe('');

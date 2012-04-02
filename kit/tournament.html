@@ -17,11 +17,15 @@
 	   window.onload = function (){addSingpathServerNameToForm("frmpass");}
 	</script>
 	<script src="_js/feedback-v2.js" type="text/javascript"></script>
+	<script src="js/commonTools.js"      type="text/javascript"></script>
 	<script src="js/controllers.js"      type="text/javascript"></script>
+	<script type="text/javascript">
+		window.MENU = false;
+	</script>
 	<link rel="stylesheet" type="text/css" href="_css/jquery.countdown.css" />
 </head>
 <body ng:controller="LoadPageCtrl">
-<div id="wrapper">
+<div id="wrapper" ng:controller="TournamentsCtrl">
 <center><div id="loading">Loading...</div></center>
 <div id="beardy">
   <div id="awrapper">

@@ -196,7 +196,7 @@ function loadChallenge() {
 }
 function loadCountries() {
     ajax({
-        url: '/jsonapi/all_countries',
+        url: '../jsonapi/all_countries',
         skip_check_login_error: true,
         skip_display_error: true,
         success: function(result) {
@@ -285,7 +285,7 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('challengeView');
+    //log_access('challengeView');
     loadPlayerData(function(player){player_result = player}, true);
     loadBadges();
     showAdv();

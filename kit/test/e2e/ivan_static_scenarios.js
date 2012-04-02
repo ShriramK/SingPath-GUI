@@ -146,9 +146,11 @@ function testUserLoginMenu() {
 
 
 // Testing all Head Menu options
+
 function testHeadMenuOptions() {
-  // Loading window path
-  expect(browser().window().path()).value(function(path) {
+  /*
+  //Loading window path
+  //expect(browser().window().path()).value(function(path) {
     // Note: It's important to load the options after the execution of expect(...).value()
     //       coz otherwise testMenuOptions() could mix vars with other testMenuOptions() calls
     options = [
@@ -160,7 +162,7 @@ function testHeadMenuOptions() {
       {"text": "Tournament"  , "href": "tournament.html"  , "target": "", "class": "", "title": ""},
       {"text": "News"        , "href": "news.html"        , "target": "", "class": "", "title": ""}
     ];
-    
+    */
     // Test all Head Menu options from the given resouce
     testMenuOptions(options, '#menuOptionsText', 'ng-attr-widget');
   });

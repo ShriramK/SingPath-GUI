@@ -22,6 +22,7 @@ setInterval(checkHash, 100);
 window.USER = {
  "isLogged": false
 }
+window.MENU = true;
 
 function RankingStatsPageCtr($resource){
 	self = this;
@@ -40,6 +41,7 @@ function LoadPageCtrl($resource) {
   // Mapping the Global var to the current controller var
   // Note: Object copping in JavaScript is made by reference
   this.USER = window.USER;
+  this.MENU = window.MENU;
   
   // Send a request back to the server which page was loaded and when
   LogAccessCtrl($resource);
@@ -410,7 +412,187 @@ function ChallengeAnswerCtrl($resource,$location){
 	}
 }
 
-ChallengeAnswerCtrl.$inject = ['$resource','$location'];
+ChallengeAnswerCtrl.$inject = ['$resource'];
+
+
+function TournamentsCtrl($resource){
+	var self = this;
+	tournament = $resource("../jsonapi/list_tournaments");
+	this.tournament = tournament.query(function(){
+			renderTournamentList(self.tournament);
+			if (getTournamentID()) {
+					tournament_registration_status = $resource('../jsonapi/tournament_registration_status/' + getTournamentID());
+					tournament_registration_status_get = tournament_registration_status.get(function(){
+						checkTournamentRegistrationStatus(tournament_registration_status_get);
+						reloadTournamentPage(getTournamentID());
+					});
+		      } else {
+		        disableSignIn();
+		      }
+	});
+}
+
+TournamentsCtrl.$inject = ['$resource'];
+
+function TournamentCtrl($resource){
+	var self = this;
+	var tournamentID = getParameterFromURL('tournamentID');
+	tournament = $resource('../jsonapi/tournament/'+tournamentID);
+	this.tournament = tournament.get(function(){
+		renderTournamentRanking(self.tournament)
+	});
+}
+
+TournamentCtrl.$inject = ['$resource'];
+
+
+function ChallengesCtrl($resource){
+		var self = this;
+		this.loadChallenges = function (is_all_challenges){
+		        var challenges_per_page = 30;
+				var data = {};
+			    if (getPathId()) {
+			        data['path_id' ] = getPathId();
+			    }
+			    var challenges_per_page = 30;
+			    data['limit'] = challenges_per_page + 1;
+			    var page = (is_all_challenges ? page_all_challenges : page_my_challenges);
+			    data['offset'] = challenges_per_page * page;
+			    var url = (is_all_challenges ? '../jsonapi/list_challenges' : '../jsonapi/list_my_challenges');
+			    url = url + '?path_id=:path_id&limit=:limit&offset=:offset'
+			    var prevCode;
+			    var nextCode;
+			    if (is_all_challenges) {
+			        prevCode = 'page_all_challenges--;loadChallenges()';
+			        nextCode = 'page_all_challenges++;loadChallenges()';
+			    } else {
+			        prevCode = 'page_my_challenges--;loadMyChallenges()';
+			        nextCode = 'page_my_challenges++;loadMyChallenges()';
+			    }
+				challengeRes = $resource(url);
+				this.badgesById = {};
+				this.countriesById = {};
+				this.challenge = challengeRes.get({path_id:data['path_id' ],limit:data['limit'],offset:data['offset']},function(){
+					all_badges = $resource("../jsonapi/all_badges");
+					self.badges = all_badges.get(function(){
+						 for (var i in self.badges['badges']) {
+				                var b = self.badges['badges'][i];
+				                self.badgesById[b['id']] = b;
+				            }
+						 all_countries = $resource("../jsonapi/all_countries");
+						 self.countries = all_countries.get(function(){
+							 for (var i in self.countries['countries']) {
+					                var b = self.countries['countries'][i];
+					                var name = b['countryName'];
+					                self.countriesById[b['id']] = b;
+					            }
+							 renderChallenges(
+									 	self.countriesById,
+										self.badgesById,
+										self.challenge,
+						                is_all_challenges,
+						                challenges_per_page,
+						                data['offset'],
+						                prevCode,
+						                nextCode);
+						 	});
+					 });
+				});
+		}
+		this.loadChallenges(true);
+}
+
+ChallengesCtrl.$inject = ['$resource'];
+
+function ChallengesAllCtrl($resource){
+		var self = this;
+	    var url = '../jsonapi/list_challenges';
+	    this.badgesById = {};
+		this.countriesById = {};
+	    challengeRes = $resource(url);
+		this.challenge = challengeRes.get(function(){
+			all_badges = $resource("../jsonapi/all_badges");
+			self.badges = all_badges.get(function(){
+				 for (var i in self.badges['badges']) {
+		                var b = self.badges['badges'][i];
+		                self.badgesById[b['id']] = b;
+		            }
+				 all_countries = $resource("../jsonapi/all_countries");
+				 self.countries = all_countries.get(function(){
+					 for (var i in self.countries['countries']) {
+			                var b = self.countries['countries'][i];
+			                var name = b['countryName'];
+			                self.countriesById[b['id']] = b;
+			            }
+					 	loadChallenges(self.challenge,self.badgesById,self.countriesById)
+				 	});
+			 });
+		});
+}
+ChallengesAllCtrl.$inject = ['$resource'];
+
+
+function ListChallengePlayersCtrl($resource){
+	var self = this;
+	var challenge_id = getIdFromURL('challenge_id');
+	if (challenge_id){
+			var url = '../jsonapi/list_challenge_players';
+			url = url + '?challenge_id=:challenge_id';
+			challengeRes = $resource(url);
+			this.challenge = challengeRes.get({challenge_id:challenge_id},function(){
+					loadChallengePlayers(self.challenge);
+			});
+	}
+}
+
+ListChallengePlayersCtrl.$inject = ['$resource'];
+
+
+
+function LoadProblemCtrl($resource){
+    		var self = this;
+    		var problem_id = getIdFromURL('problem_id');
+    		if (problem_id){
+    				var url = '../jsonapi/get_problem';
+    				url = url + '?problem_id=:problem_id';
+    				problemRes = $resource(url);
+    				this.problemRes = problemRes.get({problem_id:problem_id},function(){
+    					loadProblem(self.problemRes);
+    				});
+    		}else {
+    	        loadLanguages();
+    	    }
+}
+LoadProblemCtrl.$inject = ['$resource'];
+    	
+    	
+
+function GetGamePathCtrl($resource){
+	var self = this;
+	var url = '../jsonapi/get_game_paths';
+	challengeRes = $resource(url);
+	this.get_game_paths = challengeRes.get(function(){
+		 		all_countries = $resource("../jsonapi/all_countries");
+				 self.countries = all_countries.get(function(){
+					 //var url = '../jsonapi/get_challenge_for_edit';
+					//url = url + '?challenge_id=:challenge_id';
+					//	get_challenge_for_edit = $resource(url);
+					//	self.get_challenge_for_edit = get_challenge_for_edit.get(function(){
+							loadCountries(self.countries);
+						 	loadGamePathsAndBadges(self.get_game_paths);
+					//		loadChallenge(self.get_challenge_for_edit);
+					//	});
+				 });
+	});
+}
+GetGamePathCtrl.$inject = ['$resource'];
+
+function GetChallengeForEditCtrl($resource){
+	var self = this;
+	
+}
+GetChallengeForEditCtrl.$inject = ['$resource'];
+
 
 function TournamentRankingCtrl($resource){
 	tournamentRanking = $resource('../jsonapi/get_heat_ranking');

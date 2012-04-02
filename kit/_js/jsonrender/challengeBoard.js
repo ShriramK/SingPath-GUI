@@ -72,7 +72,7 @@ function _loadChallenges(is_all_challenges) {
         }
     });
 }
-function renderChallenges(result, is_all_challenges, limit, offset,
+function renderChallenges(countriesById,badgesById,result, is_all_challenges, limit, offset,
         prevCode, nextCode) {
     var html = '<table class="challenge all_challenge" id="challenge">';
     if (result['challenges']) {
@@ -316,13 +316,6 @@ $(document).ready(function() {
     $("div#loading").ajaxStop(function() {
         $("div#loading").hide();
     });
-    log_access('challengeBoard');
-    loadPlayerData(function(result) {
-        current_player_id = result['player_id'];
-    });
-    loadBadges();
-    getPathId();
-    loadLanguageSelector();
 });
 function _showTab(td, index, firstTab, secondTab, thirdTab) {
     displayTab(td, index);

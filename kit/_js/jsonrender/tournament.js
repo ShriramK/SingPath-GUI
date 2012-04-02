@@ -15,64 +15,52 @@ $(document).ready(function() {
     
     // player data
     loadPlayerData();
-    autoPreloadRollsImages();
-    getTournamentList();
-    if (tournamentID) {
-      checkTournamentRegistrationStatus();
-      $('a#viewRanking').attr('href', 'tournamentRanking.html?tournamentID='+tournamentID);
-    } else {
-      disableSignIn();
-    }
-    
 });
 
-function getTournamentList() {
-    ajax({
-        url   : '../jsonapi/list_tournaments',
-        success: function(response){
-            var tournamentID = getTournamentID();
-            var html = '';
-            var num = 0;
-            for (var i in response) {
-                if (num >= 5) {
-                    break;
-                }
-                var t = response[i];
-                if (t['status'] != 'Invisible') {
-                    var id = t['tournamentID'];
-                    var img = t['smallPicture'];
-                    if (img == undefined || img == null || img == "") {
-                        img = '_images/tournaments/emptySmall.png';
-                    } else if (!(/^http(s)?:\/\//.test(img)) && !(/^\//.test(img))) {
-                        img = '_images/tournaments/'+img.replace(/\\/g, '/');
-                    }
-                    var tooltip = '';
-                    if (t['description'] && t['description'] != '') {
-                        tooltip = t['description'];
-                    }
-                    html +=
-                        '<a href="tournament.html?tournamentID='+id+'" class="rolls" title="'+tooltip+'">'+
-                        '<img src="'+img+'" class="tour"/>'+
-                        '</a> ';
-                    num++;
-                    
-                    //automatically redirects to the first tournament if no tournamentID provided in the URL
-                    if (!tournamentID) {
-                        window.location = 'tournament.html?tournamentID=' + id;
-                        return;
-                    }
-                }
-            }
-            $('#tourChooser').html(html);
-            initRolls();
-            autoPreloadRollsImages();
+function renderTournamentList(response){
+	var tournamentID = getTournamentID();
+    var html = '';
+    var num = 0;
+    for (var i in response) {
+        if (num >= 5) {
+            break;
         }
-    });
+        var t = response[i];
+        if (t['status'] != 'Invisible') {
+            var id = t['tournamentID'];
+            var img = t['smallPicture'];
+            if (img == undefined || img == null || img == "") {
+                img = '_images/tournaments/emptySmall.png';
+            } else if (!(/^http(s)?:\/\//.test(img)) && !(/^\//.test(img))) {
+                img = '_images/tournaments/'+img.replace(/\\/g, '/');
+            }
+            var tooltip = '';
+            if (t['description'] && t['description'] != '') {
+                tooltip = t['description'];
+            }
+            html +=
+                '<a href="tournament.html?tournamentID='+id+'" class="rolls" title="'+tooltip+'">'+
+                '<img src="'+img+'" class="tour"/>'+
+                '</a> ';
+            num++;
+            
+            //automatically redirects to the first tournament if no tournamentID provided in the URL
+            if (!tournamentID) {
+                window.location = 'tournament.html?tournamentID=' + id;
+                return;
+            }
+        }
+        $('#tourChooser').html(html);
+        initRolls();
+        autoPreloadRollsImages();
+    }
 }
-function checkTournamentRegistrationStatus() {
-    ajax({
-        url   : '../jsonapi/tournament_registration_status/' + getTournamentID(),
-        success: function(response){
+
+function reloadTournamentPage(tournamentID){
+	$('a#viewRanking').attr('href', 'tournamentRanking.html?tournamentID='+tournamentID);
+}
+
+function checkTournamentRegistrationStatus(response){
             if (response) {
                 var img = response['largePicture'];
                 if (img == undefined || img == null || img == "") {
@@ -118,8 +106,6 @@ function checkTournamentRegistrationStatus() {
                     }
                 }
             }
-        }
-    });
 }
 function hasNonFinishedHeat(heats) {
     for (var i in heats) {

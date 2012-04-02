@@ -5,18 +5,21 @@
  */
 angular.service('myAngularApp', function($route, $location, $window) {
 
-  $route.when('/view1', {template: 'partials/partial1.html', controller: MyCtrl1});
-  $route.when('/view2', {template: 'partials/partial2.html', controller: MyCtrl2});
+  $route.when('', {template: 'includes/index_partial.html', controller:LoadPageCtrl});
+  $route.when('/home', {template: 'includes/home.html', controller:LoadPageCtrl});
+  $route.when('/ranking', {template: 'includes/home.html', controller:LoadPageCtrl});
+  //$route.when('/view2', {template: 'partials/partial2.html', controller: MyCtrl2});
 
   var self = this;
 
   $route.onChange(function() {
     if ($location.hash === '') {
-      $location.updateHash('/view1');
-      self.$eval();
-    } else {
-      $route.current.scope.params = $route.current.params;
-      $window.scrollTo(0,0);
+      $location.updateHash('');
+      //self.$eval();
+    } 
+    else {
+      //$route.current.scope.params = $route.current.params;
+      //$window.scrollTo(0,0);
     }
   });
 

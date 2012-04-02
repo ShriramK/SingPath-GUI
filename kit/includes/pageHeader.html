@@ -41,7 +41,7 @@
 </div>
 
 <!-- Head Page links -->
-<div id="menuOptions">
+<div id="menuOptions" ng:show="this.MENU">
   <div id="menuOptionsText" ng:controller="HeadMenuOptionsCtrl">
     <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
       {{option.text}}
