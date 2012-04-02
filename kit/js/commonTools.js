@@ -85,3 +85,31 @@ function clampString(string, maxLength) {
 function getUserLoggedInStatus(player) {
   return player.player_id != "NA";
 }
+
+
+// Counts each element string length and when the sum of all gets the maxLength, return the clamp array
+// param: array     - the array that need to be clamped
+// param: maxLength - the maximum sum length that the clamped array elements won't exceed
+function clampArrayByStringLength(array, maxLength) {
+  // Secure income variables
+  if(Object.prototype.toString.call(array) != '[object Array]' || !(maxLength *= 1)) {
+    return [];
+  }
+  
+  // Cache
+  var clampedArray = new Array();
+  var arrayLength  = array.length;
+  
+  // Calc the maximum length left and clamp if needed
+  for(var i=0; i < arrayLength; i++) {
+    var element = array[i];
+    
+    if((maxLength -= element.length) >= 0) {
+      clampedArray.push(element);
+    } else {
+      break;
+    }
+  }
+  
+  return clampedArray;
+}

@@ -12,11 +12,12 @@
 .profileContainer{margin-left:9px;}
 .profileContainer .textContainer{background-image:url("../_images/homePage/backgrounds/profile_box_small.png");width:499px;height:215px;}
 .profileContainer .textContainer .profileName{font-size:16px;font-weight:bold;color:#f7d3a4;text-align:center;line-height:32px}
-.profileContainer .textContainer .text .gravatar{border-top-left-radius:9px;border-top-right-radius:9px;border-bottom-right-radius:9px;border-bottom-left-radius:9px;-moz-border-radius-topleft:9px;-moz-border-radius-topright:9px;-moz-border-radius-bottomright:9px;-moz-border-radius-bottomleft:9px;float:left;margin:27px 0 -10px 0;width:95px;height:95px}
-.profileContainer .textContainer .text .details{text-transform:capitalize;line-height:28px;margin-left:117px;}
-.profileContainer .textContainer .text .details .label{font-weight:bold;font-size:16px}
-.profileContainer .textContainer .text .details.center{text-align:center;margin-right:135px}
-.profileContainer .textContainer .text .country{margin:15px 0 0 15px}
+.profileContainer .textContainer .gravatar{border-top-left-radius:9px;border-top-right-radius:9px;border-bottom-right-radius:9px;border-bottom-left-radius:9px;-moz-border-radius-topleft:9px;-moz-border-radius-topright:9px;-moz-border-radius-bottomright:9px;-moz-border-radius-bottomleft:9px;float:left;margin:27px 0 -10px 0;width:95px;height:95px}
+.profileContainer .textContainer .text .imgWrapper{float:left;width:110px;}
+.profileContainer .textContainer .text .imgWrapper .country{margin:15px 0 0 15px}
+.profileContainer .textContainer .text .detailsWrapper .details{text-transform:capitalize;line-height:28px;margin-left:117px;padding-right:15px;}
+.profileContainer .textContainer .text .detailsWrapper .details .label{font-weight:bold;font-size:16px}
+.profileContainer .textContainer .text .detailsWrapper .details.center{text-align:center;margin-right:135px;padding:0}
 .badgesContainer,.challengesContainer,.rankingContainer{margin:24px 0 1px 2px;}
 .badgesContainer .textContainer,.challengesContainer .textContainer,.rankingContainer .textContainer{background-image:url("../_images/backgrounds/common_small_box.png");width:391px;height:190px;}
 .badgesContainer .textContainer .text,.challengesContainer .textContainer .text,.rankingContainer .textContainer .text{text-align:center;padding-top:10px}
@@ -57,9 +58,11 @@
 .popUp .container .profile .textContainer .text .gravatarContainer .commonBtn .middle{padding:0}
 .popUp .container .profile .textContainer .text .infoContainer .label,.popUp .container .profile .textContainer .text .infoContainer input,.popUp .container .profile .textContainer .text .infoContainer .radioContainer{float:left}
 .popUp .container .profile .textContainer .text .infoContainer .label{font-size:16px;font-weight:bold;text-align:right;clear:left;width:115px;margin-top:10px;padding-right:10px}
-.popUp .container .profile .textContainer .text .infoContainer input,.popUp .container .profile .textContainer .text .infoContainer textarea,.popUp .container .profile .textContainer .text .infoContainer .radioContainer{border:4px solid #7fa0b2;border-top-left-radius:7px;border-top-right-radius:7px;border-bottom-right-radius:7px;border-bottom-left-radius:7px;-moz-border-radius-topleft:7px;-moz-border-radius-topright:7px;-moz-border-radius-bottomright:7px;-moz-border-radius-bottomleft:7px;box-shadow:1px 1px 0 0 #aaa;-moz-box-shadow:1px 1px 0 0 #aaa;-webkit-box-shadow:1px 1px 0 0 #aaa;margin:5px 0}
-.popUp .container .profile .textContainer .text .infoContainer input[type="text"]{font-size:14px;color:#4f7984;font-weight:bold;width:300px;padding-left:5px;}
-.popUp .container .profile .textContainer .text .infoContainer input[type="text"].year{text-align:center;width:50px;padding:0}
+.popUp .container .profile .textContainer .text .infoContainer input,.popUp .container .profile .textContainer .text .infoContainer textarea,.popUp .container .profile .textContainer .text .infoContainer .radioContainer{border:4px solid #7fa0b2;border-top-left-radius:7px;border-top-right-radius:7px;border-bottom-right-radius:7px;border-bottom-left-radius:7px;-moz-border-radius-topleft:7px;-moz-border-radius-topright:7px;-moz-border-radius-bottomright:7px;-moz-border-radius-bottomleft:7px;box-shadow:1px 1px 0 0 #aaa;-moz-box-shadow:1px 1px 0 0 #aaa;-webkit-box-shadow:1px 1px 0 0 #aaa;margin:5px 0;}
+.popUp .container .profile .textContainer .text .infoContainer input.ng-invalid,.popUp .container .profile .textContainer .text .infoContainer textarea.ng-invalid,.popUp .container .profile .textContainer .text .infoContainer .radioContainer.ng-invalid{border-color:#f00}
+.popUp .container .profile .textContainer .text .infoContainer input[type="text"],.popUp .container .profile .textContainer .text .infoContainer textarea{font-size:14px;color:#4f7984;font-weight:bold}
+.popUp .container .profile .textContainer .text .infoContainer input[type="text"]{width:300px;padding-left:5px;}
+.popUp .container .profile .textContainer .text .infoContainer input[type="text"].year{text-align:right;width:43px;padding:0 5px 0 0}
 .popUp .container .profile .textContainer .text .infoContainer .radioContainer{background-color:#fff;width:20px;height:20px;}
 .popUp .container .profile .textContainer .text .infoContainer .radioContainer input{margin:3px}
 .popUp .container .profile .textContainer .text .infoContainer .note{font-size:9px;font-weight:bold;float:left;width:245px;margin:5px 0 0 10px}
