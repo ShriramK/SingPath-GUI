@@ -196,7 +196,7 @@
                 padding 0px
           
           .infoContainer
-            .label, input, .radioContainer
+            .label, input, select, .radioContainer
               float left
             
             .label
@@ -208,21 +208,21 @@
               margin-top    10px
               padding-right 10px
             
-            input, textarea, .radioContainer
+            input, select, .radioContainer, textarea
               border 4px solid $commonBGColor
               border-radius(7px)
               box-shadow(1px, 1px, 0px, 0px, #AAA)
               margin 5px 0px
               
-              &.ng-invalid
+              &.ng-validation-error, &.ng-invalid
                 border-color #F00
             
-            input[type="text"], textarea
+            input[type="text"], select, textarea
               font-size    14px
               color        $commonTextColor
               font-weight  bold
             
-            input[type="text"]
+            input[type="text"], select
               width        300px
               padding-left 5px
               
@@ -230,6 +230,10 @@
                 text-align right
                 width      43px
                 padding    0px 5px 0px 0px
+            
+            select
+              option
+                text-transform capitalize
             
             .radioContainer
               background-color #FFF
@@ -280,13 +284,21 @@
             tshadow()
             line-height      $btnHeight - 4px
             cursor           pointer
+            display          block
             width            $btnWidth
             height           $btnHeight
             margin-right     9px
             
-            &:hover
+            &:hover, &.on
               background-image url(../_images/commonButtons/largeButtonBlank_on.png)
               color            #FFF
+            
+            &.error
+              cursor default
+              
+              &:hover
+                background-image url(../_images/commonButtons/largeButtonBlank_off.png)
+                color            $commonTextColor
         
         $curveWidth  = 33px
         $curveHeight = 42px
@@ -298,3 +310,8 @@
           
           position absolute
           margin-left -1*$curveWidth
+
+// Edit the Error validation message
+.ng-content
+  text-align  left
+  white-space normal

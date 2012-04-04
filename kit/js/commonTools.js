@@ -113,3 +113,9 @@ function clampArrayByStringLength(array, maxLength) {
   
   return clampedArray;
 }
+
+
+// Return a deep copy-by-value object
+function clone(obj) {
+  return eval(uneval(obj));
+}

@@ -1,19 +1,19 @@
 <!-- Prints HTML Player Panel -->
 <div class="profileName">
-  {{this.profile.nickname}}
+  {{profile.nickname}}
 </div>
 
 <div class="text">
   <div class="imgWrapper">
-    <img ng:src="{{this.profile.gravatar}}"   class="gravatar" />
-    <img ng:src="{{this.profile.countrySrc}}" class="country"  />
-    <img ng:src="{{this.profile.genderSrc}}"  class="gender"   />
+    <img ng:src="{{profile.gravatar}}"   class="gravatar" />
+    <img ng:src="{{profile.countrySrc}}" class="country"  />
+    <img ng:src="{{profile.genderSrc}}"  class="gender"   />
   </div>
 
   <div class="detailsWrapper">
     <div class="details center">
       <span class="label">
-        {{this.profile.professional}}
+        {{profile.professionalLabel}}
       </span>
     </div>
     
@@ -21,18 +21,18 @@
       <span class="label">
         Location:
       </span>
-        {{this.profile.locationClamp}}
+        {{profile.locationClamp}}
     </div>
     
     <div class="details">
       <span class="label">
         Tags:
       </span>
-        <a ng:repeat="tag in this.visibleTags" ng:src="/kit/ranking.html?tag={{tag}}" title="Ranking tag: {{tag}}">
+        <a ng:repeat="tag in visibleTags" ng:src="/kit/ranking.html?tag={{tag}}" title="Ranking tag: {{tag}}">
           {{tag}}
         </a>
         
-        <ng:switch on="this.visibleTags.length != this.profile.tags.length">
+        <ng:switch on="visibleTags.length != profile.tags.length">
           <span ng:switch-when="true">...<span>
         </ng:switch>
     </div>
@@ -41,15 +41,15 @@
       <span class="label">
         About Me:
       </span>
-      {{this.profile.aboutClapm}}
+      {{profile.aboutClapm}}
     </div>
  </div>
 </div>
 
 
 <!-- Print the Edit Profile Details PopUp Menu -->
-<div class="popUp {{this.popUp.class}}">
-  <div class="container" ng:click="this.popUp.class = 'hide'">
+<div class="popUp {{popUp.class}}">
+  <div class="container" ng:click="popUp.class = 'hide'">
     
     <!-- Top-Left Label -->
     <!-- Note: ng:click="false" prevents the click event from bubbling up to the DOM tree -->
@@ -62,14 +62,14 @@
       </div>
       
       <!-- Top-Right Close btn -->
-      <div class="closeBtn" ng:click="this.popUp.class = 'hide'"></div>
+      <div class="closeBtn" ng:click="popUp.class = 'hide'"></div>
       
       <!-- Main Content -->
       <div class="textContainer">
-        <div class="text">
+        <form name="profileDetailsForm" class="text">
           
           <div class="gravatarContainer">
-            <img ng:src="{{this.profile.gravatar}}" class="gravatar" />
+            <img ng:src="{{profilePopUp.gravatar}}" class="gravatar" />
             <a href="http://www.gravatar.com" target="_blank" class="commonBtn small" title="Change Your Gravatar from www.gravatar.com">
               <div class="left"></div>
               <div class="middle">
@@ -83,22 +83,32 @@
             <div class="label">
               Name:
             </div>
-            <input type="text" value="{{this.profile.nickname}}" />
+            <input type="text" ng:model="profilePopUp.nickname" ng:pattern="nicknameRegExp" required />
             
             <div class="label">
               Location:
             </div>
-            <input type="text" ng:model="this.profile.location" ng:pattern="this.locationRegExp" />
+            <input type="text" ng:model="profilePopUp.location" ng:pattern="locationRegExp" required />
             
             <div class="label">
               Gender:
             </div>
-            <input type="text" value="{{this.profile.gender}}" />
+            <select ng:model="profilePopUp.gender">
+              <option value="secret">
+                Secret
+              </option>
+              <option value="male">
+                Male
+              </option>
+              <option value="female">
+                Female
+              </option>
+            </select>
             
             <div class="label">
               Year of Birth:
             </div>
-            <input type="text" ng:model="this.profile.yearOfBirth" ng:pattern="this.yearRegExp" class="year" />
+            <input type="text" ng:model="profilePopUp.yearOfBirth" ng:pattern="yearRegExp" class="year" required />
             <div class="note">
               Your year of birth will always be kept private and will not be shown on your profile.
             </div>
@@ -106,37 +116,40 @@
             <div class="label">
               Tags:
             </div>
-            <input type="text" ng:model="this.profile.tagsAsText" ng:pattern="this.tagsRegExp" />
+            <input type="text" ng:model="profilePopUp.tagsAsText" ng:pattern="tagsRegExp" />
             
             <div class="label">
               Professional:
             </div>
             <div class="radioContainer">
-              <input type="radio" name="professional" value="1" />
+              <input type="radio" ng:model="profilePopUp.professionalOption" value="1" />
             </div>
             
             <div class="label">
               Student:
             </div>
             <div class="radioContainer">
-              <input type="radio" name="professional" value="0" />
+              <input type="radio" ng:model="profilePopUp.professionalOption" value="0" />
             </div>
             
             <div class="label">
               About Yourself:
             </div>
-            <textarea ng:model="this.profile.about" ng:pattern="this.aboutRegExp"></textarea>
+            <textarea ng:model="profilePopUp.about" ng:pattern="aboutRegExp"></textarea>
           </div>
           
-        </div>
+        </form>
       </div>
       
       <!-- Bottom container and Save btn -->
       <div class="labelBottomContainer">
         <div class="curve"></div>
         <div class="label">
-          <div class="btn">
-            Save Details
+          <a href="#save-details" class="btn {{popUp.btn.class}}" ng:show="profileDetailsForm.$valid" ng:click="popUp.btn.save()" title="{{popUp.btn.label}}">
+            {{popUp.btn.label}}
+          </a>
+          <div class="btn {{popUp.btn.class}} error" ng:show="!profileDetailsForm.$valid" title="{{popUp.btn.errorLabel}}">
+            {{popUp.btn.errorLabel}}
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ window.onHash = [];
 // Create an alternative to jQuery onhashchange event
 function checkHash() {
   if(hash = window.location.hash) {
+    // Remove the hash from the address bar
     window.location.hash = '';
     
     // Call a callback function if there's any in the Global register
