@@ -1,8 +1,4 @@
-/* http://docs.angularjs.org/#!angular.service */
-
-/**
- * App service which is responsible for the main configuration of the app.
- */
+// Responsible for all page routing
 function RouterCtrl($route) {
   $route.when('',         {template: 'includes/index_partial.html', controller: LoadPageCtrl});
   $route.when('/home',    {template: 'includes/home.html',          controller: LoadPageCtrl});

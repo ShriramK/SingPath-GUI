@@ -34,6 +34,14 @@ RankingStatsPageCtr.$inject = ['$resource'];
 function IndexStatsPageCtr($resource){
 	self = this;
 	self.index_style = 'top:-150px';
+  
+  // All attributes for the "View Statistics" btn
+  this.statsBtn = {
+    "size" : "small",
+    "href" : "#",
+    "title": "View Statistics",
+    "label": "View Statistics"
+  }
 }
 IndexStatsPageCtr.$inject = ['$resource'];
 
@@ -76,6 +84,7 @@ function MM_preloadImages() { //v3.0
 
 function UserLoginMenuCtrl($resource, $window) {
   self = this;
+  
   this.player = $resource('../jsonapi/player').get(function() {
     // Setting the Global var
     window.USER.isLogged = getUserLoggedInStatus(self.player);
@@ -83,6 +92,13 @@ function UserLoginMenuCtrl($resource, $window) {
     // Secure a maximum nickname chars so the string won't over flow outside the box
     self.player.nickname = clampString(self.player.nickname, 35);
   });
+  
+  // Sign in btn attributes
+  this.btn = {
+    "href" : "#",
+    "title": "Sign in to SingPath",
+    "label": "Sign In"
+  };
 }
 UserLoginMenuCtrl.$inject = ['$resource', '$window'];
 

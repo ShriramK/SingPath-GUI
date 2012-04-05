@@ -2361,9 +2361,10 @@ table.pager {
 
 #wrapper  #mainFooter{ font-family: Verdana, Geneva, sans-serif; margin: 0px; height: 80px; width: 906px; position: relative; top: 0px; left: 0px; font-weight: bold; padding: 0px; clear: both; float: left; 
 }
-#wrapper #mainFooter #menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:link , #wrapper #mainFooter #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: 0px 5px; padding: 3px 8px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:hover , #wrapper #mainFooter #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: 0px 5px; padding: 2px 6px; }
+#menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
+#menuFooterTop a{ display: inline-block; }
+#menuFooterTop a:link , #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: -1px 5px; padding: 2px 8px; text-align: center; }
+#menuFooterTop a:hover , #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: -1px 5px; padding: 0px 6px; }
 .smallerLeftText { font-size: 10px; }
 .bold { font-weight: bold; }
 .boldText { font-size: 1.1em; font-weight: bold; }
@@ -4588,7 +4589,7 @@ table.pager {
 #logo{ background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_off.png); cursor: pointer; display: block; position: relative; left: 9px; top: 9px; width: 169px; height: 46px; margin: 0px; padding: 0px; }
 #logo:hover, #logo.hover { background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_on.png); }
 #userMenu, #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
-#logInBox .commonBtn, #userMenu .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
+#logInBox .commonBtn, #userMenu .commonBtn{ display: block; position: relative; margin: 2px 0px 0px 329px; }
 #logInBox .commonBtn .middle, #userMenu .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
 .messageBox , #userMenu .nickname{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
 #homeButton, #mainHeader  .homeBtn{ background-image: url(../_images/landingPages/landingPageButtons/houseProfile_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
@@ -4827,22 +4828,6 @@ table.pager {
 #wrapper #tourOrgInfoBox #tourOrgInfoBoxImage { color: #517A83; padding: 0px; float: left; width: 305px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 155px; top: 11px; text-align: left; left: 20px; clear: left; }
 #wrapper #tourOrgInfoBox #tourOrgInfoBoxText { color: #517A83; padding: 0px 12px 0px 0px; float: left; width: 540px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 120px; top: 10px; text-align: left; left: 30px; overflow: auto; 
 }
-
-
-
-
-
-#wrapper  #mainFooter{ font-family: Verdana, Geneva, sans-serif; margin: 0px; height: 80px; width: 906px; position: relative; top: 0px; left: 0px; font-weight: bold; padding: 0px; clear: both; float: left; 
-}
-#wrapper #mainFooter #menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:link , #wrapper #mainFooter #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: 0px 5px; padding: 3px 8px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:hover , #wrapper #mainFooter #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: 0px 5px; padding: 2px 6px; }
-.smallerLeftText { font-size: 10px; }
-.bold { font-weight: bold; }
-.boldText { font-size: 1.1em; font-weight: bold; }
-.smallTextBold { font-size: 12px; font-weight: bold; }
-
-.boldTextLarge { font-size: 1.4em; font-weight: bold; }
 
 
 #wrapper #mainFooter #menuFooterBottom{ margin: 0px; padding: 12px 0px 0px 15px; height: 30px; width: 891px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage18.jpg) no-repeat; left: 0px; color: #FFF; font-size: 14px; text-align: left; clear: both; float: left; }

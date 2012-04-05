@@ -1,12 +1,7 @@
 <!-- Prints HTML Panel regarding passed scope data -->
 <div class="{{this.containerClass}}">
-  <a href="{{this.btn.href}}" ng:click="this.btn.fn()" class="commonBtn {{this.btn.size}}" title="{{this.btn.title}}">
-    <div class="left"></div>
-    <div class="middle">
-      {{this.btn.label}}
-    </div>
-    <div class="right"></div>
-  </a>
+  <!-- Print a common btn with the controllet attributes for the btn JSON Object -->
+  <ng:include src="'includes/common_btn.html'"></ng:include>
   
   <div class="labelContainer">
     <div class="label">

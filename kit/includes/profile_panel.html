@@ -70,14 +70,11 @@
           
           <div class="gravatarContainer">
             <img ng:src="{{profilePopUp.gravatar}}" class="gravatar" />
-            <a href="http://www.gravatar.com" target="_blank" class="commonBtn small" title="Change Your Gravatar from www.gravatar.com">
-              <div class="left"></div>
-              <div class="middle">
-                Change Gravatar
-              </div>
-              <div class="right"></div>
-            </a>
+            
+            <!-- Print a common btn with the Gravatar btn attributes -->
+            <ng:include ng:init="btn = gravatarBtn" src="'includes/common_btn.html'"></ng:include>
           </div>
+          
           
           <div class="infoContainer">
             <div class="label">

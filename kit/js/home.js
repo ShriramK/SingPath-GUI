@@ -20,6 +20,14 @@ function ProfilePanelCtrl($resource) {
       thatProfile.popUp.class = "show";
     }
   };
+  this.gravatarBtn    = {
+    "href"  : "http://www.gravatar.com",
+    "size"  : "small",
+    "target": "_blank",
+    "title" : "Change Your Gravatar from www.gravatar.com",
+    "label" : "Change Gravatar"
+  };
+  
   
   // Set popUp details
   this.popUp = {

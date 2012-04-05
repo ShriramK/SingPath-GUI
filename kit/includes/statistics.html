@@ -1,12 +1,30 @@
 <div style="{{index_style}}" id="rankStatsBox">
-    <div id="rankStatsBoxTitleTop">Statistics</div>
-    <div id="rankStatsBoxViewButton"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('viewStatistics','','../alex/_images/commonButtons/viewStatistics_on.png',1)"><img src="../alex/_images/commonButtons/viewStatistics_off.png" alt="View all statistics" name="viewStatistics" width="104" height="24" border="0"></a></div>
+    <div id="rankStatsBoxTitleTop">
+      Statistics
+    </div>
+    <div id="rankStatsBoxViewButton">
+      
+      <!-- Print a "View Stats" btn with the common style and HTML code -->
+      <ng:include ng:init="btn = statsBtn" src="'includes/common_btn.html'"></ng:include>
+    </div>
     <div id="rankStatsBoxText" ng:controller="IndexCtrl" ng:cloak>
-      <p><span class="bold">{{this.stats.num_players}}</span> players have played SingPath</p>
-          <!--<p>The average is <b>{{this.stats.ave_per_problem}}</b> minutes per problem</p>-->
-      <p>We have awarded <span class="bold">{{this.stats.num_badges}}</span> badges </p>
-      <p><span class="bold">{{this.stats.most_popular_lang}}</span> is currently the most popular path</p>
-      <p>Our newest player <span>{{this.stats.last_player}}</span> from <span class="bold">{{this.stats.last_country}}</span></p>
-      <p><span class="bold">{{this.stats.last_badge_earner}}</span> just earned a <span class="bold">{{this.stats.last_badge}}</span></p>
+      <p>
+        <span class="bold">{{this.stats.num_players}}</span>
+        players have played SingPath
+      </p>
+      <p>
+        We have awarded <span class="bold">{{this.stats.num_badges}}</span> badges
+      </p>
+      <p>
+        <span class="bold">{{this.stats.most_popular_lang}}</span> is currently the most popular path
+      </p>
+      <p>
+        Our newest player <span>{{this.stats.last_player}}</span> from
+        <span class="bold">{{this.stats.last_country}}</span>
+      </p>
+      <p>
+        <span class="bold">{{this.stats.last_badge_earner}}</span> just earned a
+        <span class="bold">{{this.stats.last_badge}}</span>
+      </p>
   </div>
 </div>
