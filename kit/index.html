@@ -1,17 +1,18 @@
 <!doctype html>
-<html xmlns:ng="http://angularjs.org" ng:app>
+<html ng-app="routeAndResource">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>SingPath - The Most Fun Way to Practice Software</title>
   
   <link href="_css/SingPathMain.css" rel="stylesheet" type="text/css" />
   <link href="_css/common.css"       rel="stylesheet" type="text/css" />
-
-  <script src="lib/angular/angular.min.js"   ng:autobind ></script>
-  <script src="js/services.js"     type="text/javascript"></script>
-  <script src="js/commonTools.js"  type="text/javascript"></script>
-  <script src="js/controllers.js"  type="text/javascript"></script>
-  <script src="_js/feedback-v2.js" type="text/javascript"></script>
+  
+  <script src="lib/angular/angular.min.js"      type="text/javascript"></script>
+  <script src="lib/angular/angular-resource.js" type="text/javascript"></script>
+  <script src="js/app_modules.js"               type="text/javascript"></script>
+  <script src="js/commonTools.js"               type="text/javascript"></script>
+  <script src="js/controllers.js"               type="text/javascript"></script>
+  <script src="_js/feedback-v2.js"              type="text/javascript"></script>
 
 <script type="text/javascript">
 function MM_preloadImages() { //v3.0
@@ -26,7 +27,7 @@ window.onload = function() {
 
 </script>
 </head>
-<body ng:controller="RouterCtrl">
-  <ng:view></ng:view>
-</body>
+  <body ng-controller="LoadPageCtrl">
+    <div ng-view></div>
+  </body>
 </html>

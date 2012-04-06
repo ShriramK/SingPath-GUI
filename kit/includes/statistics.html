@@ -5,26 +5,26 @@
     <div id="rankStatsBoxViewButton">
       
       <!-- Print a "View Stats" btn with the common style and HTML code -->
-      <ng:include ng:init="btn = statsBtn" src="'includes/common_btn.html'"></ng:include>
+      <ng-include ng-init="btn = statsBtn" src="'includes/common_btn.html'"></ng-include>
     </div>
-    <div id="rankStatsBoxText" ng:controller="IndexCtrl" ng:cloak>
+    <div id="rankStatsBoxText" ng-controller="IndexCtrl" ng-cloak>
       <p>
-        <span class="bold">{{this.stats.num_players}}</span>
+        <span class="bold">{{stats.num_players}}</span>
         players have played SingPath
       </p>
       <p>
-        We have awarded <span class="bold">{{this.stats.num_badges}}</span> badges
+        We have awarded <span class="bold">{{stats.num_badges}}</span> badges
       </p>
       <p>
-        <span class="bold">{{this.stats.most_popular_lang}}</span> is currently the most popular path
+        <span class="bold">{{stats.most_popular_lang}}</span> is currently the most popular path
       </p>
       <p>
-        Our newest player <span>{{this.stats.last_player}}</span> from
-        <span class="bold">{{this.stats.last_country}}</span>
+        Our newest player <span>{{stats.last_player}}</span> from
+        <span class="bold">{{stats.last_country}}</span>
       </p>
       <p>
-        <span class="bold">{{this.stats.last_badge_earner}}</span> just earned a
-        <span class="bold">{{this.stats.last_badge}}</span>
+        <span class="bold">{{stats.last_badge_earner}}</span> just earned a
+        <span class="bold">{{stats.last_badge}}</span>
       </p>
   </div>
 </div>

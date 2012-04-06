@@ -2556,24 +2556,11 @@ function createInjector(modulesToLoad) {
           }
       },
       providerInjector = createInternalInjector(providerCache, function() {
-        
-        console.log(' ');
-        console.log(' 1');
-        console.log(path);
-        console.log(providerCache);
-        
         throw Error("Unknown provider: " + path.join(' <- '));
       }),
       instanceCache = {},
       instanceInjector = (instanceCache.$injector =
           createInternalInjector(instanceCache, function(servicename) {
-            
-            // console.log(' ');
-            // console.log(' 2');
-            // console.log(servicename);
-            // console.log(providerSuffix);
-            // console.log(servicename + providerSuffix);
-            
             var provider = providerInjector.get(servicename + providerSuffix);
             return instanceInjector.invoke(provider.$get, provider);
           }));

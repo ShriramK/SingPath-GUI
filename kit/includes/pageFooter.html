@@ -1,20 +1,20 @@
 <!-- Footer links and info -->
 <div id="mainFooter">
-  <div id="menuFooterTop" ng:controller="FooterMenuOptionsCtrl">
-    <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
+  <div id="menuFooterTop" ng-controller="FooterMenuOptionsCtrl">
+    <a ng-repeat="option in options" ng-href="{{option.href}}" target="{{option.target}}" ng-class="option.class" title="{{option.title}}">
       {{option.text}}
     </a>
     
     <!-- Display the 'sing out' option only if the user is currently logged in -->
-    <ng:switch on="this.USER.isLogged">
-      <a ng:switch-when="true" href="sign_out" title="Sign out from Your Profile">
+    <ng-switch on="USER.isLogged">
+      <a ng-switch-when="true" href="sign_out" title="Sign out from Your Profile">
         sign out
       </a>
-    </ng:switch>
+    </ng-switch>
   </div>
   
   <!-- Copyright and Company link -->
-  <div id="menuFooterBottom" ng:controller="CopyrightCtrl">&copy; SingPath {{this.year}}<br />
-    <a href="http://www.Gr8ph1cs.com" target="_blank" id="gr8ph1csLogo" title="designed by gr8ph1cs Creative"></a>
+  <div id="menuFooterBottom" ng-controller="CopyrightCtrl">&copy; SingPath {{year}}<br />
+    <a href="http://www.Gr8ph1cs.com" target="_blank" id="gr8ph1csLogo" title="Designed by gr8ph1cs Creative"></a>
   </div>
 </div>
