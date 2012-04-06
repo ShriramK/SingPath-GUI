@@ -37,7 +37,7 @@
         </ng-switch>
     </div>
     
-    <div class="details">
+    <div class="details" ng-click="testClick(1, $event)">
       <span class="label">
         About Me:
       </span>
@@ -47,17 +47,13 @@
 </div>
 
 
-{{$event}}
-{{profile.aboutClapm}}
-
-
 <!-- Print the Edit Profile Details PopUp Menu -->
 <div class="popUp {{popUp.class}}">
   <div class="container" ng-click="popUp.class = 'hide'">
     
     <!-- Top-Left Label -->
     <!-- Note: ng-click="false" prevents the click event from bubbling up to the DOM tree -->
-    <div class="profile" ng-click="false">
+    <div class="profile" ng-click="$event.stopPropagation()">
       <div class="labelContainer">
         <div class="label">
           Edit Profile

@@ -34,7 +34,7 @@ function ProfilePanelCtrl($scope, $resource) {
     "btn": {
       "class"     : "",
       "label"     : "Save Details",
-      "errorLabel": "Error",
+      "errorLabel": "Invalid",
       
       // Secure 1 click only on the Footer btn
       "saving": false,
