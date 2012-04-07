@@ -28,29 +28,36 @@
       text-align  center
       line-height 32px
     
+    .gravatar
+      border-radius(9px)
+      float  left
+      margin 27px 0px -10px 0px
+      width  95px
+      height 95px
+    
     .text
-      .gravatar
-        border-radius(9px)
-        float  left
-        margin 27px 0px -10px 0px
-        width  95px
-        height 95px
-      
-      .details
-        text-transform capitalize
-        line-height    28px
-        margin-left    117px
+      .imgWrapper
+        float left
+        width 110px
         
-        .label
-          font-weight bold
-          font-size   16px
-        
-        &.center
-          text-align   center
-          margin-right 135px
+        .country
+          margin 15px 0px 0px 15px
       
-      .country
-        margin 15px 0px 0px 15px
+      .detailsWrapper
+        .details
+          text-transform capitalize
+          line-height    28px
+          margin-left    117px
+          padding-right  15px
+          
+          .label
+            font-weight bold
+            font-size   16px
+          
+          &.center
+            text-align   center
+            margin-right 135px
+            padding      0px
 
 
 .badgesContainer, .challengesContainer, .rankingContainer
@@ -92,7 +99,7 @@
         clear       left
         display     inline-block
         width       100%
-        margin      15px 0px -3px -8px
+        margin      15px 0px 1px -8px
         
         .rank, .gravatar, .name, .highestBadge, .flag, .solvedNum
           margin 2px 0px 0px 5px
@@ -189,7 +196,7 @@
                 padding 0px
           
           .infoContainer
-            .label, input, .radioContainer
+            .label, input, select, .radioContainer
               float left
             
             .label
@@ -201,23 +208,31 @@
               margin-top    10px
               padding-right 10px
             
-            input, textarea, .radioContainer
+            input, select, .radioContainer, textarea
               border 4px solid $commonBGColor
               border-radius(7px)
               box-shadow(1px, 1px, 0px, 0px, #AAA)
               margin 5px 0px
+              
+              &.ng-validation-error, &.ng-invalid
+                border-color #F00
             
-            input[type="text"]
+            input[type="text"], select, textarea
               font-size    14px
               color        $commonTextColor
               font-weight  bold
+            
+            input[type="text"], select
               width        300px
               padding-left 5px
               
               &.year
-                text-align center
-                width      50px
-                padding    0px
+                text-align right
+                width      43px
+                padding    0px 5px 0px 0px
+            
+            select
+              text-transform capitalize
             
             .radioContainer
               background-color #FFF
@@ -268,13 +283,21 @@
             tshadow()
             line-height      $btnHeight - 4px
             cursor           pointer
+            display          block
             width            $btnWidth
             height           $btnHeight
             margin-right     9px
             
-            &:hover
+            &:hover, &.on
               background-image url(../_images/commonButtons/largeButtonBlank_on.png)
               color            #FFF
+            
+            &.error
+              cursor default
+              
+              &:hover
+                background-image url(../_images/commonButtons/largeButtonBlank_off.png)
+                color            $commonTextColor
         
         $curveWidth  = 33px
         $curveHeight = 42px
@@ -286,3 +309,8 @@
           
           position absolute
           margin-left -1*$curveWidth
+
+// Edit the Error validation message
+.ng-content
+  text-align  left
+  white-space normal

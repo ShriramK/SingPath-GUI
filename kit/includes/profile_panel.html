@@ -1,51 +1,59 @@
 <!-- Prints HTML Player Panel -->
 <div class="profileName">
-  {{this.profile.nickname}}
+  {{profile.nickname}}
 </div>
 
 <div class="text">
-  <img ng:src="{{this.profile.gravatar}}" class="gravatar" />
-  <div class="details center">
-    <span class="label">
-      {{this.profile.professional}}
-    </span>
+  <div class="imgWrapper">
+    <img ng-src="{{profile.gravatar}}"   class="gravatar" />
+    <img ng-src="{{profile.countrySrc}}" class="country"  />
+    <img ng-src="{{profile.genderSrc}}"  class="gender"   />
   </div>
-  
-  <div class="details">
-    <span class="label">
-      Location:
-    </span>
-      {{this.profile.location}}
-  </div>
-  
-  <div class="details">
-    <span class="label">
-      Tags:
-    </span>
-      <a ng:repeat="tag in this.profile.tags" ng:src="/kit/ranking.html?tag={{tag}}" title="Ranking tag: {{tag}}">
-        {{tag}}
-      </a>
-  </div>
-  
-  <div class="details">
-    <span class="label">
-      About Me:
-    </span>
-    {{this.profile.about}}
-  </div>
-  
-  <img ng:src="{{this.profile.countrySrc}}" class="country" />
-  <img ng:src="{{this.profile.genderSrc}}"  class="gender"  />
+
+  <div class="detailsWrapper">
+    <div class="details center">
+      <span class="label">
+        {{profile.professionalLabel}}
+      </span>
+    </div>
+    
+    <div class="details">
+      <span class="label">
+        Location:
+      </span>
+        {{profile.locationClamp}}
+    </div>
+    
+    <div class="details">
+      <span class="label">
+        Tags:
+      </span>
+        <a ng-repeat="tag in visibleTags" ng-src="/kit/ranking.html?tag={{tag}}" title="Ranking tag: {{tag}}">
+          {{tag}}
+        </a>
+        
+        <div ng-switch on="visibleTags.length != profile.tags.length">
+          <span ng-switch-when="true">...<span>
+        </div>
+    </div>
+    
+    <div class="details" ng-click="testClick(1, $event)">
+      <span class="label">
+        About Me:
+      </span>
+      {{profile.aboutClapm}}
+    </div>
+ </div>
 </div>
 
 
 <!-- Print the Edit Profile Details PopUp Menu -->
-<div class="popUp {{this.popUp.class}}">
-  <div class="container" ng:click="this.popUp.class = 'hide'">
+<div class="popUp {{popUp.class}}">
+  <div class="container" ng-click="popUp.class = 'hide'">
     
     <!-- Top-Left Label -->
-    <!-- Note: ng:click="false" prevents the click event from bubbling up to the DOM tree -->
-    <div class="profile" ng:click="false">
+    <!-- Note: ng-click="false" prevents the click event from bubbling up to the DOM tree -->
+    <div class="profile" ng-click="$event.stopPropagation()">
       <div class="labelContainer">
         <div class="label">
           Edit Profile
@@ -53,46 +61,41 @@
         <div class="curve"></div>
       </div>
       
-      
       <!-- Top-Right Close btn -->
-      <div class="closeBtn" ng:click="this.popUp.class = 'hide'"></div>
-      
+      <div class="closeBtn" ng-click="popUp.class = 'hide'"></div>
       
       <!-- Main Content -->
       <div class="textContainer">
-        <div class="text">
+        <form name="profileDetailsForm" class="text">
           
           <div class="gravatarContainer">
-            <img ng:src="{{this.profile.gravatar}}" class="gravatar" />
-            <a href="http://www.gravatar.com" target="_blank" class="commonBtn small" title="Change Your Gravatar from www.gravatar.com">
-              <div class="left"></div>
-              <div class="middle">
-                Change Gravatar
-              </div>
-              <div class="right"></div>
-            </a>
+            <img ng-src="{{profilePopUp.gravatar}}" class="gravatar" />
+            
+            <!-- Print a common btn with the Gravatar btn attributes -->
+            <div ng-include ng-init="btn = gravatarBtn" src="'includes/common_btn.html'"></div>
           </div>
+          
           
           <div class="infoContainer">
             <div class="label">
               Name:
             </div>
-            <input type="text" value="{{this.profile.nickname}}" />
+            <input type="text" ng-model="profilePopUp.nickname" ng-pattern="nicknameRegExp" required />
             
             <div class="label">
               Location:
             </div>
-            <input type="text" value="{{this.profile.location}}" />
+            <input type="text" ng-model="profilePopUp.location" ng-pattern="locationRegExp" required />
             
             <div class="label">
               Gender:
             </div>
-            <input type="text" value="{{this.profile.gender}}" />
+            <select ng-model="profilePopUp.gender" ng-options="gender for gender in profilePopUp.genders"></select>
             
             <div class="label">
               Year of Birth:
             </div>
-            <input type="text" value="{{this.profile.yearOfBirth}}" class="year" />
+            <input type="text" ng-model="profilePopUp.yearOfBirth" ng-pattern="yearRegExp" class="year" required />
             <div class="note">
               Your year of birth will always be kept private and will not be shown on your profile.
             </div>
@@ -100,38 +103,40 @@
             <div class="label">
               Tags:
             </div>
-            <input type="text" value="{{this.profile.tags}}" />
+            <input type="text" ng-model="profilePopUp.tagsAsText" ng-pattern="tagsRegExp" />
             
             <div class="label">
               Professional:
             </div>
             <div class="radioContainer">
-              <input type="radio" name="professional" value="1" />
+              <input type="radio" ng-model="profilePopUp.professionalOption" value="1" />
             </div>
             
             <div class="label">
               Student:
             </div>
             <div class="radioContainer">
-              <input type="radio" name="professional" value="0" />
+              <input type="radio" ng-model="profilePopUp.professionalOption" value="0" />
             </div>
             
             <div class="label">
               About Yourself:
             </div>
-            <textarea name="profile.about"></textarea>
+            <textarea ng-model="profilePopUp.about" ng-pattern="aboutRegExp"></textarea>
           </div>
           
-        </div>
+        </form>
       </div>
-      
       
       <!-- Bottom container and Save btn -->
       <div class="labelBottomContainer">
         <div class="curve"></div>
         <div class="label">
-          <div class="btn">
-            Save Details
+          <a href="#save-details" class="btn {{popUp.btn.class}}" ng-show="profileDetailsForm.$valid" ng-click="popUp.btn.save()" title="{{popUp.btn.label}}">
+            {{popUp.btn.label}}
+          </a>
+          <div class="btn {{popUp.btn.class}} error" ng-show="!profileDetailsForm.$valid" title="{{popUp.btn.errorLabel}}">
+            {{popUp.btn.errorLabel}}
           </div>
         </div>
       </div>
@@ -139,69 +144,3 @@
     
   </div>
 </div>
-
-
-
-<!--
-<div class="popup {{this.popUp.class}}">
-  <table class="popup">
-      <tr class="popup">
-        <td class="popup">
-          <table class="showProfile" id="showProfile">
-            <tr class="boxHeader">
-              <td class="boxHeader">Edit Path</td>
-            </tr>
-            <tr class="boxContent">
-              <td>
-                <table class="showProfileName">
-                  <tr>
-                    <td class="showProfileName">
-                      <div class="profileNameText"></div>
-                    </td>
-                    <td class="showProfileClose">
-                      <a href="javascript:" class="rolls"><img src="_images/commonButtons/close_off.png"
-                        alt="Close" class="showProfileButtons showProfileCancelButton rolls"
-                        onclick="$('#showProfilePopup').hide()"></a>
-                    </td>
-                  </tr>
-                </table>
-                <table class="pathEdit">
-                  <tr class="">
-                    <td class="">
-                      Language:
-                    </td>
-                    <td class="inputLong">
-                      <div id="popup_path_language"></div>
-                    </td>
-                  </tr>
-                  <tr class="">
-                    <td class="">
-                      Name:
-                    </td>
-                    <td class="inputLong">
-                      <input id="popup_path_name" type="text"/>
-                    </td>
-                  </tr>
-                  <tr class="">
-                    <td class="">
-                      Description:
-                    </td>
-                    <td class="inputLong">
-                      <input id="popup_path_desc" type="text"/>
-                    </td>
-                  </tr>
-                  <tr class="">
-                    <td class="" colspan="2">
-                      <span class="emptyButton" id="popup_save_button">Save</span>
-                      <span class="emptyButton" onclick="$('#showProfilePopup').hide()">Cancel</span>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-  </table>
-</div>
--->

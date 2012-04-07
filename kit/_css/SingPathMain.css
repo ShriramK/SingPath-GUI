@@ -2126,63 +2126,14 @@ table.pager {
 
 #wrapper #infoBarRanking img { color: #FFF; padding: 6px 5px 5px; font-size: 16px; margin: 0px; }
 
-
-
-#wrapper #aboutUsInfoBox { background-image: url(../_images/landingPages/aboutUsPage/01landingPageAboutUs_03.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: left; height: 500px; width: 620px; position: relative; top: -10px; 
-}
-#wrapper #aboutUsInfoBox a:link , #wrapper #aboutUsInfoBox a:visited{ font-weight: bold; color: #497279; border: 0px none #FFF100; padding: 1px 3px; }
-#wrapper #aboutUsInfoBox a:hover , #wrapper #aboutUsInfoBox a:active{ font-weight: bold; color: #fff100; background: #497279; padding: 1px 3px; }
+#infoBox { background-image: url(../_images/landingPages/aboutUsPage/01landingPageAboutUs_03.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: left; height: 500px; width: 620px; position: relative; top: -10px; }
+#infoBox  a:link , #infoBox  a:visited{ font-weight: bold; color: #497279; border: 0px none #FFF100; padding: 1px 3px; }
+#infoBox  a:hover , #infoBox  a:active{ font-weight: bold; color: #fff100; background: #497279; padding: 1px 3px; }
 .menuSelected { font-size: 15px; font-weight: bold; color: #fff100 !important; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 15px; font-size: 16px; }
-
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTextTop { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 200px; top: 14px; text-align: left; left: 25px; overflow: auto; 
-}
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleBottom{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 20px; font-size: 16px; }
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTextBottom { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 205px; top: 21px; text-align: left; left: 25px; overflow: auto; }
-
-#wrapper #aboutUsStaffBox { background-image: url(../_images/landingPages/aboutUsPage/01landingPageAboutUs_04.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: right; height: 500px; width: 286px; position: relative; top: -10px; 
-}
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 150px; position: relative; left: 25px; top: 15px; font-size: 16px; }
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxviewButton {
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 24px;
-  width: 104px;
-  top: 5px;
-  right: 20px;
-  position: relative;
-}
-
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxText { color: #497279; padding: 0px; float: left; width: 253px; position: relative; font-size: 16px; background-repeat: no-repeat; margin: 0px; height: 438px; top: 15px; text-align: left; left: 18px; overflow: auto; 
-}
-
-/* contactUs */
-
-#wrapper #contactUsInfoBox {
-  background-image: url(../_images/contactPage/01landingPageContact05.png);
-  background-repeat: no-repeat;
-  margin: 0px;
-  padding: 0px;
-  float: left;
-  height: 410px;
-  width: 620px;
-}
-#wrapper #contactUsInfoBox #contactUsInfoBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 590px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 340px;
-  top: 25px;
-  text-align: left;
-  left: 20px;
-}
-
+#infoBox .topTitle{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 15px; font-size: 16px; }
+#infoBox .topText { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 180px; top: 14px; text-align: left; left: 25px; }
+#infoBox .bottomTitle{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 20px; font-size: 16px; }
+#infoBox .bottomText { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 205px; top: 21px; text-align: left; left: 25px; }
 
 /* index.html */
 
@@ -2410,9 +2361,10 @@ table.pager {
 
 #wrapper  #mainFooter{ font-family: Verdana, Geneva, sans-serif; margin: 0px; height: 80px; width: 906px; position: relative; top: 0px; left: 0px; font-weight: bold; padding: 0px; clear: both; float: left; 
 }
-#wrapper #mainFooter #menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:link , #wrapper #mainFooter #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: 0px 5px; padding: 3px 8px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:hover , #wrapper #mainFooter #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: 0px 5px; padding: 2px 6px; }
+#menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
+#menuFooterTop a{ display: inline-block; }
+#menuFooterTop a:link , #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: -1px 5px; padding: 2px 8px; text-align: center; }
+#menuFooterTop a:hover , #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: -1px 5px; padding: 0px 6px; }
 .smallerLeftText { font-size: 10px; }
 .bold { font-weight: bold; }
 .boldText { font-size: 1.1em; font-weight: bold; }
@@ -4637,7 +4589,7 @@ table.pager {
 #logo{ background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_off.png); cursor: pointer; display: block; position: relative; left: 9px; top: 9px; width: 169px; height: 46px; margin: 0px; padding: 0px; }
 #logo:hover, #logo.hover { background-image: url(../_images/landingPages/landingPageButtons/singpathLogo_on.png); }
 #userMenu, #logInBox{ margin: 0px; height: 30px; width: 460px; position: relative; float: right; font-weight: bold; color: #4F7984; font-size: 12px; padding: 0px; right: 20px; bottom: 18px; }
-#logInBox .commonBtn, #userMenu .commonBtn{ position: relative; margin: 2px 0px 0px 329px; }
+#logInBox .commonBtn, #userMenu .commonBtn{ display: block; position: relative; margin: 2px 0px 0px 329px; }
 #logInBox .commonBtn .middle, #userMenu .commonBtn .middle{ font-size: 15px; text-shadow: 0px 1px 3px #AAA; line-height: 20px; padding: 0px 20px; }
 .messageBox , #userMenu .nickname{ margin: 0px; padding: 10px 0px 0px 3px; height: 30px; width: 300px; position: relative; float: left; background: url(../_images/landingPages/indexPage/messageBox.png) no-repeat; font-weight: bold; color: #4F7984; font-size: 12px; left: 10px; top: -4px; text-align: center; }
 #homeButton, #mainHeader  .homeBtn{ background-image: url(../_images/landingPages/landingPageButtons/houseProfile_off.png); background-repeat: no-repeat; margin: 0px; padding: 0px; height: 40px; width: 45px; position: relative; float: left; top: -5px; left: 0px; }
@@ -4656,64 +4608,6 @@ table.pager {
 #infoBarRanking { color: #FFF; padding: 0px; width: 906px; position: relative; top: -5px; right: 0px; font-size: 16px; margin: 0px; height: 40px; clear: none; float: left; background: url(../_images/rankingPage/06worldWideRanking_02.png) no-repeat; }
 
 #wrapper #infoBarRanking img { color: #FFF; padding: 6px 5px 5px; font-size: 16px; margin: 0px; }
-
-
-
-#wrapper #aboutUsInfoBox { background-image: url(../_images/landingPages/aboutUsPage/01landingPageAboutUs_03.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: left; height: 500px; width: 620px; position: relative; top: -10px; 
-}
-#wrapper #aboutUsInfoBox a:link , #wrapper #aboutUsInfoBox a:visited{ font-weight: bold; color: #497279; border: 0px none #FFF100; padding: 1px 3px; }
-#wrapper #aboutUsInfoBox a:hover , #wrapper #aboutUsInfoBox a:active{ font-weight: bold; color: #fff100; background: #497279; padding: 1px 3px; }
-.menuSelected { font-size: 15px; font-weight: bold; color: #fff100 !important; text-align: center; border: 2px none #FFFFFF; padding: 2px 10px; margin: 0px 5px; background: #517A83; }
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 15px; font-size: 16px; }
-
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTextTop { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 200px; top: 14px; text-align: left; left: 25px; overflow: auto; 
-}
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTitleBottom{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 25px; top: 20px; font-size: 16px; }
-#wrapper #aboutUsInfoBox #aboutUsInfoBoxTextBottom { color: #497279; padding: 0px; float: left; width: 582px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 205px; top: 21px; text-align: left; left: 25px; overflow: auto; }
-
-#wrapper #aboutUsStaffBox { background-image: url(../_images/landingPages/aboutUsPage/01landingPageAboutUs_04.png); background-repeat: no-repeat; margin: 0px; padding: 0px; float: right; height: 500px; width: 286px; position: relative; top: -10px; 
-}
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxTitleTop{ font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 150px; position: relative; left: 25px; top: 15px; font-size: 16px; }
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxviewButton {
-  margin: 0px;
-  padding: 0px;
-  float: right;
-  height: 24px;
-  width: 104px;
-  top: 5px;
-  right: 20px;
-  position: relative;
-}
-
-#wrapper #aboutUsStaffBox #aboutUsStaffBoxText { color: #497279; padding: 0px; float: left; width: 253px; position: relative; font-size: 16px; background-repeat: no-repeat; margin: 0px; height: 438px; top: 15px; text-align: left; left: 18px; overflow: auto; 
-}
-
-/* contactUs */
-
-#wrapper #contactUsInfoBox {
-  background-image: url(../_images/contactPage/01landingPageContact05.png);
-  background-repeat: no-repeat;
-  margin: 0px;
-  padding: 0px;
-  float: left;
-  height: 410px;
-  width: 620px;
-}
-#wrapper #contactUsInfoBox #contactUsInfoBoxText {
-  color: #497279;
-  padding: 0px;
-  float: left;
-  width: 590px;
-  position: relative;
-  font-size: 16px;
-  background-repeat: no-repeat;
-  margin: 0px;
-  height: 340px;
-  top: 25px;
-  text-align: left;
-  left: 20px;
-}
-
 
 /* index.html */
 
@@ -4934,22 +4828,6 @@ table.pager {
 #wrapper #tourOrgInfoBox #tourOrgInfoBoxImage { color: #517A83; padding: 0px; float: left; width: 305px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 155px; top: 11px; text-align: left; left: 20px; clear: left; }
 #wrapper #tourOrgInfoBox #tourOrgInfoBoxText { color: #517A83; padding: 0px 12px 0px 0px; float: left; width: 540px; position: relative; font-size: 14px; background-repeat: no-repeat; margin: 0px; height: 120px; top: 10px; text-align: left; left: 30px; overflow: auto; 
 }
-
-
-
-
-
-#wrapper  #mainFooter{ font-family: Verdana, Geneva, sans-serif; margin: 0px; height: 80px; width: 906px; position: relative; top: 0px; left: 0px; font-weight: bold; padding: 0px; clear: both; float: left; 
-}
-#wrapper #mainFooter #menuFooterTop{ margin: 0px; padding: 14px 0px 0px; height: 26px; width: 906px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage17.jpg) no-repeat; left: 0px; font-size: 12px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:link , #wrapper #mainFooter #menuFooterTop a:visited{ font-weight: bold; color: #CCCCCC; border: 0px none #FFF100; margin: 0px 5px; padding: 3px 8px; text-align: center; }
-#wrapper #mainFooter #menuFooterTop a:hover , #wrapper #mainFooter #menuFooterTop a:active{ font-weight: bold; color: #517A83; text-align: center; border: 2px solid #517A83; margin: 0px 5px; padding: 2px 6px; }
-.smallerLeftText { font-size: 10px; }
-.bold { font-weight: bold; }
-.boldText { font-size: 1.1em; font-weight: bold; }
-.smallTextBold { font-size: 12px; font-weight: bold; }
-
-.boldTextLarge { font-size: 1.4em; font-weight: bold; }
 
 
 #wrapper #mainFooter #menuFooterBottom{ margin: 0px; padding: 12px 0px 0px 15px; height: 30px; width: 891px; position: relative; top: 0px; background: #FFF url(../_images/landingPages/indexPage/01landingPage18.jpg) no-repeat; left: 0px; color: #FFF; font-size: 14px; text-align: left; clear: both; float: left; }

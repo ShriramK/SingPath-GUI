@@ -1,7 +1,7 @@
 <!-- Printing all Staff members -->
-<div class="text" ng:cloak>
-  <div ng:repeat="person in this.staff" class="profile">
-    <img ng:src="{{this.baseSrc + person.src}}.png" ng:alt="{{person.name}}, {{person.title}}" />
+<div class="text" ng-cloak>
+  <div ng-repeat="person in staff" class="profile">
+    <img ng-src="{{baseSrc + person.src}}.png" alt="{{person.name}}, {{person.title}}" />
     <div class="name">
       {{person.name}},
     </div>

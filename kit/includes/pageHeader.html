@@ -3,48 +3,45 @@
   <a href="index.html" id="logo" title="SingPath Logo"></a>
   
   <!-- User Login Menu-->
-  <div ng:controller="UserLoginMenuCtrl">
+  <div ng-controller="UserLoginMenuCtrl">
     
     <!-- Display a respected menu regarding user login status -->
-    <ng:switch on="this.USER.isLogged">
+    <div ng-switch on="USER.isLogged">
       
       <!-- Display main user info -->
-      <div id="userMenu" ng:switch-when="true">
+      <div id="userMenu" ng-switch-when="true">
         <a href="home.html" class="homeBtn" title="Return to Your Home page"></a>
         
-        <img ng:src="{{this.player.gravatar}}" class="gravatar" alt="gravatar" />
+        <img ng-src="{{player.gravatar}}" class="gravatar" alt="gravatar" />
         
-        <div class="nickname">
-          {{this.player.nickname}}
-        </div>
+        <div class="nickname" ng-bind="player.nickname"></div>
         
         <a href="shop.html" class="shopBtn" title="Go to the SingPath Shop"></a>
       </div>
       
       <!-- Display Login message and btn -->
-      <div id="logInBox" ng:switch-when="false">
+      <div id="logInBox" ng-switch-when="false">
         <div class="messageBox">
           Welcome, please sign in to your account
         </div>
         
-        <div class="commonBtn" title="Sign in to SingPath">
-          <div class="left"></div>
-          <div class="middle">
-            Sign In
-          </div>
-          <div class="right"></div>
-        </div>
+        <!-- Print a common btn with the sign in btn attributes -->
+        <div ng-include src="'includes/common_btn.html'"></div>
       </div>
-    </ng:switch>
+    </div>
     
   </div>
 </div>
 
+
 <!-- Head Page links -->
-<div id="menuOptions" ng:show="this.MENU">
-  <div id="menuOptionsText" ng:controller="HeadMenuOptionsCtrl">
-    <a ng:repeat="option in this.options" ng:href="{{option.href}}" target="{{option.target}}" class="{{option.class}}" title="{{option.title}}">
-      {{option.text}}
-    </a>
+<div id="menuOptions" ng-show="MENU">
+  <div id="menuOptionsText" ng-controller="HeadMenuOptionsCtrl">
+    <a ng-repeat = "option in options"
+      ng-href  = "{{option.href}}"
+      target   = "{{option.target}}"
+      ng-bind  = "option.text"
+      ng-class = "option.class"
+      title    = "{{option.title}}"></a>
   </div>
 </div>

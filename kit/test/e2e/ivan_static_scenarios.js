@@ -2,7 +2,7 @@
 
 // Testing element cloak removal from the element selector
 function testCloak(selector) {
-  expect(element(selector).attr('ng:cloak')).not().toBeDefined();
+  expect(element(selector).attr('ng-cloak')).not().toBeDefined();
 }
 
 
@@ -44,10 +44,10 @@ function testMenuOptions(options, containerSelector, selectedOptionClass) {
       // Test all the rest option properties
       linkSelecter = containerSelector + ' > a:eq('+ i +')';
       
-      expect(element(linkSelecter + ' > span').text()).toBe(option["text"]);
-      expect(element(linkSelecter).attr("href")      ).toBe(option["href"]);
-      expect(element(linkSelecter).attr("target")    ).toBe(option["target"]);
-      expect(element(linkSelecter).attr("title")     ).toBe(option["title"]);
+      expect(element(linkSelecter).text()        ).toBe(option["text"]);
+      expect(element(linkSelecter).attr("href")  ).toBe(option["href"]);
+      expect(element(linkSelecter).attr("target")).toBe(option["target"]);
+      expect(element(linkSelecter).attr("title") ).toBe(option["title"]);
     }
   }
   
@@ -108,8 +108,8 @@ function testUserLoginMenu() {
     
     
     // Testing user main info
-    expect(element(userMenuSelector + ' > .gravatar').attr('src')).toBe(   player.gravatar);
-    expect(element(userMenuSelector + ' > .nickname').text()     ).toMatch(player.nickname);
+    expect(element(userMenuSelector + ' > .gravatar').attr('src')).toBe(player.gravatar);
+    expect(element(userMenuSelector + ' > .nickname').text()     ).toBe(player.nickname);
     
     // Testing user shop btn properties and images
     shopBtnSelector = userMenuSelector + ' > .shopBtn';
@@ -121,7 +121,7 @@ function testUserLoginMenu() {
     testImageBaseAndHover(shopBtnSelector, '/kit/_images/landingPages/landingPageButtons/shoppingTrolley');
     
     // Test sign out btn visibility
-    $signOutBtn = element('#menuFooterTop > ng\\:switch > a');
+    $signOutBtn = element('#menuFooterTop > [ng-switch=""] > a');
     expect($signOutBtn.attr('href' )).toBe('sign_out');
     expect($signOutBtn.attr('title')).toBe('Sign out from Your Profile');
     expect($signOutBtn.text()       ).toMatch('sign out');
@@ -140,38 +140,36 @@ function testUserLoginMenu() {
     expect(element(commonBtnSelector + ' > .middle').text()).toMatch('Sign In');
     
     // Test sign out btn visibility
-    expect(element('#menuFooterTop > ng\\:switch > a')).not().toBeDefined();
+    expect(element('#menuFooterTop > [ng-switch=""] > a')).not().toBeDefined();
   }
 }
 
 
 // Testing all Head Menu options
-
 function testHeadMenuOptions() {
-  /*
-  //Loading window path
-  //expect(browser().window().path()).value(function(path) {
+  // Loading window path
+  expect(browser().window().path()).value(function(path) {
     // Note: It's important to load the options after the execution of expect(...).value()
     //       coz otherwise testMenuOptions() could mix vars with other testMenuOptions() calls
     options = [
       {"text": "Play"        , "href": "home.html"        , "target": "", "class": "", "title": "SingPath - The Most Fun Way to Practice Software"},
-      {"text": "Splash"      , "href": "index.html"       , "target": "", "class": "", "title": ""},
-      {"text": "About Us"    , "href": "aboutUs.html"     , "target": "", "class": "", "title": ""},
-      {"text": "How to Use"  , "href": "howToUse.html"    , "target": "", "class": "", "title": ""},
-      {"text": "Contribution", "href": "contribution.html", "target": "", "class": "", "title": ""},
-      {"text": "Tournament"  , "href": "tournament.html"  , "target": "", "class": "", "title": ""},
-      {"text": "News"        , "href": "news.html"        , "target": "", "class": "", "title": ""}
+      {"text": "Splash"      , "href": "index.html"       , "target": "", "class": "", "title": "Splash"},
+      {"text": "About Us"    , "href": "aboutUs.html"     , "target": "", "class": "", "title": "About Us"},
+      {"text": "How to Use"  , "href": "howToUse.html"    , "target": "", "class": "", "title": "How to Use"},
+      {"text": "Contribution", "href": "contribution.html", "target": "", "class": "", "title": "Contribution"},
+      {"text": "Tournament"  , "href": "tournament.html"  , "target": "", "class": "", "title": "Tournament"},
+      {"text": "News"        , "href": "news.html"        , "target": "", "class": "", "title": "News"}
     ];
-    */
+    
     // Test all Head Menu options from the given resouce
-    testMenuOptions(options, '#menuOptionsText', 'ng-attr-widget');
+    testMenuOptions(options, '#menuOptionsText', 'menuSelected');
   });
 }
 
 
 // Common function to test all elements loaded in the left profile menu with the sent resource
 function testCommonLeftMenu(resource, containerSelector) {
-  menuSelector  = containerSelector + ' > .textContainer > .ng-switch > .ng-include > .text';
+  menuSelector  = containerSelector + ' > .textContainer > [ng-switch=""] > [ng-include=""] > .text';
   expectedCount = resource.length;
   
   // Test the removing of the cloak over the left menu
@@ -235,14 +233,14 @@ function testPageFooter() {
 // Test Footer Menu Options
 function testFooterMenuOptions() {
   options = [
-    {"text": "home"        , "href": "index.html"                         , "target": "",       "class": "", "title": "home page Link"},
-    {"text": "about us"    , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
-    {"text": "how to use"  , "href": "howToUse.html"                      , "target": "",       "class": "", "title": ""},
-    {"text": "terms of use", "href": "termsOfUse.html"                    , "target": "",       "class": "", "title": ""},
-    {"text": "contribution", "href": "contributions.html"                 , "target": "",       "class": "", "title": ""},
-    {"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "class": "", "title": ""},
-    {"text": "contact us"  , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": ""},
-    {"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": ""}
+    {"text": "home"        , "href": "index.html"                         , "target": "",       "class": "", "title": "Return to Your Home page"},
+    {"text": "about us"    , "href": "aboutUs.html"                       , "target": "",       "class": "", "title": "about us"},
+    {"text": "how to use"  , "href": "howToUse.html"                      , "target": "",       "class": "", "title": "how to use"},
+    {"text": "terms of use", "href": "termsOfUse.html"                    , "target": "",       "class": "", "title": "terms of use"},
+    {"text": "contribution", "href": "contributions.html"                 , "target": "",       "class": "", "title": "contribution"},
+    {"text": "feedback"    , "href": "http://getsatisfaction.com/singpath", "target": "_blank", "class": "", "title": "feedback"},
+    {"text": "contact us"  , "href": "contactUs.html"                     , "target": "",       "class": "", "title": "contact us"},
+    {"text": "shop"        , "href": "shop.html"                          , "target": "",       "class": "", "title": "shop"}
   ];
   
   // Test all Footer Menu options from the given resouce
@@ -253,7 +251,7 @@ function testFooterMenuOptions() {
 // Test Copyright elements
 function testCopyright() {
   // Test the Copyright year
-  expect(element('#menuFooterBottom > span:first').text()).toBe(new Date().getFullYear()+'');
+  expect(element('#menuFooterBottom > span:first').text()).toMatch('SingPath '+ new Date().getFullYear() +'$');
 }
 
 
@@ -264,7 +262,7 @@ function testCompanyLogo() {
   $logo        = element(logoSelector);
   expect($logo.attr('href'  )).toBe('http://www.Gr8ph1cs.com');
   expect($logo.attr('target')).toBe('_blank');
-  expect($logo.attr('title' )).toBe('designed by gr8ph1cs Creative');
+  expect($logo.attr('title' )).toBe('Designed by gr8ph1cs Creative');
   
   // Test logo base and hover URLs
   testImageBaseAndHover(logoSelector, '/kit/_images/landingPages/landingPageButtons/gr8ph1csLogo');
@@ -297,7 +295,7 @@ describe('Additinal tests from Ivan', function() {
     
     
     // Testing all stats in the #statsTextBoxtext
-    statsSelector = '#rankStatsBoxText > p > span > .ng-binding:eq';
+    statsSelector = '#rankStatsBoxText > p > .ng-binding:eq';
     statsResource = {
       "num_players"      : "4306",
       "num_badges"       : "21,014",
@@ -322,7 +320,7 @@ describe('Additinal tests from Ivan', function() {
     testCloak(numPlayresSelector);
     
     // Test the total number of current players
-    expect(element(numPlayresSelector + ' > span').text()).toBe("12");
+    expect(element(numPlayresSelector).text()).toBe("12");
     
     
     // Testing the Players content menu
@@ -354,8 +352,8 @@ describe('Additinal tests from Ivan', function() {
       testCloak(playerSelector);
       
       // Test avatar properties
-      expect(element(playerSelector + ' > img').attr('src'  )).toBe(playerResource["gravatar"]);
-      expect(element(playerSelector + ' > img').attr('title')).toBe(playerResource["nickname"]);
+      expect(element(playerSelector + ' > img').attr('src')).toBe(playerResource["gravatar"]);
+      expect(element(playerSelector + ' > img').attr('alt')).toBe(playerResource["nickname"]);
     }
     
     
