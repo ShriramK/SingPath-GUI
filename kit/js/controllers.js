@@ -474,7 +474,7 @@ function ChallengesCtrl($scope, $resource) {
              renderChallenges(
                   self.countriesById,
                   self.badgesById,
-                  self.challenge,
+                  $scope.challenge,
                           is_all_challenges,
                           challenges_per_page,
                           data['offset'],

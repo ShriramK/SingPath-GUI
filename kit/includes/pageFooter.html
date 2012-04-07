@@ -1,9 +1,13 @@
 <!-- Footer links and info -->
 <div id="mainFooter">
   <div id="menuFooterTop" ng-controller="FooterMenuOptionsCtrl">
-    <a ng-repeat="option in options" ng-href="{{option.href}}" target="{{option.target}}" ng-class="option.class" title="{{option.title}}">
-      {{option.text}}
-    </a>
+    <a ng-repeat = "option in options"
+      ng-href  = "{{option.href}}"
+      target   = "{{option.target}}"
+      ng-bind  = "option.text"
+      ng-class = "option.class"
+      title    = "{{option.title}}
+    "></a>
     
     <!-- Display the 'sing out' option only if the user is currently logged in -->
     <span ng-switch on="USER.isLogged">
@@ -14,7 +18,9 @@
   </div>
   
   <!-- Copyright and Company link -->
-  <div id="menuFooterBottom" ng-controller="CopyrightCtrl">&copy; SingPath {{year}}<br />
+  <div id="menuFooterBottom" ng-controller="CopyrightCtrl">
+    <span ng-bind="'&copy; SingPath '+ year"></span>
+    <br />
     <a href="http://www.Gr8ph1cs.com" target="_blank" id="gr8ph1csLogo" title="Designed by gr8ph1cs Creative"></a>
   </div>
 </div>

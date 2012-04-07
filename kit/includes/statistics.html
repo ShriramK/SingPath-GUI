@@ -1,30 +1,30 @@
 <div style="{{index_style}}" id="rankStatsBox">
-    <div id="rankStatsBoxTitleTop">
-      Statistics
-    </div>
-    <div id="rankStatsBoxViewButton">
-      
-      <!-- Print a "View Stats" btn with the common style and HTML code -->
-      <div ng-include ng-init="btn = statsBtn" src="'includes/common_btn.html'"></div>
-    </div>
-    <div id="rankStatsBoxText" ng-controller="IndexCtrl" ng-cloak>
-      <p>
-        <span class="bold">{{stats.num_players}}</span>
-        players have played SingPath
-      </p>
-      <p>
-        We have awarded <span class="bold">{{stats.num_badges}}</span> badges
-      </p>
-      <p>
-        <span class="bold">{{stats.most_popular_lang}}</span> is currently the most popular path
-      </p>
-      <p>
-        Our newest player <span>{{stats.last_player}}</span> from
-        <span class="bold">{{stats.last_country}}</span>
-      </p>
-      <p>
-        <span class="bold">{{stats.last_badge_earner}}</span> just earned a
-        <span class="bold">{{stats.last_badge}}</span>
-      </p>
+  <div id="rankStatsBoxTitleTop">
+    Statistics
+  </div>
+  <div id="rankStatsBoxViewButton">
+    
+    <!-- Print a "View Stats" btn with the common style and HTML code -->
+    <div ng-include ng-init="btn = statsBtn" src="'includes/common_btn.html'"></div>
+  </div>
+  <div id="rankStatsBoxText" ng-controller="IndexCtrl" ng-cloak>
+    <p>
+      <span class="bold">{{stats.num_players}}</span>
+      players have played SingPath
+    </p>
+    <p>
+      We have awarded <span class="bold">{{stats.num_badges}}</span> badges
+    </p>
+    <p>
+      <span class="bold">{{stats.most_popular_lang}}</span> is currently the most popular path
+    </p>
+    <p>
+      Our newest player <span>{{stats.last_player}}</span> from
+      <span class="bold">{{stats.last_country}}</span>
+    </p>
+    <p>
+      <span class="bold">{{stats.last_badge_earner}}</span> just earned a
+      <span class="bold">{{stats.last_badge}}</span>
+    </p>
   </div>
 </div>

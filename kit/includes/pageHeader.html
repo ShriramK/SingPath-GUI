@@ -14,9 +14,7 @@
         
         <img ng-src="{{player.gravatar}}" class="gravatar" alt="gravatar" />
         
-        <div class="nickname">
-          {{player.nickname}}
-        </div>
+        <div class="nickname" ng-bind="player.nickname"></div>
         
         <a href="shop.html" class="shopBtn" title="Go to the SingPath Shop"></a>
       </div>
@@ -39,8 +37,11 @@
 <!-- Head Page links -->
 <div id="menuOptions" ng-show="MENU">
   <div id="menuOptionsText" ng-controller="HeadMenuOptionsCtrl">
-    <a ng-repeat="option in options" ng-href="{{option.href}}" target="{{option.target}}" ng-class="option.class" title="{{option.title}}">
-      {{option.text}}
-    </a>
+    <a ng-repeat = "option in options"
+      ng-href  = "{{option.href}}"
+      target   = "{{option.target}}"
+      ng-bind  = "option.text"
+      ng-class = "option.class"
+      title    = "{{option.title}}"></a>
   </div>
 </div>
