@@ -6,7 +6,7 @@
   <div ng-controller="UserLoginMenuCtrl">
     
     <!-- Display a respected menu regarding user login status -->
-    <ng-switch on="USER.isLogged">
+    <div ng-switch on="USER.isLogged">
       
       <!-- Display main user info -->
       <div id="userMenu" ng-switch-when="true">
@@ -28,9 +28,9 @@
         </div>
         
         <!-- Print a common btn with the sign in btn attributes -->
-        <ng-include src="'includes/common_btn.html'"></ng-include>
+        <div ng-include src="'includes/common_btn.html'"></div>
       </div>
-    </ng-switch>
+    </div>
     
   </div>
 </div>

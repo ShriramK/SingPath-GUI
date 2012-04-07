@@ -1,11 +1,16 @@
 <!doctype html>
-<html xmlns:ng="http://angularjs.org" ng:app>
+<html ng-app="resource">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SingPath - The most fun way to practice software - Contributions</title>
-<link href="_css/SingPathMain.css" rel="stylesheet" type="text/css" />
-<script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
-<script src="js/controllers.js"      type="text/javascript"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>SingPath - The most fun way to practice software - Contributions</title>
+  
+  <link href="_css/SingPathMain.css" rel="stylesheet" type="text/css" />
+
+  <script src="lib/angular/angular.min.js"      type="text/javascript"></script>
+  <script src="lib/angular/angular-resource.js" type="text/javascript"></script>
+  <script src="js/app_modules.js"               type="text/javascript"></script>
+  <script src="js/controllers.js"               type="text/javascript"></script>
+  
 <script type="text/javascript">
 <!--
 function MM_swapImgRestore() { //v3.0
@@ -53,9 +58,9 @@ a:active {
 -->
 </style></head>
 
-<body ng:controller="LoadPageCtrl" onload="MM_preloadImages('../alex/_images/landingPages/landingPageButtons/singpathLogo_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileDanny_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileChrisMeyers_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileAllenDowney_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileChris_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileJeffery_on.png','../alex/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../alex/_images/landingPages/landingPageButtons/signIn_on.png')">
+<body ng-controller="LoadPageCtrl" onload="MM_preloadImages('../alex/_images/landingPages/landingPageButtons/singpathLogo_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileDanny_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileChrisMeyers_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileAllenDowney_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileChris_on.png','../alex/_images/landingPages/landingPageButtons/staffProfileJeffery_on.png','../alex/_images/landingPages/landingPageButtons/viewAllContributors_on.png','../alex/_images/landingPages/landingPageButtons/signIn_on.png')">
 <div id="wrapper">
-  <ng:include src="'includes/pageHeader.html'"></ng:include>
+  <div ng-include src="'includes/pageHeader.html'"></div>
   <div id="contributorsInfoBox">
     <div id="contributorsInfoBoxText">
       <p><span class="boldText">Terms of  Use</span> Coming soon...</p>
@@ -69,8 +74,8 @@ a:active {
           </a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('conChris','','../alex/_images/landingPages/landingPageButtons/staffProfileChris_on.png',1)"><img src="../alex/_images/landingPages/landingPageButtons/staffProfileChris_off.png" alt="Contributor Chris Boesch" name="conChris" width="225" height="175" border="0" id="conChris" /></a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ConDanny','','../alex/_images/landingPages/landingPageButtons/staffProfileDanny_on.png',1)"> <br />
           </a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('conJeffery','','../alex/_images/landingPages/landingPageButtons/staffProfileJeffery_on.png',1)"><img src="../alex/_images/landingPages/landingPageButtons/staffProfileJeffery_off.png" alt="Contributor Jeffery" name="conJeffery" width="225" height="175" border="0" id="conJeffery" /></a><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ConDanny','','../alex/_images/landingPages/landingPageButtons/staffProfileDanny_on.png',1)"> </a></div>
   </div>
-  <ng:include src="'includes/pageFooter.html'"></ng:include>
+  <div ng-include src="'includes/pageFooter.html'"></div>
 </div>
- <ng:include src="'includes/googleAnalytics.html'"></ng:include>
+ <div ng-include src="'includes/googleAnalytics.html'"></div>
 </body>
 </html>

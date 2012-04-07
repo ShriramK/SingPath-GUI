@@ -97,7 +97,7 @@ function ProfilePanelCtrl($scope, $resource) {
     
     
     // Gender options
-    $scope.profilePopUp.genders = ['secret', 'male', 'female']
+    $scope.profilePopUp.genders = ['secret', 'male', 'female'];
     
     
     // Year of Birth
@@ -140,7 +140,6 @@ function ProfilePanelCtrl($scope, $resource) {
     $scope.aboutErrorMsg = 'The message about yourself cannot exceed more than '+ aboutTextMax +' characters';
   });
 }
-ProfilePanelCtrl.$inject = ['$scope', '$resource'];
 
 
 function BadgesPanelCtrl($scope, $resource) {
@@ -176,7 +175,6 @@ function BadgesPanelCtrl($scope, $resource) {
     });
   }
 }
-BadgesPanelCtrl.$inject = ['$scope', '$resource'];
 
 
 function ChallengesPanelCtrl($scope) {
@@ -225,4 +223,3 @@ function RankingPanelCtrl($scope, $resource) {
     }
   });
 }
-RankingPanelCtrl.$inject = ['$scope', '$resource'];

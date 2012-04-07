@@ -63,6 +63,7 @@
 .popUp .container .profile .textContainer .text .infoContainer input[type="text"],.popUp .container .profile .textContainer .text .infoContainer select,.popUp .container .profile .textContainer .text .infoContainer textarea{font-size:14px;color:#4f7984;font-weight:bold}
 .popUp .container .profile .textContainer .text .infoContainer input[type="text"],.popUp .container .profile .textContainer .text .infoContainer select{width:300px;padding-left:5px;}
 .popUp .container .profile .textContainer .text .infoContainer input[type="text"].year,.popUp .container .profile .textContainer .text .infoContainer select.year{text-align:right;width:43px;padding:0 5px 0 0}
+.popUp .container .profile .textContainer .text .infoContainer select{text-transform:capitalize;}
 .popUp .container .profile .textContainer .text .infoContainer select option{text-transform:capitalize}
 .popUp .container .profile .textContainer .text .infoContainer .radioContainer{background-color:#fff;width:20px;height:20px;}
 .popUp .container .profile .textContainer .text .infoContainer .radioContainer input{margin:3px}

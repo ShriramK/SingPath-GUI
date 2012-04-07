@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:ng="http://angularjs.org" ng:app>
+<html ng-app="resource">
 <head>
 	<title>SingPath - The most fun way to practice software - Challenge Players</title>
 	<meta charset="utf-8" />
@@ -10,21 +10,25 @@
 	<script src="_js/jquery-1.4.2.js" type="text/javascript"></script>
 	<script src="_js/jsonrender/common.js" type="text/javascript"></script>
 	<script src="_js/jsonrender/challengePlayers.js" type="text/javascript"></script>
-	<script src="_js/feedback-v2.js" type="text/javascript"></script>
-	<script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
-	<script src="js/controllers.js"      type="text/javascript"></script>
+  
+	<script src="lib/angular/angular.min.js"      type="text/javascript"></script>
+  <script src="lib/angular/angular-resource.js" type="text/javascript"></script>
+  <script src="js/app_modules.js"               type="text/javascript"></script>
+	<script src="js/controllers.js"               type="text/javascript"></script>
+	<script src="_js/feedback-v2.js"              type="text/javascript"></script>
+  
 	<script type="text/javascript">
 		window.MENU = false;
   	</script>	
 </head>
-<body ng:controller="LoadPageCtrl">
+<body ng-controller="LoadPageCtrl">
 <div id="wrapper">
 <center><div id="loading">Loading...</div></center>
   <div id="beardy">
     <table class="__page wrapper">
       <tr>
         <td>
-          <ng:include src="'includes/pageHeader.html'"></ng:include>
+          <div ng-include src="'includes/pageHeader.html'"></div>
         </td>
       </tr>
       <tr class="element1">
@@ -93,12 +97,12 @@
                   </tr>
       <tr>
         <td>
-          <ng:include src="'includes/pageFooter.html'"></ng:include>
+          <div ng-include src="'includes/pageFooter.html'"></div>
         </td>
       </tr>
     </table>
   </div>
-   <ng:include src="'includes/googleAnalytics.html'"></ng:include>
+   <div ng-include src="'includes/googleAnalytics.html'"></div>
 </div>
 </body>
 

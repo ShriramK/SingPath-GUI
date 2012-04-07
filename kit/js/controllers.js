@@ -25,13 +25,13 @@ window.USER = {
 }
 window.MENU = true;
 
-function RankingStatsPageCtr($scope, $resource){
+
+function RankingStatsPageCtr($scope){
 	$scope.index_style = '';
 }
-RankingStatsPageCtr.$inject = ['$scope', '$resource'];
 
 
-function IndexStatsPageCtr($scope, $resource){
+function IndexStatsPageCtr($scope){
 	$scope.index_style = 'top:-150px';
   
   // All attributes for the "View Statistics" btn
@@ -42,7 +42,6 @@ function IndexStatsPageCtr($scope, $resource){
     "label": "View Statistics"
   }
 }
-IndexStatsPageCtr.$inject = ['$scope', '$resource'];
 
 
 // Set a certain number of actions when the page is loaded
@@ -58,7 +57,6 @@ function LoadPageCtrl($scope, $resource) {
   // Preload some basic images
   MM_preloadImages('_images/landingPages/landingPageButtons/singpathLogo_on.png','_images/landingPages/landingPageButtons/signUp_on.png','_images/landingPages/landingPageButtons/houseProfile_on.png','_images/landingPages/landingPageButtons/shoppingTrolley_on.png','_images/landingPages/landingPageButtons/gr8ph1csLogo_on.png','_images/landingPages/landingPageButtons/signIn_on.png');
 }
-LoadPageCtrl.$inject = ['$scope', '$resource'];
 
 
 // Send a request back to the server which page was loaded and when
@@ -98,25 +96,23 @@ function UserLoginMenuCtrl($scope, $resource, $window) {
     "label": "Sign In"
   };
 }
-UserLoginMenuCtrl.$inject = ['$scope', '$resource', '$window'];
 
 
 function IndexCtrl($scope, $resource) {
-  statsModel = $resource('../jsonapi/statistics');
-  $scope.stats = statsModel.get();
+  // Load all games statistics
+  $scope.stats = $resource('../jsonapi/statistics').get();
   
-  currentPlayersModel = $resource('../jsonapi/current_players');
-  $scope.current_players = currentPlayersModel.query();
+  // Load all details about the current player
+  $scope.current_players = $resource('../jsonapi/current_players').query();
 }
-IndexCtrl.$inject = ['$scope', '$resource'];
 
 
+// Load all Programming language's Logos at the footer in the index page
 function FooterLogosCtrl($scope, $resource) {
   $scope.baseSrcBegin = "_images/landingPages/indexPage/logos/";
   $scope.baseSrcEnd   = "Logo.png";
   $scope.footerLogos  = $resource('../jsonapi/footerLogos').query();
 }
-FooterLogosCtrl.$inject = ['$scope', '$resource'];
 
 
 function RankingCtrl($scope, $resource) {
@@ -134,7 +130,6 @@ function RankingCtrl($scope, $resource) {
 		return number;
 	}
 }
-RankingCtrl.$inject = ['$scope', '$resource'];
 
 
 function ContributionCtrl($scope, $resource) {
@@ -154,7 +149,6 @@ function ContributionCtrl($scope, $resource) {
   // Cache the base sorce path so we could keep the database thin
   $scope.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 };
-ContributionCtrl.$inject = ['$scope', '$resource'];
 
 
 function StaffCtrl($scope, $resource) {
@@ -174,7 +168,6 @@ function StaffCtrl($scope, $resource) {
   // Cache the base sorce path so we could keep the database thin
   $scope.baseSrc = '../kit/_images/landingPages/contributionPage/profiles/';
 };
-StaffCtrl.$inject = ['$scope', '$resource'];
 
 
 function YourLevelBadgesCtrl($scope, $resource) {	
@@ -202,7 +195,6 @@ function YourLevelBadgesCtrl($scope, $resource) {
       return clazz;
   }
 }
-YourLevelBadgesCtrl.$inject = ['$scope', '$resource'];
 
 
 function CountryLevelBadgesCtrl($scope, $resource) {	
@@ -226,10 +218,8 @@ function CountryLevelBadgesCtrl($scope, $resource) {
           clazz = 'notEarnedBadge';
       }
       return clazz;
-
   }
 }
-CountryLevelBadgesCtrl.$inject = ['$scope', '$resource'];
 
 
 function YourBadgesBoxTop($scope, $resource) {	
@@ -275,7 +265,6 @@ function YourBadgesBoxTop($scope, $resource) {
       return clazz;
   }
 }
-YourBadgesBoxTop.$inject = ['$scope', '$resource'];
 
 
 function CountriesCtrl($scope, $resource) {	
@@ -290,7 +279,6 @@ function CountriesCtrl($scope, $resource) {
     return index;
     };
 }
-CountriesCtrl.$inject = ['$scope', '$resource'];
 
 
 function TagsCtrl($scope, $resource, $location) {
@@ -332,10 +320,9 @@ function TagsCtrl($scope, $resource, $location) {
 			$scope.index = 0;
 	}
 }
-TagsCtrl.$inject = ['$scope', '$resource', '$location'];
 
 
-function LanguageSelectorCtrl($scope, $resource){
+function LanguageSelectorCtrl($scope, $resource) {
 	$scope.allClass = 'on';
 	$scope.languages = []
 	languageSelector = $resource('../jsonapi/get_game_paths');
@@ -383,10 +370,9 @@ function LanguageSelectorCtrl($scope, $resource){
 		}
 	}
 }
-LanguageSelectorCtrl.$inject = ['$scope', '$resource'];
 
 
-function ChallengeAnswerCtrl($scope, $resource, $location){
+function ChallengeAnswerCtrl($scope, $resource, $location) {
 	challengeRes = $resource('../jsonapi/get_challenge_player_message?challenge_id=:challenge_id&player_id=:player_id');
 	
 	$scope.player_id = null;
@@ -418,7 +404,6 @@ function ChallengeAnswerCtrl($scope, $resource, $location){
 		);
 	}
 }
-ChallengeAnswerCtrl.$inject = ['$scope', '$resource'];
 
 
 function TournamentsCtrl($scope, $resource) {
@@ -436,17 +421,15 @@ function TournamentsCtrl($scope, $resource) {
 		      }
 	});
 }
-TournamentsCtrl.$inject = ['$scope', '$resource'];
 
 
-function TournamentCtrl($scope, $resource){
+function TournamentCtrl($scope, $resource) {
 	var tournamentID = getParameterFromURL('tournamentID');
 	tournament = $resource('../jsonapi/tournament/'+tournamentID);
 	$scope.tournament = tournament.get(function(){
 		renderTournamentRanking($scope.tournament)
 	});
 }
-TournamentCtrl.$inject = ['$scope', '$resource'];
 
 
 function ChallengesCtrl($scope, $resource) {
@@ -503,7 +486,6 @@ function ChallengesCtrl($scope, $resource) {
   }
   $scope.loadChallenges(true);
 }
-ChallengesCtrl.$inject = ['$scope', '$resource'];
 
 
 function ChallengesAllCtrl($scope, $resource) {
@@ -530,7 +512,6 @@ function ChallengesAllCtrl($scope, $resource) {
      });
   });
 }
-ChallengesAllCtrl.$inject = ['$scope', '$resource'];
 
 
 function ListChallengePlayersCtrl($scope, $resource) {
@@ -544,10 +525,9 @@ function ListChallengePlayersCtrl($scope, $resource) {
 			});
 	}
 }
-ListChallengePlayersCtrl.$inject = ['$scope', '$resource'];
 
 
-function LoadProblemCtrl($scope, $resource){
+function LoadProblemCtrl($scope, $resource) {
   var problem_id = getIdFromURL('problem_id');
   if (problem_id){
       var url = '../jsonapi/get_problem';
@@ -560,10 +540,9 @@ function LoadProblemCtrl($scope, $resource){
         loadLanguages();
     }
 }
-LoadProblemCtrl.$inject = ['$scope', '$resource'];
 
 
-function GetGamePathCtrl($scope, $resource){
+function GetGamePathCtrl($scope, $resource) {
 	var url = '../jsonapi/get_game_paths';
 	challengeRes = $resource(url);
 	$scope.get_game_paths = challengeRes.get(function(){
@@ -580,21 +559,16 @@ function GetGamePathCtrl($scope, $resource){
 				 });
 	});
 }
-GetGamePathCtrl.$inject = ['$scope', '$resource'];
 
 
 function GetChallengeForEditCtrl($scope, $resource) {
   
 }
-GetChallengeForEditCtrl.$inject = ['$scope', '$resource'];
 
 
 function TournamentRankingCtrl($scope, $resource) {
-	tournamentRanking = $resource('../jsonapi/get_heat_ranking');
-	
-	$scope.tournamentRanking = tournamentRanking.get();
+	$scope.tournamentRanking = $resource('../jsonapi/get_heat_ranking').get();
 }
-TournamentRankingCtrl.$inject = ['$scope', '$resource'];
 
 
 function WorldWideRankingCtrl($scope, $resource) {
@@ -788,10 +762,9 @@ function WorldWideRankingCtrl($scope, $resource) {
       };
       //$scope.initRanking($scope.doFilter);
 }
-WorldWideRankingCtrl.$inject = ['$scope', '$resource'];
 
 
-function HeatRankingCtrl($scope, $resource){
+function HeatRankingCtrl($scope, $resource) {
 	heatRanking = $resource('../jsonapi/get_heat_ranking');
 	$scope.heatRanking = heatRanking.get();
 	$scope.heatRankingArray = [];
@@ -805,7 +778,6 @@ function HeatRankingCtrl($scope, $resource){
         return true;
     }
 }
-HeatRankingCtrl.$inject = ['$scope', '$resource'];
 
 
 function HeadMenuOptionsCtrl($scope, $resource, $location) {
@@ -822,15 +794,12 @@ function HeadMenuOptionsCtrl($scope, $resource, $location) {
     }
   });
 }
-HeadMenuOptionsCtrl.$inject = ['$scope', '$resource', '$location'];
 
 
 function FooterMenuOptionsCtrl($scope, $resource) {
   // Taking all footer menu options
   $scope.options = $resource('../jsonapi/footerMenuOptions').query();
 }
-
-FooterMenuOptionsCtrl.$inject = ['$scope', '$resource'];
 
 
 function GoogleAnalyticsCtrl($scope) {
@@ -863,4 +832,3 @@ HomeCtrl.prototype.loadPlayer = function($scope) {
     $scope.player = player;
   });
 }
-HomeCtrl.$inject = ['$scope', '$resource', '$route'];

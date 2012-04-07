@@ -6,11 +6,11 @@
     </a>
     
     <!-- Display the 'sing out' option only if the user is currently logged in -->
-    <ng-switch on="USER.isLogged">
+    <span ng-switch on="USER.isLogged">
       <a ng-switch-when="true" href="sign_out" title="Sign out from Your Profile">
         sign out
       </a>
-    </ng-switch>
+    </span>
   </div>
   
   <!-- Copyright and Company link -->

@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:ng="http://angularjs.org" ng:app>
+<html ng-app="resource">
 <head>
 	<title>SingPath - The most fun way to practice software - Home</title>
 	<meta charset="utf-8" />
@@ -11,12 +11,16 @@
 	<script src="_js/jsonrender/common.js" type="text/javascript"></script>
 	<script src="_js/jsonrender/home.js" type="text/javascript"></script>
 	<script src="_js/createTournament.js" type="text/javascript"></script>
-	<script src="_js/feedback-v2.js" type="text/javascript"></script>	
-	<script src="lib/angular/angular.min.js" ng:autobind ></script>
-	<script src="js/commonTools.js"      type="text/javascript"></script>
-    <script src="js/controllers.js"></script>
+  
+	<script src="lib/angular/angular.min.js"      type="text/javascript"></script>
+  <script src="lib/angular/angular-resource.js" type="text/javascript"></script>
+  <script src="js/app_modules.js"               type="text/javascript"></script>
+  <script src="js/controllers.js"               type="text/javascript"></script>
+	<script src="js/commonTools.js"               type="text/javascript"></script>
+	<script src="_js/feedback-v2.js"              type="text/javascript"></script>
+  
 </head>
-<body >
+<body>
   <center><div id="loading">Loading...</div></center>
 <div id="showProfilePopup" class="popup" style="display: none">
   <table class="popup">
@@ -589,7 +593,7 @@ enjoy playing it and that we can come out with the local winner.</textarea>
       </tr>
       <tr>
         <td>
-			<ng:include src="'partials/footer.html'"></ng:include>
+			<div ng-include src="'partials/footer.html'"></div>
         </td>
       </tr>
     </table>
