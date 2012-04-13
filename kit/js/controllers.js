@@ -33,14 +33,6 @@ function RankingStatsPageCtr($scope){
 
 function IndexStatsPageCtr($scope){
 	$scope.index_style = 'top:-150px';
-  
-  // All attributes for the "View Statistics" btn
-  $scope.statsBtn = {
-    "size" : "small",
-    "href" : "#",
-    "title": "View Statistics",
-    "label": "View Statistics"
-  }
 }
 
 
