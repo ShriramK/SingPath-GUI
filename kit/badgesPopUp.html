@@ -29,9 +29,13 @@
       var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
       if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
     }
-
+    
+    // Caching hover images
     MM_preloadImages('_images/landingPages/landingPageButtons/social_buttons/twitter_on.png', '_images/landingPages/landingPageButtons/social_buttons/facebook_on.png', '_images/landingPages/landingPageButtons/social_buttons/google_on.png');
-
+    
+    // Add a gae_bingo test
+    gae_bingo.ab_test('new-badge-clicks', {"top-half": 50, "bottom-half": 50}, ['Twitter link', 'Facebook link', 'Google Plus link', 'Read more', 'newBadge PopUp closed', 'newBadge Continue Playing']);
+    
   </script>
 </head>
 <body>
