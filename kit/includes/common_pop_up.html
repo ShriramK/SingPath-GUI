@@ -4,7 +4,7 @@
     
     <!-- Top-Left Label -->
     <!-- Note: ng-click="$event.stopPropagation()" prevents the click event from bubbling up to the DOM tree -->
-    <div ng-class="contentClass" ng-click="$event.stopPropagation()">
+    <div ng-class="'mainContent ' + contentClass" ng-click="$event.stopPropagation()">
       <div class="labelContainer">
         <div class="label">
           {{popUp.label}}

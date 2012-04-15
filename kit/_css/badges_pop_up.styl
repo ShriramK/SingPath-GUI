@@ -2,172 +2,81 @@
 @import stylus_functions
 
 .popUp
-  background-color rgba(0, 0, 0, 0.25)
-  position         fixed
-  top              0px
-  left             0px
-  width            100%
-  height           100%
-  z-index          10
+  commonPopUp()
   
-  &.show
-    display table
-  
-  &.hide
-    display none
-  
-  .container
-    text-align     center
-    vertical-align middle
-    cursor         pointer
-    display        table-cell
-    width          100%
-    height         100%
+  .newBadge
+    font-size 12px
     
-    .newBadge
-      commonBGContainer()
-      cursor      default
-      display     inline-block
-      font-size   12px
-      text-align  left
-      white-space normal
+    .textContainer
+      background url(../_images/backgrounds/badges_pop_up.png) no-repeat
+      width      496px
+      height     187px
       
-      .closeBtn
-        background url(../_images/commonButtons/popUpClose_off.png) no-repeat
-        cursor     pointer
-        position   absolute
-        top        10px
-        right      -15px
-        width      40px
-        height     35px
+      .column
+        text-align left
+        float      left
+        position   relative
+        width      226px
+        height     170px
+        padding    10px 10px 0px 10px
         
-        &:hover
-          background url(../_images/commonButtons/popUpClose_on.png) no-repeat
-      
-      .textContainer
-        background url(../_images/backgrounds/badges_pop_up.png) no-repeat
-        width      496px
-        height     187px
-        
-        .column
-          text-align left
-          float      left
-          position   relative
-          width      226px
-          height     170px
-          padding    10px 10px 0px 10px
-          
-          &.left
-            color #FFF
-            
-            h3
-              float left
-            
-            .text
-              font-weight bold
-              float       left
-              width       155px
-          
-          &.right
-            color #517A83
-          
-          .badge
-            background-color #FFF
-            border-radius    10px
-            float            left
-            padding          5px
-            margin-right     10px
+        &.left
+          color #FFF
           
           h3
-            font-size 1.2em
-            margin    0px
+            float left
           
           .text
-            font-size 1em
-          
-          .readBtn
-            background url(../_images/landingPages/landingPageButtons/readMore_off.png) no-repeat
-            position   absolute
-            right      0px
-            bottom     0px
-            width      65px
-            height     15px
-            margin     0px 15px 7px 0px
-            
-            &:hover
-              background url(../_images/landingPages/landingPageButtons/readMore_on.png)
+            font-weight bold
+            float       left
+            width       155px
         
-        .socialBtn
-          display    inline-block
-          margin-top 5px
-          width      34px
-          height     34px
+        &.right
+          color #517A83
+        
+        .badge
+          background-color #FFF
+          border-radius    10px
+          float            left
+          padding          5px
+          margin-right     10px
+        
+        h3
+          font-size 1.2em
+          margin    0px
+        
+        .text
+          font-size 1em
+        
+        .readBtn
+          background url(../_images/landingPages/landingPageButtons/readMore_off.png) no-repeat
+          position   absolute
+          right      0px
+          bottom     0px
+          width      65px
+          height     15px
+          margin     0px 15px 7px 0px
           
-          &.twitter
-            background url(../_images/landingPages/landingPageButtons/social_buttons/twitter_off.png) no-repeat
-            &:hover
-              background url(../_images/landingPages/landingPageButtons/social_buttons/twitter_on.png) no-repeat
-            
-          &.facebook
-            background url(../_images/landingPages/landingPageButtons/social_buttons/facebook_off.png) no-repeat
-            &:hover
-              background url(../_images/landingPages/landingPageButtons/social_buttons/facebook_on.png) no-repeat
-            
-          &.google
-            background url(../_images/landingPages/landingPageButtons/social_buttons/google_off.png) no-repeat
-            &:hover
-              background url(../_images/landingPages/landingPageButtons/social_buttons/google_on.png) no-repeat
+          &:hover
+            background url(../_images/landingPages/landingPageButtons/readMore_on.png)
       
-      .labelBottomContainer
-        float    right
-        overflow hidden
-        margin   -5px 1px 0px 0px
-        width    179px
-        height   44px
+      .socialBtn
+        display    inline-block
+        margin-top 5px
+        width      34px
+        height     34px
         
-        .label, .curve
-          float left
-        
-        .label
-          background-color $commonBGColor
-          border-radius(0px, 0px, 10px, 0px)
-          box-shadow(0px, 0px, 6px, 0px, #666)
-          height 41px
+        &.twitter
+          background url(../_images/landingPages/landingPageButtons/social_buttons/twitter_off.png) no-repeat
+          &:hover
+            background url(../_images/landingPages/landingPageButtons/social_buttons/twitter_on.png) no-repeat
           
-          $btnWidth  = 166px
-          $btnHeight = 38px
+        &.facebook
+          background url(../_images/landingPages/landingPageButtons/social_buttons/facebook_off.png) no-repeat
+          &:hover
+            background url(../_images/landingPages/landingPageButtons/social_buttons/facebook_on.png) no-repeat
           
-          .btn
-            background   url(../_images/commonButtons/largeButtonBlank_off.png) no-repeat
-            font-size    19px
-            color        $commonTextColor
-            text-align   center
-            tshadow()
-            line-height  $btnHeight - 4px
-            cursor       pointer
-            display      block
-            width        $btnWidth
-            height       $btnHeight
-            margin-right 9px
-            
-            &:hover, &.on
-              background url(../_images/commonButtons/largeButtonBlank_on.png) no-repeat
-              color      #FFF
-            
-            &.error
-              cursor default
-              
-              &:hover
-                background url(../_images/commonButtons/largeButtonBlank_off.png) no-repeat
-                color      $commonTextColor
-        
-        $curveWidth  = 33px
-        $curveHeight = 42px
-        
-        .curve
-          background url(../_images/backgrounds/curve_big_bottom.png) no-repeat
-          width      $curveWidth
-          height     $curveHeight
-          
-          position absolute
-          margin-left -1*$curveWidth
+        &.google
+          background url(../_images/landingPages/landingPageButtons/social_buttons/google_off.png) no-repeat
+          &:hover
+            background url(../_images/landingPages/landingPageButtons/social_buttons/google_on.png) no-repeat
