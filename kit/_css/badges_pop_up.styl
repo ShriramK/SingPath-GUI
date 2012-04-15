@@ -1,5 +1,4 @@
 /* new Badge Pop Up box */
-
 @import stylus_functions
 
 .popUp
@@ -25,7 +24,7 @@
     width          100%
     height         100%
     
-    #newBadgePopUpBox
+    .newBadge
       commonBGContainer()
       cursor      default
       display     inline-block
@@ -161,7 +160,7 @@
               &:hover
                 background url(../_images/commonButtons/largeButtonBlank_off.png) no-repeat
                 color      $commonTextColor
-
+        
         $curveWidth  = 33px
         $curveHeight = 42px
         

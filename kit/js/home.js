@@ -4,6 +4,7 @@
 function ProfilePanelCtrl($scope, $resource) {
   $scope.containerClass = "profileContainer";
   $scope.label          = "Profile";
+  $scope.contentClass   = "profile";
   $scope.btn            = {
     "href" : "#/edit-profile",
     "title": "Edit Profile",
@@ -21,44 +22,69 @@ function ProfilePanelCtrl($scope, $resource) {
     "label" : "Change Gravatar"
   };
   
-  
   // Set popUp details
   $scope.popUp = {
-    // Set a form name, visible in the HTML and in the Angular code
-    "formName": "popUpEditProfile",
+    // This name is used for switching between all popUps in the common_pop_up.html include
+    "name": "editDetails",
     
-    // Display class
+    // $scope object that could easily be accessed from all includes
+    "form": {
+      // Set a default form validation state
+      "$valid": true
+    },
+    
+    // General popUp display class
     "class": "hide",
     
-    // Footer btn details
-    "btn": {
-      "class"     : "",
-      "label"     : "Save Details",
-      "errorLabel": "Invalid",
-      
-      // Secure 1 click only on the Footer btn
-      "saving": false,
-      
-      // Onclick function for the Footer btn
-      "save": function() {
-        // Check if the btn was already clicked
-        if(!$scope.popUp.saving) {
-          // Set a disabled view for the btn
-          $scope.popUp.btn.label = 'Saving...';
-          $scope.popUp.btn.class = 'on';
-          
-          // Saving is disabled coz so far the server cannot handle POST requests
-          // $scope.profileResource.$save();
-
-          $scope.popUp.btn.label = 'Save Details';
-          $scope.popUp.btn.class = '';
-          $scope.popUp.saving    = false;
-        }
+    // Shown on the top-left
+    "label": "Edit Profile",
+    
+    // Secure 1 click only on the Footer btn
+    "saving": false,
+    
+    // Footer btns' details
+    "btns": [
+      // Save btn details
+      {
+        "label": "Save Details",
+        "title": "Save Your Profile Details",
+        "href" : "#save-details",
         
-        // Disable multiple clicks on the Footer btn
-        $scope.popUp.saving = true;
+        // Manage btn visibility
+        "show" : function() {
+          return $scope.popUp.form.$valid;
+        },
+        
+        // Btn click event handler
+        "click": function() {
+          // Check if the btn was already clicked
+          if(!$scope.popUp.saving) {
+            // Set a disabled view for the btn
+            $scope.popUp.btns[0].label = 'Saving...';
+            $scope.popUp.btns[0].class = 'on';
+            
+            // Saving is disabled coz so far the server cannot handle POST requests
+            // $scope.profileResource.$save();
+
+            $scope.popUp.btns[0].label = 'Save Details';
+            $scope.popUp.btns[0].class = '';
+            $scope.popUp.saving        = false;
+          }
+        }
+      },
+      
+      // Invalid btn details
+      {
+        "label": "Invalid",
+        "title": "Your edit form is Invalid. Please take a look at the fields in red",
+        "class": "error",
+        
+        // Manage btn visibility
+        "show" : function() {
+          return !$scope.popUp.form.$valid;
+        }
       }
-    }
+    ]
   }
   
   
