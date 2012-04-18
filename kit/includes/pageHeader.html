@@ -1,6 +1,6 @@
 <div id="mainHeader">
   <!-- Site Top Logo -->
-  <a href="index.html" id="logo" title="SingPath Logo"></a>
+  <a href="index.html" onclick="gae_bingo.bingo('SingPath Logo')" id="logo" title="SingPath Logo"></a>
   
   <!-- User Login Menu-->
   <div ng-controller="UserLoginMenuCtrl">
@@ -10,13 +10,13 @@
       
       <!-- Display main user info -->
       <div id="userMenu" ng-switch-when="true">
-        <a href="home.html" class="homeBtn" title="Return to Your Home page"></a>
+        <a href="home.html" onclick="gae_bingo.bingo('Home')" class="homeBtn" title="Return to Your Home page"></a>
         
         <img ng-src="{{player.gravatar}}" class="gravatar" alt="gravatar" />
         
         <div class="nickname" ng-bind="player.nickname"></div>
         
-        <a href="shop.html" class="shopBtn" title="Go to the SingPath Shop"></a>
+        <a href="shop.html" onclick="gae_bingo.bingo('Shop')" class="shopBtn" title="Go to the SingPath Shop"></a>
       </div>
       
       <!-- Display Login message and btn -->
@@ -42,7 +42,8 @@
       target   = "{{option.target}}"
       ng-bind  = "option.text"
       ng-class = "option.class"
-      onclick  = "gae_bingo.bingo('{{option.title}}')"
-      title    = "{{option.title}}"></a>
+      onclick  = "gae_bingo.bingo('{{option.text}}')"
+      title    = "{{option.title}}"
+    ></a>
   </div>
 </div>

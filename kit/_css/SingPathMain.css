@@ -2163,7 +2163,7 @@ table.pager {
 #wrapper #friendsTextBox #friendsTextBoxTitleTop { font-weight: bold; color: #FFFFFF; border: 0px none #FFF100; margin: 0px; padding: 0px; text-align: left; float: left; height: 25px; width: 300px; position: relative; left: 20px; top: 10px; font-size: 16px; }
 #wrapper #friendsTextBox #friendsTextBoxtext { margin: 0px; padding: 7px 5px; height: 140px; width: 320px; position: relative; left: 15px; top: 8px; float: left; background-repeat: no-repeat; font-weight: normal; text-align: left; overflow: auto; color: #517A83; border-top: none; border-right: none; border-bottom: none; border-left: none; 
 }
-
+#friendsTextBoxtext .player { margin-right: -3px; }
 #wrapper #friendsTextBox #friendsTextBoxtext img { margin: 0px; padding: 4px 3px 0px; position: relative; background-repeat: no-repeat; font-weight: bold; color: #FFF; border-top: none; border-right: none; border-bottom: none; border-left: none; }
 
 #friendsTextBoxtextSocial { margin: 0px; padding: 17px 15px 7px 5px; height: 35px; width: 322px; position: relative; left: 10px; top: 2px; float: left; background-repeat: no-repeat; font-weight: normal; text-align: right; color: #517A83; border-top: none; border-right: none; border-bottom: none; border-left: none; }
